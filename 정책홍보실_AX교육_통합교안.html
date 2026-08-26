@@ -1,0 +1,2765 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>대한변리사회 정책홍보실 AI 업무혁신 교육 — 통합 교안 (커리큘럼 · 실습 · 모듈)</title>
+<style>
+:root{
+  --navy:#0b1f4b;--navy2:#132c66;--gold:#c9a24b;--gold2:#8a6f2e;--goldl:#faf4e4;
+  --tx:#15181d;--tx2:#5b626c;--bd:#e4e7eb;--bg:#f3f5f7;--code:#1e1e2e;
+  --ok:#1f8452;--okl:#e8f4ec;--no:#b3372a;--nol:#faeceb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;color:var(--tx);background:#fff;line-height:1.75;}
+
+/* ── 회차 액센트 (페이지 래퍼에 부여) ── */
+.acc-home{--ac:#0b1f4b;--ac2:#132c66;--acl:#e8ecf5;}
+.acc2{--ac:#a07c22;--ac2:#7c5f16;--acl:#f7f1e0;}   /* 2회차 이미지·템플릿 */
+.acc3{--ac:#1f5793;--ac2:#143a66;--acl:#e9f0f7;}   /* 3회차 뉴스레터 */
+.acc4{--ac:#a2447e;--ac2:#7c3060;--acl:#f7e9f1;}   /* 4회차 SNS */
+.acc5{--ac:#1f8497;--ac2:#155f6e;--acl:#e6f2f4;}   /* 5회차 반자동화·성과 */
+.acc6{--ac:#34465f;--ac2:#25344a;--acl:#edeff3;}   /* 심화 6회차 노션 DB */
+
+/* ── 상단 네비게이션 ── */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--bd);box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.nav-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:0 20px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:10px;padding:14px 16px 14px 0;margin-right:6px;flex-shrink:0;}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#0b1f4b,#2b4a8f);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;font-size:15px;}
+.brand .bt{font-size:15px;font-weight:900;letter-spacing:-.02em;line-height:1.1;}
+.brand .bs{font-size:10.5px;color:var(--tx2);font-weight:600;}
+.tabs{display:flex;gap:2px;flex-wrap:wrap;}
+.tab{appearance:none;border:none;background:none;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--tx2);padding:14px 12px;border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:7px;--tc:#0b1f4b;--tcl:#e8ecf5;}
+.tab .tnum{font-size:10px;font-weight:800;background:var(--bg);color:var(--tx2);border-radius:6px;padding:2px 7px;}
+.tab:hover{color:var(--tx);}
+.tab.on{color:var(--tc);border-bottom-color:var(--tc);}
+.tab.on .tnum{background:var(--tcl);color:var(--tc);}
+.tab.t-s2{--tc:#a07c22;--tcl:#f7f1e0;}
+.tab.t-s3{--tc:#1f5793;--tcl:#e9f0f7;}
+.tab.t-s4{--tc:#a2447e;--tcl:#f7e9f1;}
+.tab.t-s5{--tc:#1f8497;--tcl:#e6f2f4;}
+.tab.t-s6{--tc:#34465f;--tcl:#edeff3;}
+
+/* ── 페이지 전환 ── */
+.page{display:none;animation:fade .35s ease;}
+.page.show{display:block;}
+@keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+/* ── 히어로 ── */
+.hero{padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden;color:#fff;}
+.hero.h-home{background:linear-gradient(135deg,#081536 0%,#0b1f4b 55%,#1d3a7a 115%);}
+.hero.h-s2{background:linear-gradient(135deg,#2b2410 0%,#8a6a1c 65%,#a07c22 118%);}
+.hero.h-s3{background:linear-gradient(135deg,#0d1f38 0%,#1f5793 68%,#143a66 115%);}
+.hero.h-s4{background:linear-gradient(135deg,#33122a 0%,#a2447e 70%,#7c3060 118%);}
+.hero.h-s5{background:linear-gradient(135deg,#0f2e36 0%,#1f8497 65%,#155f6e 115%);}
+.hero.h-s6{background:linear-gradient(135deg,#161d29 0%,#34465f 60%,#25344a 118%);}
+.hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.hero > *{position:relative;}
+.hero .eb{display:inline-flex;align-items:center;gap:8px;padding:5px 16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.06em;margin-bottom:18px;}
+.hero h1{font-size:clamp(26px,4.6vw,46px);font-weight:900;letter-spacing:-.03em;line-height:1.16;margin-bottom:14px;}
+.hero h1 em{font-style:normal;color:#e8cd8a;}
+.hero.h-s3 h1 em{color:#9fd0f2;}
+.hero.h-s4 h1 em{color:#f2b8dc;}
+.hero.h-s5 h1 em{color:#a9e0e8;}
+.hero.h-s6 h1 em{color:#aebfd6;}
+.hero p{font-size:clamp(13px,1.7vw,16px);color:rgba(255,255,255,.9);max-width:640px;margin:0 auto 22px;}
+.hero .pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.hero .pill{padding:6px 15px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);border-radius:999px;font-size:12px;font-weight:600;}
+
+/* ── 레이아웃 ── */
+.wrap{max-width:1080px;margin:0 auto;padding:44px 24px 72px;}
+.sec{margin-bottom:44px;}
+.center{text-align:center;}
+.eyebrow{display:inline-block;padding:5px 14px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.07em;margin-bottom:13px;background:var(--acl,#e8ecf5);color:var(--ac2,#132c66);}
+.sec h2{font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px;}
+.sec .lead{color:var(--tx2);margin-bottom:24px;font-size:14.5px;}
+.shead{display:flex;align-items:center;gap:12px;margin:42px 0 16px;}
+.shead .sn{width:34px;height:34px;border-radius:10px;color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--ac,#0b1f4b);}
+.shead h3{font-size:clamp(17px,2.4vw,22px);font-weight:800;letter-spacing:-.02em;}
+
+/* ── 흐름 바 ── */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);border-radius:20px;overflow:hidden;border:1px solid var(--bd);margin-bottom:8px;}
+.fl{padding:22px 12px;text-align:center;}
+.fl .ico{font-size:28px;margin-bottom:8px;}
+.fl .wnum{font-size:10px;font-weight:800;letter-spacing:.1em;margin-bottom:4px;}
+.fl .wt{font-size:14px;font-weight:800;margin-bottom:5px;}
+.fl .ws{font-size:11.5px;color:var(--tx2);line-height:1.55;}
+.fl-2{background:#f7f1e0;}.fl-2 .wnum,.fl-2 .wt{color:#7c5f16;}
+.fl-3{background:#e9f0f7;}.fl-3 .wnum,.fl-3 .wt{color:#143a66;}
+.fl-4{background:#f7e9f1;}.fl-4 .wnum,.fl-4 .wt{color:#7c3060;}
+.fl-5{background:#e6f2f4;}.fl-5 .wnum,.fl-5 .wt{color:#155f6e;}
+.fl-6{background:#edeff3;}.fl-6 .wnum,.fl-6 .wt{color:#25344a;}
+
+/* ── 시간표·표 ── */
+.sched{border-radius:14px;overflow:hidden;border:1px solid var(--bd);margin-bottom:8px;}
+.sched table{width:100%;border-collapse:collapse;}
+.sched th{padding:11px 16px;font-size:11px;font-weight:700;letter-spacing:.05em;color:#fff;text-align:left;background:#3c4043;}
+.sched td{padding:12px 16px;font-size:13.5px;border-bottom:1px solid var(--bd);vertical-align:top;}
+.sched tr:last-child td{border-bottom:none;}
+.sched td:first-child{font-weight:800;white-space:nowrap;}
+.sched tr:nth-child(even) td{background:var(--bg);}
+.mtag{display:inline-block;padding:2px 9px;border-radius:6px;font-size:10.5px;font-weight:800;margin-left:6px;background:var(--acl,#e8ecf5);color:var(--ac2,#132c66);}
+.st{display:inline-block;padding:2px 10px;border-radius:999px;font-size:10.5px;font-weight:800;}
+.st-done{background:#e8eaed;color:#5b626c;}
+.st-fix{background:var(--okl);color:var(--ok);}
+.st-plan{background:#e9f0f7;color:#143a66;}
+.st-opt{background:var(--goldl);color:var(--gold2);}
+
+/* ── 카드 ── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px;}
+.one{margin-bottom:18px;}
+.card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:22px;}
+.card h4{font-size:14.5px;font-weight:800;margin-bottom:13px;display:flex;align-items:center;gap:9px;}
+.card h4 .bar{width:4px;height:18px;border-radius:2px;flex-shrink:0;background:var(--ac,#0b1f4b);}
+.card ul{padding-left:19px;}
+.card li{margin-bottom:7px;font-size:13.5px;line-height:1.62;}
+.card p{font-size:13.5px;margin-bottom:9px;}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.feat{border-radius:13px;padding:17px;border:1px solid var(--bd);background:#fff;}
+.feat .fico{font-size:23px;margin-bottom:9px;}
+.feat h5{font-size:13px;font-weight:800;margin-bottom:5px;color:var(--ac2,#132c66);}
+.feat p{font-size:12px;color:var(--tx2);line-height:1.58;}
+
+/* ── 프롬프트 공식 ── */
+.formula{border-radius:14px;padding:20px 22px;font-size:14px;line-height:2.1;border:1px dashed var(--bd);background:var(--bg);margin-bottom:6px;}
+.pl{display:inline-block;padding:2px 10px;border-radius:7px;font-weight:700;font-size:12.5px;margin:2px 1px;background:var(--acl,#e8ecf5);color:var(--ac2,#132c66);}
+.formula .ex{display:block;margin-top:14px;padding-top:14px;border-top:1px solid var(--bd);font-size:13px;line-height:1.85;}
+.formula .ex b{font-weight:700;color:var(--ac2,#132c66);}
+
+/* ── 프롬프트 박스 ── */
+.pbox{background:var(--code);border-radius:13px;overflow:hidden;margin:12px 0;border:1px solid #313244;}
+.pbox-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 15px;background:#181825;border-bottom:1px solid #313244;}
+.pbox-top .lbl{font-size:11.5px;font-weight:800;color:#cdd6f4;letter-spacing:.03em;display:flex;align-items:center;gap:7px;margin-right:auto;}
+.pbox-top .lbl .dot{width:9px;height:9px;border-radius:50%;background:var(--ac,#5cb3ec);}
+.pbox-top .tag{font-size:10px;font-weight:700;color:#7f849c;background:#313244;padding:3px 9px;border-radius:6px;flex-shrink:0;}
+.copy-btn{font-family:inherit;font-size:10.5px;font-weight:700;color:#cdd6f4;background:#45475a;border:1px solid #585b70;border-radius:7px;padding:5px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:background .15s;flex-shrink:0;white-space:nowrap;}
+.copy-btn:hover{background:#585b70;}
+.copy-btn:active{transform:translateY(1px);}
+.copy-btn.done{background:#2d6a4f;border-color:#40916c;color:#d8f3dc;}
+.pbox pre{padding:16px 18px;margin:0;overflow-x:auto;font-family:'SF Mono',Consolas,'Noto Sans KR',monospace;font-size:13px;line-height:1.72;color:#cdd6f4;white-space:pre-wrap;word-break:break-word;}
+.pbox pre .hi{color:#5cb3ec;font-weight:600;}
+.pbox pre .hi-y{color:#f9e2af;font-weight:600;}
+.pbox pre .cm{color:#6c7086;font-style:italic;}
+
+/* ── 스텝 ── */
+.steps{display:flex;flex-direction:column;gap:11px;margin-top:6px;}
+.step{display:flex;gap:13px;align-items:flex-start;}
+.snum{width:27px;height:27px;border-radius:50%;color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;background:var(--ac,#0b1f4b);}
+.sbody{font-size:13.8px;flex:1;}
+.sbody strong{display:block;margin-bottom:3px;font-weight:700;}
+.sbody span{color:var(--tx2);font-size:13px;}
+
+/* ── 연계 체인 ── */
+.chain{display:flex;align-items:stretch;border-radius:13px;overflow:hidden;border:1px solid var(--bd);margin:14px 0;}
+.ch{flex:1;padding:15px 11px;text-align:center;}
+.ch .ct{font-size:10.5px;font-weight:800;margin-bottom:4px;letter-spacing:.04em;}
+.ch .cd{font-size:12.5px;font-weight:600;line-height:1.45;}
+.ch-a{background:#f7f1e0;}.ch-a .ct{color:#7c5f16;}
+.ch-b{background:#e9f0f7;}.ch-b .ct{color:#143a66;}
+.ch-c{background:#f7e9f1;}.ch-c .ct{color:#7c3060;}
+.ch-d{background:#e6f2f4;}.ch-d .ct{color:#155f6e;}
+.ch-arr{display:flex;align-items:center;font-size:17px;color:var(--tx2);padding:0 3px;flex-shrink:0;}
+
+/* ── 팁 ── */
+.tip{font-size:12.8px;padding:11px 15px;border-radius:10px;margin-top:12px;line-height:1.6;}
+.tip-a{background:var(--acl,#e8ecf5);color:var(--ac2,#132c66);}
+.tip-y{background:var(--goldl);color:var(--gold2);}
+.tip-g{background:var(--okl);color:var(--ok);}
+.tip-r{background:var(--nol);color:var(--no);}
+.tip-n{background:#e8ecf5;color:#132c66;}
+
+/* ── do / dont ── */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.ddbox{border-radius:13px;padding:17px;border:1px solid var(--bd);}
+.ddbox.do{background:var(--okl);border-color:#b7dfc4;}
+.ddbox.dont{background:var(--nol);border-color:#f5b7b1;}
+.ddbox h5{font-size:13px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:7px;}
+.ddbox.do h5{color:var(--ok);}
+.ddbox.dont h5{color:var(--no);}
+.ddbox ul{padding-left:17px;}
+.ddbox li{font-size:12.8px;margin-bottom:6px;line-height:1.55;}
+
+/* ── 결과물 카드 ── */
+.del{border-radius:15px;padding:22px;margin-top:8px;border:1px solid var(--bd);background:linear-gradient(135deg,var(--acl,#e8ecf5),#fff);}
+.delh{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.deli{width:33px;height:33px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:var(--ac,#0b1f4b);}
+.delh h4{font-size:14.5px;font-weight:800;color:var(--ac2,#132c66);}
+.del ul{padding-left:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.del li{background:#fff;border-radius:10px;padding:9px 13px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.06);}
+.del li::before{content:"✓";font-weight:900;color:var(--ac,#0b1f4b);}
+
+/* ── 체크리스트 ── */
+.chk{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:20px;}
+.chk h4{font-size:14px;font-weight:800;margin-bottom:13px;}
+.chk-item{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--bd);}
+.chk-item:last-child{border-bottom:none;}
+.chk-box{width:20px;height:20px;border-radius:5px;border:2px solid #c5cad1;flex-shrink:0;margin-top:2px;background:#fff;}
+.chk-item p{font-size:13.5px;}
+
+/* ── 교안·미션 박스 ── */
+.howto{border-radius:16px;border:1px solid var(--bd);background:#f5f7fb;padding:20px 24px;margin-bottom:30px;}
+.howto h3{font-size:15px;font-weight:800;margin-bottom:13px;display:flex;align-items:center;gap:8px;}
+.howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.howto-card{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:15px;}
+.howto-card .hc-ico{font-size:21px;margin-bottom:7px;}
+.howto-card h4{font-size:13px;font-weight:800;margin-bottom:5px;}
+.howto-card p{font-size:12px;color:var(--tx2);line-height:1.55;}
+.lec{border-radius:12px;background:#f4f6fb;border:1px solid var(--bd);border-left:4px solid var(--ac,#0b1f4b);padding:15px 18px;margin:14px 0;}
+.lec .lh{font-size:11px;font-weight:800;color:var(--ac2,#132c66);letter-spacing:.05em;margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.lec p{font-size:13.5px;margin-bottom:6px;line-height:1.65;}
+.lec p:last-child{margin-bottom:0;}
+.lec strong{font-weight:700;color:var(--ac2,#132c66);}
+.mission{border-radius:14px;border:1px solid #f5d486;background:linear-gradient(135deg,#fffaf0,#fff5e0);padding:18px 20px;margin:14px 0;}
+.mission .mh{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.mission .mbadge{background:var(--gold2);color:#fff;font-weight:800;font-size:12px;padding:4px 11px;border-radius:999px;flex-shrink:0;}
+.mission .mh h4{font-size:14.5px;font-weight:800;}
+.mission p{font-size:13.5px;margin-bottom:8px;}
+.mission p:last-child{margin-bottom:0;}
+.msgbox{border-radius:13px;border:1px solid var(--bd);background:var(--bg);padding:16px 20px;margin:12px 0;}
+.msgbox .ml{display:flex;gap:11px;align-items:flex-start;padding:7px 0;font-size:14px;}
+.msgbox .ml .mq{color:var(--gold2);font-weight:900;font-size:18px;flex-shrink:0;line-height:1.2;}
+
+/* ── 화면캡쳐형 목업 공통 ── */
+.shot{border:1px solid #d6dae1;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(10,20,50,.10);margin:14px 0;}
+.shot-bar{display:flex;align-items:center;gap:8px;padding:9px 13px;background:#eceff3;border-bottom:1px solid #d6dae1;}
+.shot-bar .d{width:10px;height:10px;border-radius:50%;}
+.shot-bar .d1{background:#f26d5f;}.shot-bar .d2{background:#f2be4a;}.shot-bar .d3{background:#5cc262;}
+.shot-bar .url{flex:1;margin-left:6px;background:#fff;border:1px solid #d6dae1;border-radius:7px;padding:3px 12px;font-size:11px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.shot-cap{font-size:11.5px;color:var(--tx2);text-align:center;margin-top:8px;}
+.shot-body{display:flex;min-height:230px;}
+.shot-side{width:170px;flex-shrink:0;background:#f7f8fa;border-right:1px solid #e4e7eb;padding:12px 10px;}
+.shot-side .sh{font-size:10px;font-weight:800;color:#9aa0a6;letter-spacing:.06em;margin:8px 4px 5px;}
+.shot-side .si{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:#3c4043;padding:6px 8px;border-radius:7px;}
+.shot-side .si.on{background:#e8ecf5;color:#132c66;font-weight:800;}
+.shot-main{flex:1;padding:14px 16px;min-width:0;}
+@media(max-width:820px){.shot-side{display:none;}}
+
+/* 목업 내부 요소 */
+.mk-title{font-size:13px;font-weight:800;margin-bottom:9px;}
+.mk-row{display:flex;align-items:center;gap:10px;padding:9px 10px;border-bottom:1px solid #eef0f3;font-size:12px;}
+.mk-row:last-child{border-bottom:none;}
+.mk-row .av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:#e8ecf5;}
+.mk-row .t1{font-weight:700;}
+.mk-row .t2{color:var(--tx2);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mk-chip{display:inline-block;font-size:9.5px;font-weight:800;border-radius:5px;padding:1px 7px;margin-left:5px;vertical-align:1px;}
+.mk-src{display:flex;align-items:center;gap:7px;font-size:11px;background:#fff;border:1px solid #e4e7eb;border-radius:8px;padding:6px 9px;margin-bottom:6px;}
+.mk-bubble{border:1px solid #e4e7eb;border-radius:12px;padding:11px 14px;font-size:12.5px;line-height:1.65;background:#fbfcfe;margin-bottom:8px;}
+.mk-bubble .who{font-size:10px;font-weight:800;color:#9aa0a6;margin-bottom:4px;letter-spacing:.04em;}
+.mk-cite{display:inline-flex;align-items:center;justify-content:center;min-width:15px;height:15px;border-radius:4px;background:#e8ecf5;color:#132c66;font-size:9px;font-weight:800;padding:0 3px;margin:0 2px;vertical-align:1px;}
+.mk-canvas{background:linear-gradient(160deg,#0b1f4b,#2b4a8f);border-radius:10px;color:#fff;padding:20px 18px;text-align:center;position:relative;}
+.mk-canvas .kicker{font-size:9px;letter-spacing:.22em;color:#e8cd8a;font-weight:800;margin-bottom:7px;}
+.mk-canvas .big{font-size:17px;font-weight:900;line-height:1.4;}
+.mk-canvas .sub{font-size:10.5px;color:rgba(255,255,255,.75);margin-top:6px;}
+.mk-canvas .logo-slot{position:absolute;top:9px;right:11px;font-size:8.5px;font-weight:800;color:#0b1f4b;background:#e8cd8a;border-radius:4px;padding:2px 6px;}
+.mk-sel{outline:2px dashed #7aa7ff;outline-offset:3px;border-radius:4px;}
+.mk-toolbar{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.mk-tool{font-size:10.5px;font-weight:700;background:#fff;border:1px solid #d6dae1;border-radius:7px;padding:4px 10px;color:#3c4043;}
+.mk-tool.on{background:#132c66;border-color:#132c66;color:#fff;}
+.mail-head{border-bottom:1px solid #eef0f3;padding-bottom:9px;margin-bottom:10px;}
+.mail-head .sj{font-size:13.5px;font-weight:800;}
+.mail-head .fr{font-size:11px;color:var(--tx2);margin-top:3px;}
+.nl-hero{background:linear-gradient(135deg,#0b1f4b,#2b4a8f);border-radius:10px;color:#fff;padding:16px;text-align:center;margin-bottom:9px;}
+.nl-hero .k{font-size:9px;letter-spacing:.2em;color:#e8cd8a;font-weight:800;}
+.nl-hero .t{font-size:15px;font-weight:900;margin-top:4px;}
+.nl-item{display:flex;gap:10px;border:1px solid #eef0f3;border-radius:9px;padding:9px 11px;margin-bottom:7px;align-items:center;}
+.nl-item .nlthumb{width:44px;height:34px;border-radius:6px;background:linear-gradient(135deg,#e8ecf5,#c9d4ea);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.nl-item .nt{font-size:12px;font-weight:700;line-height:1.4;}
+.nl-item .ns{font-size:10.5px;color:var(--tx2);}
+.insta{max-width:300px;margin:0 auto;border:1px solid #e4e7eb;border-radius:14px;overflow:hidden;background:#fff;}
+.insta .ih{display:flex;align-items:center;gap:8px;padding:9px 12px;font-size:12px;font-weight:700;}
+.insta .ih .av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#0b1f4b,#c9a24b);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;}
+.insta .ibody{aspect-ratio:1/1;background:linear-gradient(160deg,#0b1f4b 0%,#1d3a7a 70%,#2b4a8f 100%);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;position:relative;}
+.insta .ibody .k{font-size:9px;letter-spacing:.24em;color:#e8cd8a;font-weight:800;margin-bottom:8px;}
+.insta .ibody .b{font-size:17px;font-weight:900;line-height:1.5;}
+.insta .ibody .pgdot{position:absolute;bottom:10px;display:flex;gap:4px;}
+.insta .ibody .pgdot i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);}
+.insta .ibody .pgdot i:first-child{background:#fff;}
+.insta .ift{padding:9px 12px;font-size:11.5px;color:var(--tx2);}
+.insta .ift b{color:var(--tx);}
+.notion-tb{width:100%;border-collapse:collapse;font-size:11.5px;}
+.notion-tb th{font-weight:700;color:#9aa0a6;text-align:left;border-bottom:1px solid #e4e7eb;padding:6px 8px;font-size:10.5px;}
+.notion-tb td{border-bottom:1px solid #f0f2f5;padding:7px 8px;vertical-align:top;}
+.ntag{display:inline-block;font-size:9.5px;font-weight:700;border-radius:4px;padding:1px 7px;}
+.stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:11px;}
+.stat{border:1px solid #e4e7eb;border-radius:9px;padding:9px 11px;}
+.stat .sv{font-size:16px;font-weight:900;}
+.stat .sl{font-size:9.5px;color:var(--tx2);font-weight:700;letter-spacing:.03em;}
+
+/* ── before/after ── */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.ba .bax{border-radius:13px;overflow:hidden;border:1px solid var(--bd);background:#fff;}
+.ba .bah{padding:8px 14px;font-size:11.5px;font-weight:800;display:flex;align-items:center;gap:7px;}
+.ba .before .bah{background:var(--nol);color:var(--no);}
+.ba .after .bah{background:var(--okl);color:var(--ok);}
+.ba .bab{padding:14px;}
+
+/* ── 페이지 하단 이동 ── */
+.pagenav{display:flex;justify-content:space-between;gap:14px;margin-top:42px;}
+.pnbtn{flex:1;border:1px solid var(--bd);border-radius:14px;padding:16px 20px;cursor:pointer;background:#fff;text-align:left;font-family:inherit;transition:all .15s;}
+.pnbtn:hover{border-color:var(--ac,#0b1f4b);background:var(--acl,#e8ecf5);}
+.pnbtn.next{text-align:right;}
+.pnbtn .pnl{font-size:10.5px;font-weight:800;color:var(--tx2);letter-spacing:.05em;}
+.pnbtn .pnt{font-size:14px;font-weight:800;margin-top:3px;}
+.pnbtn:disabled{opacity:.35;cursor:default;}
+
+footer{text-align:center;padding:26px;color:var(--tx2);font-size:12px;border-top:1px solid var(--bd);}
+footer .src{display:block;margin-top:8px;font-size:11px;color:#9aa0a6;}
+
+@media print{
+  .nav{position:static;box-shadow:none;}
+  .tabs,.pagenav{display:none !important;}
+  .page{display:block !important;page-break-before:always;}
+  .pbox,.card,.del,.mission,.lec,.shot{break-inside:avoid;}
+}
+@media(max-width:820px){
+  .two,.three,.feat-grid,.dd,.ba,.howto-grid{grid-template-columns:1fr;}
+  .flow{grid-template-columns:repeat(2,1fr);}
+  .del ul{grid-template-columns:1fr;}
+  .chain{flex-direction:column;}
+  .ch-arr{transform:rotate(90deg);justify-content:center;}
+  .brand .bs{display:none;}
+  .stat-cards{grid-template-columns:1fr 1fr;}
+}
+
+/* ══ 실습 교안 추가 컴포넌트 ══ */
+.kbd{display:inline-block;font-size:11.5px;font-weight:800;background:#fff;border:1px solid #c5cad1;border-bottom-width:2.5px;border-radius:6px;padding:1px 8px;margin:0 2px;color:#3c4043;white-space:nowrap;}
+.bigstep{display:flex;align-items:center;gap:13px;margin:38px 0 14px;padding:14px 18px;border-radius:14px;background:linear-gradient(135deg,var(--acl,#e8ecf5),#fff);border:1px solid var(--bd);}
+.bigstep .bn{width:44px;height:44px;border-radius:12px;background:var(--ac,#0b1f4b);color:#fff;font-weight:900;font-size:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;line-height:1.1;}
+.bigstep .bn small{font-size:8.5px;font-weight:800;opacity:.8;}
+.bigstep h3{font-size:clamp(16px,2.2vw,20px);font-weight:800;letter-spacing:-.02em;flex:1;}
+.bigstep .tmin{font-size:11px;font-weight:800;background:#fff;border:1px solid var(--bd);border-radius:999px;padding:4px 12px;color:var(--tx2);flex-shrink:0;}
+.checkpt{display:flex;gap:10px;align-items:flex-start;background:var(--okl);border:1px solid #b7dfc4;border-radius:11px;padding:12px 15px;margin:12px 0;font-size:13px;color:#14532d;}
+.checkpt .ci{font-size:15px;flex-shrink:0;}
+.substeps{counter-reset:sub;display:flex;flex-direction:column;gap:9px;margin:10px 0;}
+.sub{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;line-height:1.65;}
+.sub::before{counter-increment:sub;content:counter(sub);width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--ac,#0b1f4b);color:var(--ac2,#132c66);font-weight:800;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.sub b{font-weight:700;}
+.routebox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.route{border:1.5px solid var(--bd);border-radius:14px;padding:17px;background:#fff;}
+.route.rec{border-color:var(--ac,#0b1f4b);box-shadow:0 4px 14px rgba(10,20,50,.07);}
+.route .rh{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:800;margin-bottom:8px;}
+.route .rtag{font-size:9.5px;font-weight:800;border-radius:5px;padding:2px 8px;background:var(--acl,#e8ecf5);color:var(--ac2,#132c66);}
+.route p{font-size:12.5px;color:var(--tx2);line-height:1.6;margin:0;}
+/* 레이어 패널 목업 */
+.lay-panel{width:190px;flex-shrink:0;background:#fff;border-left:1px solid #e4e7eb;padding:10px;}
+.lay-panel .lh2{font-size:10px;font-weight:800;color:#9aa0a6;letter-spacing:.06em;margin:2px 4px 8px;}
+.lay-item{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;color:#3c4043;padding:6px 7px;border-radius:7px;border:1px solid transparent;margin-bottom:3px;}
+.lay-item .eye{font-size:10px;opacity:.55;}
+.lay-item .lthumb{width:22px;height:16px;border-radius:4px;flex-shrink:0;border:1px solid rgba(0,0,0,.08);}
+.lay-item.sel{background:#e8ecf5;border-color:#7aa7ff;color:#132c66;font-weight:800;}
+@media(max-width:820px){.lay-panel{display:none;}}
+/* 파이어플라이 그리드 */
+.ffgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.ff-img{aspect-ratio:1/1;border-radius:9px;display:flex;align-items:flex-end;justify-content:flex-start;padding:8px;font-size:9.5px;font-weight:800;color:rgba(255,255,255,.85);}
+.ff-1{background:linear-gradient(150deg,#0b1f4b,#2b4a8f 60%,#c9a24b 130%);}
+.ff-2{background:linear-gradient(150deg,#12264f,#3c5c9e);}
+.ff-3{background:linear-gradient(150deg,#1a2c55,#c9a24b);}
+.ff-4{background:linear-gradient(150deg,#081536,#1d3a7a);}
+.ff-img.pick{outline:3px solid #5cc262;outline-offset:2px;}
+.ffbar{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid #d6dae1;border-radius:999px;padding:7px 14px;font-size:11.5px;color:var(--tx2);}
+.ffbar .go{margin-left:auto;background:#132c66;color:#fff;border-radius:999px;font-size:10.5px;font-weight:800;padding:4px 13px;flex-shrink:0;}
+/* 포토샵 다크 UI 목업 */
+.psui{background:#232428;border-radius:12px;overflow:hidden;border:1px solid #17181b;color:#d8d9dd;}
+.ps-top{display:flex;gap:14px;align-items:center;background:#17181b;padding:8px 14px;font-size:10.5px;font-weight:700;color:#9a9ca3;}
+.ps-body{display:flex;min-height:210px;}
+.ps-tools{width:34px;background:#1c1d21;display:flex;flex-direction:column;align-items:center;gap:9px;padding:10px 0;font-size:12px;flex-shrink:0;}
+.ps-canvas{flex:1;display:flex;align-items:center;justify-content:center;padding:16px;min-width:0;}
+.ps-right{width:170px;background:#1c1d21;border-left:1px solid #101114;padding:9px;font-size:10.5px;flex-shrink:0;}
+.ps-right .ph{font-size:9px;font-weight:800;color:#77797f;letter-spacing:.07em;margin:4px 3px 7px;}
+.ps-lay{display:flex;align-items:center;gap:7px;padding:5px 6px;border-radius:6px;margin-bottom:2px;color:#c3c5ca;}
+.ps-lay .lthumb{width:20px;height:15px;border-radius:3px;border:1px solid rgba(255,255,255,.15);}
+.ps-lay.sel{background:#2e3f66;color:#fff;font-weight:800;}
+.genfill{display:flex;gap:8px;align-items:center;background:#2a2b30;border:1px solid #3a3c42;border-radius:999px;padding:6px 12px;font-size:10.5px;color:#c3c5ca;margin-top:10px;}
+.genfill .go{margin-left:auto;background:#4a7dff;color:#fff;border-radius:999px;font-size:9.5px;font-weight:800;padding:3px 11px;flex-shrink:0;}
+@media(max-width:820px){.ps-right{display:none;}.routebox{grid-template-columns:1fr;}}
+/* 커넥터 칩 */
+.connrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+.conn{display:flex;align-items:center;gap:8px;border:1px solid #d6dae1;border-radius:11px;padding:8px 13px;font-size:12px;font-weight:700;background:#fff;}
+.conn .ci2{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;flex-shrink:0;}
+.conn .onoff{margin-left:6px;font-size:9.5px;font-weight:800;border-radius:5px;padding:1px 7px;}
+.conn.on .onoff{background:#e8f4ec;color:#1f8452;}
+.conn.off .onoff{background:#eceff3;color:#8a8f98;}
+
+/* 모듈 교안 추가 */
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0;}
+.tri .tcol{border:1px solid var(--bd);border-radius:13px;overflow:hidden;background:#fff;}
+.tri .th2{padding:8px 13px;font-size:12px;font-weight:800;color:#fff;}
+.tri .tb2{padding:13px 14px;font-size:12.5px;line-height:1.7;}
+.tri .tb2 .q{color:var(--tx2);font-size:11px;display:block;margin-top:8px;}
+.rubric td:first-child{font-weight:800;}
+.score{display:inline-block;min-width:26px;text-align:center;border-radius:6px;font-weight:800;font-size:11px;padding:1px 6px;}
+.s-hi{background:#e8f4ec;color:#1f8452;}
+.s-md{background:#faf4e4;color:#8a6f2e;}
+.s-lo{background:#faeceb;color:#b3372a;}
+.cal{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:12px 0;}
+.cal .cm2{border:1px solid var(--bd);border-radius:11px;padding:11px 12px;background:#fff;}
+.cal .cm2 .mo{font-size:10.5px;font-weight:800;color:var(--ac2,#155f6e);margin-bottom:4px;}
+.cal .cm2 .ev{font-size:11.5px;line-height:1.5;}
+.blocks5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0;}
+.blk{border-radius:11px;padding:12px 10px;text-align:center;border:1px solid var(--bd);background:#fff;}
+.blk .bt2{font-size:11px;font-weight:900;color:var(--ac2,#7c3060);margin-bottom:4px;}
+.blk .bd2{font-size:10.5px;color:var(--tx2);line-height:1.5;}
+@media(max-width:820px){.tri{grid-template-columns:1fr;}.cal{grid-template-columns:1fr 1fr;}.blocks5{grid-template-columns:1fr 1fr;}}
+
+/* ── 통합 내비 (대분류 + 하위 탭) ── */
+.secrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-left:auto;padding:10px 0;}
+.secbtn{appearance:none;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:800;border:1.5px solid var(--bd);background:#fff;color:var(--tx2);border-radius:999px;padding:7px 16px;transition:all .15s;white-space:nowrap;}
+.secbtn:hover{border-color:#0b1f4b;color:#0b1f4b;}
+.secbtn.on{background:#0b1f4b;border-color:#0b1f4b;color:#e8cd8a;}
+.subwrap{max-width:1080px;margin:0 auto;padding:0 20px;border-top:1px solid var(--bd);}
+.subwrap .tabs{display:none;}
+.subwrap .tabs.on{display:flex;}
+@media(max-width:820px){.secrow{margin-left:0;width:100%;}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="logo">辨</div>
+      <div>
+        <div class="bt">정책홍보실 AI 업무혁신 — 통합 교안</div>
+        <div class="bs">커리큘럼 · 실습 교안 · 보도자료 모듈, 한 문서로</div>
+      </div>
+    </div>
+    <div class="secrow">
+      <button class="secbtn on" data-sec="cur">Ⅰ 커리큘럼</button>
+      <button class="secbtn" data-sec="prac">Ⅱ 2회차 실습</button>
+      <button class="secbtn" data-sec="mod">Ⅲ 보도자료 모듈</button>
+    </div>
+  </div>
+  <div class="subwrap">
+    <div class="tabs on" data-group="cur">
+      <button class="tab on" data-page="cur-home"><span class="tnum">개요</span>과정 안내</button>
+      <button class="tab t-s2" data-page="cur-s2"><span class="tnum">2회차</span>이미지·통일 템플릿</button>
+      <button class="tab t-s3" data-page="cur-s3"><span class="tnum">3회차</span>보도자료 작성</button>
+      <button class="tab t-s4" data-page="cur-s4"><span class="tnum">4회차</span>IP 브리핑</button>
+      <button class="tab t-s5" data-page="cur-s5"><span class="tnum">5회차</span>입법동향·성과</button>
+      <button class="tab t-s6" data-page="cur-s6"><span class="tnum">심화</span>노션 DB</button>
+    </div>
+    <div class="tabs" data-group="prac">
+      <button class="tab" data-page="prac-home"><span class="tnum">개요</span>실습 안내</button>
+      <button class="tab t-s2" data-page="prac-s2"><span class="tnum">실습 1</span>캔바 매직 레이어</button>
+      <button class="tab t-s4" data-page="prac-s4"><span class="tnum">실습 2</span>클로드 × 어도비</button>
+      <button class="tab t-s5" data-page="prac-s5"><span class="tnum">마무리</span>검수·문제해결</button>
+    </div>
+    <div class="tabs" data-group="mod">
+      <button class="tab" data-page="mod-home"><span class="tnum">개요</span>모듈 안내</button>
+      <button class="tab t-s3" data-page="mod-ma"><span class="tnum">모듈 A</span>기사형 콘텐츠</button>
+      <button class="tab t-s6" data-page="mod-mb"><span class="tnum">모듈 B</span>모의 데스크</button>
+      <button class="tab t-s5" data-page="mod-mc"><span class="tnum">모듈 C</span>이슈 레이더</button>
+      <button class="tab t-s4" data-page="mod-md"><span class="tnum">모듈 D</span>프롬프트 설계</button>
+    </div>
+  </div>
+</nav>
+
+<section class="page show acc-home" id="page-cur-home">
+  <div class="hero h-home">
+    <div class="eb">✦ 대한변리사회 정책홍보실 맞춤 · 실습 중심 · 기본 5회 + 심화 1회</div>
+    <h1>회원이 체감하는 변화,<br/><em>내 업무 자료로 직접 만듭니다</em></h1>
+    <p>통일 템플릿 → 보도자료 작성 최적화 → 지식재산 브리핑 반자동화 → 입법동향 모니터링까지. 부서가 확정한 수강목표(필수 2 + 추가 2)를 앞 회차의 산출물이 다음 회차의 재료가 되는 파이프라인으로 연결합니다.</p>
+    <div class="pills">
+      <span class="pill">보도자료 최적화 · 필수①</span>
+      <span class="pill">IP 브리핑 자동화 · 필수②</span>
+      <span class="pill">오탈자 제로</span>
+      <span class="pill">출처 명시 · 사람 검수</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+<div class="tip tip-n" style="margin-bottom:26px;">📚 <strong>통합 교안</strong> — 이 문서 하나에 <b>Ⅰ 커리큘럼(회차별 설계)</b> · <b>Ⅱ 2회차 실습교안(캔바 매직 레이어 · 클로드×어도비)</b> · <b>Ⅲ 보도자료 마스터 모듈 A–D(필수목표① 보강)</b>가 모두 들어 있습니다. 상단 <b>Ⅰ·Ⅱ·Ⅲ 대분류 버튼</b>으로 큰 섹션을, 그 아래 탭으로 세부 페이지를 이동합니다. 인쇄(Ctrl+P) 시 전체가 순서대로 출력됩니다.</div>
+
+    <!-- 이 페이지 사용법 -->
+    <div class="howto">
+      <h3>📘 이 페이지 하나로 — 수업 · 실습 · 교안 3가지</h3>
+      <div class="howto-grid">
+        <div class="howto-card"><div class="hc-ico">🎤</div><h4>수업 화면</h4><p>탭을 넘기면 각 회차가 목표 → 개념 → 시연 → 실습 순서로 이어집니다. 순서대로 따라오기만 하면 됩니다.</p></div>
+        <div class="howto-card"><div class="hc-ico">⌨️</div><h4>실습 자료</h4><p>모든 프롬프트 박스의 <strong>📋 복사</strong> 버튼으로 바로 복사해 캔바·NotebookLM·ChatGPT·Claude에 붙여넣기.</p></div>
+        <div class="howto-card"><div class="hc-ico">🔖</div><h4>다시 보는 교안</h4><p>수업 후에도 북마크해 두고 실무에서 재사용. 브라우저 인쇄(Ctrl+P)로 전체 PDF 저장도 가능.</p></div>
+      </div>
+    </div>
+
+    <div class="tip tip-y" style="margin-bottom:26px;">📌 <strong>v2 개정 (8/25)</strong> — 부서 확정 수강목표 반영: <strong>필수①</strong> 보도자료 등 대외 홍보 문건 작성 최적화 → 3회차 / <strong>필수②</strong> 지식재산 브리핑 자동화(회원 이메일) → 4회차 / <strong>추가①</strong> 홍보 콘텐츠 시각화 → 2회차(확정 유지) / <strong>추가②</strong> 입법 동향 모니터링 → 5회차. 기존 뉴스레터 과제는 브리핑 이메일에 흡수, SNS는 심화 회차로 이월.</div>
+
+    <!-- 핵심 방향 -->
+    <div class="sec">
+      <div class="lec">
+        <div class="lh">💡 꼭 기억할 핵심 방향 (회장 방침)</div>
+        <p>이번 교육의 1순위는 <strong>"회원이 체감하는 변화"</strong>입니다. 직원 업무 경감은 그 결과로 따라옵니다.</p>
+        <p>협회는 데이터 오류 하나로 신뢰를 잃습니다. 그래서 모든 실습은 <strong>"제공한 자료 안에서만 답하게 하기 + 출처 명시"</strong>로 진행합니다.</p>
+        <p>AI 결과물은 <strong>초안</strong>입니다. 검수·결재는 사람이 하고, <strong>자동 게시·자동 발송은 만들지 않습니다.</strong></p>
+      </div>
+    </div>
+
+    <!-- 1회차 진단 요약 -->
+    <div class="sec">
+      <div class="eyebrow">1회차 완료 (8/19) — 진단 결과</div>
+      <h2>정책홍보실 진단에서 나온 것</h2>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>😣 최대 고충</h4><ul>
+          <li>AI 이미지의 <strong>텍스트 오탈자</strong>("특허로"→"토코로")와 제멋대로 로고 — 디자인 담당이 포토샵으로 일일이 보정</li>
+          <li>오즈메일러 <strong>고정 템플릿 3종</strong>이 구식 — 협회다운 통일 템플릿 부재</li>
+          <li><strong>일일보도</strong>: 키워드 수작업 검색→선별→요약→메일, 매일 반복</li>
+        </ul></div>
+        <div class="card"><h4><span class="bar"></span>🎯 부서 확정 수강목표</h4><ul>
+          <li><strong>필수①</strong> 대외 홍보 문건(보도자료 등) 작성 최적화 — 헤드라인·이슈 연계·목적별 프롬프트</li>
+          <li><strong>필수②</strong> 지식재산 브리핑 자동화 — 매일 IP 보도 선별 → 회원 이메일</li>
+          <li><strong>추가</strong> ① 홍보 콘텐츠 시각화(2회차 확정) · ② 입법 동향 모니터링</li>
+        </ul></div>
+        <div class="card"><h4><span class="bar"></span>🧰 팀 도구 현황</h4><ul>
+          <li>부서 내 ChatGPT Plus·Claude·Gemini·NotebookLM 등 개인별로 상이</li>
+          <li>툴 제한 없음 — <strong>회차별 최적 툴을 사전 공지</strong></li>
+          <li>신규 유료 구독 최소화 (구독 함정 경계)</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 학습 흐름 -->
+    <div class="sec">
+      <div class="center"><div class="eyebrow">학습 흐름 — 파이프라인</div></div>
+      <h2 class="center">템플릿 → 보도자료 → IP 브리핑 → 입법동향 → 자산화</h2>
+      <p class="lead center">앞 회차 산출물이 다음 회차의 재료가 됩니다. 회차를 거듭할수록 정책홍보실만의 '홍보 제작 라인'이 완성됩니다.</p>
+      <div class="flow">
+        <div class="fl fl-2"><div class="ico">🖼️</div><div class="wnum">2회차 · 8/26</div><div class="wt">이미지·통일 템플릿</div><div class="ws">글자·그림 분리<br/>캔바 브랜드 템플릿<br/>오탈자 제로</div></div>
+        <div class="fl fl-3"><div class="ico">📰</div><div class="wnum">3회차 · 예정</div><div class="wt">보도자료 최적화</div><div class="ws">스타일 가이드 추출<br/>헤드라인 10안<br/>목적별 3종 변환</div></div>
+        <div class="fl fl-4"><div class="ico">📮</div><div class="wnum">4회차 · 예정</div><div class="wt">IP 브리핑</div><div class="ws">검색 연동 수집<br/>선별 기준·양식 고정<br/>검수 후 회원 발송</div></div>
+        <div class="fl fl-5"><div class="ico">⚖️</div><div class="wnum">5회차 · 예정</div><div class="wt">입법동향·성과</div><div class="ws">모니터링 패턴 복제<br/>영향 검토 초안<br/>before/after 보고</div></div>
+        <div class="fl fl-6"><div class="ico">🗂️</div><div class="wnum">심화 · 협의</div><div class="wt">노션 DB·대시보드</div><div class="ws">자료 자산화<br/>AI 연동 검색<br/>보고 체계 전환</div></div>
+      </div>
+      <div class="tip tip-n">🧩 <strong>모듈형 구성</strong> — 각 회차는 독립적으로도 성립합니다. 일정에 따라 회차를 압축하거나(4회) 심화를 붙여도(6회) 흐름이 깨지지 않습니다. 심화 회차는 <strong>기본 과정 성과 확인 후 협의로 확정</strong>합니다.</div>
+    </div>
+
+    <!-- 전체 일정 -->
+    <div class="sec">
+      <h2>전체 일정 — 주 2회 · 월/수 15:00~17:00</h2>
+      <p class="lead">교육(개념+시연) 1~1.5시간 + 실습 0.5~1시간. 노트북 지참, 실습 결과물은 단톡방 공유 → 강사 피드백. 일정 변경은 단톡방 사전 협의.</p>
+      <div class="sched">
+        <table>
+          <thead><tr><th>회차</th><th>일자</th><th>주제</th><th>겨냥하는 실제 업무 (업무분장)</th><th>강사(분야)</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr><td>1회차</td><td>8/19(수)</td><td>진단 미팅 — 업무 진단 · 우선과제 합의</td><td>실 업무 전반</td><td>컨설팅팀</td><td><span class="st st-done">완료</span></td></tr>
+            <tr><td>2회차</td><td>8/26(수)</td><td>오탈자 없는 홍보 이미지 + 변리사회 통일 템플릿</td><td>언론 대응 실무(보도자료) · SNS 채널 운영 · 홍보물 제작</td><td>AI 실무·실습 + AI 활용</td><td><span class="st st-fix">확정</span></td></tr>
+            <tr><td>3회차</td><td>8/31(월)</td><td>보도자료 작성 최적화 — 스타일·헤드라인·목적별 변환 <span class="mtag">필수①</span></td><td>언론 대응 실무(보도자료) · 홍보 계획 수립·관리</td><td>AI 활용 + AI 실무·실습</td><td><span class="st st-plan">예정</span></td></tr>
+            <tr><td>4회차</td><td>9/2(수)</td><td>지식재산 브리핑 반자동화 — 회원 이메일 <span class="mtag">필수②</span></td><td>언론 모니터링(일일보도) · 회원 대상 커뮤니케이션</td><td>AI 자동화 + 데이터 분석</td><td><span class="st st-plan">예정</span></td></tr>
+            <tr><td>5회차</td><td>9/7(월)</td><td>입법동향 모니터링 + 성과 보고 <span class="mtag">추가②</span></td><td>입법동향·소송사건 모니터링 · 법제도 개선 · 성과 관리</td><td>데이터 분석 + AI 활용</td><td><span class="st st-plan">예정</span></td></tr>
+            <tr><td>심화</td><td>협의 후</td><td>노션 DB·대시보드 자산화 + 이월 과제(SNS 홍보물)</td><td>자료 DB 관리 · SNS 채널 운영(이월) · 보고 체계</td><td>조직 AX·노션 + 자동화·웹</td><td><span class="st st-opt">옵션</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-y">📅 3회차 이후 일자는 월·수 원칙에 따른 예정 일자이며, 확정은 단톡방 공지 기준입니다.</div>
+    </div>
+
+    <!-- 산출물 → 실무 활용 -->
+    <div class="sec">
+      <h2>회차별 산출물 → 실무 활용</h2>
+      <div class="sched">
+        <table>
+          <thead><tr><th>산출물</th><th>회차</th><th>정책홍보실 실무 활용</th></tr></thead>
+          <tbody>
+            <tr><td>변리사회 브랜드 키트 + 통일 템플릿 3종</td><td>2회차</td><td>회원 안내 이미지, 보도자료 썸네일, 세미나 공지 — 모든 홍보물의 뼈대</td></tr>
+            <tr><td>오탈자 없는 안내 이미지</td><td>2회차</td><td>포토샵 보정 30분 → 캔바 수정 5분</td></tr>
+            <tr><td>변리사회 스타일 가이드 + 보도자료 마스터 프롬프트</td><td>3회차</td><td>보도자료 초안 반나절 → 20분, 헤드라인 10안·목적별 3종 변환</td></tr>
+            <tr><td>보도자료 초안 + 헤드라인 평가표</td><td>3회차</td><td>기자단 배포 · 홈페이지 공지 · 회원 공지로 즉시 활용</td></tr>
+            <tr><td>IP 브리핑 파이프라인 (키워드·선별 기준·고정 프롬프트)</td><td>4회차</td><td>매일 아침 60분 → 15분, 회원 이메일로 발송 — 회원 체감의 핵심</td></tr>
+            <tr><td>주간 입법동향 브리핑 + 영향 검토 초안 양식</td><td>5회차</td><td>법안 대응 속도 향상, 담당자 판단 자료</td></tr>
+            <tr><td>성과 보고 1페이지 + 프롬프트 자산집</td><td>5회차</td><td>부서→회장 보고 · 타 부서 확산과 내년 예산 편성의 근거</td></tr>
+            <tr><td>노션 자료 DB + 대시보드 (심화)</td><td>심화</td><td>10년 치 축적 자료의 검색·재활용, 서면보고 축소</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 수강생 역할 -->
+    <div class="sec">
+      <h2>수강생 구성과 역할 분담</h2>
+      <p class="lead">숙련도 차이는 짝 실습과 역할 분담으로 흡수합니다. 각자 "본인 업무분장의 실제 업무"를 실습 재료로 가져옵니다.</p>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>👩‍💼 기획·총괄 라인</h4><p style="margin:0;">홍보 계획·언론 대응·법제도 총괄 관점에서 <strong>결과물 검수 기준</strong>을 정합니다. 실습에선 문구·사실관계 최종 검수자 역할.</p></div>
+        <div class="card"><h4><span class="bar"></span>✍️ 실무 제작 라인</h4><p style="margin:0;">보도자료·일일보도·SNS·입법동향 등 <strong>자기 업무 자료</strong>로 직접 제작. 과정의 주 산출물을 만드는 핵심 실습자.</p></div>
+        <div class="card"><h4><span class="bar"></span>🎨 부서 앵커 (디자인·전산)</h4><p style="margin:0;">디자인 담당은 <strong>비주얼 품질 앵커</strong>(템플릿·톤 관리), 전산 담당은 <strong>기술 앵커</strong>(반자동화·노션 연동)로 회차별 심화 파트를 리드.</p></div>
+      </div>
+    </div>
+
+    <!-- 공통 원칙 -->
+    <div class="sec">
+      <h2>모든 회차 공통 3원칙</h2>
+      <div class="msgbox">
+        <div class="ml"><span class="mq">“</span><span><strong>준 자료 안에서만.</strong> AI에게는 반드시 보도자료·회의록 등 원문을 주고, "제공한 자료에 없는 내용은 쓰지 마"를 기본 문장으로 붙입니다. 요약·문구에는 출처를 남깁니다.</span></div>
+        <div class="ml"><span class="mq">“</span><span><strong>AI는 초안, 검수는 사람.</strong> 발송·게시 버튼은 언제나 담당자가 누릅니다. 자동 게시·자동 발송은 설계하지 않습니다.</span></div>
+        <div class="ml"><span class="mq">“</span><span><strong>보안 3등급.</strong> 자료는 공개/내부/민감으로 나누고, 실습은 공개 가능 자료(보도자료·기게시 홍보물)로만. 개인정보·민감 자료는 외부 AI에 넣지 않습니다.</span></div>
+      </div>
+    </div>
+
+    <!-- 준비물 -->
+    <div class="sec">
+      <h2>준비물 · 계정 안내</h2>
+      <div class="two">
+        <div class="card"><h4>🎨 캔바 (2·3·4회차)</h4><p><strong>무료로 시작</strong> 가능. 팀 템플릿·브랜드 키트를 쓰려면 Pro(30일 무료 체험)가 편리 — 결제 전 강사와 상의. 회원가입 후 로그인 상태로 오세요.</p></div>
+        <div class="card"><h4>📚 NotebookLM (3·5회차)</h4><p><strong>무료</strong> · 구글 계정. 업로드한 소스 안에서만 답하고 출처를 달아 주는 도구 — "정확성 최우선" 방침의 핵심 툴.</p></div>
+        <div class="card"><h4>💬 ChatGPT / Claude / Gemini</h4><p>지금 각자 쓰는 계정 그대로. 회차별로 최적 툴을 사전 공지합니다. <strong>새 유료 구독은 교육 중 필요할 때만.</strong></p></div>
+        <div class="card"><h4>💻 공통</h4><p>노트북(전원 어댑터), 오즈메일러 접속 정보(3회차), 실습용 실제 자료 — 보도자료·기존 이미지·일일보도 메일 샘플(공개 가능분).</p></div>
+      </div>
+      <div class="tip tip-r"><strong>⚠️ 공통 보안 주의</strong> — 개인정보(회원 명부·연락처), 미공개 안건, 계약·감정 사건 자료는 외부 AI에 올리지 않습니다. 실습 자료는 "이미 대외 공개됐거나 공개 예정인 것"만 사용합니다.</div>
+    </div>
+
+    <!-- 최종 목표 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">🎯</div><h4>기본 과정(5회) 종료 시 정책홍보실이 갖게 되는 것</h4></div>
+        <ul>
+          <li>변리사회 통일 템플릿 3종 + 브랜드 키트 <b>(추가①)</b></li>
+          <li>스타일 내장 보도자료 마스터 프롬프트 <b>(필수①)</b></li>
+          <li>회원용 IP 브리핑 반자동 파이프라인 <b>(필수②)</b></li>
+          <li>주간 입법동향 모니터링 루틴 <b>(추가②)</b></li>
+          <li>선별 기준표·검수 체크리스트·프롬프트 자산집</li>
+          <li>before/after 성과 보고 1페이지 (회장 보고용)</li>
+        </ul>
+      </div>
+      <div class="tip tip-a">💡 이 성과 보고가 <strong>타 부서 확산과 내년(11~12월) 예산 편성</strong>의 근거 자료가 됩니다. 매 회차 산출물을 단톡방에 남겨 두는 것이 곧 성과 증빙입니다.</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" disabled><span class="pnl">이전</span><div class="pnt">—</div></button>
+      <button class="pnbtn next" data-goto="cur-s2"><span class="pnl">다음 →</span><div class="pnt">2회차 · 오탈자 없는 이미지 + 통일 템플릿</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc2" id="page-cur-s2">
+  <div class="hero h-s2">
+    <div class="eb">2회차 · 8/26(수) 15:00~17:00 · 캔바 + AI 이미지</div>
+    <h1>오탈자 없는 회원 안내 이미지,<br/><em>30분 만에 · 포토샵 없이</em></h1>
+    <p>"특허로"가 "토코로"가 되는 AI 이미지의 글자 문제를 원리부터 끝냅니다. 그림은 AI에게, 글자와 로고는 캔바에게 — 그리고 오늘, 변리사회 통일 템플릿의 첫 버전을 우리 손으로 만듭니다.</p>
+    <div class="pills"><span class="pill">글자·그림 분리 원칙</span><span class="pill">브랜드 키트</span><span class="pill">통일 템플릿 3종</span><span class="pill">보정 30분 → 5분</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- 겨냥 업무 -->
+    <div class="sec">
+      <div class="eyebrow">이 회차가 겨냥하는 실제 업무</div>
+      <h2>업무분장에서 가져온 오늘의 과녁</h2>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>언론 대응 실무</h4><p style="margin:0;">보도자료 배포용 썸네일·인포그래픽 (언론 대응 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>SNS 채널 운영</h4><p style="margin:0;">인스타·페북·카톡채널 안내 이미지 (SNS 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>홍보물 제작 보정</h4><p style="margin:0;">AI 이미지 오탈자 포토샵 보정 (디자인 담당) — 이 업무 자체를 없애는 것이 목표</p></div>
+      </div>
+      <div class="lec">
+        <div class="lh">🎯 이번 회차 목표</div>
+        <p>① AI 이미지의 <strong>글자 오탈자가 왜 생기는지</strong> 이해하고, 글자·그림 분리 원칙으로 원천 차단할 수 있다.</p>
+        <p>② 캔바에서 <strong>변리사회 통일 템플릿(색·로고 위치·폰트 고정)</strong>을 만들고 팀과 공유할 수 있다.</p>
+        <p>③ 실제 보도자료 1건으로 <strong>오탈자 없는 안내 이미지 1장</strong>을 30분 안에 완성할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 문제의 원리 : before/after -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>왜 "특허로"가 "토코로"가 되나 — 문제를 눈으로 확인</h3></div>
+      <p class="lead">이미지 생성 AI는 글자를 '문자'가 아니라 '그림 조각'으로 그립니다. 한글처럼 획이 많은 문자는 특히 붕괴합니다. 그래서 <strong>글자를 AI에게 시키지 않는 것</strong>이 유일하게 확실한 해법입니다.</p>
+      <div class="ba">
+        <div class="bax before">
+          <div class="bah">❌ BEFORE — AI에게 글자까지 시켰을 때</div>
+          <div class="bab">
+            <div class="mk-canvas" style="background:linear-gradient(160deg,#3a3325,#6b5a2e);">
+              <div class="kicker">KPAA · 안내</div>
+              <div class="big">"토코로 출원,<br/>변리사와 함께하세요"</div>
+              <div class="sub">로고 위치·모양도 매번 제멋대로</div>
+              <div class="logo-slot" style="background:#cf9a9a;color:#4b1d1d;">로고?!</div>
+            </div>
+            <p style="font-size:12px;color:var(--tx2);margin-top:9px;">→ 디자인 담당이 포토샵으로 글자를 지우고 다시 얹는 데 <strong>이미지당 20~30분</strong></p>
+          </div>
+        </div>
+        <div class="bax after">
+          <div class="bah">✅ AFTER — 그림은 AI, 글자는 캔바 텍스트 레이어</div>
+          <div class="bab">
+            <div class="mk-canvas">
+              <div class="kicker">대한변리사회</div>
+              <div class="big mk-sel">"특허 출원,<br/>변리사와 함께하세요"</div>
+              <div class="sub">글자는 캔바 텍스트 — 클릭해서 바로 수정</div>
+              <div class="logo-slot">공식 로고 파일</div>
+            </div>
+            <p style="font-size:12px;color:var(--tx2);margin-top:9px;">→ 오탈자 발견 시 <strong>더블클릭 5초 수정</strong>. 로고는 업로드한 공식 파일만 사용</p>
+          </div>
+        </div>
+      </div>
+      <div class="tip tip-a">💡 <strong>글자·그림 분리 원칙</strong> — AI에게는 "글자가 전혀 없는 배경/일러스트"만 주문하고, 문구·로고·날짜는 전부 캔바에서 얹습니다. 이미지 품질은 그대로, 오탈자는 구조적으로 사라집니다.</div>
+    </div>
+
+    <!-- 캔바 화면 목업 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>오늘의 작업 화면 — 캔바에서 이렇게 보입니다</h3></div>
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">canva.com/design/변리사회_안내이미지_템플릿</span></div>
+        <div class="shot-body">
+          <div class="shot-side">
+            <div class="sh">디자인</div>
+            <div class="si on">📐 템플릿</div>
+            <div class="si">🧩 요소</div>
+            <div class="si">🔤 텍스트</div>
+            <div class="si">📤 업로드 항목</div>
+            <div class="sh">브랜드</div>
+            <div class="si">🎨 브랜드 키트</div>
+            <div class="si">🖼️ 공식 로고</div>
+          </div>
+          <div class="shot-main">
+            <div class="mk-toolbar"><span class="mk-tool on">본고딕 Bold</span><span class="mk-tool">32px</span><span class="mk-tool" style="color:#0b1f4b;">■ #0B1F4B</span><span class="mk-tool" style="color:#a07c22;">■ #C9A24B</span><span class="mk-tool">위치 고정</span></div>
+            <div class="mk-canvas">
+              <div class="kicker">대한변리사회 · 회원 안내</div>
+              <div class="big mk-sel">2026 특허의 날 기념 세미나<br/>9. 4.(금) 14:00 · 회관 지하 1층</div>
+              <div class="sub">신청: 카카오톡 채널 "대한변리사회"</div>
+              <div class="logo-slot">로고 고정 슬롯</div>
+            </div>
+            <div class="shot-cap">파란 점선 = 텍스트 레이어(더블클릭 수정). 배경은 AI 생성 이미지를 '업로드 항목'으로 깔았습니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="lec">
+        <div class="lh">📏 변리사회 통일 템플릿 규격 (오늘 함께 확정)</div>
+        <p><strong>색</strong> — 메인 네이비 <strong>#0B1F4B</strong> · 포인트 골드 <strong>#C9A24B</strong> · 배경 화이트 (협회 CI 기준, 당일 협의 확정)</p>
+        <p><strong>로고</strong> — 항상 우상단 고정 슬롯, 공식 로고 파일만 사용 (AI가 그린 로고 금지)</p>
+        <p><strong>폰트</strong> — 제목 본고딕(Noto Sans KR) Bold · 본문 Regular, 2단계만 사용</p>
+        <p><strong>3종 템플릿</strong> — ① 카드뉴스(1:1) ② 공지 배너(16:9) ③ 보도자료 썸네일(1200×630)</p>
+      </div>
+    </div>
+
+    <!-- 타임테이블 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">3</div><h3>진행 순서 — 120분</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>시간</th><th>내용</th><th>방식</th></tr></thead>
+          <tbody>
+            <tr><td>15:00~15:10</td><td>도입 — "토코로" 사례로 문제 공감, 오늘 산출물 예고</td><td>강의<span class="mtag">10분</span></td></tr>
+            <tr><td>15:10~15:30</td><td>개념 — 글자·그림 분리 원칙, AI 이미지 프롬프트 공식(용도·비율·장면·톤·"글자 없음")</td><td>강의<span class="mtag">20분</span></td></tr>
+            <tr><td>15:30~15:55</td><td>시연 — 보도자료 1건 → 배경 생성 → 캔바 템플릿 조립 → 오탈자 검수까지 전 과정</td><td>시연<span class="mtag">25분</span></td></tr>
+            <tr><td>15:55~16:05</td><td>계정 세팅 — 캔바 로그인, 공식 로고 업로드, 색 코드 등록</td><td>세팅<span class="mtag">10분</span></td></tr>
+            <tr><td>16:05~16:45</td><td><strong>실습 — 내 업무 자료로 안내 이미지 만들기</strong> (기본/도전 2단계, 짝 실습)</td><td>실습<span class="mtag">40분</span></td></tr>
+            <tr><td>16:45~16:55</td><td>공유 — 단톡방 업로드, 상호 오탈자 검수(옆 사람 이미지 교차 확인)</td><td>피드백<span class="mtag">10분</span></td></tr>
+            <tr><td>16:55~17:00</td><td>마무리 — 템플릿 팀 공유 확정, 숙제 안내, 3회차 예고</td><td>정리<span class="mtag">5분</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 시연 시나리오 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">4</div><h3>강사 시연 시나리오</h3></div>
+      <div class="steps">
+        <div class="step"><div class="snum">1</div><div class="sbody"><strong>재료 확인</strong><span>협회가 실제 배포한 보도자료 1건(공개 자료)을 열어 핵심 메시지 한 줄을 뽑는다 — "무엇을 알리는 이미지인가"</span></div></div>
+        <div class="step"><div class="snum">2</div><div class="sbody"><strong>배경 이미지 생성</strong><span>ChatGPT(또는 Gemini)에 "글자·로고·워터마크 전혀 없음 + 상단 여백" 프롬프트로 배경 2~3안 생성, 팀 투표로 1안 선택</span></div></div>
+        <div class="step"><div class="snum">3</div><div class="sbody"><strong>캔바 조립</strong><span>템플릿 프레임에 배경 삽입 → 텍스트 레이어에 문구 입력 → 우상단 슬롯에 공식 로고 → 색·폰트는 브랜드 키트에서만 선택</span></div></div>
+        <div class="step"><div class="snum">4</div><div class="sbody"><strong>문구 검수</strong><span>완성 문구를 AI에 붙여 "보도자료 원문과 대조해 다른 부분만 지적"을 시키고, 최종 확인은 사람이 육안으로 — 날짜·이름·숫자 3종 중점</span></div></div>
+        <div class="step"><div class="snum">5</div><div class="sbody"><strong>내보내기·공유</strong><span>PNG 내보내기 → 단톡방 공유. "여기까지 12분" 타이머 공개로 체감 효과 강조</span></div></div>
+      </div>
+    </div>
+
+    <!-- 프롬프트 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">5</div><h3>바로 쓰는 프롬프트 (복사해서 실습)</h3></div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>① 글자 없는 배경 이미지</span><span class="tag">ChatGPT · Gemini 이미지</span></div>
+        <pre>대한변리사회(변리사 단체)의 회원 안내 이미지에 쓸 <span class="hi">배경</span>을 만들어줘.
+- 용도·비율: 카드뉴스용 정사각형 1:1
+- 장면: 지식재산·특허를 상징하는 깔끔한 일러스트 (문서와 인장, 은은한 기하 패턴)
+- 톤: 네이비(#0B1F4B)와 골드(#C9A24B) 중심, 신뢰감 있는 공공기관 스타일
+- 구도: <span class="hi-y">상단 40%는 텍스트를 얹을 수 있게 단순하고 어둡게</span> 비워둘 것
+- <span class="hi-y">중요: 글자, 숫자, 로고, 워터마크는 절대 넣지 마.</span> 문자처럼 보이는 장식도 금지.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>② 이미지에 얹을 문구 초안</span><span class="tag">ChatGPT · Claude</span></div>
+        <pre>아래는 대한변리사회가 배포한 보도자료 원문이다.
+<span class="cm">[보도자료 전문 붙여넣기]</span>
+이 <span class="hi">보도자료 안의 내용만 사용해서</span> 회원 안내 이미지에 넣을 문구를 만들어줘.
+- 제목 15자 이내 1개, 부제 25자 이내 1개, 날짜·장소 1줄
+- 보도자료에 없는 내용은 쓰지 말 것. <span class="hi-y">각 문구 옆에 근거가 된 문단 번호를 표시</span>할 것.
+- 과장 표현("최고", "1위") 금지. 안 3개를 제시하면 우리가 고른다.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>③ 발송 전 오탈자·사실 검수</span><span class="tag">ChatGPT · Claude</span></div>
+        <pre>완성된 이미지 문구는 다음과 같다.
+<span class="cm">[이미지에 넣은 최종 문구 붙여넣기]</span>
+원본 보도자료는 다음과 같다.
+<span class="cm">[보도자료 전문 붙여넣기]</span>
+<span class="hi">원문과 대조해서</span> ① 오탈자 ② 날짜·이름·숫자 불일치 ③ 원문에 없는 표현
+세 가지만 표로 지적해줘. 문제가 없으면 "발견된 문제 없음"이라고만 답해.
+<span class="hi-y">이 결과는 참고용이며 최종 게시 판단은 담당자가 한다.</span></pre>
+      </div>
+    </div>
+
+    <!-- do/dont -->
+    <div class="sec">
+      <div class="dd">
+        <div class="ddbox do"><h5>✅ 이렇게</h5><ul>
+          <li>AI에게는 "글자 전혀 없음"을 <strong>명시</strong>하고 배경만 주문</li>
+          <li>로고·문구·날짜는 캔바 레이어로, 브랜드 키트 색만 사용</li>
+          <li>문구는 보도자료 원문 안에서만, 근거 문단 표시</li>
+          <li>내보내기 전 짝꿍과 교차 검수 (본인 오탈자는 본인 눈에 안 보임)</li>
+        </ul></div>
+        <div class="ddbox dont"><h5>❌ 이렇게는 말고</h5><ul>
+          <li>AI 이미지에 한글 문구까지 통째로 그리게 하기</li>
+          <li>AI가 그린 그럴듯한 '가짜 협회 로고' 사용</li>
+          <li>원문 확인 없이 AI가 지어낸 문구 그대로 사용</li>
+          <li>템플릿 밖의 색·폰트 임의 사용 (통일성 붕괴)</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 실습 과제 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">6</div><h3>실습 과제 — 내 업무 자료로</h3></div>
+      <div class="two">
+        <div class="card"><h4><span class="bar"></span>기본 (전원)</h4><p style="margin:0;">본인 담당 업무의 실제 자료(보도자료·행사 공지·SNS 안내) 1건으로 <strong>통일 템플릿 적용 안내 이미지 1장</strong>을 완성해 단톡방에 올립니다.</p></div>
+        <div class="card"><h4><span class="bar"></span>도전 (여유 있는 분)</h4><p style="margin:0;">같은 재료로 <strong>카드뉴스(1:1)·공지 배너(16:9)·썸네일(1200×630) 3종 세트</strong>를 완성 — 다음 회차 뉴스레터에 그대로 들어갑니다.</p></div>
+      </div>
+      <div class="tip tip-r">🔒 <strong>이 회차 보안 기준</strong> — 실습 자료는 "이미 대외 배포된 보도자료·게시물"만 사용합니다. 미배포 초안·개인정보 포함 자료는 외부 AI에 넣지 않습니다.</div>
+    </div>
+
+    <!-- 산출물/숙제 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">📦</div><h4>2회차 산출물 (단톡방 공유)</h4></div>
+        <ul>
+          <li>변리사회 브랜드 키트 (색·로고·폰트 등록 완료)</li>
+          <li>통일 템플릿 v1 — 3종 프레임</li>
+          <li>1인 1장 이상, 오탈자 없는 안내 이미지</li>
+          <li>이미지 검수 체크 문항 3종 (날짜·이름·숫자)</li>
+        </ul>
+      </div>
+      <div class="mission">
+        <div class="mh"><span class="mbadge">숙제</span><h4>다음 회차(뉴스레터)의 재료 만들기 — 약 30분</h4></div>
+        <p>① 오늘 템플릿으로 <strong>본인 업무 이미지 1장</strong>을 더 만들어 단톡방에 올리기 (복습)</p>
+        <p>② 협회가 <strong>이미 배포한 보도자료 3건</strong>(스타일 학습용)과 <strong>다음에 알릴 예정 소식 1건</strong>의 자료를 모아 오기 — 3회차에서 이걸로 보도자료 마스터 프롬프트를 만듭니다.</p>
+      </div>
+      <div class="tip tip-a">🔗 <strong>다음 회차와의 연결</strong> — 오늘 만든 통일 템플릿은 3회차 보도자료 썸네일과 4회차 브리핑 이메일 헤더에 그대로 쓰입니다. · <strong>강사 2인</strong>: 반복 실습 설계 + AI 활용 시연</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="cur-home"><span class="pnl">← 이전</span><div class="pnt">과정 안내</div></button>
+      <button class="pnbtn next" data-goto="cur-s3"><span class="pnl">다음 →</span><div class="pnt">3회차 · 보도자료 작성 최적화</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc3" id="page-cur-s3">
+  <div class="hero h-s3">
+    <div class="eb">3회차 · 8/31(월) 15:00~17:00 예정 · Claude/ChatGPT + 웹검색 연동 · 필수 수강목표 ①</div>
+    <h1>기자가 다시 읽게 만드는 보도자료,<br/><em>협회 스타일 그대로 초안 20분</em></h1>
+    <p>부서 필수 수강목표 1번. 협회의 기존 보도자료로 '변리사회 스타일'을 AI에 학습시키고, 시선을 끄는 헤드라인 10안, 최신 이슈 연계, 배포 목적별(기자단·홈페이지·회원) 맞춤 변환까지 — 보도자료 작성의 전 과정을 프롬프트 자산으로 만듭니다.</p>
+    <div class="pills"><span class="pill">필수 수강목표 ①</span><span class="pill">스타일 가이드 추출</span><span class="pill">헤드라인 10안</span><span class="pill">배포목적별 3종 변환</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="sec">
+      <div class="eyebrow">이 회차가 겨냥하는 실제 업무</div>
+      <h2>업무분장에서 가져온 오늘의 과녁</h2>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>언론 대응 실무 — 보도자료</h4><p style="margin:0;">보도자료 작성·배포, 기자단 관리 (언론 대응 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>홍보 계획 수립·관리</h4><p style="margin:0;">배포 목적·타이밍 판단, 홍보 문건 최종 검수 (홍보 총괄 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>유관기관 협력 보도</h4><p style="margin:0;">국회 세미나·업무협약 등 협력사업 보도 문건 (법제도·협력 담당)</p></div>
+      </div>
+      <div class="lec">
+        <div class="lh">🎯 이번 회차 목표</div>
+        <p>① 협회 기존 보도자료 3건으로 <strong>'변리사회 스타일 가이드'를 추출해 마스터 프롬프트에 내장</strong>할 수 있다.</p>
+        <p>② 실제 소식 1건으로 <strong>헤드라인 10안과 보도자료 초안</strong>을 20분 안에 만들고 평가 기준으로 고를 수 있다.</p>
+        <p>③ 같은 초안을 <strong>기자단·홈페이지·회원 공지 3가지 버전</strong>으로 변환할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 보도자료 해부 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>보도자료 해부 — AI에게 시키기 전에 구조부터</h3></div>
+      <p class="lead">AI가 좋은 보도자료를 쓰게 하려면, 먼저 "좋은 보도자료가 무엇인지"를 우리가 정의해서 줘야 합니다. 협회 보도자료의 구조를 함께 뜯어봅니다.</p>
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">보도자료의 구조 — 협회 실제 배포문 해부</span></div>
+        <div class="shot-body">
+          <div class="shot-side">
+            <div class="sh">구성 요소</div>
+            <div class="si on">① 헤드라인</div>
+            <div class="si">② 부제</div>
+            <div class="si">③ 리드 (첫 문단)</div>
+            <div class="si">④ 본문 (역피라미드)</div>
+            <div class="si">⑤ 인용문</div>
+            <div class="si">⑥ 문의처</div>
+          </div>
+          <div class="shot-main">
+            <div class="mail-head"><div class="sj">"변리사가 직접 찾아갑니다" — 대한변리사회, 중소기업 IP 무료 상담 확대 <span class="mk-chip" style="background:#e9f0f7;color:#143a66;">① 헤드라인: 행동+숫자+의미</span></div><div class="fr">② 부제: 핵심 사실 1줄 보강 · 전국 ○○개 지역 순회</div></div>
+            <div class="mk-bubble" style="border-left:3px solid #1f5793;"><div class="who">③ 리드 — 누가·무엇을·언제·왜, 한 문단에</div>대한변리사회(회장 ○○○)는 ○월 ○일부터 중소기업 대상 지식재산 무료 상담을 전국으로 확대한다고 밝혔다.</div>
+            <div class="mk-bubble"><div class="who">④ 본문 — 중요한 것부터 (역피라미드)</div>배경 → 세부 내용 → 참여 방법… 뒤로 갈수록 잘려도 되는 순서로.</div>
+            <div class="mk-bubble" style="background:#eef4fb;border-color:#cfe0f2;"><div class="who">⑤ 인용문 — 반드시 실존 발언, [인용 확인] 후 게재</div>회장은 "…"라고 말했다. <span class="mk-cite">확인</span></div>
+            <div class="shot-cap">이 6요소가 오늘 만들 마스터 프롬프트의 뼈대가 됩니다 — 인용문은 AI가 지어내기 가장 쉬운 곳이라 [인용 확인] 절차 필수.</div>
+          </div>
+        </div>
+      </div>
+      <div class="dd">
+        <div class="ddbox do"><h5>✅ 시선을 끄는 헤드라인 (협회 품위 유지)</h5><ul>
+          <li>숫자·행동·회원/국민 이익이 보이게 — "변리사가 직접 찾아갑니다"</li>
+          <li>최신 이슈와의 접점 명시 — "AI 시대, ○○"</li>
+          <li>15~25자, 부제로 사실 보강</li>
+        </ul></div>
+        <div class="ddbox dont"><h5>❌ 이렇게는 말고</h5><ul>
+          <li>낚시성·과장 ("충격", "1위", 검증 안 된 최상급)</li>
+          <li>내부 용어 그대로 ("제58차 상임이사회 의결")</li>
+          <li>AI가 지어낸 인용문·통계 그대로 사용</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <!-- 타임테이블 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>진행 순서 — 120분</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>시간</th><th>내용</th><th>방식</th></tr></thead>
+          <tbody>
+            <tr><td>15:00~15:10</td><td>도입 — 좋은 헤드라인 vs 아쉬운 헤드라인 퀴즈 (협회·타 기관 실제 사례)</td><td>강의<span class="mtag">10분</span></td></tr>
+            <tr><td>15:10~15:30</td><td>개념 — 보도자료 6요소 해부, 스타일 가이드 추출 원리, 웹검색 연동으로 최신 이슈 접목</td><td>강의<span class="mtag">20분</span></td></tr>
+            <tr><td>15:30~15:55</td><td>시연 — 기존 보도자료 3건 → 스타일 추출 → 실제 소식으로 초안 생성 → 헤드라인 10안 → 3종 변환</td><td>시연<span class="mtag">25분</span></td></tr>
+            <tr><td>15:55~16:40</td><td><strong>실습 — 내 담당 소식으로 보도자료 초안 + 헤드라인</strong> (기본/도전, 짝 실습: 작성자+데스크 역할)</td><td>실습<span class="mtag">45분</span></td></tr>
+            <tr><td>16:40~16:52</td><td>공유 — 헤드라인 블라인드 투표("어떤 게 기사가 될까"), 데스크 피드백</td><td>피드백<span class="mtag">12분</span></td></tr>
+            <tr><td>16:52~17:00</td><td>마무리 — 마스터 프롬프트 자산 확정, 숙제(브리핑 재료) 안내</td><td>정리<span class="mtag">8분</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 프롬프트 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">3</div><h3>바로 쓰는 프롬프트</h3></div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>① 변리사회 스타일 가이드 추출 (1회만 실행 → 자산화)</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 대한변리사회가 실제 배포한 보도자료 3건이다.
+<span class="cm">[기존 보도자료 3건 전문 붙여넣기 — 이미 배포된 공개 자료만]</span>
+<span class="hi">이 3건에서만 근거를 찾아</span> '대한변리사회 보도자료 스타일 가이드'를 추출해줘.
+- 문체(어미·시제·호칭), 헤드라인 패턴, 리드 구성, 단락 길이, 자주 쓰는 표현/피하는 표현
+- 각 항목에 실제 예문을 근거로 표시할 것. 3건에 없는 특징을 지어내지 말 것.
+- 결과를 "스타일 규칙 10줄"로 압축해줘 — 이후 모든 보도자료 프롬프트에 붙여 쓸 것이다.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>② 보도자료 초안 + 헤드라인 10안 (마스터 프롬프트)</span><span class="tag">Claude · ChatGPT (웹검색 켜기)</span></div>
+        <pre>[스타일 규칙] <span class="cm">[①에서 추출한 스타일 규칙 10줄 붙여넣기]</span>
+[배포 목적] <span class="cm">[예: 출입기자단 배포 — 세미나 개최를 알리고 취재를 유도]</span>
+[소식 자료] <span class="cm">[행사 계획서·공지 등 원문 붙여넣기 — 공개 가능 자료만]</span>
+위 스타일 규칙을 지켜 보도자료 초안을 작성해줘.
+- 구성: 헤드라인/부제/리드/본문(역피라미드)/인용문 자리/문의처
+- <span class="hi">소식 자료에 있는 사실만 사용.</span> 자료에 없는 수치·발언은 쓰지 말고
+  인용문 자리는 "[회장 인용 — 담당자 확인 필요]"로 비워둘 것.
+- 웹검색으로 이 주제의 <span class="hi-y">최근 1주일 관련 이슈를 찾아 리드에 연결 고리 1문장</span>을
+  제안하되, 검색 근거 기사 제목·매체·날짜를 각주로 명시할 것.
+- 헤드라인은 10안: 정공법 4안 / 숫자 강조 3안 / 이슈 연계 3안.
+  각 안에 "시선(1~5)·품위(1~5)" 자체 평가 점수와 이유 1줄을 붙여줘.
+<span class="hi-y">이 초안은 데스크 검수와 인용 확인 후에만 배포한다.</span></pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>③ 배포 목적별 3종 변환</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>확정된 보도자료는 다음과 같다. <span class="cm">[검수 완료된 보도자료 붙여넣기]</span>
+<span class="hi">이 내용만 사용해서</span> 3가지 버전으로 변환해줘.
+1) 출입기자단용 — 원문 유지 + 취재 포인트 3줄 + 사진·인터뷰 가능 여부 안내
+2) 홈페이지 공지용 — 존댓말, 회원·일반인이 이해할 용어로, 절반 길이
+3) 회원 공지용(브리핑 삽입용) — 제목 20자 + 본문 3문장 + 원문 링크 안내
+- 버전마다 달라진 부분에 밑줄 표시를 해줘. <span class="hi-y">내용 추가·과장 금지.</span></pre>
+      </div>
+    </div>
+
+    <!-- 실습 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">4</div><h3>실습 과제 — 내 업무 자료로</h3></div>
+      <div class="two">
+        <div class="card"><h4><span class="bar"></span>기본 (전원)</h4><p style="margin:0;">본인 담당 업무의 <strong>실제 예정 소식 1건</strong>(세미나·협약·사업 안내 등)으로 초안 + 헤드라인 10안 생성 → 짝꿍(데스크 역할)의 선택·피드백 → 수정 1회.</p></div>
+        <div class="card"><h4><span class="bar"></span>도전</h4><p style="margin:0;">같은 초안을 <strong>3종 버전으로 변환</strong>하고, 2회차 템플릿으로 <strong>보도자료 썸네일 이미지</strong>까지 완성 (파이프라인 체험).</p></div>
+      </div>
+      <div class="tip tip-r">🔒 <strong>이 회차 보안 기준</strong> — 스타일 추출은 이미 배포된 보도자료만, 초안 실습은 대외 공개가 예정된 소식만 사용합니다. 미공개 내부 결정·인사 관련 소식은 재료로 쓰지 않습니다.</div>
+    </div>
+
+    <!-- 산출물/숙제 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">📦</div><h4>3회차 산출물</h4></div>
+        <ul>
+          <li>변리사회 스타일 가이드 (규칙 10줄 — 부서 공용 자산)</li>
+          <li>보도자료 마스터 프롬프트 (스타일 내장)</li>
+          <li>실제 소식 보도자료 초안 + 헤드라인 평가표</li>
+          <li>배포 목적별 3종 변환 샘플</li>
+        </ul>
+      </div>
+      <div class="mission">
+        <div class="mh"><span class="mbadge">숙제</span><h4>다음 회차(IP 브리핑)의 재료 모으기 — 약 30분</h4></div>
+        <p>① 오늘 초안을 데스크 검수에 올리고 피드백 1가지 반영 (인용 확인 포함)</p>
+        <p>② 일일보도 담당: 현재 일일보도에 쓰는 <strong>검색 키워드 목록 전체</strong>와 <strong>최근 브리핑 메일 3건</strong>을 단톡방에 공유. 나머지: 회원 입장에서 "받고 싶은 IP 소식 유형" 2가지씩 적어 오기 — 4회차 브리핑 설계의 재료입니다.</p>
+      </div>
+      <div class="tip tip-a">🔗 <strong>다음 회차와의 연결</strong> — 오늘 배운 요약·헤드라인·스타일 고정 기법이 4회차 IP 브리핑의 "기사 요약 품질"을 결정합니다. · <strong>강사 2인</strong>: AI 활용·글쓰기 프롬프트 + 반복 실습 리드</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="cur-s2"><span class="pnl">← 이전</span><div class="pnt">2회차 · 이미지·통일 템플릿</div></button>
+      <button class="pnbtn next" data-goto="cur-s4"><span class="pnl">다음 →</span><div class="pnt">4회차 · IP 브리핑 반자동화</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc4" id="page-cur-s4">
+  <div class="hero h-s4">
+    <div class="eb">4회차 · 9/2(수) 15:00~17:00 예정 · 구글 알리미 + Claude/ChatGPT 검색 + 오즈메일러 · 필수 수강목표 ②</div>
+    <h1>매일 아침 IP 브리핑,<br/><em>회원 메일함으로 — 60분을 15분으로</em></h1>
+    <p>부서 필수 수강목표 2번이자 이 과정의 하이라이트. 시간 단위로 쏟아지는 지식재산 보도를 수집→선별→요약해 회원에게 보내는 브리핑을 "수집·정리는 AI, 선별·발송은 사람"의 반자동 파이프라인으로 만듭니다. 회원이 매일 아침 협회의 변화를 체감하는 접점입니다.</p>
+    <div class="pills"><span class="pill">필수 수강목표 ②</span><span class="pill">검색 연동 수집</span><span class="pill">양식 고정 요약</span><span class="pill">검수 후 수동 발송</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="sec">
+      <div class="eyebrow">이 회차가 겨냥하는 실제 업무</div>
+      <h2>업무분장에서 가져온 오늘의 과녁</h2>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>언론 모니터링 (일일보도)</h4><p style="margin:0;">키워드 검색→선별→요약·분류→메일 발송, 매일 반복 (언론 대응 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>회원 대상 정기 커뮤니케이션</h4><p style="margin:0;">브리핑 이메일이 회원 접점의 핵심 채널로 — 기존 뉴스레터 과제를 이 회차가 흡수 (홍보 총괄 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>홍보 계획 수립·관리</h4><p style="margin:0;">브리핑 편집 기준·발송 운영 원칙 수립 (부서 기획 라인)</p></div>
+      </div>
+      <div class="lec">
+        <div class="lh">🎯 이번 회차 목표</div>
+        <p>① IP 보도 수집용 <strong>키워드 세트와 검색 연동(알리미·AI 웹검색)</strong>을 세팅할 수 있다.</p>
+        <p>② "유의미한 동향"의 판단 기준을 명문화해 <strong>양식 고정 브리핑 초안</strong>을 AI로 만들 수 있다.</p>
+        <p>③ 2회차 템플릿을 입힌 <strong>회원용 브리핑 이메일</strong>을 검수 체크리스트 통과 후 테스트 발송할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 파이프라인 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>브리핑 파이프라인 — 어디까지 AI, 어디부터 사람인가</h3></div>
+      <div class="chain">
+        <div class="ch ch-a"><div class="ct">① 자동 수집</div><div class="cd">구글 알리미(시간 단위)<br/>+ AI 웹검색 보강</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-b"><div class="ct">② AI 정리</div><div class="cd">고정 양식 프롬프트<br/>분류·요약·링크·출처</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">③ 사람 선별 ✋</div><div class="cd">유의미성 판단·코멘트<br/>(기준표 기반)</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-d"><div class="ct">④ 검수·수동 발송 ✋</div><div class="cd">체크리스트 통과 후<br/>담당자가 오즈메일러 발송</div></div>
+      </div>
+      <div class="tip tip-a">✋ 표시가 사람의 자리입니다. <strong>자동 발송은 만들지 않습니다</strong> — 회원 4,500명에게 가는 메일이므로, AI는 아침 정리 시간을 줄이고 "무엇이 유의미한가"의 판단과 발송 책임은 담당자에게 남습니다.</div>
+
+      <!-- 회원용 브리핑 이메일 목업 -->
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">회원 받은편지함 — [KPAA IP브리핑] 9. 2.(수)</span></div>
+        <div class="shot-body">
+          <div class="shot-main">
+            <div class="mail-head"><div class="sj">📮 [KPAA IP브리핑] 9. 2.(수) — 오늘의 지식재산 동향 6건</div><div class="fr">보낸사람 대한변리사회 &lt;kpaa@kpaa.or.kr&gt; · <b>담당자 검수 후 발송됨</b></div></div>
+            <div class="nl-hero"><div class="k">KPAA IP BRIEFING · 매일 아침</div><div class="t">회원님보다 먼저 읽고, 골라서 보내드립니다</div></div>
+            <div class="mk-title" style="color:#7c3060;">■ 제도·정책 <span style="font-weight:600;color:#5b626c;">(2건)</span></div>
+            <div class="nl-item"><div class="nlthumb">⚖️</div><div><div class="nt">변리사법 개정안, 산자위 소위 통과</div><div class="ns">2줄 요약 · <span style="color:#7c3060;font-weight:700;">□□일보 09:10 · 원문 보기</span></div></div></div>
+            <div class="nl-item"><div class="nlthumb">🤖</div><div><div class="nt">"AI 발명자" 인정 여부, 특허법원 첫 심리</div><div class="ns">2줄 요약 · <span style="color:#7c3060;font-weight:700;">○○경제 07:40 · 원문 보기</span></div></div></div>
+            <div class="mk-title" style="color:#7c3060;margin-top:10px;">■ 산업·기업 (3건) &nbsp;·&nbsp; ■ 해외 동향 (1건)</div>
+            <div class="shot-cap">2회차 통일 템플릿 헤더 + 분류·2줄 요약·매체/시각·원문 링크 — 매일 같은 구조라 회원이 읽는 법을 학습합니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 선별 기준 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>"유의미하다"를 명문화 — 선별 기준표</h3></div>
+      <p class="lead">담당자의 머릿속 판단 기준을 꺼내 글로 만드는 것이 이 회차의 진짜 작업입니다. 기준이 글이 되면 AI가 1차 추천을 할 수 있고, 담당자가 바뀌어도 품질이 유지됩니다.</p>
+      <div class="sched">
+        <table>
+          <thead><tr><th>등급</th><th>기준 (수업에서 부서 합의로 확정)</th><th>처리</th></tr></thead>
+          <tbody>
+            <tr><td>🔴 필수</td><td>변리사 제도·변리사법 직접 관련 / 특허청·법원의 제도 변경 / 협회 언급 기사</td><td>브리핑 상단 고정 + 내부 보고</td></tr>
+            <tr><td>🟡 권장</td><td>회원 업무에 영향 있는 판결·정책 / 주요 기업 IP 분쟁 / 해외 제도 변화</td><td>브리핑 포함 (AI 추천 → 사람 확정)</td></tr>
+            <tr><td>⚪ 보류</td><td>단순 기업 홍보성 / 중복 보도 / 관련성 낮은 일반 기술 기사</td><td>제외 (AI가 사유와 함께 별도 목록)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 타임테이블 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">3</div><h3>진행 순서 — 120분</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>시간</th><th>내용</th><th>방식</th></tr></thead>
+          <tbody>
+            <tr><td>15:00~15:10</td><td>도입 — 담당자의 실제 아침 60분 재연(숙제로 모은 브리핑 3건·키워드), 목표 "15분" 선언</td><td>강의<span class="mtag">10분</span></td></tr>
+            <tr><td>15:10~15:30</td><td>개념 — 파이프라인 4단계, 구글 알리미(시간 단위) 세팅, AI 웹검색 보강, 선별 기준표 합의</td><td>강의+토론<span class="mtag">20분</span></td></tr>
+            <tr><td>15:30~15:55</td><td>시연 — 오늘 실제 기사로 수집→AI 정리→선별→2회차 템플릿 조립→테스트 발송 (스톱워치 공개)</td><td>시연<span class="mtag">25분</span></td></tr>
+            <tr><td>15:55~16:40</td><td><strong>실습 — 오늘의 IP 브리핑 v1 만들기</strong> (일일보도 담당 리드 + 짝 실습: 정리 담당 / 선별·검수 담당 역할 교대)</td><td>실습<span class="mtag">45분</span></td></tr>
+            <tr><td>16:40~16:52</td><td>공유 — 각 조 브리핑 비교, 선별 차이 토론("왜 뺐나/넣었나"), 내부 테스트 발송</td><td>피드백<span class="mtag">12분</span></td></tr>
+            <tr><td>16:52~17:00</td><td>마무리 — 매일 운영 루틴 합의(담당·백업), 숙제(입법동향 재료) 안내</td><td>정리<span class="mtag">8분</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 프롬프트 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">4</div><h3>바로 쓰는 프롬프트</h3></div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>① 키워드 세트 + 검색 질의 설계 (1회 실행 → 자산화)</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>대한변리사회가 회원(변리사)에게 매일 보내는 IP 동향 브리핑용 수집 체계를 설계한다.
+현재 쓰는 키워드: <span class="cm">[기존 키워드 목록 붙여넣기]</span>
+1) 이 키워드를 [제도·정책 / 판결·분쟁 / 산업·기업 / 해외] 4개 그룹으로 재편하고,
+   빠져 있는 키워드 후보를 그룹별 3개씩 제안해줘 (제안 이유 1줄씩).
+2) 각 그룹의 구글 알리미 등록용 검색어(따옴표·OR 연산 포함)를 만들어줘.
+   수신 빈도는 "수시(시간 단위)" 기준.
+- <span class="hi-y">제안일 뿐 채택은 부서가 결정한다.</span> 기존 키워드를 임의로 삭제하지 말 것.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>② 브리핑 초안 생성 — 매일 아침 같은 프롬프트</span><span class="tag">Claude · ChatGPT (웹검색 보강 허용)</span></div>
+        <pre>아래는 오늘 수집된 기사 목록(제목·매체·시각·링크·본문)이다.
+<span class="cm">[알리미 메일·검색 결과 붙여넣기]</span>
+[선별 기준] <span class="cm">[수업에서 합의한 기준표 붙여넣기]</span>
+[양식 예시] <span class="cm">[잘 만든 브리핑 1건 붙여넣기 — few-shot]</span>
+<span class="hi">이 기사 목록만 대상으로</span> 회원용 IP 브리핑 초안을 양식 예시와 똑같은 구조로 만들어줘.
+- 섹션: [제도·정책] [판결·분쟁] [산업·기업] [해외] — 기사마다 제목/2줄 요약/매체·보도 시각/원문 링크
+- <span class="hi-y">기사 본문에 없는 내용을 요약에 넣지 말 것.</span> 중복 보도는 1건으로 묶고 매체 수만 표기.
+- 선별 기준표에 따라 🔴필수/🟡권장/⚪보류를 표시하고, 보류는 사유와 함께 맨 아래 별도 목록으로.
+- 마지막에 "오늘의 한 줄" — 회원이 이것만 읽어도 되는 요약 1문장 (근거 기사 표시).
+<span class="hi-y">최종 선별·발송은 담당자가 한다. 이 결과는 초안이다.</span></pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>③ 발송 전 검수</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>발송 직전의 브리핑 전문이다. <span class="cm">[브리핑 본문 붙여넣기]</span>
+원본 기사 목록은 다음과 같다. <span class="cm">[기사 제목·링크 목록 붙여넣기]</span>
+<span class="hi">원본과 대조해서만</span> 점검해줘:
+① 요약과 기사 내용 불일치 ② 링크-기사 짝 오류 ③ 오탈자 ④ 매체명·날짜 오류
+표로 정리하고, 문제가 없으면 "발견된 문제 없음"이라고만 답해.
+<span class="hi-y">발송 버튼은 검수 체크리스트 통과 후 담당자가 직접 누른다.</span></pre>
+      </div>
+    </div>
+
+    <!-- 실습/보안 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">5</div><h3>실습 과제</h3></div>
+      <div class="two">
+        <div class="card"><h4><span class="bar"></span>기본 (전원)</h4><p style="margin:0;">오늘 실제 기사로 <strong>브리핑 v1을 조별 완성</strong> — 정리 담당과 선별·검수 담당을 교대하며 파이프라인 전 단계 체험 → 내부 테스트 발송.</p></div>
+        <div class="card"><h4><span class="bar"></span>도전</h4><p style="margin:0;">2회차 템플릿으로 <strong>브리핑 전용 헤더 이미지</strong>를 만들어 오즈메일러 템플릿에 고정하고, <strong>"오늘의 한 줄" SNS 카드</strong> 1장까지 (보너스 팁: SNS 활용).</p></div>
+      </div>
+      <div class="tip tip-r">🔒 <strong>이 회차 보안 기준</strong> — 기사는 공개 자료입니다. 단, <strong>회원 명단·이메일 주소는 오즈메일러 안에서만</strong> 다루고 외부 AI에 붙여넣지 않습니다. 테스트 발송은 부서 내부 주소로만.</div>
+    </div>
+
+    <!-- 산출물/숙제 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">📦</div><h4>4회차 산출물 (과정의 핵심 성과)</h4></div>
+        <ul>
+          <li>키워드 세트 4그룹 + 알리미 세팅 완료</li>
+          <li>선별 기준표 (부서 합의본)</li>
+          <li>브리핑 고정 프롬프트 + 양식 (매일 사용)</li>
+          <li>회원용 브리핑 v1 (템플릿 적용, 테스트 발송본)</li>
+          <li>발송 전 검수 체크리스트</li>
+        </ul>
+      </div>
+      <div class="mission">
+        <div class="mh"><span class="mbadge">숙제</span><h4>실전 가동 + 다음 회차 재료 — 약 30분×3일</h4></div>
+        <p>① <strong>3일 연속 실제 브리핑을 v1 파이프라인으로 제작</strong>하고 소요 시간 기록 (성과 실측 — 5회차 보고에 사용)</p>
+        <p>② 입법 모니터링 담당: 의안정보시스템에서 <strong>최근 변리사·지식재산 관련 법안 3건</strong>의 의안 원문 링크를 모아 오기 — 5회차 입법 모니터링의 재료입니다.</p>
+      </div>
+      <div class="tip tip-a">🔗 <strong>다음 회차와의 연결</strong> — 오늘 만든 "수집→정리→선별→검수" 패턴을 5회차에서 입법 동향에 그대로 복제합니다. · <strong>강사 2인</strong>: 자동화 설계 + 데이터 수집·검색 연동</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="cur-s3"><span class="pnl">← 이전</span><div class="pnt">3회차 · 보도자료 작성 최적화</div></button>
+      <button class="pnbtn next" data-goto="cur-s5"><span class="pnl">다음 →</span><div class="pnt">5회차 · 입법동향 모니터링 + 성과</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc5" id="page-cur-s5">
+  <div class="hero h-s5">
+    <div class="eb">5회차 · 9/7(월) 15:00~17:00 예정 · 의안정보시스템 + Claude/ChatGPT + NotebookLM · 추가 수강목표 ②</div>
+    <h1>법안이 움직이면 먼저 아는 부서,<br/><em>그리고 회장 보고용 성과 정리</em></h1>
+    <p>4회차에서 만든 모니터링 패턴을 입법 정보에 복제합니다. 법안 발의·개정 현황을 주기적으로 수집해 핵심 요약과 "변리사 업무 영향 검토 초안"까지 — 판단은 법제도 담당이, 초안은 AI가. 마지막 30분은 과정 전체의 before/after 성과 보고를 완성합니다.</p>
+    <div class="pills"><span class="pill">추가 수강목표 ②</span><span class="pill">모니터링 패턴 복제</span><span class="pill">영향 검토 초안</span><span class="pill">성과 보고 1페이지</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="sec">
+      <div class="eyebrow">이 회차가 겨냥하는 실제 업무</div>
+      <h2>업무분장에서 가져온 오늘의 과녁</h2>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>입법동향·소송사건 모니터링</h4><p style="margin:0;">법안 발의·개정 현황 추적, 정부부처 의견조회 대응의 기초 (입법 모니터링 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>법제도 개선 총괄</h4><p style="margin:0;">변리사법 개정 추진 — 영향 검토의 최종 판단자 (법제도 총괄 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>실 업무 성과 관리</h4><p style="margin:0;">과정 성과 정리 → 회장 보고·타 부서 확산 근거 (부서 총괄)</p></div>
+      </div>
+      <div class="lec">
+        <div class="lh">🎯 이번 회차 목표</div>
+        <p>① 의안정보시스템 자료로 <strong>주간 입법 브리핑 초안(요약+영향 검토 초안)</strong>을 만들 수 있다.</p>
+        <p>② 4회차 패턴을 복제해 <strong>입법 모니터링 반자동 루틴</strong>을 세팅할 수 있다.</p>
+        <p>③ 과정 전체의 <strong>before/after 성과 보고 1페이지</strong>를 완성할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 패턴 복제 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>4회차 패턴을 입법 정보에 복제</h3></div>
+      <div class="chain">
+        <div class="ch ch-a"><div class="ct">① 수집</div><div class="cd">의안정보시스템·국회 보도자료<br/>키워드: 변리사법·특허법·상표법 등</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-b"><div class="ct">② AI 정리</div><div class="cd">의안 요약·단계 표시<br/>+ 영향 검토 초안</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">③ 사람 판단 ✋</div><div class="cd">법제도 담당이 영향 확정<br/>대응 필요 여부 결정</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-d"><div class="ct">④ 보고 ✋</div><div class="cd">주간 브리핑으로<br/>부서→회장 보고</div></div>
+      </div>
+      <div class="tip tip-r">⚖️ <strong>중요한 선 긋기</strong> — AI의 "영향 검토"는 어디까지나 <strong>검토 초안</strong>입니다. 문서 상단에 "AI 생성 초안 — 법적 판단 아님, 담당자 검토 전"을 반드시 표기하고, 확정 판단은 법제도 담당이 합니다.</div>
+
+      <!-- 입법 브리핑 목업 -->
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">주간 입법동향 브리핑 — 9월 1주 (내부 보고용 초안)</span></div>
+        <div class="shot-body">
+          <div class="shot-main">
+            <div class="mail-head"><div class="sj">⚖️ 주간 입법동향 — 신규 발의 2건 · 단계 변동 1건 <span class="mk-chip" style="background:#faeceb;color:#b3372a;">AI 초안 · 담당자 검토 전</span></div><div class="fr">작성: 입법 모니터링 담당 (AI 정리 + 검토) · 수신: 법제도 총괄 → 부서 총괄</div></div>
+            <div class="mk-bubble" style="border-left:3px solid #1f8497;">
+              <div class="who">🔴 변리사법 일부개정법률안 (의안번호 22XXXXX)</div>
+              발의 9/1 · 소관위 접수 단계 · <b>요약</b>: … 2줄 · <b>영향 검토 초안</b>: 제○조 개정 시 회원 등록 절차 변경 가능성 <span class="mk-cite">근거: 의안 원문 §3</span> · <b>[담당자 판단 필요]</b>
+            </div>
+            <div class="mk-bubble"><div class="who">🟡 특허법 일부개정법률안 — 단계 변동 (소위 상정)</div>요약 2줄 · 영향 검토 초안 1줄 · 의안 원문 링크</div>
+            <div class="shot-cap">의안번호·단계·근거 조문까지 출처로 — "판단 필요" 표시가 사람의 자리를 지킵니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 타임테이블 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>진행 순서 — 120분</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>시간</th><th>내용</th><th>방식</th></tr></thead>
+          <tbody>
+            <tr><td>15:00~15:10</td><td>도입 — 브리핑 3일 실전 결과 공유(실측 시간), 입법 모니터링의 현재 방식 확인</td><td>강의<span class="mtag">10분</span></td></tr>
+            <tr><td>15:10~15:30</td><td>개념 — 의안정보시스템 구조(발의→위원회→본회의), 4회차 패턴 복제, 영향 검토 초안의 선 긋기</td><td>강의<span class="mtag">20분</span></td></tr>
+            <tr><td>15:30~15:50</td><td>시연 — 숙제로 모은 실제 법안 3건 → 요약·영향 초안 → 주간 브리핑 조립</td><td>시연<span class="mtag">20분</span></td></tr>
+            <tr><td>15:50~16:20</td><td><strong>실습 A — 입법 브리핑 만들기</strong> (법제도 라인 리드) / <strong>실습 B — 브리핑 루틴 점검·개선</strong> (나머지, 4회차 산출물 다듬기)</td><td>실습<span class="mtag">30분</span></td></tr>
+            <tr><td>16:20~16:45</td><td><strong>실습 C — 전원: before/after 성과표 완성</strong> (실측값 기입, 회장 보고 1페이지 조립)</td><td>실습<span class="mtag">25분</span></td></tr>
+            <tr><td>16:45~16:55</td><td>공유 — 성과 보고 낭독, 부서 총괄 코멘트, 심화 회차(노션 DB·SNS) 제안 검토</td><td>피드백<span class="mtag">10분</span></td></tr>
+            <tr><td>16:55~17:00</td><td>마무리 — 프롬프트 자산집 인수인계 방식 합의, 과정 수료</td><td>정리<span class="mtag">5분</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 프롬프트 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">3</div><h3>바로 쓰는 프롬프트</h3></div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>① 의안 요약 + 영향 검토 초안</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 의안정보시스템에서 수집한 법안 자료다.
+<span class="cm">[의안 원문·제안이유 붙여넣기 — 공개 자료]</span>
+<span class="hi">이 자료 안의 내용만 근거로</span> 다음 양식으로 정리해줘.
+- 의안명 / 의안번호 / 발의일·발의자 / 현재 단계
+- 핵심 요약 3줄 (개정 조문 번호를 근거로 표시)
+- 변리사 업무 영향 검토 <span class="hi-y">초안</span>: 영향 가능 영역 1~2개 + 근거 조문.
+  확신이 없으면 "판단 보류"로 쓰고 이유를 밝힐 것. <span class="hi-y">추정으로 단정하지 말 것.</span>
+- 문서 맨 위에 "AI 생성 초안 — 법적 판단 아님, 담당자 검토 전"을 표기할 것.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>② 주간 입법 브리핑 조립</span><span class="tag">Claude · ChatGPT — 매주 같은 프롬프트</span></div>
+        <pre>아래는 이번 주 정리된 의안 요약 카드들이다. <span class="cm">[①의 결과 여러 건 붙여넣기]</span>
+[양식 예시] <span class="cm">[승인된 주간 브리핑 1건 — few-shot]</span>
+양식 예시와 같은 구조로 주간 입법동향 브리핑을 조립해줘.
+- 순서: 🔴 신규 발의(변리사 직접 관련) → 🟡 단계 변동 → ⚪ 참고
+- 맨 위에 "이번 주 한 줄" 요약 (근거 의안 표시)
+- <span class="hi">카드에 없는 내용 추가 금지.</span> [담당자 판단 필요] 표시는 그대로 유지할 것.
+<span class="hi-y">보고 여부와 대응 방향은 부서 책임자가 결정한다.</span></pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>③ 성과 보고 1페이지 조립</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 우리 부서 AI 교육 5회차의 실측 성과 데이터다.
+<span class="cm">[성과표: 업무별 before/after 실측값, 산출물 목록, 수강생 한 줄 소감]</span>
+<span class="hi">이 데이터만 사용해서</span> 회장 보고용 1페이지 성과 요약을 작성해줘.
+- 구성: ① 핵심 성과 3줄 ② before/after 표 ③ 회원 체감 포인트(브리핑·보도자료·이미지)
+  ④ 지속 운영 계획 ⑤ 타 부서 확산 제안 1문단
+- 어투: 협회 내부 보고서체. 과장 금지, 모든 수치는 실측값 그대로.
+<span class="hi-y">수치를 반올림하거나 부풀리지 말 것. 보고 전 부서 책임자가 최종 검수한다.</span></pre>
+      </div>
+    </div>
+
+    <!-- 성과표 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">4</div><h3>과정 성과표 — 실습 C에서 실측값 기입</h3></div>
+      <p class="lead">아래 표가 회장 보고와 내년(11~12월) 예산 편성, 타 부서 확산 제안의 근거가 됩니다. Before는 1회차 진단 기준, After는 이번 주 실측값.</p>
+      <div class="sched">
+        <table>
+          <thead><tr><th>업무 (부서 수강목표)</th><th>Before</th><th>After (실측 기입)</th><th>회원 체감 포인트</th></tr></thead>
+          <tbody>
+            <tr><td>보도자료 초안 작성 <span class="mtag">필수①</span></td><td>반나절~1일</td><td>초안 20분 + 검수 → <b>실측: ___분</b></td><td>더 자주, 더 시의성 있게 보도</td></tr>
+            <tr><td>IP 브리핑 아침 제작 <span class="mtag">필수②</span></td><td>약 60분 (수작업)</td><td>약 15분 → <b>실측: ___분</b></td><td>매일 아침 회원 메일함에 — 협회 변화의 상징</td></tr>
+            <tr><td>안내 이미지 오탈자 보정 <span class="mtag">추가①</span></td><td>이미지당 20~30분</td><td>약 5분 → <b>실측: ___분</b></td><td>오탈자 없는 공식 이미지</td></tr>
+            <tr><td>입법동향 정리 <span class="mtag">추가②</span></td><td>주 2~3시간 (수작업 검색)</td><td>주 30분 + 판단 → <b>실측: ___분</b></td><td>법안 대응 속도 — 회원 권익 직결</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-r">🔒 <strong>이 회차 보안 기준</strong> — 의안·국회 자료는 공개 자료입니다. 단, 협회의 <strong>대응 전략·의견서 초안은 내부 등급</strong>이므로 외부 AI에 넣지 않고, 영향 "검토 초안"까지만 AI를 씁니다.</div>
+    </div>
+
+    <!-- 산출물/숙제 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">📦</div><h4>5회차 산출물 (기본 과정 최종)</h4></div>
+        <ul>
+          <li>주간 입법동향 브리핑 v1 + 고정 프롬프트</li>
+          <li>영향 검토 초안 양식 ("판단 필요" 표기 포함)</li>
+          <li>before/after 성과 보고 1페이지 (회장 보고용)</li>
+          <li>전 회차 프롬프트 자산집 (스타일 가이드·브리핑·입법·검수)</li>
+        </ul>
+      </div>
+      <div class="mission">
+        <div class="mh"><span class="mbadge">숙제</span><h4>자산집 정리 — 약 30분 (심화 회차의 재료)</h4></div>
+        <p>① 이번 주 입법 브리핑 1건을 실전 제작해 내부 검토를 받기</p>
+        <p>② 전 회차 프롬프트·템플릿·기준표를 <strong>한 문서(또는 노션 페이지)에 모으기</strong> — 심화 회차에서 노션 DB로 구조화합니다.</p>
+      </div>
+      <div class="tip tip-a">🔗 <strong>다음 단계</strong> — 기본 과정은 여기서 완결. 성과 확인 후 협의로 심화 회차(노션 DB 자산화 + 이월 과제 SNS 콘텐츠)를 진행합니다. · <strong>강사 2인</strong>: 데이터 정리·측정 + 보고 스토리 정리</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="cur-s4"><span class="pnl">← 이전</span><div class="pnt">4회차 · IP 브리핑 반자동화</div></button>
+      <button class="pnbtn next" data-goto="cur-s6"><span class="pnl">다음 →</span><div class="pnt">심화 · 노션 DB + 이월 과제</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc6" id="page-cur-s6">
+  <div class="hero h-s6">
+    <div class="eb">심화 회차 · 기본 과정 성과 확인 후 협의로 확정 · 노션 + Claude/ChatGPT</div>
+    <h1>10년 치 쌓인 자료를<br/><em>검색되는 자산으로 — 노션 DB</em></h1>
+    <p>회장 방침 그대로 — 협회 현안은 10년째 동일합니다. 새로 만드는 것보다 축적된 자료를 정리·검색·재활용하는 체계가 핵심입니다. 부서 자료를 노션 DB로 구조화하고, AI가 "DB에 있는 것만" 찾아 답하는 검색 체계와 대시보드 보고의 출발점을 만듭니다.</p>
+    <div class="pills"><span class="pill">성과 협의 후 진행</span><span class="pill">자료 자산화</span><span class="pill">대시보드 보고</span><span class="pill">서면보고 축소</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="sec">
+      <div class="lec">
+        <div class="lh">📌 진행 전제</div>
+        <p>이 회차는 <strong>기본 5회 종료 후, 성과 보고를 확인한 뒤 협의로 추가</strong>되는 심화 모듈입니다. 기본 과정만으로도 교육은 완결되며, 이 회차는 성과를 '지속되는 체계'로 바꾸는 단계입니다. 기본 과정에서 이월된 <strong>SNS 홍보물(카드뉴스·릴스) 과제를 선택 모듈</strong>로 함께 다룰 수 있습니다.</p>
+      </div>
+      <div class="eyebrow">이 회차가 겨냥하는 실제 업무</div>
+      <h2>업무분장에서 가져온 과녁</h2>
+      <div class="three">
+        <div class="card"><h4><span class="bar"></span>자료 DB 관리</h4><p style="margin:0;">보도자료·IP 브리핑·입법동향 아카이브 (부서 공통)</p></div>
+        <div class="card"><h4><span class="bar"></span>법제도 조사·연구 축적</h4><p style="margin:0;">10년 치 연구자료·의견조회 대응 기록의 검색·재활용 (법제도 담당)</p></div>
+        <div class="card"><h4><span class="bar"></span>실 업무 성과 관리·보고</h4><p style="margin:0;">노션 대시보드 기반 보고 체계 — 서면보고 축소 (부서 총괄, 회장 지시)</p></div>
+      </div>
+      <div class="lec">
+        <div class="lh">🎯 이번 회차 목표</div>
+        <p>① 부서 자료를 담는 <strong>노션 DB 3종(콘텐츠·언론보도·법제도 자료)</strong>의 구조를 설계하고 만들 수 있다.</p>
+        <p>② 축적 자료에 <strong>AI로 태그·요약을 달아 DB에 채워 넣을</strong> 수 있다.</p>
+        <p>③ 부서 책임자·회장이 보는 <strong>대시보드 뷰</strong>를 만들고, "DB에 있는 것만" 답하는 검색 사용법을 익힌다.</p>
+      </div>
+    </div>
+
+    <!-- 노션 목업 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>완성 화면 — 정책홍보실 대시보드</h3></div>
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">notion.so/kpaa — 정책홍보실 홈 대시보드</span></div>
+        <div class="shot-body">
+          <div class="shot-side">
+            <div class="sh">워크스페이스</div>
+            <div class="si on">🏠 정책홍보실 홈</div>
+            <div class="si">📰 홍보 콘텐츠 DB</div>
+            <div class="si">🗞️ 언론보도 아카이브</div>
+            <div class="si">⚖️ 법제도 자료 DB</div>
+            <div class="si">📚 프롬프트 자산집</div>
+            <div class="sh">뷰</div>
+            <div class="si">📊 주간 보고 대시보드</div>
+          </div>
+          <div class="shot-main">
+            <div class="mk-title">📊 이번 주 한눈에 <span style="font-weight:600;color:#9aa0a6;">(서면보고 대체 초안)</span></div>
+            <div class="stat-cards">
+              <div class="stat"><div class="sv">7건</div><div class="sl">발행 콘텐츠</div></div>
+              <div class="stat"><div class="sv">32건</div><div class="sl">언론보도 수집</div></div>
+              <div class="stat"><div class="sv">2건</div><div class="sl">의견조회 대응 중</div></div>
+            </div>
+            <table class="notion-tb">
+              <thead><tr><th>제목</th><th>유형</th><th>상태</th><th>담당</th></tr></thead>
+              <tbody>
+                <tr><td>9. 2.(수) IP 브리핑</td><td><span class="ntag" style="background:#e9f0f7;color:#143a66;">브리핑</span></td><td><span class="ntag" style="background:#e8f4ec;color:#1f8452;">발송 완료</span></td><td>언론 담당</td></tr>
+                <tr><td>IP 상식 카드뉴스 ①</td><td><span class="ntag" style="background:#f7e9f1;color:#7c3060;">SNS</span></td><td><span class="ntag" style="background:#faf4e4;color:#8a6f2e;">검수 대기</span></td><td>SNS 담당</td></tr>
+                <tr><td>변리사법 개정 브리핑 자료</td><td><span class="ntag" style="background:#edeff3;color:#25344a;">법제도</span></td><td><span class="ntag" style="background:#e8f4ec;color:#1f8452;">아카이브</span></td><td>법제도 담당</td></tr>
+              </tbody>
+            </table>
+            <div class="shot-cap">모든 회차의 산출물이 이 DB에 쌓입니다 — 검수 상태 열이 있는 한, 자동 게시는 없습니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 타임테이블 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>진행 순서 — 120분</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>시간</th><th>내용</th><th>방식</th></tr></thead>
+          <tbody>
+            <tr><td>15:00~15:15</td><td>도입 — 기본 과정 성과 리뷰, "찾는 데 얼마나 걸리나" 현재 검색 시간 실측</td><td>강의<span class="mtag">15분</span></td></tr>
+            <tr><td>15:15~15:40</td><td>개념 — DB 설계 원칙(속성·태그·뷰), 소스 고정 검색, 대시보드 보고 체계</td><td>강의<span class="mtag">25분</span></td></tr>
+            <tr><td>15:40~16:00</td><td>시연 — 콘텐츠 DB 생성 → 기존 산출물 등록 → AI 태그 부여 → 대시보드 뷰 → 검색 문답</td><td>시연<span class="mtag">20분</span></td></tr>
+            <tr><td>16:00~16:45</td><td><strong>실습 — 담당 업무별 DB 1개씩 만들고 실제 자료 5건 이상 등록</strong> (전산 담당이 순회 지원)</td><td>실습<span class="mtag">45분</span></td></tr>
+            <tr><td>16:45~16:55</td><td>공유 — 대시보드 시연, "부서 보고를 이 화면으로" 리허설</td><td>피드백<span class="mtag">10분</span></td></tr>
+            <tr><td>16:55~17:00</td><td>마무리 — 운영 규칙(등록 담당·주기) 합의, 과정 전체 수료 정리</td><td>정리<span class="mtag">5분</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 프롬프트 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">3</div><h3>바로 쓰는 프롬프트</h3></div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>① DB 구조 설계</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>대한변리사회 정책홍보실의 노션 DB를 설계하려 한다. 우리가 쌓는 자료는:
+보도자료, 뉴스레터, SNS 콘텐츠, 일일보도, 회의록, 법제도 연구자료, 의견조회 대응 기록.
+<span class="hi">이 목록에 있는 자료 유형만 대상으로</span> DB 3개(홍보 콘텐츠 / 언론보도 아카이브 / 법제도 자료)의
+속성(컬럼) 구성을 표로 제안해줘.
+- 각 DB: 속성명 / 속성 유형(선택·날짜·사람·URL 등) / 예시 값 1개
+- 공통 속성에 반드시 <span class="hi-y">"검수 상태(초안/검수 중/확정)"와 "보안 등급(공개/내부)"</span>을 포함할 것.
+- 우리가 이해 못 할 전문용어는 쓰지 말 것. 제안이며 확정은 부서 협의로 한다.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>② 축적 자료 일괄 태깅</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 아카이브에 등록할 기존 자료 목록(제목·날짜·첫 문단)이다. <span class="cm">[자료 목록 붙여넣기]</span>
+<span class="hi">제공한 목록만 대상으로</span> 각 자료에 다음을 달아줘:
+- 주제 태그(최대 2개): 변리사제도 / 지식재산정책 / 협회활동 / 회원서비스 중에서만
+- 1줄 요약(자료에 있는 내용만) / 보안 등급 추천(공개·내부)과 그 이유 1줄
+- 판단이 어려우면 태그 대신 "[담당자 확인]"으로 표시. <span class="hi-y">등급 확정은 사람이 한다.</span></pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>③ DB 안에서만 검색 문답</span><span class="tag">Claude(노션 연동) · NotebookLM</span></div>
+        <pre>질문: 2024년 이후 변리사법 개정 관련해서 협회가 낸 보도자료와 의견서를 정리해줘.
+- <span class="hi">연결된 노션 DB(또는 업로드한 자료)에 있는 문서만 근거로</span> 답할 것.
+- 각 항목에 문서 제목·날짜를 출처로 표시하고, DB에 없는 내용은
+  "DB에서 찾을 수 없음"이라고 답할 것. <span class="hi-y">기억이나 추측으로 보충하지 말 것.</span></pre>
+      </div>
+    </div>
+
+    <!-- 산출물 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">📦</div><h4>심화 회차 산출물</h4></div>
+        <ul>
+          <li>노션 DB 3종 (홍보 콘텐츠·언론보도·법제도 자료)</li>
+          <li>기존 자료 최소 25건 등록 + AI 태그</li>
+          <li>주간 보고 대시보드 뷰 (부서→회장 보고용)</li>
+          <li>프롬프트 자산집 DB화 + 운영 규칙 1페이지</li>
+        </ul>
+      </div>
+      <div class="tip tip-r">🔒 <strong>이 회차 보안 기준</strong> — 노션에는 공개·내부 등급 자료만 등록합니다. 개인정보·감정 사건·계약 자료는 DB 대상에서 제외하고, 외부 AI 연동은 공개 등급 자료로만 시작합니다.</div>
+      <div class="tip tip-a">🌱 <strong>확산 연결</strong> — 이 DB 구조는 타 부서(운영기획실 등)의 회의록·규정·행사 자료에도 그대로 복제할 수 있습니다. 정책홍보실의 성과 보고와 함께 확산 제안의 실물 증거가 됩니다.</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="cur-s5"><span class="pnl">← 이전</span><div class="pnt">5회차 · 입법동향·성과</div></button>
+      <button class="pnbtn next" data-goto="cur-home"><span class="pnl">처음으로</span><div class="pnt">과정 안내</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc-home" id="page-prac-home">
+  <div class="hero h-home">
+    <div class="eb">✦ 2회차 실습 교안 · 8/26(수) · 노트북 지참 · 이 화면 따라 하면 완성</div>
+    <h1>AI가 만든 이미지를<br/><em>낱낱이 분해해서 내 맘대로</em></h1>
+    <p>실습 1 — ChatGPT·NotebookLM으로 만든 이미지를 캔바 <b>매직 레이어</b>로 SVG처럼 요소별 분해해 오탈자·로고를 직접 고칩니다. 실습 2 — <b>클로드</b>로 이미지를 기획하고 <b>커넥터</b>로 어도비(Firefly·Photoshop)에 넘겨 전문가급으로 마무리합니다.</p>
+    <div class="pills"><span class="pill">실습 1 · 전원 필수</span><span class="pill">실습 2 · 디자인 담당·도전자</span><span class="pill">모든 화면 그림으로 안내</span><span class="pill">게시 전 사람 검수</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="howto">
+      <h3>📘 이 교안 읽는 법</h3>
+      <div class="howto-grid">
+        <div class="howto-card"><div class="hc-ico">🪜</div><h4>STEP 그대로 진행</h4><p>각 STEP의 번호 순서대로만 클릭하면 됩니다. <span class="kbd">이렇게 생긴 글자</span>는 화면에서 실제로 누르는 버튼·메뉴입니다.</p></div>
+        <div class="howto-card"><div class="hc-ico">🖥️</div><h4>화면 그림 = 정답 화면</h4><p>각 STEP 아래의 화면 그림과 내 화면이 비슷하면 잘 가고 있는 겁니다. ✅ 체크포인트에서 반드시 확인 후 다음으로.</p></div>
+        <div class="howto-card"><div class="hc-ico">🆘</div><h4>막히면 손들기 전에</h4><p>마지막 탭 <strong>검수·문제해결</strong>에 자주 막히는 지점 해결법이 있습니다. 그래도 안 되면 강사·전산 담당 호출.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="lec">
+        <div class="lh">💡 오늘 실습의 핵심 아이디어</div>
+        <p>지난 시간까지의 원칙이 <strong>"글자는 AI에게 시키지 않는다(예방)"</strong>였다면, 오늘은 한 걸음 더 —</p>
+        <p><strong>실습 1 (치료)</strong>: AI 이미지에 글자·로고가 이미 들어가 버렸어도, 캔바 매직 레이어로 <strong>배경/그림/글자를 각각의 레이어로 분해</strong>해 "토코로"를 더블클릭 한 번으로 "특허로"로 고칩니다. 디자인 담당의 포토샵 보정 30분이 5분이 됩니다.</p>
+        <p><strong>실습 2 (설계)</strong>: 아예 처음부터 클로드에게 <strong>보도자료를 주고 이미지 기획서(레이어 구성표 포함)</strong>를 받아, 커넥터로 어도비에 넘겨 처음부터 편집 가능한 구조로 만듭니다. 회지 표지·키비주얼 같은 고품질 작업용.</p>
+      </div>
+    </div>
+
+    <!-- 두 실습 비교 -->
+    <div class="sec">
+      <h2>두 실습, 언제 어느 쪽을 쓰나</h2>
+      <div class="chain">
+        <div class="ch ch-a"><div class="ct">실습 1 재료</div><div class="cd">ChatGPT 이미지<br/>NotebookLM 인포그래픽</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-a"><div class="ct">실습 1 편집</div><div class="cd">캔바 매직 레이어<br/>요소별 분해·수정</div></div>
+        <div class="ch-arr">≫</div>
+        <div class="ch ch-c"><div class="ct">실습 2 기획</div><div class="cd">클로드에 자료 입력<br/>기획서·레이어 구성표</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">실습 2 편집</div><div class="cd">커넥터 → @Adobe<br/>생성·편집 자동 라우팅</div></div>
+      </div>
+      <div class="sched">
+        <table>
+          <thead><tr><th></th><th>실습 1 · 캔바 매직 레이어</th><th>실습 2 · 클로드 × 어도비</th></tr></thead>
+          <tbody>
+            <tr><td>누가</td><td><strong>전원 필수</strong> (비전문가 기준 설계)</td><td>디자인 담당 필수 + 도전 과제 (전산 담당 지원)</td></tr>
+            <tr><td>어디에 쓰나</td><td>카드뉴스·안내 이미지·SNS — 빠른 일상 제작</td><td>회지 표지·키비주얼·뉴스레터 헤더 — 고품질 대표 이미지</td></tr>
+            <tr><td>걸리는 시간</td><td>약 40분 (STEP 0~6)</td><td>약 45분 (STEP 0~5, AE는 선택)</td></tr>
+            <tr><td>필요 계정</td><td>ChatGPT 또는 구글(NotebookLM) + 캔바</td><td>클로드 또는 ChatGPT + 어도비 (무료 계정 가능, 로그인 권장)</td></tr>
+            <tr><td>완성물</td><td>오탈자 0개 안내 이미지 1장 (템플릿 적용)</td><td>이미지 기획서 + @Adobe 생성·편집본 (+선택 PSD)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 준비물 체크 -->
+    <div class="sec">
+      <h2>시작 전 준비물 체크 (강사와 함께 5분)</h2>
+      <div class="chk">
+        <h4>✅ 전원 공통</h4>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>노트북 + 전원 어댑터</strong>, 크롬 브라우저 로그인 상태</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>실습 재료</strong> — 이미 배포된 협회 보도자료 1건(PDF 또는 텍스트), 기존 제작 이미지 1~2장 <span style="color:#b3372a;font-weight:700;">(공개 자료만!)</span></p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>공식 로고 파일</strong>(PNG, 투명 배경) — 단톡방 공지에서 다운로드</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>캔바 로그인</strong> — canva.com, 구글 계정으로 가입 가능</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p>실습 1용: <strong>ChatGPT 로그인</strong>(무료 가능, 이미지 생성은 Plus 권장) 또는 <strong>NotebookLM</strong>(구글 계정)</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p>실습 2용(디자인 담당·도전자): <strong>클로드 또는 ChatGPT 로그인</strong> + <strong>어도비 계정</strong>(없으면 무료 생성 가능 · Photoshop은 디자인 담당 PC). 어도비 연결(플러그인/커넥터)은 수업에서 함께 진행</p></div>
+      </div>
+      <div class="tip tip-r">🔒 <strong>보안 기준 (이 회차)</strong> — 외부 AI(ChatGPT·클로드·@Adobe)에는 <strong>이미 대외 배포된 보도자료·게시물만</strong> 넣습니다. 미배포 초안, 회원 개인정보, 감정 사건 자료는 금지. 판단이 애매하면 넣기 전에 강사에게 확인.</div>
+      <div class="tip tip-y">⚠️ <strong>화면이 교안과 조금 달라요?</strong> — AI 도구는 업데이트가 잦아 버튼 이름·위치가 바뀔 수 있습니다. 이 교안은 2026년 8월 기준이며, 이름이 달라도 <strong>같은 역할의 메뉴</strong>를 찾으면 됩니다. 못 찾으면 문제해결 탭 → 강사 호출.</div>
+    </div>
+
+    <!-- 오늘의 산출물 -->
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">🎯</div><h4>오늘 단톡방에 올릴 것 (실습 종료 시)</h4></div>
+        <ul>
+          <li>[전원] 매직 레이어로 오탈자 고친 안내 이미지 1장</li>
+          <li>[전원] 수정 전(오탈자) → 수정 후 비교 스크린샷</li>
+          <li>[디자인 담당·도전] 이미지 기획서 + @Adobe 배경 1장</li>
+          <li>[디자인 담당·도전] @Adobe 편집본 (+선택 PSD 캡처)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" disabled><span class="pnl">이전</span><div class="pnt">—</div></button>
+      <button class="pnbtn next" data-goto="prac-s2"><span class="pnl">다음 →</span><div class="pnt">실습 1 · 캔바 매직 레이어</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc2" id="page-prac-s2">
+  <div class="hero h-s2">
+    <div class="eb">실습 1 · 전원 필수 · 약 40분 · ChatGPT/NotebookLM → 캔바</div>
+    <h1>AI 이미지를 매직 레이어로 분해,<br/><em>"토코로"를 5초 만에 "특허로"</em></h1>
+    <p>완성된 한 장짜리 AI 이미지는 원래 수정이 안 됩니다. 캔바 매직 레이어는 그 이미지를 배경·그림·글자 레이어로 분해해 SVG처럼 하나하나 선택·수정할 수 있게 만듭니다. 오탈자 수정, 로고 교체, 색 변경 — 전부 클릭으로.</p>
+    <div class="pills"><span class="pill">STEP 0~6</span><span class="pill">포토샵 없이</span><span class="pill">분해 → 수정 → 템플릿화</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- 전체 흐름 -->
+    <div class="sec">
+      <div class="eyebrow">전체 흐름 한눈에</div>
+      <div class="chain">
+        <div class="ch ch-a"><div class="ct">STEP 1~2</div><div class="cd">ChatGPT 또는 NotebookLM<br/>이미지 만들기</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-a"><div class="ct">STEP 3</div><div class="cd">캔바 업로드 →<br/>매직 레이어 분해</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-a"><div class="ct">STEP 4</div><div class="cd">오탈자·로고<br/>클릭으로 수정</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-a"><div class="ct">STEP 5~6</div><div class="cd">통일 템플릿 적용<br/>검수 → 공유</div></div>
+      </div>
+    </div>
+
+    <!-- STEP 0 -->
+    <div class="bigstep"><div class="bn">STEP<small>0</small></div><h3>재료를 책상 위에 — 준비 확인</h3><span class="tmin">⏱ 3분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>바탕화면에 실습 폴더 <b>「0826_실습」</b>을 만들고, 보도자료 파일과 <b>공식 로고 PNG</b>(단톡방 공지에서 다운로드)를 넣는다.</span></div>
+      <div class="sub"><span>크롬에서 탭 3개를 연다 — <span class="kbd">chatgpt.com</span>(또는 <span class="kbd">notebooklm.google.com</span>), <span class="kbd">canva.com</span>, 단톡방.</span></div>
+      <div class="sub"><span>보도자료에서 <b>이미지에 넣을 핵심 한 줄</b>을 정한다. 예: "특허의 날 기념 세미나 9. 4.(금) 개최".</span></div>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 캔바가 로그인된 상태로 열려 있고, 로고 PNG가 폴더에 있으면 통과.</span></div>
+
+    <!-- STEP 1 -->
+    <div class="bigstep"><div class="bn">STEP<small>1</small></div><h3>이미지를 어디서 만들까 — 두 경로 중 선택</h3><span class="tmin">⏱ 1분</span></div>
+    <div class="routebox">
+      <div class="route rec">
+        <div class="rh">🅰️ ChatGPT 이미지 <span class="rtag">자유 구도 · 카드뉴스·안내용</span></div>
+        <p>문구·구도를 내 마음대로 지정한 홍보 이미지. 세미나 안내, 행사 공지 등 <b>디자인이 필요한 이미지</b>는 이쪽. → STEP 2-A</p>
+      </div>
+      <div class="route">
+        <div class="rh">🅱️ NotebookLM 인포그래픽 <span class="rtag">자료 요약형 · 정확성 최우선</span></div>
+        <p>보도자료 PDF를 넣으면 <b>자료 내용만으로</b> 인포그래픽을 만들어 줌. 통계·절차 설명 이미지는 이쪽. (지금 부서가 쓰는 방식 그대로) → STEP 2-B</p>
+      </div>
+    </div>
+    <div class="tip tip-a">💡 오늘 처음이라면 🅰️ ChatGPT 경로를 권장합니다. 🅱️는 이미 익숙한 워크플로라, 분해·수정(STEP 3~4)에 시간을 더 쓰는 게 남는 장사입니다.</div>
+
+    <!-- STEP 2A -->
+    <div class="bigstep"><div class="bn">STEP<small>2-A</small></div><h3>ChatGPT에서 홍보 이미지 만들기</h3><span class="tmin">⏱ 8분</span></div>
+    <div class="substeps">
+      <div class="sub"><span><span class="kbd">chatgpt.com</span> 접속 → 하단 입력창 왼쪽 <span class="kbd">+</span> 버튼에서 <span class="kbd">이미지 만들기</span>를 선택한다. (안 보이면 그냥 입력창에 프롬프트를 쓰고 "이미지로 만들어줘"라고 해도 된다.)</span></div>
+      <div class="sub"><span>아래 <b>프롬프트 ①</b>을 복사해 붙여넣고, [대괄호] 부분만 내 보도자료 내용으로 바꾼 뒤 전송한다.</span></div>
+      <div class="sub"><span>이미지가 나오면 <b>글자를 확대해서 읽어 본다</b> — 오탈자가 있어도 괜찮다! 오늘은 그걸 고치는 실습이다. 구도가 마음에 안 들면 "더 단순하게", "여백 크게"라고 추가 요청.</span></div>
+      <div class="sub"><span>이미지 위 <span class="kbd">⬇ 다운로드</span> 버튼 → 「0826_실습」 폴더에 저장한다. (파일명 예: 세미나_원본.png)</span></div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">chatgpt.com — 이미지 만들기</span></div>
+      <div class="shot-body">
+        <div class="shot-side">
+          <div class="sh">ChatGPT</div>
+          <div class="si on">＋ 새 채팅</div>
+          <div class="si">🕘 어제의 채팅</div>
+          <div class="sh">모드</div>
+          <div class="si on">🖼️ 이미지 만들기</div>
+        </div>
+        <div class="shot-main">
+          <div class="mk-bubble"><div class="who">나</div>대한변리사회 세미나 안내 카드뉴스 이미지 1:1… (프롬프트 ①)</div>
+          <div class="mk-bubble" style="background:#f4f6fb;">
+            <div class="who">ChatGPT · 이미지 1장 생성됨</div>
+            <div class="mk-canvas" style="max-width:250px;margin:4px auto;">
+              <div class="kicker">대한변리사회</div>
+              <div class="big">"특허의 날 기념 세미나<br/><span style="color:#f0b9b0;">9. 4.(굼)</span> 개최"</div>
+              <div class="sub">← 오탈자 발견! ("금"→"굼") 그대로 진행하세요</div>
+              <div class="logo-slot" style="background:#cf9a9a;color:#4b1d1d;">이상한 로고</div>
+            </div>
+            <div style="font-size:11px;color:#5b626c;margin-top:6px;">⬇ 다운로드 &nbsp; ↻ 다시 생성 &nbsp; ✏️ 수정 요청</div>
+          </div>
+          <div class="shot-cap">오탈자·이상한 로고가 있는 채로 다운로드해도 됩니다 — STEP 4에서 고칩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pbox">
+      <div class="pbox-top"><span class="lbl"><span class="dot"></span>프롬프트 ① 홍보 이미지 생성</span><span class="tag">ChatGPT</span></div>
+      <pre>대한변리사회(변리사 단체)의 회원 안내 카드뉴스 이미지를 만들어줘. 비율 1:1.
+- 내용: <span class="cm">[예: "특허의 날 기념 세미나" / 9. 4.(금) 14:00 / 대한변리사회 회관]</span>
+- 스타일: 네이비(#0B1F4B)와 골드(#C9A24B) 중심, 신뢰감 있는 공공기관 톤,
+  깔끔한 플랫 일러스트 + 큰 제목 텍스트
+- 구도: 상단에 제목, 중앙에 상징 일러스트(문서·인장·건물), 하단에 일시·장소
+- 글자는 한국어로 크고 또렷하게. <span class="hi-y">로고는 넣지 마.</span>
+<span class="cm">※ 글자 오탈자가 나와도 괜찮습니다 — 캔바에서 분해해 고칠 겁니다.</span></pre>
+    </div>
+
+    <!-- STEP 2B -->
+    <div class="bigstep"><div class="bn">STEP<small>2-B</small></div><h3>NotebookLM에서 인포그래픽 만들기 (선택 경로)</h3><span class="tmin">⏱ 8분</span></div>
+    <div class="substeps">
+      <div class="sub"><span><span class="kbd">notebooklm.google.com</span> → <span class="kbd">＋ 새로 만들기</span>로 노트북 생성 → <span class="kbd">소스 추가</span>에서 보도자료 PDF 업로드.</span></div>
+      <div class="sub"><span>오른쪽 스튜디오 패널에서 <span class="kbd">인포그래픽</span>(또는 보고서/시각 자료) 생성을 선택한다. 아래 <b>프롬프트 ②</b>를 요청 사항에 붙여넣는다.</span></div>
+      <div class="sub"><span>생성된 인포그래픽을 <b>PNG로 다운로드</b>한다. 글자·수치가 보도자료와 맞는지 훑어본다 (NotebookLM은 소스 안에서만 만들지만, 확인은 사람 몫).</span></div>
+    </div>
+    <div class="pbox">
+      <div class="pbox-top"><span class="lbl"><span class="dot"></span>프롬프트 ② 인포그래픽 요청</span><span class="tag">NotebookLM</span></div>
+      <pre>업로드한 보도자료 <span class="hi">안의 내용만으로</span> 회원 안내용 인포그래픽을 만들어줘.
+- 구성: 제목 / 핵심 정보 3개(일시·장소·신청 방법) / 간단한 절차 도식
+- 톤: 네이비·골드 중심의 공공기관 스타일, 한국어
+- <span class="hi-y">보도자료에 없는 수치·내용은 넣지 말 것.</span></pre>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트 (STEP 2 공통)</strong> — 「0826_실습」 폴더에 PNG 이미지 1장이 저장되어 있으면 통과. 오탈자가 있어도 통과!</span></div>
+
+    <!-- STEP 3 -->
+    <div class="bigstep"><div class="bn">STEP<small>3</small></div><h3>캔바로 가져와서 매직 레이어로 분해</h3><span class="tmin">⏱ 8분</span></div>
+    <div class="substeps">
+      <div class="sub"><span><span class="kbd">canva.com</span> → 우상단 <span class="kbd">디자인 만들기</span> → <span class="kbd">Instagram 게시물 (1080×1080)</span> 선택. (인포그래픽이면 세로형 선택)</span></div>
+      <div class="sub"><span>왼쪽 메뉴 맨 아래 <span class="kbd">업로드 항목</span> → <span class="kbd">파일 업로드</span> → 아까 저장한 PNG 선택 → 업로드된 썸네일을 클릭해 캔버스에 채운다.</span></div>
+      <div class="sub"><span>캔버스의 이미지를 <b>클릭해 선택</b>하면 상단에 도구 바가 뜬다 → <span class="kbd">이미지 편집</span>(Magic Studio) 클릭.</span></div>
+      <div class="sub"><span>도구 목록에서 <span class="kbd">매직 레이어</span>(레이어 분해)를 실행한다. 잠시 기다리면 이미지가 <b>배경 / 그림 요소 / 텍스트</b> 레이어로 쪼개진다.</span></div>
+      <div class="sub"><span>오른쪽(또는 <span class="kbd">위치</span> 메뉴)의 <b>레이어 패널</b>을 열어 분해된 레이어 목록을 확인한다.</span></div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">canva.com — 세미나_원본.png · 매직 레이어 분해 완료</span></div>
+      <div class="shot-body">
+        <div class="shot-side">
+          <div class="sh">도구</div>
+          <div class="si">📐 디자인</div>
+          <div class="si">🧩 요소</div>
+          <div class="si">🔤 텍스트</div>
+          <div class="si on">📤 업로드 항목</div>
+          <div class="sh">이미지 편집</div>
+          <div class="si on">✨ 매직 레이어</div>
+          <div class="si">🪄 매직 그랩</div>
+          <div class="si">✏️ 매직 편집</div>
+        </div>
+        <div class="shot-main" style="display:flex;gap:12px;align-items:center;">
+          <div style="flex:1;min-width:0;">
+            <div class="mk-canvas">
+              <div class="kicker">대한변리사회</div>
+              <div class="big"><span class="mk-sel">"특허의 날 기념 세미나<br/>9. 4.(굼) 개최"</span></div>
+              <div class="sub">텍스트 레이어가 선택된 상태 (파란 점선)</div>
+              <div class="logo-slot" style="background:#cf9a9a;color:#4b1d1d;">이상한 로고</div>
+            </div>
+            <div class="shot-cap">분해 후: 글자 부분을 클릭하면 글자만 선택됩니다</div>
+          </div>
+          <div class="lay-panel">
+            <div class="lh2">레이어</div>
+            <div class="lay-item sel"><span class="eye">👁</span><span class="lthumb" style="background:#fff;"></span>텍스트 "특허의 날…"</div>
+            <div class="lay-item"><span class="eye">👁</span><span class="lthumb" style="background:#cf9a9a;"></span>로고(가짜) ← 삭제 예정</div>
+            <div class="lay-item"><span class="eye">👁</span><span class="lthumb" style="background:#c9a24b;"></span>일러스트 요소</div>
+            <div class="lay-item"><span class="eye">👁</span><span class="lthumb" style="background:#0b1f4b;"></span>배경</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 레이어 패널에 이미지가 2개 이상의 레이어로 나뉘어 보이고, 글자 부분만 따로 클릭·선택되면 통과.</span></div>
+    <div class="tip tip-y">🆘 <span class="kbd">매직 레이어</span> 버튼이 안 보이면? — 캔바 무료 계정이거나 순차 배포 중일 수 있습니다. 대신 <span class="kbd">매직 그랩</span>(그림 요소 분리)과 <span class="kbd">텍스트 그랩</span>(글자를 편집 가능한 텍스트로)을 차례로 쓰면 같은 결과가 됩니다. → 문제해결 탭 참고</div>
+
+    <!-- STEP 4 -->
+    <div class="bigstep"><div class="bn">STEP<small>4</small></div><h3>오탈자 수정 · 가짜 로고 교체 — 오늘의 하이라이트</h3><span class="tmin">⏱ 8분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>캔버스에서 오탈자가 있는 <b>글자를 더블클릭</b> → 커서가 깜빡이면 "굼"을 지우고 <b>"금"</b> 입력. (분해된 텍스트는 일반 텍스트 상자와 똑같이 동작)</span></div>
+      <div class="sub"><span>글자가 선택된 상태에서 상단 바의 <b>폰트를 본고딕(Noto Sans KR)</b>으로, <b>색을 브랜드 색</b>으로 바꾼다 — 분해 직후 폰트는 비슷한 대체 폰트로 잡히므로 반드시 통일.</span></div>
+      <div class="sub"><span>레이어 패널에서 <b>가짜 로고 레이어</b>를 클릭 → <span class="kbd">Delete</span> 키로 삭제.</span></div>
+      <div class="sub"><span><span class="kbd">업로드 항목</span>에서 <b>공식 로고 PNG</b>를 캔버스로 끌어와 <b>우상단 고정 슬롯</b>에 배치하고 크기를 맞춘다.</span></div>
+      <div class="sub"><span>필요하면 일러스트 레이어를 선택해 위치·크기를 조정한다 — 이제 전부 개별 요소라 자유롭게 움직인다.</span></div>
+    </div>
+    <div class="ba">
+      <div class="bax before"><div class="bah">❌ 분해 직후</div><div class="bab">
+        <div class="mk-canvas"><div class="kicker">대한변리사회</div><div class="big">"특허의 날 기념 세미나<br/><span style="color:#f0b9b0;">9. 4.(굼)</span> 개최"</div><div class="sub">가짜 로고 · 대체 폰트 상태</div><div class="logo-slot" style="background:#cf9a9a;color:#4b1d1d;">이상한 로고</div></div>
+      </div></div>
+      <div class="bax after"><div class="bah">✅ 3번의 클릭 후</div><div class="bab">
+        <div class="mk-canvas"><div class="kicker">대한변리사회</div><div class="big">"특허의 날 기념 세미나<br/>9. 4.(금) 개최"</div><div class="sub">본고딕 · 브랜드 색 · 공식 로고</div><div class="logo-slot">공식 로고</div></div>
+      </div></div>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — ① 오탈자 0개 ② 로고는 공식 파일 ③ 폰트 본고딕 통일. 수정 전/후 스크린샷을 각각 찍어 두면 오늘 제출물 완성.</span></div>
+
+    <!-- STEP 5 -->
+    <div class="bigstep"><div class="bn">STEP<small>5</small></div><h3>통일 템플릿으로 저장 — 다음부터는 갈아끼우기만</h3><span class="tmin">⏱ 6분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>완성 디자인에서 다음 3가지를 최종 확인: <b>색은 네이비 #0B1F4B·골드 #C9A24B</b> / <b>로고는 우상단 슬롯</b> / <b>폰트는 본고딕 2단계(제목 Bold·본문 Regular)</b>.</span></div>
+      <div class="sub"><span>파일명을 <b>「KPAA_카드뉴스_템플릿_v1」</b>로 바꾼다 (좌상단 제목 클릭).</span></div>
+      <div class="sub"><span><span class="kbd">공유</span> → 팀(정책홍보실) 초대 → <span class="kbd">템플릿으로 공유</span>(또는 링크 공유)로 전 팀원이 복제해 쓸 수 있게 한다.</span></div>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 옆자리 동료가 내 템플릿 링크를 열어 복제할 수 있으면 통과.</span></div>
+
+    <!-- STEP 6 -->
+    <div class="bigstep"><div class="bn">STEP<small>6</small></div><h3>검수하고 내보내기 — 사람 눈이 마지막</h3><span class="tmin">⏱ 6분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>아래 <b>프롬프트 ③</b>으로 AI 대조 검수를 1차로 돌린다 (원문 보도자료와 이미지 문구 비교).</span></div>
+      <div class="sub"><span><b>짝꿍과 교차 검수</b> — 서로의 이미지에서 날짜·이름·숫자 3종만 소리 내어 읽으며 원문과 대조.</span></div>
+      <div class="sub"><span><span class="kbd">공유</span> → <span class="kbd">다운로드</span> → PNG 선택 → 다운로드 후 <b>단톡방에 수정 전/후 2장과 함께 업로드.</b></span></div>
+    </div>
+    <div class="pbox">
+      <div class="pbox-top"><span class="lbl"><span class="dot"></span>프롬프트 ③ 발행 전 대조 검수</span><span class="tag">ChatGPT · Claude</span></div>
+      <pre>완성 이미지의 문구: <span class="cm">[이미지의 모든 글자를 그대로 입력]</span>
+원본 보도자료: <span class="cm">[보도자료 전문 붙여넣기]</span>
+<span class="hi">원문과 대조해서만</span> ① 오탈자 ② 날짜·이름·숫자 불일치 ③ 원문에 없는 표현을
+표로 지적해줘. 문제가 없으면 "발견된 문제 없음"이라고만 답해.
+<span class="hi-y">최종 게시 판단은 담당자가 한다.</span></pre>
+    </div>
+    <div class="del">
+      <div class="delh"><div class="deli">📦</div><h4>실습 1 완료 시 손에 남는 것</h4></div>
+      <ul>
+        <li>오탈자 0개 안내 이미지 (통일 템플릿 적용)</li>
+        <li>수정 전/후 비교 스크린샷 (성과 증빙)</li>
+        <li>팀 공유된 KPAA 템플릿 v1</li>
+        <li>매직 레이어 분해·수정 기술 — 내일부터 바로 사용</li>
+      </ul>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="prac-home"><span class="pnl">← 이전</span><div class="pnt">실습 안내</div></button>
+      <button class="pnbtn next" data-goto="prac-s4"><span class="pnl">다음 →</span><div class="pnt">실습 2 · 클로드 × 어도비</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc4" id="page-prac-s4">
+  <div class="hero h-s4">
+    <div class="eb">실습 2 · 디자인 담당 필수 + 도전자 · 약 45분 · Claude → 커넥터 → Adobe</div>
+    <h1>클로드가 기획하고,<br/><em>어도비가 마무리하는 제작 라인</em></h1>
+    <p>보도자료를 클로드(또는 ChatGPT)에 넣어 이미지 기획서(콘셉트·카피·레이어 구성표)를 받고, 커넥터·플러그인으로 어도비를 연결하면, 이후에는 <b>@Adobe 하나로</b> 배경 생성부터 편집까지 끝납니다 — Firefly·Photoshop을 구분해 부를 필요 없이, 요청 내용에 맞는 어도비 도구가 자동으로 선택됩니다. 회지 표지·키비주얼처럼 "제대로 만들어야 하는" 이미지의 표준 공정입니다.</p>
+    <div class="pills"><span class="pill">STEP 0~5</span><span class="pill">기획은 AI · 판단은 사람</span><span class="pill">처음부터 레이어 구조로</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="sec">
+      <div class="eyebrow">전체 흐름 한눈에</div>
+      <div class="chain">
+        <div class="ch ch-c"><div class="ct">STEP 1</div><div class="cd">클로드에 자료 입력<br/>기획서·레이어 구성표</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">STEP 2</div><div class="cd">커넥터로<br/>어도비 연결</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">STEP 3</div><div class="cd">@Adobe<br/>배경 생성</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">STEP 4~5</div><div class="cd">@Adobe 조립·편집<br/>(선택: Photoshop·AE)</div></div>
+      </div>
+      <div class="tip tip-a">💡 실습 1과의 차이 — 실습 1은 "완성 이미지를 나중에 분해", 실습 2는 <strong>"처음부터 배경·글자·로고를 분리 설계"</strong>합니다. 그래서 결과물이 수정에 강하고, 디자인 담당의 정밀 작업이 가능합니다.</div>
+    </div>
+
+    <!-- STEP 0 -->
+    <div class="bigstep"><div class="bn">STEP<small>0</small></div><h3>준비 확인</h3><span class="tmin">⏱ 3분</span></div>
+    <div class="substeps">
+      <div class="sub"><span><span class="kbd">claude.ai</span> 또는 <span class="kbd">chatgpt.com</span> 로그인 (본인 계정).</span></div>
+      <div class="sub"><span>어도비 계정 확인 — 디자인 담당는 <b>Creative Cloud(Photoshop)</b> 로그인, 그 외 도전자는 무료 Adobe 계정(없으면 STEP 2에서 생성). 게스트도 일부 가능하지만 로그인해야 생성형 기능·파일 저장이 열립니다.</span></div>
+      <div class="sub"><span>실습 재료: 실습 1과 같은 보도자료 1건 + 공식 로고 PNG.</span></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="bigstep"><div class="bn">STEP<small>1</small></div><h3>클로드에게 "이미지 기획서"를 받는다</h3><span class="tmin">⏱ 10분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>클로드 새 대화 → 아래 <b>프롬프트 ④</b>를 붙여넣고 [대괄호]에 보도자료 전문을 넣어 전송.</span></div>
+      <div class="sub"><span>기획서가 나오면 <b>콘셉트 3안 중 1안을 선택</b>하고, "2안으로 확정. 레이어 구성표와 @Adobe용 생성 프롬프트를 최종본으로 정리해줘"라고 답한다.</span></div>
+      <div class="sub"><span>최종 기획서에서 <b>레이어 구성표</b>(배경/오브젝트/텍스트/로고 각각의 내용·위치)와 <b>@Adobe용 생성 프롬프트</b>를 확인한다 — 이것이 STEP 3~4의 작업 지시서다.</span></div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">claude.ai — 새 대화 · 회지 표지 기획</span></div>
+      <div class="shot-body">
+        <div class="shot-main">
+          <div class="mk-bubble"><div class="who">나</div>아래 보도자료로 회지 9월호 표지 이미지를 기획해줘… (프롬프트 ④)</div>
+          <div class="mk-bubble" style="background:#f7f0fa;border-color:#e3cfee;">
+            <div class="who">Claude</div>
+            <b>콘셉트 2안 (선택됨) — "제도가 바뀌는 순간"</b><br/>
+            <span style="font-size:11.5px;">
+            📋 <b>레이어 구성표</b><br/>
+            L1 배경 — 네이비 그라데이션 + 국회의사당 실루엣 (@Adobe 생성)<br/>
+            L2 오브젝트 — 골드 인장·문서 일러스트 (@Adobe 생성, 누끼)<br/>
+            L3 텍스트 — "변리사법 개정, 그 다음" (Photoshop 텍스트 도구, 본고딕 Bold)<br/>
+            L4 로고 — 공식 PNG, 우상단 (Photoshop 배치)<br/>
+            🎨 <b>@Adobe 생성 프롬프트</b> — "deep navy gradient background with subtle silhouette of the National Assembly building, gold accents, flat editorial illustration style, <span style="color:#a2447e;font-weight:700;">no text, no logos</span>, 4:5"</span>
+          </div>
+          <div class="shot-cap">글자·로고는 생성에 시키지 않고(no text, no logos) 텍스트·로고 레이어로 — 실습 1에서 배운 분리 원칙 그대로.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pbox">
+      <div class="pbox-top"><span class="lbl"><span class="dot"></span>프롬프트 ④ 이미지 기획서 요청</span><span class="tag">Claude</span></div>
+      <pre>너는 대한변리사회 정책홍보실의 아트디렉터다. 아래 보도자료로
+회지 표지(또는 키비주얼) 이미지를 기획해줘.
+<span class="cm">[보도자료 전문 붙여넣기 — 공개 자료만]</span>
+<span class="hi">보도자료 안의 내용만 근거로</span> 다음을 만들어줘:
+1. 콘셉트 3안 — 각각 한 줄 컨셉 + 메인 카피(15자 이내, 근거 문단 표시)
+2. 내가 1안을 고르면: <span class="hi-y">레이어 구성표</span> (L1 배경 / L2 오브젝트 / L3 텍스트 / L4 로고 —
+   각 레이어의 내용·위치·색·폰트, 어떤 도구로 만들지)
+3. 배경·오브젝트용 <span class="hi-y">@Adobe 생성용 영문 프롬프트</span> — 반드시 "no text, no logos" 포함, 비율 명시
+4. 조립·편집 지시 순서 5줄 요약 (비전문가도 이해할 표현으로)
+- 색은 네이비 #0B1F4B · 골드 #C9A24B 기준. 과장 표현 금지.
+- <span class="hi-y">이 기획서는 초안이며 채택·게시는 부서가 결정한다.</span></pre>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 레이어 구성표(L1~L4)와 "no text, no logos"가 든 생성 프롬프트가 손에 있으면 통과.</span></div>
+
+    <!-- STEP 2 -->
+    <div class="bigstep"><div class="bn">STEP<small>2</small></div><h3>어도비 연결 — 처음 한 번만 하면 됩니다</h3><span class="tmin">⏱ 7분</span></div>
+    <p class="lead" style="margin-top:-4px;">클로드와 ChatGPT 모두 어도비를 연결할 수 있습니다. <strong>같은 어도비 작업실을 쓰고, 지시를 전달하는 비서만 다른 것</strong>이라 원리는 동일합니다 — 본인이 쓰는 툴 쪽으로 연결하세요. 로그인과 권한 승인 버튼은 보안상 본인이 직접 눌러야 합니다.</p>
+    <div class="routebox">
+      <div class="route rec">
+        <div class="rh">🅰️ ChatGPT — 통합 Adobe 플러그인 <span class="rtag">ChatGPT 사용자용</span></div>
+        <p>Photoshop·Firefly·Premiere·Lightroom·Express·Illustrator에 <b>Acrobat/PDF까지 70개 이상</b> 도구 포함. 예전 'Adobe Photoshop' 개별 플러그인이 아니라 <b>새 통합 Adobe 플러그인</b>을 선택하세요.</p>
+      </div>
+      <div class="route">
+        <div class="rh">🅱️ Claude — Adobe for creativity 커넥터 <span class="rtag">클로드 사용자용</span></div>
+        <p>Photoshop·Illustrator·Firefly·Express·Premiere·Lightroom 등 <b>Creative Cloud 창작 도구 50개 이상</b>. 설정 → 커넥터에서 연결 후 스킬을 추가하는 구조입니다.</p>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="card"><h4><span class="bar"></span>🅰️ ChatGPT 연결 순서</h4>
+        <div class="substeps">
+          <div class="sub"><span>왼쪽 메뉴에서 <span class="kbd">Plugins</span>를 연다. 바로 안 보이면 <span class="kbd">+</span> 버튼이나 <span class="kbd">앱/플러그인</span> 메뉴 확인.</span></div>
+          <div class="sub"><span>검색창에 <b>"Adobe"</b> 입력 → <b>통합 Adobe 플러그인</b> 선택 (구 Photoshop 개별 앱 아님).</span></div>
+          <div class="sub"><span><span class="kbd">Install / 설치</span> → Adobe 화면에서 <span class="kbd">Sign in</span> — 기존 Adobe ID로 로그인, 없으면 <b>무료 계정 생성</b> 가능.</span></div>
+          <div class="sub"><span>권한 요청 내용을 확인하고 <span class="kbd">승인</span> (본인이 직접).</span></div>
+          <div class="sub"><span><b>새 채팅</b>을 열고 입력창에 <span class="kbd">@Adobe</span> 입력 — 또는 <span class="kbd">+</span> → 설치된 플러그인 → Adobe 선택.</span></div>
+        </div>
+      </div>
+      <div class="card"><h4><span class="bar"></span>🅱️ Claude 연결 순서</h4>
+        <div class="substeps">
+          <div class="sub"><span>좌하단 프로필 → <span class="kbd">설정</span> → <span class="kbd">커넥터</span> 메뉴로 이동.</span></div>
+          <div class="sub"><span><span class="kbd">커넥터 찾아보기</span>에서 <b>"Adobe"</b> 검색 → <b>Adobe for creativity</b>의 <span class="kbd">연결</span> 클릭.</span></div>
+          <div class="sub"><span>Adobe 로그인 → 권한 <span class="kbd">허용</span> (본인이 직접).</span></div>
+          <div class="sub"><span>필요한 <b>스킬 추가</b> 후, 새 대화에서 사용.</span></div>
+          <div class="sub"><span>같은 Adobe 계정을 ChatGPT와 Claude <b>양쪽에 연결해도</b> 됩니다.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">chatgpt.com — Plugins › Adobe (설치 완료 화면)</span></div>
+      <div class="shot-body">
+        <div class="shot-side">
+          <div class="sh">ChatGPT</div>
+          <div class="si">＋ 새 채팅</div>
+          <div class="si on">🧩 Plugins</div>
+          <div class="si">🕘 채팅 기록</div>
+        </div>
+        <div class="shot-main">
+          <div class="mk-title">검색: "adobe"</div>
+          <div class="connrow">
+            <div class="conn on"><span class="ci2" style="background:#fa0f00;">A</span> Adobe (통합 플러그인) <span class="onoff">● 설치됨</span></div>
+            <div class="conn off"><span class="ci2" style="background:#31a8ff;">Ps</span> Adobe Photoshop (구버전) <span class="onoff">대체됨</span></div>
+          </div>
+          <div class="mk-title" style="margin-top:10px;">사용 가능한 스킬</div>
+          <div class="connrow">
+            <div class="conn"><span class="ci2" style="background:#8a6f2e;">🖼</span> Batch edit photos</div>
+            <div class="conn"><span class="ci2" style="background:#0b1f4b;">🎁</span> Create mockups</div>
+            <div class="conn"><span class="ci2" style="background:#a2447e;">📱</span> Create social variations</div>
+            <div class="conn"><span class="ci2" style="background:#1f8497;">🎨</span> Design from template</div>
+            <div class="conn"><span class="ci2" style="background:#34465f;">✂️</span> Edit quick cut</div>
+            <div class="conn"><span class="ci2" style="background:#1f5793;">👤</span> Retouch portraits</div>
+          </div>
+          <div class="shot-cap">이 스킬 6종이 보이면 설치만 된 게 아니라 실제 사용 가능한 상태입니다. 구 Photoshop 개별 플러그인이 남아 있으면 새 통합 플러그인으로 다시 연결하세요.</div>
+        </div>
+      </div>
+    </div>
+    <div class="tip tip-a">🔑 <strong>게스트로도 일부 기능은 되지만, Adobe 계정 로그인을 권장</strong> — 로그인하면 생성형 AI 기능, Creative Cloud 파일 접근, 작업 결과를 저장해 다음 세션에서 이어 하기가 활성화됩니다(일부 고급 기능은 어도비 요금제 필요). Creative Cloud에 있는 사진을 바로 불러와 편집하고 다시 저장하는 흐름도 가능해집니다.</div>
+    <div class="tip tip-y">🆘 <strong>연결됐다는데 403 등 오류가 나면</strong> — ① 새 채팅을 열어 다시 시도(연결 직후엔 기존 대화에 반영이 안 될 수 있음) → ② 그래도 안 되면 플러그인 연결 해제 후 재연결 → ③ 예전 Photoshop 개별 플러그인을 쓰고 있었다면 새 통합 Adobe 플러그인으로 교체. 그래도 안 되면 경로 B(아래)로 진행하고 강사 호출.</div>
+
+    <div class="routebox">
+      <div class="route rec">
+        <div class="rh">🅰️ 연결이 됐다면 <span class="rtag">권장</span></div>
+        <p>채팅 안에서 <span class="kbd">@Adobe</span>로 기획서의 이미지 생성·편집을 바로 요청 → 결과를 받아 STEP 4로. 기획→생성→수정이 한 화면에서 끝납니다.</p>
+      </div>
+      <div class="route">
+        <div class="rh">🅱️ 연결이 안 돼도 OK <span class="rtag">수동 전달</span></div>
+        <p>기획서의 생성 프롬프트를 <b>복사</b> → <span class="kbd">firefly.adobe.com</span>에 직접 붙여넣어 생성. 클릭 두 번 더 할 뿐, 산출물은 동일합니다.</p>
+      </div>
+    </div>
+
+    <!-- STEP 2-C -->
+    <div class="bigstep"><div class="bn">STEP<small>2-C</small></div><h3>연결 확인 + @Adobe에게 말 거는 법</h3><span class="tmin">⏱ 8분</span></div>
+    <p class="lead" style="margin-top:-4px;">메뉴를 찾아다니는 방식이 아닙니다. <strong>원본 업로드 → 자연어 지시 → 편집 결과 → 추가 수정</strong> — 평소 말하듯 요청하면 AI가 적절한 어도비 기능을 골라 실행합니다.</p>
+    <div class="substeps">
+      <div class="sub"><span><b>연결 확인 1</b> — 새 채팅에서 <span class="kbd">@Adobe 지금 이 채팅에서 사용할 수 있는 이미지·영상 편집 기능을 알려줘</span> 입력 → 기능 목록이 오면 정상.</span></div>
+      <div class="sub"><span><b>연결 확인 2</b> — 테스트용 JPG 1장(공개 가능한 행사 사진)을 올리고 <span class="kbd">@Adobe 구도나 내용은 변경하지 말고 노출과 색감만 자연스럽게 보정해줘</span> → 결과가 오면 통과.</span></div>
+      <div class="sub"><span>결과를 보고 <b>이어서 수정 지시</b> — "좋아. 인물 피부는 건드리지 말고 배경만 조금 더 밝게" 처럼 대화로 계속 다듬는다.</span></div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">새 채팅 — @Adobe 편집 대화의 기본 리듬</span></div>
+      <div class="shot-body">
+        <div class="shot-main">
+          <div class="mk-bubble"><div class="who">나 · 사진 1장 첨부</div><b>@Adobe</b> 이 사진 배경을 제거하고 인물은 그대로 유지해줘.</div>
+          <div class="mk-bubble" style="background:#fdf1ef;border-color:#f2c8c0;"><div class="who">Adobe · 편집 결과</div>🖼️ 배경이 제거된 PNG가 생성되었습니다. (인물 유지 · 투명 배경)</div>
+          <div class="mk-bubble"><div class="who">나 · 이어서 수정</div>좋아. 그런데 인물 피부는 건드리지 말고 배경만 조금 더 밝게 해줘.</div>
+          <div class="mk-bubble" style="background:#fdf1ef;border-color:#f2c8c0;"><div class="who">Adobe · 수정 결과</div>🖼️ 배경 밝기만 조정한 버전입니다.</div>
+          <div class="shot-cap">한 번에 완벽할 필요 없습니다 — 결과를 보고 말로 고쳐 나가는 것이 이 방식의 핵심입니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec" style="margin-bottom:0;">
+      <div class="mk-title" style="font-size:14px;margin:14px 0 6px;">📖 협회 업무로 번안한 지시어 사전 — 복사해서 [　] 만 바꾸세요</div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>작업</th><th>이렇게 말하면 됩니다 (협회 예시)</th></tr></thead>
+          <tbody>
+            <tr><td>배경 제거</td><td>"세미나 연사 사진에서 인물만 남기고 투명 배경 PNG로 만들어줘"</td></tr>
+            <tr><td>배경 교체</td><td>"수상자는 그대로 두고 배경을 밝은 스튜디오 톤으로 바꿔줘"</td></tr>
+            <tr><td>밝기·색감</td><td>"회관 행사 사진이 어두우니 자연스럽게 밝히고 색온도를 조금 따뜻하게"</td></tr>
+            <tr><td>인물 보정</td><td>"회장 축사 사진 — 피부 질감은 유지하면서 잡티만 자연스럽게 정리해줘"</td></tr>
+            <tr><td>특정 부분 수정</td><td>"단상 현수막 색상만 협회 네이비(#0B1F4B)로 바꿔줘"</td></tr>
+            <tr><td>배경 흐림</td><td>"연사는 선명하게 두고 청중 배경만 자연스러운 아웃포커싱"</td></tr>
+            <tr><td>이미지 확장</td><td>"원본은 유지하면서 왼쪽을 확장해 16:9 홈페이지 배너 비율로 만들어줘"</td></tr>
+            <tr><td>SNS 변환</td><td>"이 세미나 포스터를 인스타 1:1, 피드 4:5, 스토리 9:16으로 만들어줘"</td></tr>
+            <tr><td>일괄 보정</td><td>"변리사의 날 행사 사진 20장을 동일한 밝기·색감으로 맞춰줘"</td></tr>
+            <tr><td>목업</td><td>"협회 로고를 머그컵과 에코백 기념품 목업으로 만들어줘"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pbox">
+      <div class="pbox-top"><span class="lbl"><span class="dot"></span>원본 보존 3대 지시문 — 협회 사진 편집의 안전벨트</span><span class="tag">@Adobe 공통</span></div>
+      <pre><span class="cm"># 1. 보정만 (재생성 금지)</span>
+@Adobe AI로 새로 그린 느낌이 나지 않게 <span class="hi">원본 질감은 유지</span>해줘.
+선명도와 노출만 약하게 개선하고, 인물 얼굴이나 로고 디테일을 <span class="hi-y">재생성하지 마</span>.
+
+<span class="cm"># 2. 특정 대상만 교체</span>
+@Adobe 첫 번째 이미지를 원본으로 사용해줘. <span class="hi">인물·배경·구도·조명은 변경하지 않고</span>
+현수막만 두 번째 이미지의 디자인으로 교체해줘.
+
+<span class="cm"># 3. 아웃페인팅 (한 방향 확장)</span>
+@Adobe <span class="hi">원본 영역은 최대한 유지</span>하고 왼쪽 방향으로만 캔버스를 확장해줘.
+기존 벽면·현수막·조명의 연속선상에서 자연스럽게 이어줘. <span class="hi-y">새 인물을 추가하지 마.</span></pre>
+    </div>
+    <div class="tip tip-y">⚠️ <strong>정밀 합성의 한계</strong> — "모든 픽셀을 100% 유지하며 특정 대상만 완벽 교체" 같은 작업은 자연어 편집만으로 항상 보장되지 않습니다. 이런 경우 @Adobe로 <b>초안</b>을 만들고 STEP 5의 Photoshop에서 레이어·마스크로 마무리하는 것이 가장 안정적입니다. 인물 사진은 반드시 당사자 확인 후 사용하고, 보정으로 사실을 왜곡하지 않습니다.</div>
+
+    <div class="three">
+      <div class="card"><h4><span class="bar"></span>🖼 Batch edit photos</h4><p style="margin:0;">여러 장을 같은 톤으로 일괄 보정 — <b>행사 사진 20장 색감 통일</b>에 사용.</p></div>
+      <div class="card"><h4><span class="bar"></span>🎁 Create mockups</h4><p style="margin:0;">로고·이미지를 실물에 얹은 시안 — <b>기념품·명함·현수막 시안</b> 제작.</p></div>
+      <div class="card"><h4><span class="bar"></span>📱 Create social variations</h4><p style="margin:0;">한 이미지를 채널 규격별 자동 변환 — <b>1:1 / 4:5 / 9:16 / 16:9 썸네일</b>.</p></div>
+      <div class="card"><h4><span class="bar"></span>🎨 Design from template</h4><p style="margin:0;">템플릿 기반 배너·포스터 — <b>행사 안내 포스터 초안</b>을 빠르게.</p></div>
+      <div class="card"><h4><span class="bar"></span>✂️ Edit quick cut</h4><p style="margin:0;">긴 영상에서 핵심 장면만 골라 숏폼으로 — <b>"세미나 5분 영상을 45초 하이라이트 3가지 버전으로"</b> → "2번이 좋아, 앞 3초 더 빠르게" 식으로 이어가기. 프레임 단위 정밀 편집은 Premiere에서 이어서.</p></div>
+      <div class="card"><h4><span class="bar"></span>👤 Retouch portraits</h4><p style="margin:0;">인물 사진 보정 — <b>연사·수상자 사진 잡티 정리</b>, 피부는 과하게 뭉개지 않게.</p></div>
+    </div>
+
+    <div class="sec" style="margin-bottom:0;">
+      <div class="mk-title" style="font-size:14px;margin:14px 0 6px;">⚖️ ChatGPT × Adobe vs Claude × Adobe — 부서에 둘 다 있으니 비교해 쓰세요</div>
+      <div class="sched">
+        <table>
+          <thead><tr><th></th><th>ChatGPT + Adobe</th><th>Claude + Adobe</th></tr></thead>
+          <tbody>
+            <tr><td>연동 이름</td><td>통합 Adobe 플러그인</td><td>Adobe for creativity 커넥터</td></tr>
+            <tr><td>도구 규모</td><td>70개 이상 — <b>Acrobat/PDF 등 문서 생산성 포함</b></td><td>50개 이상 — Creative Cloud 창작 중심</td></tr>
+            <tr><td>핵심 이미지·영상 편집</td><td colspan="2" style="text-align:center;">배경 제거·일괄 보정·리터칭·목업·SNS 변환·Quick Cut — <b>양쪽 모두 가능, 거의 동일</b></td></tr>
+            <tr><td>결과 차이</td><td colspan="2">같은 어도비 엔진이라도 <b>요청을 해석하고 도구를 고르는 비서가 달라</b> 결과가 다를 수 있음 — 특히 특정 물체 교체·아웃페인팅·"AI 티 안 나게" 같은 미묘한 작업</td></tr>
+            <tr><td>계정</td><td colspan="2">같은 Adobe 계정을 양쪽에 연결 가능 (요금제에 따라 기능·한도 차이)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-a">🧪 <strong>도전 실습 — 같은 원본, 두 비서 비교</strong> — 같은 사진과 같은 지시문(원본 보존 3대 지시문)을 양쪽에 넣고 ① 원본 보존력 ② 지시 준수율 ③ AI 티 ④ 이어가기 수정 ⑤ Adobe 앱 연계, 5가지로 비교해 단톡방에 결과를 공유하세요. 우리 부서의 표준 툴을 정하는 근거가 됩니다.</div>
+    </div>
+    <!-- STEP 3 -->
+    <div class="bigstep"><div class="bn">STEP<small>3</small></div><h3>@Adobe로 배경·오브젝트 생성 — 도구 이름은 몰라도 됩니다</h3><span class="tmin">⏱ 8분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>채팅에서 <span class="kbd">@Adobe</span> + 기획서의 <b>L1 배경 프롬프트</b>로 요청 — "@Adobe 아래 프롬프트로 배경 이미지 4안을 만들어줘: [프롬프트]". 어떤 어도비 도구(생성·편집 엔진)를 쓸지는 @Adobe가 알아서 고릅니다.</span></div>
+      <div class="sub"><span>같은 방식으로 <b>L2 오브젝트</b>(인장·문서 일러스트)를 생성 — 프롬프트에 "isolated on plain background"를 덧붙이면 나중에 누끼 따기 쉽다.</span></div>
+      <div class="sub"><span>마음에 드는 안을 고르고 "1번으로 확정, 최고 해상도로 저장해줘" → 다운로드해 「0826_실습」 폴더에 저장 (배경.png / 오브젝트.png). 로그인 상태면 Creative Cloud에 저장해 다음에 이어서 작업할 수도 있습니다.</span></div>
+      <div class="sub"><span>글자·로고가 슬쩍 들어갔는지 확대 확인 — 들어갔다면 "no text, no logos" 를 강조해 재생성.</span></div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">새 채팅 — @Adobe 배경 생성 요청 결과</span></div>
+      <div class="shot-body">
+        <div class="shot-main">
+          <div class="ffbar">✏️ @Adobe — deep navy gradient, National Assembly silhouette, gold accents… no text, no logos, 4:5 <span class="go">생성</span></div>
+          <div class="ffgrid">
+            <div class="ff-img ff-1 pick">후보 1 ✓ 선택</div>
+            <div class="ff-img ff-2">후보 2</div>
+            <div class="ff-img ff-3">후보 3</div>
+            <div class="ff-img ff-4">후보 4</div>
+          </div>
+          <div class="shot-cap">글자 없는 깨끗한 배경 4안 — "2번을 더 어둡게", "골드 포인트를 줄여줘"처럼 대화로 조정합니다. Firefly·Photoshop을 구분해 부를 필요가 없습니다.</div>
+        </div>
+      </div>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 글자·로고가 전혀 없는 배경 1장(+오브젝트 1장)이 폴더에 저장되어 있으면 통과.</span></div>
+    <div class="tip tip-y">🌐 <strong>지시 언어</strong> — 어도비 연동의 공식 지원 언어는 현재 영어입니다. 한국어 지시도 통하는 경우가 많지만, 결과가 어긋나면 생성·편집의 핵심 지시만 영어로 바꿔 다시 요청하세요 — 기획서의 영문 프롬프트가 그 용도입니다.</div>
+
+    <!-- STEP 4 -->
+    <div class="bigstep"><div class="bn">STEP<small>4</small></div><h3>@Adobe로 조립 → 필요할 때만 Photoshop 정밀 마무리</h3><span class="tmin">⏱ 15분</span></div>
+    <div class="substeps">
+      <div class="sub"><span><b>1차 조립은 @Adobe로</b> — "방금 만든 배경 위에 오브젝트를 좌하단에 배치하고, 제목 '변리사법 개정, 그 다음'을 본고딕 굵게 골드(#C9A24B)로 상단에 얹어줘. 우상단은 로고 자리로 비워둬." 결과를 보고 대화로 수정을 반복합니다.</span></div>
+      <div class="sub"><span>카드뉴스·배너 수준은 보통 여기서 끝 — 완성본을 다운로드하고 공식 로고는 캔바(실습 1 방식)로 얹으면 됩니다. <b>픽셀 단위 정밀 작업이나 레이어가 살아 있는 PSD가 필요할 때만</b> 아래 단계(디자인 담당 권장)로 넘어갑니다.</span></div>
+      <div class="sub"><span>Photoshop 실행 → <span class="kbd">파일 &gt; 열기</span>로 배경.png를 연다 → <span class="kbd">이미지 &gt; 캔버스 크기</span>로 기획서의 비율(예: 4:5) 확인.</span></div>
+      <div class="sub"><span>오브젝트.png를 캔버스로 드래그 → <span class="kbd">개체 선택 도구</span>로 오브젝트 클릭 → <span class="kbd">선택 및 마스크</span>로 배경 제거(누끼) → 기획서 위치에 배치.</span></div>
+      <div class="sub"><span><span class="kbd">T</span>(텍스트 도구) → 기획서의 카피 입력 → 폰트 <b>본고딕 Bold</b>, 색 <b>골드 #C9A24B</b> — 글자는 처음부터 텍스트 레이어라 오탈자 걱정이 없다.</span></div>
+      <div class="sub"><span>공식 로고 PNG를 드래그해 <b>우상단 슬롯</b>에 배치 (L4).</span></div>
+      <div class="sub"><span>배경 일부가 어색하면 그 영역을 <span class="kbd">올가미 도구</span>로 선택 → <span class="kbd">생성형 채우기</span> → "extend navy gradient, no text" 입력으로 자연스럽게 메운다.</span></div>
+      <div class="sub"><span><span class="kbd">파일 &gt; 다른 이름으로 저장</span> → <b>PSD(원본)</b>과 <b>PNG(공유용)</b> 두 벌 저장.</span></div>
+    </div>
+
+    <div class="shot">
+      <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">Adobe Photoshop — 회지표지_9월호.psd</span></div>
+      <div class="psui">
+        <div class="ps-top"><span>파일</span><span>편집</span><span>이미지</span><span>레이어</span><span>선택</span><span>필터</span></div>
+        <div class="ps-body">
+          <div class="ps-tools"><span>▭</span><span>⬚</span><span>🪢</span><span>🖌</span><span>T</span><span>🔍</span></div>
+          <div class="ps-canvas">
+            <div class="mk-canvas" style="max-width:230px;aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center;">
+              <div class="kicker">KPAA JOURNAL · 9월호</div>
+              <div class="big">변리사법 개정,<br/>그 다음</div>
+              <div class="sub">국회의사당 실루엣 배경 (@Adobe 생성)</div>
+              <div class="logo-slot">공식 로고</div>
+            </div>
+          </div>
+          <div class="ps-right">
+            <div class="ph">레이어</div>
+            <div class="ps-lay"><span class="lthumb" style="background:#c9a24b;"></span>L4 로고 (공식 PNG)</div>
+            <div class="ps-lay sel"><span class="lthumb" style="background:#fff;"></span>L3 텍스트 "변리사법…"</div>
+            <div class="ps-lay"><span class="lthumb" style="background:#8a6f2e;"></span>L2 오브젝트 (누끼)</div>
+            <div class="ps-lay"><span class="lthumb" style="background:#0b1f4b;"></span>L1 배경 (@Adobe 생성)</div>
+            <div class="genfill">✨ 생성형 채우기: extend navy… <span class="go">생성</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="shot-cap">기획서의 L1~L4가 그대로 레이어 패널에 — 다음 호에는 텍스트와 배경만 바꾸면 됩니다.</div>
+    </div>
+    <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 레이어 패널에 L1~L4가 분리되어 있고, 텍스트 레이어를 더블클릭해 글자를 고칠 수 있으면 통과.</span></div>
+
+    <!-- STEP 5 -->
+    <div class="bigstep"><div class="bn">STEP<small>5</small></div><h3>도전 — After Effects로 15초 모션 (4회차 예고편)</h3><span class="tmin">⏱ 선택 10분</span></div>
+    <div class="substeps">
+      <div class="sub"><span>After Effects 실행 → <span class="kbd">파일 &gt; 가져오기</span>로 방금 만든 <b>PSD를 "컴포지션(레이어 유지)"으로</b> 불러온다 — L1~L4가 그대로 살아 있다.</span></div>
+      <div class="sub"><span>텍스트 레이어 선택 → <span class="kbd">효과 및 사전 설정</span>에서 "Fade Up" 등 텍스트 애니메이션 프리셋을 드래그해 적용.</span></div>
+      <div class="sub"><span>15초 길이로 <span class="kbd">렌더링</span>(H.264, 9:16으로 크롭) → 4회차 릴스 실습의 소스로 보관. 클로드에 "이 기획서로 15초 모션 콘티를 짜줘"라고 하면 장면 순서도 받을 수 있다.</span></div>
+    </div>
+    <div class="tip tip-a">🎬 여기까지 되면 <strong>이미지 1건 기획 → 정지 이미지 + 움직이는 릴스 소스</strong>까지 한 라인에서 나옵니다. 4회차 SNS 실습에서 이 파일을 다시 씁니다.</div>
+
+    <div class="del">
+      <div class="delh"><div class="deli">📦</div><h4>실습 2 완료 시 손에 남는 것</h4></div>
+      <ul>
+        <li>클로드 이미지 기획서 (콘셉트·카피·레이어 구성표)</li>
+        <li>@Adobe 생성 배경·오브젝트 (글자 없는 원본)</li>
+        <li>레이어 살아 있는 PSD + 공유용 PNG</li>
+        <li>(도전) AE 15초 모션 소스 — 4회차 재료</li>
+      </ul>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="prac-s2"><span class="pnl">← 이전</span><div class="pnt">실습 1 · 캔바 매직 레이어</div></button>
+      <button class="pnbtn next" data-goto="prac-s5"><span class="pnl">다음 →</span><div class="pnt">마무리 · 검수·문제해결</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc5" id="page-prac-s5">
+  <div class="hero h-s5">
+    <div class="eb">마무리 · 제출 전 5분</div>
+    <h1>막히는 곳 해결하고,<br/><em>검수 통과 후 단톡방으로</em></h1>
+    <p>자주 막히는 지점의 해결법과 제출 전 최종 검수 체크리스트입니다. AI 결과물은 초안 — 검수를 통과한 것만 단톡방에 올리고, 실제 게시·발송은 담당자 결재 후에 합니다.</p>
+    <div class="pills"><span class="pill">트러블슈팅</span><span class="pill">최종 검수</span><span class="pill">제출물 목록</span><span class="pill">숙제</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- 트러블슈팅 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>여기서 막혔어요 — 빠른 해결표</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>증상</th><th>원인</th><th>해결</th></tr></thead>
+          <tbody>
+            <tr><td>캔바에 <b>매직 레이어</b> 버튼이 없음</td><td>무료 계정 제한 또는 순차 배포</td><td><span class="kbd">매직 그랩</span>(그림 분리) + <span class="kbd">텍스트 그랩</span>(글자 추출)을 차례로 실행 — 결과 동일. 그래도 없으면 옆자리 Pro 계정 화면에서 짝 실습</td></tr>
+            <tr><td>분해했더니 글자가 <b>그림으로만</b> 잡힘</td><td>원본 해상도가 낮거나 글자가 흐림</td><td>STEP 2로 돌아가 이미지를 <b>고화질로 재다운로드</b>(또는 "글자를 크고 또렷하게" 재생성) 후 다시 분해</td></tr>
+            <tr><td>분해된 텍스트의 <b>폰트가 이상함</b></td><td>비슷한 폰트로 자동 대체됨</td><td>정상입니다 — 글자 선택 후 상단 바에서 <b>본고딕</b>으로 바꾸면 끝 (STEP 4-2)</td></tr>
+            <tr><td>ChatGPT 이미지 생성 <b>횟수 제한</b></td><td>무료 계정 일일 한도</td><td>NotebookLM 경로(2-B)로 전환하거나, 이미 생성된 옆자리 이미지를 공유받아 분해 실습 진행 (오늘의 핵심은 분해·수정)</td></tr>
+            <tr><td>커넥터/플러그인 목록에 <b>Adobe가 없음</b></td><td>플랜·조직 설정에 따라 미제공</td><td><b>경로 B</b> — 기획서의 프롬프트를 복사해 firefly.adobe.com에 직접 붙여넣기. 산출물 동일</td></tr>
+            <tr><td>연결됐다는데 <b>@Adobe 호출 시 403/오류</b></td><td>연결 직후 기존 대화에 미반영, 또는 인증 토큰 일시 오류</td><td>① <b>새 채팅</b>에서 재시도 → ② 플러그인/커넥터 <b>연결 해제 후 재연결</b> → ③ 그래도 안 되면 경로 B + 강사 호출</td></tr>
+            <tr><td>구 <b>Photoshop 개별 플러그인</b>만 보임</td><td>기존 개별 앱이 새 통합 플러그인으로 대체됨</td><td>구버전 연결 해제 → <b>새 통합 Adobe 플러그인</b>으로 재설치 (스킬 6종이 보이면 정상)</td></tr>
+            <tr><td>생성 <b>크레딧 소진</b></td><td>무료 크레딧 월 한도</td><td>이번 실습은 배경 1장이면 충분 — 디자인 담당 계정으로 생성해 공유하거나, ChatGPT로 배경 생성 후 STEP 4로</td></tr>
+            <tr><td>@Adobe 생성 결과에 <b>글자가 섞여 나옴</b></td><td>프롬프트에 no text 누락·미반영</td><td>프롬프트 끝에 <b>"no text, no letters, no logos, no watermark"</b>를 명시하고 재생성. 그래도 남으면 Photoshop <span class="kbd">생성형 채우기</span>로 제거</td></tr>
+            <tr><td>Photoshop이 없는 수강생</td><td>Creative Cloud 미보유</td><td>기획서+@Adobe 생성까지 완료하고, <b>조립은 캔바에서</b>(실습 1 방식) 진행 — 레이어 개념은 동일</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-y">⚠️ 5분 이상 같은 곳에서 막히면 그 자리에서 손 들기 — 전산 담당·강사가 순회합니다. 막힌 화면 스크린샷을 단톡방에 올리면 더 빠릅니다.</div>
+    </div>
+
+    <!-- 최종 검수 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>제출 전 최종 검수 — 사람이 마지막</h3></div>
+      <div class="chk">
+        <h4>✅ 6개 모두 체크되면 단톡방 제출</h4>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>오탈자 0개</strong> — 짝꿍 교차 검수 완료 (날짜·이름·숫자 소리 내어 대조)</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>AI 대조 검수</strong> — 프롬프트 ③으로 원문 대조, "발견된 문제 없음" 확인</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>로고</strong> — 공식 파일만 사용, AI가 그린 로고 없음</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>통일 규격</strong> — 네이비·골드 / 본고딕 / 로고 우상단</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>보안</strong> — 외부 AI에 넣은 자료가 전부 공개 자료였는지 재확인</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>초안 표시</strong> — 실제 게시·발송은 데스크 검수 후 담당자가 직접</p></div>
+      </div>
+    </div>
+
+    <!-- 제출물 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">3</div><h3>단톡방 제출물 정리</h3></div>
+      <div class="two">
+        <div class="card"><h4><span class="bar"></span>전원 (실습 1)</h4><ul>
+          <li>완성 이미지 PNG 1장 (템플릿 적용)</li>
+          <li>수정 전/후 비교 스크린샷 2장</li>
+          <li>한 줄 소감: "보정에 걸린 시간 ___분" (성과 측정용)</li>
+        </ul></div>
+        <div class="card"><h4><span class="bar"></span>디자인 담당·도전자 (실습 2)</h4><ul>
+          <li>클로드 기획서 (복사·붙여넣기)</li>
+          <li>@Adobe 생성·편집본 캡처 (+선택 PSD)</li>
+          <li>(도전) AE 15초 렌더링 파일</li>
+        </ul></div>
+      </div>
+      <div class="mission">
+        <div class="mh"><span class="mbadge">숙제</span><h4>이번 주 안에 — 약 30분</h4></div>
+        <p>① 오늘 템플릿으로 <strong>본인 실제 업무 이미지 1장</strong>을 만들어 단톡방에 올리기 (매직 레이어 1회 이상 사용)</p>
+        <p>② 3회차 뉴스레터 재료 — 9월호에 실을 <strong>협회 소식 후보 3건</strong> + 근거 자료(보도자료·공지 원문) 모아 오기</p>
+      </div>
+      <div class="tip tip-a">🔗 <strong>다음 회차 연결</strong> — 오늘의 통일 템플릿(실습 1)과 기획→제작 라인(실습 2)이 3회차 "회원 뉴스레터 첫 발송판"의 헤더·소식 카드 제작에 그대로 쓰입니다.</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="prac-s4"><span class="pnl">← 이전</span><div class="pnt">실습 2 · 클로드 × 어도비</div></button>
+      <button class="pnbtn next" data-goto="prac-home"><span class="pnl">처음으로</span><div class="pnt">실습 안내</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc-home" id="page-mod-home">
+  <div class="hero h-home">
+    <div class="eb">✦ 필수 수강목표 ① 대외 홍보 문건 작성 최적화 — 4개 보강 모듈</div>
+    <h1>보도자료 한 건 잘 쓰는 법을 넘어,<br/><em>기사가 되게 만드는 법까지</em></h1>
+    <p>기존 3회차(스타일 가이드·헤드라인 10안·목적별 변환)에 더해지는 4개 모듈입니다. 기사형 콘텐츠로 장르를 넓히고(A), 배포 전에 기자의 눈으로 검증하고(B), 이슈를 먼저 찾아 소재로 만들고(C), 어떤 목적이 와도 프롬프트를 직접 설계하는 힘(D)을 만듭니다.</p>
+    <div class="pills"><span class="pill">모듈형 — 어느 회차에든 조립</span><span class="pill">실습 재료 = 실제 업무</span><span class="pill">준 자료 안에서만 · 출처 · 사람 검수</span></div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="howto">
+      <h3>📘 이 교안 사용법</h3>
+      <div class="howto-grid">
+        <div class="howto-card"><div class="hc-ico">🧩</div><h4>독립 모듈 4개</h4><p>각 모듈은 25~35분짜리 독립 블록입니다. 회차 배치가 확정되면 그대로 조립합니다 (아래 배치 옵션 참고).</p></div>
+        <div class="howto-card"><div class="hc-ico">💼</div><h4>실습 = 내 업무</h4><p>모든 실습 예제는 업무분장의 실제 업무에서 뽑았습니다 — 각자 담당 업무에 해당하는 예제를 골라 진행합니다.</p></div>
+        <div class="howto-card"><div class="hc-ico">⌨️</div><h4>프롬프트 복사</h4><p>모든 프롬프트 박스는 <strong>📋 복사</strong> 버튼으로 바로 복사해 Claude·ChatGPT에 붙여넣습니다.</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="lec">
+        <div class="lh">💡 4개 모듈이 채우는 것 — 요청 항목과의 짝</div>
+        <p><strong>모듈 A. 기사형 콘텐츠</strong> ← "보도자료 <u>및 기사</u> 작성" — 기고문·회지 기사·인터뷰 Q&A까지 장르 확장</p>
+        <p><strong>모듈 B. 모의 데스크</strong> ← "시선을 끄는 헤드라인 도출" — 뉴스가치 루브릭 + 기자 페르소나 검증으로 '끌리는지'를 배포 전에 확인</p>
+        <p><strong>모듈 C. 이슈 레이더</strong> ← "최신 이슈 연계" — 이슈를 기다리지 않고 먼저 찾아 보도자료 소재로 바꾸는 역방향 루틴</p>
+        <p><strong>모듈 D. 프롬프트 설계</strong> ← "배포목적 맞춤형 프롬프트 설계" — 변환 결과물이 아니라 <u>설계하는 방법</u> 자체를 익혀 자산화</p>
+      </div>
+    </div>
+
+    <!-- 배치 옵션 -->
+    <div class="sec">
+      <h2>회차 배치 옵션 (부서 협의로 확정)</h2>
+      <div class="sched">
+        <table>
+          <thead><tr><th>옵션</th><th>배치</th><th>특징</th></tr></thead>
+          <tbody>
+            <tr><td>① 분산 배치</td><td>3회차에 B·D 흡수 / C는 4회차 브리핑 코너 / A는 도전·숙제</td><td>일정·계약 변동 없음, 3회차 밀도 높음</td></tr>
+            <tr><td>② 회차 분리</td><td>3-A(작성·B 모의 데스크) + 3-B(A 기사형·C 이슈·D 설계)</td><td>필수목표 ①을 가장 충실히 커버, 회차 협의 필요</td></tr>
+            <tr><td>③ 심화 특화</td><td>3회차 보강 + 심화 회차 후보에 '기사·이슈 심화' 추가</td><td>기본 5회 유지, 심화는 성과 협의로 선택</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-n">🧩 어떤 옵션이든 이 교안은 그대로 씁니다 — 모듈 단위로 잘라 배치만 바꾸면 됩니다.</div>
+    </div>
+
+    <!-- 실습 예제 배정표 -->
+    <div class="sec">
+      <h2>실습 예제 배정표 — 전원이 "자기 업무"로</h2>
+      <p class="lead">가상 예제가 아니라 업무분장의 실제 업무에서 뽑은 예제입니다. 각자 본인 담당 열의 예제로 실습합니다.</p>
+      <div class="sched">
+        <table>
+          <thead><tr><th>담당 업무</th><th>모듈 A (기사형)</th><th>모듈 B (모의 데스크)</th><th>모듈 C (이슈 레이더)</th><th>모듈 D (설계)</th></tr></thead>
+          <tbody>
+            <tr><td>언론 대응·회지</td><td>행사 결과 회지 기사</td><td>다음 배포 예정 보도자료 검증</td><td>금주 브리핑 이슈 → 코멘트 자료</td><td>기자단 배포용 마스터 프롬프트</td></tr>
+            <tr><td>법제도·입법</td><td>개정 경과 기고문 초안</td><td>국회 세미나 보도자료 헤드라인</td><td>계류 법안 → 연계 가능/금지 판별</td><td>정책 제안형 프롬프트</td></tr>
+            <tr><td>감정·가치평가</td><td>제품특허인증사업 소개 기사</td><td>인증사업 보도자료 검증</td><td>기업 IP 분쟁 이슈 → 인증 연계</td><td>성과 홍보형 프롬프트</td></tr>
+            <tr><td>협력사업</td><td>유관단체 협약 인터뷰 Q&A</td><td>MOU 보도자료 헤드라인</td><td>상대 단체 이슈 → 공동 보도 소재</td><td>행사 안내형 프롬프트</td></tr>
+            <tr><td>SNS·디자인</td><td>기사 → 카드뉴스 변환 검토</td><td>헤드라인의 SNS 제목 적합성</td><td>이슈 캘린더의 콘텐츠 캘린더화</td><td>매체·채널 변환 프롬프트</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-r">🔒 <strong>공통 보안 기준</strong> — 실습 재료는 이미 배포됐거나 배포 예정이 확정된 공개 자료만. 미공개 내부 결정·계류 사건의 협회 전략은 외부 AI에 넣지 않습니다.</div>
+    </div>
+
+    <!-- 준비 재료 -->
+    <div class="sec">
+      <h2>협회가 준비할 실습 재료 (사전 요청)</h2>
+      <div class="chk">
+        <h4>✅ 모듈 시작 전 단톡방으로 취합</h4>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>기사화 여부를 아는 과거 보도자료 5~10건</strong> — 기사화 성공/무반응 섞어서 (모듈 B 픽업 패턴 분석용)</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>기자단 매체 구성</strong> — 종합지·경제지·IT/과학·법조 전문지 비율 (모듈 B 페르소나, 모듈 D 매체 변환용)</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>기존 기고문·회지 기사 샘플 1~2건</strong> — 문체 학습용 (모듈 A)</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>연간 행사·발표 일정</strong> — 협회 행사, 특허청 정례 발표, 기념일 (모듈 C 캘린더용)</p></div>
+        <div class="chk-item"><div class="chk-box"></div><p><strong>언론 문의가 왔던 최근 사례 1건</strong> — 인터뷰 Q&A 실습용 (모듈 A)</p></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="del">
+        <div class="delh"><div class="deli">🎯</div><h4>4개 모듈 완료 시 부서가 갖게 되는 것</h4></div>
+        <ul>
+          <li>기고문·회지 기사·인터뷰 Q&A 표준 프롬프트 (A)</li>
+          <li>뉴스가치 루브릭 + 모의 데스크 검증 루틴 (B)</li>
+          <li>연간 보도 기회 캘린더 + 뉴스재킹 48시간 프로세스 (C)</li>
+          <li>연계 금지 판별 기준 1페이지 (C)</li>
+          <li>목적×매체 프롬프트 카드 세트 v1 (D)</li>
+          <li>수강생 각자가 설계한 "내 업무 마스터 프롬프트" (D)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" disabled><span class="pnl">이전</span><div class="pnt">—</div></button>
+      <button class="pnbtn next" data-goto="mod-ma"><span class="pnl">다음 →</span><div class="pnt">모듈 A · 기사형 콘텐츠</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc3" id="page-mod-ma">
+  <div class="hero h-s3">
+    <div class="eb">모듈 A · 30분 블록 · 장르 확장 · Claude/ChatGPT</div>
+    <h1>보도자료만? 기고문·회지 기사·<br/><em>인터뷰 답변까지 한 벌로</em></h1>
+    <p>같은 소식도 장르가 바뀌면 문체·구조·목적이 완전히 달라집니다. 보도자료체·기사체·기고문체의 차이를 눈으로 확인하고, 언론 대응과 회지 발행 실무에서 실제로 요청받는 3가지 기사형 콘텐츠를 프롬프트 자산으로 만듭니다.</p>
+    <div class="pills"><span class="pill">문체 3종 비교</span><span class="pill">기고문 초안</span><span class="pill">회지 기사</span><span class="pill">인터뷰 Q&A</span></div>
+  </div>
+
+  <div class="wrap">
+    <div class="sec">
+      <div class="eyebrow">겨냥하는 실제 업무</div>
+      <h2>언론 대응 실무(기고 요청 대응) · 회지 발행 실무 · 언론사 협력사업</h2>
+      <div class="lec">
+        <div class="lh">🎯 모듈 목표</div>
+        <p>① 같은 소식을 <strong>보도자료체·기사체·기고문체</strong>로 구분해 쓸 수 있다.</p>
+        <p>② 언론사 기고 요청에 <strong>기고문 초안(주장→근거→사례→제언)</strong>을 30분 안에 만들 수 있다.</p>
+        <p>③ 언론 문의 대비 <strong>인터뷰 예상 Q&A</strong>를 협회 기존 입장 자료 안에서만 작성할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 문체 3종 비교 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>같은 소식, 세 가지 글 — 눈으로 비교</h3></div>
+      <p class="lead">소재: "변리사법 개정안 국회 세미나 개최" (법제도 개선 실무의 실제 업무). 첫 문장이 어떻게 달라지는지 보세요.</p>
+      <div class="tri">
+        <div class="tcol"><div class="th2" style="background:#1f5793;">📰 보도자료체 — 사실 전달</div><div class="tb2">"대한변리사회는 ○월 ○일 국회에서 변리사법 개정 방향 세미나를 개최한다고 밝혔다."<span class="q">주어=협회 · 사실만 · 역피라미드 · 인용문으로 입장 전달</span></div></div>
+        <div class="tcol"><div class="th2" style="background:#34465f;">🗞️ 기사체 — 독자 관점</div><div class="tb2">"'AI가 만든 발명, 권리는 누구에게?' — 이 질문에 답하기 위해 국회와 변리사업계가 머리를 맞댄다."<span class="q">주어=이슈·독자 · 후킹 리드 · 맥락 먼저, 행사 정보는 뒤에</span></div></div>
+        <div class="tcol"><div class="th2" style="background:#8a6f2e;">✍️ 기고문체 — 주장과 제언</div><div class="tb2">"기술이 국경을 넘는 속도만큼, 제도도 빨라져야 한다. 변리사법 개정 논의를 더는 미룰 수 없는 이유다."<span class="q">주어=필자 견해 · 주장→근거→사례→제언 · 명의자 확인 필수</span></div></div>
+      </div>
+      <div class="tip tip-a">💡 AI에게 장르를 바꾸게 하는 열쇠는 "누가 말하는 글인가(주어)"와 "글의 목적(전달/설득/기록)"을 프롬프트에 명시하는 것입니다.</div>
+    </div>
+
+    <!-- 실습 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>실습 — 내 업무의 기사형 콘텐츠 1건 (20분)</h3></div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>담당</th><th>실습 예제 (실제 업무)</th><th>산출물</th></tr></thead>
+          <tbody>
+            <tr><td>언론·회지</td><td>최근 협회 행사(세미나·협약식) 결과를 <b>회지 기사</b>로 — 현장 스케치 도입 + 인용 자리 2곳</td><td>회지 기사 초안 1건</td></tr>
+            <tr><td>법제도</td><td>변리사법 개정 필요성 <b>기고문 초안</b> — 협회 공식 입장 자료 안에서만</td><td>기고문 초안 1건</td></tr>
+            <tr><td>감정·평가</td><td>제품특허인증사업을 소개하는 <b>기획 기사형 초안</b> — "인증이 중소기업에 왜 필요한가" 독자 관점</td><td>기획 기사 초안 1건</td></tr>
+            <tr><td>협력사업</td><td>유관단체 공동 사업 관련 <b>인터뷰 Q&A</b> — 예상 질문 10개 + 답변 초안</td><td>Q&A 시트 1건</td></tr>
+            <tr><td>SNS·디자인</td><td>완성된 기사 초안 1건을 받아 <b>카드뉴스 각색 적합성 검토</b> — 어느 문단이 몇 장이 되는가</td><td>각색 구성안 1건</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>A-1 기고문 초안 (명의자 확인 전제)</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 협회의 공식 입장 자료다. <span class="cm">[보도자료·성명·의견서 등 공개 입장 자료 붙여넣기]</span>
+<span class="hi">이 자료에 있는 입장과 근거만 사용해서</span> 언론 기고문 초안을 작성해줘.
+- 구조: 도입(현안 환기 2문단) → 주장 → 근거 2가지(자료 출처 표시) → 사례 1개 → 제언
+- 분량 1,800자 내외, 명의는 "[기고자 확인 필요]"로 비워둘 것
+- 자료에 없는 통계·사례를 지어내지 말 것. 필요하면 "[데이터 보강 필요]"로 표시.
+<span class="hi-y">기고문은 명의자 본인의 확인·수정을 거친 뒤에만 송고한다.</span></pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>A-2 회지 기사 변환</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 행사 보도자료와 현장 메모다. <span class="cm">[보도자료 + 현장 메모·사진 설명 붙여넣기]</span>
+<span class="hi">제공 자료 안에서만</span> 회지용 기사로 변환해줘.
+- 문체: 회원에게 전하는 기록체 — 아래 기존 회지 기사의 문체를 따를 것
+  <span class="cm">[기존 회지 기사 1건 붙여넣기 — 문체 기준]</span>
+- 구조: 현장 스케치 도입 → 주요 내용 → 참석자 인용 자리 2곳 "[인용 확인 필요]" → 의미 정리
+- 사진 캡션 3개도 제안해줘 (메모에 있는 장면만).</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>A-3 인터뷰 예상 Q&A</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>상황: 변리사법 개정 관련 언론 인터뷰 요청이 왔다.
+협회 기존 입장 자료: <span class="cm">[공개된 입장 자료·보도자료 붙여넣기]</span>
+1) 기자가 물을 법한 <span class="hi">예상 질문 10개</span> — 우호적 5개 + 곤란한 질문 5개
+2) 각 질문에 대한 답변 초안 — <span class="hi">기존 입장 자료 안에서만</span>, 근거 자료 표시
+3) 자료에 답이 없는 질문은 답변을 지어내지 말고 <span class="hi-y">"[내부 협의 필요]"</span>로 표시.
+답변 확정과 인터뷰 응대 방침은 부서가 결정한다.</pre>
+      </div>
+      <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 산출물에 [인용 확인 필요]·[내부 협의 필요] 표시가 살아 있고, 자료 밖 내용이 없으면 통과. 명의·인용이 확정되지 않은 초안은 절대 외부로 나가지 않습니다.</span></div>
+      <div class="tip tip-r">🔒 <strong>보안 기준</strong> — 기고문·Q&A 재료는 이미 공개된 입장 자료만. 계류 소송의 대응 전략, 미공개 협상 내용은 넣지 않습니다.</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="mod-home"><span class="pnl">← 이전</span><div class="pnt">모듈 안내</div></button>
+      <button class="pnbtn next" data-goto="mod-mb"><span class="pnl">다음 →</span><div class="pnt">모듈 B · 모의 데스크</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc6" id="page-mod-mb">
+  <div class="hero h-s6">
+    <div class="eb">모듈 B · 25분 블록 · 검증 강화 · Claude/ChatGPT</div>
+    <h1>배포 버튼 누르기 전,<br/><em>AI 기자에게 먼저 물어본다</em></h1>
+    <p>헤드라인이 "시선을 끄는지"는 우리가 아니라 기자가 판단합니다. 뉴스가치 5요소 루브릭으로 채점 기준을 명문화하고, AI에게 출입기자 페르소나를 입혀 "이 보도자료로 기사를 쓰겠는가"를 배포 전에 시뮬레이션합니다.</p>
+    <div class="pills"><span class="pill">뉴스가치 루브릭</span><span class="pill">기자 페르소나 시뮬레이션</span><span class="pill">픽업 패턴 분석</span></div>
+  </div>
+
+  <div class="wrap">
+    <div class="sec">
+      <div class="eyebrow">겨냥하는 실제 업무</div>
+      <h2>보도자료 배포 · 기자단 관리 · 언론사 협력사업</h2>
+      <div class="lec">
+        <div class="lh">🎯 모듈 목표</div>
+        <p>① 헤드라인을 <strong>뉴스가치 5요소 루브릭</strong>으로 채점하고 근거를 말할 수 있다.</p>
+        <p>② <strong>기자 페르소나 시뮬레이션</strong>으로 배포 전 약점(부족한 정보·약한 앵글)을 찾아 보완할 수 있다.</p>
+        <p>③ 과거 보도자료의 <strong>기사화 성공/무반응 패턴</strong>을 데이터로 정리할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 루브릭 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>뉴스가치 5요소 루브릭 — "끌린다"를 채점 가능하게</h3></div>
+      <div class="sched rubric">
+        <table>
+          <thead><tr><th>요소</th><th>질문</th><th>협회 예시</th></tr></thead>
+          <tbody>
+            <tr><td>시의성</td><td>지금 이 시점에 나와야 할 이유가 있나</td><td>국정감사 시즌의 지식재산 제도 이슈</td></tr>
+            <tr><td>영향성</td><td>얼마나 많은 사람의 이해에 닿나</td><td>중소기업 IP 지원 확대 — 수만 개 기업</td></tr>
+            <tr><td>근접성</td><td>독자의 생활·일과 얼마나 가까운가</td><td>"내 아이디어 뺏기지 않는 법" 프레임</td></tr>
+            <tr><td>저명성</td><td>알려진 인물·기관이 등장하나</td><td>국회 세미나, 특허청·법원 공동</td></tr>
+            <tr><td>희소성</td><td>처음이거나 드문 일인가</td><td>"국내 첫", "80년 만에" — 검증된 것만</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip tip-a">💡 헤드라인 10안을 이 5요소로 채점하면 "느낌"이 아니라 "근거"로 고를 수 있고, 데스크 검수의 언어도 통일됩니다. 희소성 표현은 반드시 사실 검증 후에만.</div>
+    </div>
+
+    <!-- 모의 데스크 목업 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>모의 데스크 — 기자 페르소나 시뮬레이션 화면</h3></div>
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">새 채팅 — 모의 데스크: 국회 세미나 보도자료 검증</span></div>
+        <div class="shot-body">
+          <div class="shot-main">
+            <div class="mk-bubble"><div class="who">나 · 보도자료 초안 첨부</div>너는 경제지 IP 담당 기자다. 이 보도자료로 기사를 쓰겠는가? (프롬프트 B-1)</div>
+            <div class="mk-bubble" style="background:#eef0f4;border-color:#d3d8e0;"><div class="who">AI 기자 (경제지 페르소나)</div>
+              <b>판정: 보류 🟡</b> — 이대로는 스트레이트 1단 처리.<br/>
+              <span style="font-size:11.5px;">· 약점: 세미나 개최 사실만 있고 <b>쟁점의 숫자가 없다</b> — "개정안 통과 시 영향받는 등록 변리사 수" 같은 데이터가 있으면 앵글이 생김<br/>
+              · 살릴 앵글: "AI 발명 심사 적체" 연결 시 기획기사 가능<br/>
+              · 제안 헤드라인: "AI가 쏟아낸 특허 출원, 심사는 사람 손 — 국회서 해법 찾는다"</span>
+            </div>
+            <div class="mk-bubble"><div class="who">나 · 이어서</div>좋아. 그 데이터를 협회 자료에서 찾아 보강한 버전으로 고쳐줘. 자료에 없으면 [데이터 확인 필요]로 표시해.</div>
+            <div class="shot-cap">판정 → 약점 → 보강 → 재검증. 배포 전에 이 루프를 한 번 돌리는 것이 모의 데스크입니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>B-1 기자 페르소나 시뮬레이션</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>너는 [경제지 IP 담당 기자 / 종합지 사회부 기자 / IT 전문지 기자] 중 하나다.
+<span class="cm">※ 기자단 매체 구성에 맞는 페르소나를 골라 3회 반복 실행</span>
+아래 보도자료를 읽고 답해줘. <span class="cm">[배포 예정 보도자료 초안 붙여넣기]</span>
+1) 판정: 기사화 ○ / 보류 🟡 / 안 씀 ✕ — 이유 2줄
+2) 쓴다면: 예상 제목과 앵글 / 안 쓴다면: 무엇이 부족한가 (데이터·시의성·독자 관련성)
+3) 이 보도자료가 놓친 <span class="hi">더 좋은 앵글</span> 1개
+- <span class="hi-y">보도자료에 없는 사실을 지어내 보강하지 말 것</span> — 부족한 데이터는 "[데이터 확인 필요]"로만 표시.
+결과는 참고용 시뮬레이션이며 배포 판단은 데스크가 한다.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>B-2 헤드라인 루브릭 채점</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래 헤드라인 10안을 뉴스가치 5요소(시의성·영향성·근접성·저명성·희소성)로
+각 1~5점 채점하고 표로 정리해줘. <span class="cm">[헤드라인 10안 붙여넣기]</span>
+- 각 점수에 근거 1줄. 총점 순 정렬.
+- 단, <span class="hi-y">과장·낚시로 점수가 오른 안은 "품위 감점"을 별도 표시</span>하고 사유를 쓸 것.
+- 상위 3안에 대해 "부제 + 리드 첫 문장"을 세트로 제안해줘 (보도자료 내용 안에서만).</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>B-3 픽업 패턴 분석 (부서 데이터 자산)</span><span class="tag">Claude · ChatGPT — 1회 실행 후 자산화</span></div>
+        <pre>아래는 협회가 배포한 과거 보도자료 목록이다. 각 건에 기사화 여부를 표시했다.
+<span class="cm">[보도자료 5~10건: 제목·리드·배포일 + 기사화 ○/✕ 붙여넣기]</span>
+<span class="hi">이 목록 안에서만</span> 비교 분석해줘:
+1) 기사화된 건들의 공통점 (헤드라인 유형·데이터 유무·시의성·분량)
+2) 무반응 건들의 공통점
+3) 다음 보도자료에 적용할 체크 문항 5개 ("배포 전 이 5개를 확인하라")
+- 표본이 적으므로 <span class="hi-y">단정하지 말고 "경향"으로 서술</span>할 것.</pre>
+      </div>
+      <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 실습 대상 보도자료가 페르소나 3종 시뮬레이션을 통과했고(판정·보강 1회 이상), 배포 전 체크 문항 5개가 단톡방에 공유되면 통과.</span></div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="mod-ma"><span class="pnl">← 이전</span><div class="pnt">모듈 A · 기사형 콘텐츠</div></button>
+      <button class="pnbtn next" data-goto="mod-mc"><span class="pnl">다음 →</span><div class="pnt">모듈 C · 이슈 레이더</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc5" id="page-mod-mc">
+  <div class="hero h-s5">
+    <div class="eb">모듈 C · 30분 블록 · 소재 발굴 · IP 브리핑 파이프라인 연계</div>
+    <h1>이슈를 기다리지 말고,<br/><em>먼저 찾아서 보도자료로 만든다</em></h1>
+    <p>"최신 이슈 연계"의 완성형은 역방향입니다 — 매일 아침 IP 브리핑에서 발견한 이슈를 "협회가 말할 가치가 있는가"로 판별하고, 48시간 안에 코멘트 보도자료로 바꾸는 루틴. 예측 가능한 이슈는 연간 캘린더로 미리 잡아둡니다.</p>
+    <div class="pills"><span class="pill">연간 보도 기회 캘린더</span><span class="pill">뉴스재킹 48시간</span><span class="pill">연계 금지 판별</span></div>
+  </div>
+
+  <div class="wrap">
+    <div class="sec">
+      <div class="eyebrow">겨냥하는 실제 업무</div>
+      <h2>언론 모니터링(일일보도) · 홍보 계획 수립 · 입법동향 모니터링</h2>
+      <div class="lec">
+        <div class="lh">🎯 모듈 목표</div>
+        <p>① 협회의 <strong>연간 보도 기회 캘린더 v1</strong>을 만들 수 있다.</p>
+        <p>② 브리핑에서 발견한 이슈를 <strong>연계 가치 판별 → 코멘트 보도자료 초안</strong>으로 48시간 안에 바꿀 수 있다.</p>
+        <p>③ <strong>연계하면 안 되는 이슈</strong>를 기준표로 걸러낼 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 캘린더 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>연간 보도 기회 캘린더 — 예측 가능한 이슈는 미리 잡는다</h3></div>
+      <p class="lead">아래는 시작용 뼈대입니다. 실습에서 협회 행사·특허청 발표 일정을 채워 v1을 완성합니다 (숙제로 노션 캘린더화 → 자료 DB 실습과 연결).</p>
+      <div class="cal">
+        <div class="cm2"><div class="mo">4월</div><div class="ev">세계 지식재산의 날(4/26) — 대중 인식 기획 보도</div></div>
+        <div class="cm2"><div class="mo">5월</div><div class="ev">발명의 날(5/19) — 시상·성과 보도, 유관기관 공동</div></div>
+        <div class="cm2"><div class="mo">7월</div><div class="ev">변리사의 날 — 협회 성과·비전 보도</div></div>
+        <div class="cm2"><div class="mo">9~10월</div><div class="ev">국정감사 — 지식재산 제도 쟁점 코멘트 대기</div></div>
+        <div class="cm2"><div class="mo">연초</div><div class="ev">특허청 업무계획 발표 — 협회 입장·해설 보도</div></div>
+        <div class="cm2"><div class="mo">분기</div><div class="ev">출원 통계 발표 — 데이터 해설 기사 소재</div></div>
+        <div class="cm2"><div class="mo">수시</div><div class="ev">주요 IP 판결 선고일 — 해설 코멘트 (판결문 공개 후)</div></div>
+        <div class="cm2"><div class="mo">협회 일정</div><div class="ev">[실습에서 채움] 세미나·협약·연수·회지 발행</div></div>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>C-1 캘린더 초안 생성</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 협회의 연간 행사 일정과 유관기관 정례 발표 일정이다.
+<span class="cm">[협회 행사 일정 + 특허청 등 발표 일정 붙여넣기]</span>
+<span class="hi">이 일정 안의 항목만으로</span> 월별 보도 기회 캘린더를 표로 만들어줘.
+- 항목별: 시점 / 보도 기회(어떤 보도자료·기사가 가능한가) / 준비 시작 시점(D-몇 주) / 담당 업무 영역
+- 같은 달에 몰린 항목은 우선순위를 제안하되, <span class="hi-y">확정은 부서가 한다</span>.
+- 일정에 없는 행사를 지어내지 말 것.</pre>
+      </div>
+    </div>
+
+    <!-- 뉴스재킹 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>뉴스재킹 48시간 — 브리핑에서 보도자료까지</h3></div>
+      <div class="chain">
+        <div class="ch ch-a"><div class="ct">D+0 아침</div><div class="cd">IP 브리핑에서<br/>이슈 발견</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-b"><div class="ct">D+0 오전 ✋</div><div class="cd">연계 가치 판별<br/>(기준표 + 부서 승인)</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-c"><div class="ct">D+0~1</div><div class="cd">코멘트 보도자료<br/>초안 (AI)</div></div>
+        <div class="ch-arr">→</div>
+        <div class="ch ch-d"><div class="ct">D+1~2 ✋</div><div class="cd">데스크 검수 →<br/>담당자 수동 배포</div></div>
+      </div>
+      <div class="sched">
+        <table>
+          <thead><tr><th>판별</th><th>기준</th><th>예시</th></tr></thead>
+          <tbody>
+            <tr><td>🟢 연계</td><td>지식재산 제도·변리사 전문성과 직결, 협회가 말할 근거(기존 입장·데이터)가 있음</td><td>AI 발명자 판결, 출원 통계 급변, 해외 IP 제도 변경</td></tr>
+            <tr><td>🟡 신중</td><td>관련은 있으나 협회 입장이 미정 — 내부 협의 후 결정</td><td>특정 기업 간 분쟁(판결 확정 전), 정부 조직 개편설</td></tr>
+            <tr><td>🔴 금지</td><td>정치적 쟁점화된 사안, 계류 소송의 당사자 이해, 미확인 루머</td><td>선거 쟁점화된 법안, 회원이 대리 중인 사건, 검증 안 된 폭로성 보도</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>C-2 연계 가치 판별</span><span class="tag">Claude · ChatGPT — 브리핑 후 바로</span></div>
+        <pre>오늘 IP 브리핑에서 고른 이슈 기사다. <span class="cm">[기사 본문·링크 붙여넣기]</span>
+협회의 연계 판별 기준은 다음과 같다. <span class="cm">[위 🟢🟡🔴 기준표 붙여넣기]</span>
+1) 이 이슈는 🟢/🟡/🔴 중 무엇인가 — 기준 항목을 인용해 근거 제시
+2) 🟢이라면: 협회가 말할 수 있는 <span class="hi">앵글 2개</span> + 필요한 근거 자료(협회가 이미 가진 것 위주)
+3) 🟡·🔴이라면: 이유와, 대신 할 수 있는 안전한 대응(내부 공유만 / 추후 해설 등)
+<span class="hi-y">판별 결과는 제안이며 연계 여부는 부서가 결정한다.</span></pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>C-3 코멘트 보도자료 초안 (48시간용)</span><span class="tag">Claude · ChatGPT (웹검색 허용)</span></div>
+        <pre>이슈: <span class="cm">[기사 요약·링크]</span> — 🟢 판별 완료, 승인됨.
+협회 기존 입장·데이터: <span class="cm">[관련 보도자료·성명·통계 붙여넣기]</span>
+[스타일 규칙] <span class="cm">[3회차 스타일 가이드 10줄]</span>
+코멘트형 보도자료 초안을 작성해줘.
+- 구조: 이슈 요약(출처 기사 명시) → 협회 시각 → 근거(기존 자료 출처 표시) → 제언·입장
+- 협회 인용문 자리는 "[회장 인용 — 확인 필요]"로 비워둘 것
+- 웹검색으로 이슈의 최신 전개를 확인하되 <span class="hi-y">확인된 보도만 인용하고 출처를 각주로</span> 달 것.
+- 이슈 원 기사의 표현을 그대로 베끼지 말 것. 배포는 데스크 검수 후 담당자가 한다.</pre>
+      </div>
+      <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 이번 주 브리핑에서 실제 이슈 1건을 골라 판별표 통과 → 코멘트 초안까지 완성되면 통과. 🔴 이슈를 골랐다면 "왜 금지인가"를 설명하는 것으로 대체 통과.</span></div>
+      <div class="tip tip-r">🔒 <strong>보안 기준</strong> — 판별·초안 재료는 공개 기사와 협회의 공개 입장 자료만. 계류 사건의 내부 검토 의견은 외부 AI에 넣지 않습니다.</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="mod-mb"><span class="pnl">← 이전</span><div class="pnt">모듈 B · 모의 데스크</div></button>
+      <button class="pnbtn next" data-goto="mod-md"><span class="pnl">다음 →</span><div class="pnt">모듈 D · 프롬프트 설계</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="page acc4" id="page-mod-md">
+  <div class="hero h-s4">
+    <div class="eb">모듈 D · 35분 블록 · 설계 역량 · 과정의 자산이 완성되는 모듈</div>
+    <h1>물고기 말고 낚시법 —<br/><em>내 목적에 맞는 프롬프트를 직접 설계</em></h1>
+    <p>지금까지는 만들어진 프롬프트를 썼습니다. 이 모듈에서는 5블록 설계법을 익혀, 어떤 배포 목적이 새로 생겨도 스스로 프롬프트를 짜고 부서 자산집에 등록합니다. 마지막 실습은 각자 "내 업무 마스터 프롬프트" 1개를 설계해 상호 리뷰하는 것입니다.</p>
+    <div class="pills"><span class="pill">5블록 설계법</span><span class="pill">목적 유형 4+α</span><span class="pill">매체별 앵글 변환</span><span class="pill">프롬프트 카드 세트 v1</span></div>
+  </div>
+
+  <div class="wrap">
+    <div class="sec">
+      <div class="eyebrow">겨냥하는 실제 업무</div>
+      <h2>부서 전원의 문서 작성 업무 전체 — 그리고 프롬프트 자산집 구축</h2>
+      <div class="lec">
+        <div class="lh">🎯 모듈 목표</div>
+        <p>① <strong>5블록(역할·맥락·자료·형식·검증)</strong>으로 프롬프트를 설계하고 남의 프롬프트를 진단할 수 있다.</p>
+        <p>② 배포 목적 유형(행사 안내·성과 홍보·정책 제안·입장문)별 <strong>구조 차이를 반영한 프롬프트</strong>를 만들 수 있다.</p>
+        <p>③ <strong>목적×매체 프롬프트 카드 세트 v1</strong>을 부서 자산집으로 등록할 수 있다.</p>
+      </div>
+    </div>
+
+    <!-- 5블록 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">1</div><h3>5블록 설계법 — 좋은 프롬프트의 해부도</h3></div>
+      <div class="blocks5">
+        <div class="blk"><div class="bt2">① 역할</div><div class="bd2">누구로서 쓰나<br/>"협회 홍보 담당 겸 전직 기자"</div></div>
+        <div class="blk"><div class="bt2">② 맥락</div><div class="bd2">왜·누구에게<br/>배포 목적 + 독자 + 시점</div></div>
+        <div class="blk"><div class="bt2">③ 자료</div><div class="bd2">무엇으로만<br/>"이 자료 안에서만" + 원문</div></div>
+        <div class="blk"><div class="bt2">④ 형식</div><div class="bd2">어떤 모양으로<br/>구조·분량·문체·금지 표현</div></div>
+        <div class="blk"><div class="bt2">⑤ 검증</div><div class="bd2">어떻게 확인<br/>출처 표시·[확인 필요]·사람 검수</div></div>
+      </div>
+      <div class="tip tip-a">💡 지금까지 쓴 모든 프롬프트(스타일 가이드·브리핑·모의 데스크)가 전부 이 5블록입니다 — 오늘은 해부도를 보고 직접 조립합니다. ③자료와 ⑤검증 블록이 빠진 프롬프트는 협회에서 쓸 수 없는 프롬프트입니다.</div>
+
+      <div class="sched">
+        <table>
+          <thead><tr><th>배포 목적 유형</th><th>구조가 달라지는 지점</th><th>실제 업무 예</th></tr></thead>
+          <tbody>
+            <tr><td>행사 안내형</td><td>일시·장소·신청이 리드에, 행동 유도 마감일 명시</td><td>세미나·연수 개최 안내</td></tr>
+            <tr><td>성과 홍보형</td><td>숫자가 헤드라인에, before/after 비교 구조</td><td>제품특허인증사업 실적, 공익사업 성과</td></tr>
+            <tr><td>정책 제안형</td><td>문제 제기 → 근거 → 제안 → 기대효과, 신중한 어조</td><td>변리사법 개정 의견, 의견조회 대응 공개</td></tr>
+            <tr><td>입장문·성명형</td><td>입장 한 문장 선두, 근거 조목, 감정어 배제</td><td>제도 관련 협회 공식 입장</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 실습 -->
+    <div class="sec">
+      <div class="shead"><div class="sn">2</div><h3>실습 — 내 업무 마스터 프롬프트 설계 + 상호 리뷰 (20분)</h3></div>
+      <div class="substeps">
+        <div class="sub"><span>실습 예제 배정표에서 <b>자기 담당의 목적 유형</b>을 고른다 (예: 감정·평가 담당 → 성과 홍보형).</span></div>
+        <div class="sub"><span>아래 <b>D-1 설계 코치</b> 프롬프트로 5블록 초안을 만들고, 빈 블록을 직접 채운다 — AI가 다 써 주는 게 아니라 <b>내가 설계하고 AI가 코치</b>.</span></div>
+        <div class="sub"><span>짝꿍과 프롬프트를 교환 → <b>D-2 진단 프롬프트</b>로 상호 리뷰 (③자료·⑤검증 블록이 있는지 반드시 확인).</span></div>
+        <div class="sub"><span>완성된 프롬프트를 <b>목적×매체 카드 양식</b>으로 정리해 단톡방(→ 자산집)에 등록한다.</span></div>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>D-1 프롬프트 설계 코치</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>나는 대한변리사회에서 [담당 업무: 예 — 제품특허인증사업 홍보]를 맡고 있다.
+[배포 목적: 성과 홍보형 보도자료 / 대상 매체: 경제지·전문지 / 독자: 중소기업 경영진]
+5블록(역할·맥락·자료·형식·검증) 구조로 <span class="hi">내가 쓸 마스터 프롬프트의 초안</span>을 만들어줘.
+- 각 블록을 채우되, 내가 결정해야 할 부분은 <span class="hi-y">[선택: A안/B안]</span> 형태로 물어볼 것
+- ③자료 블록에는 "제공 자료 안에서만, 없는 내용은 [확인 필요]" 원칙을 반드시 포함
+- ⑤검증 블록에는 출처 표시와 "배포 판단은 데스크가 한다"를 반드시 포함
+- 완성 후, 이 프롬프트의 약점 2가지를 스스로 지적해줘.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>D-2 프롬프트 진단 (상호 리뷰용)</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>아래는 동료가 설계한 프롬프트다. <span class="cm">[짝꿍의 프롬프트 붙여넣기]</span>
+5블록 기준으로 진단해줘:
+1) 블록별 유/무와 완성도 (①역할 ②맥락 ③자료 ④형식 ⑤검증) — 표로
+2) <span class="hi">③자료 고정과 ⑤검증이 빠졌거나 약하면 구체적 보강 문장</span>을 제안
+3) 이 프롬프트로 생길 수 있는 사고 시나리오 1개 (예: 지어낸 인용문이 그대로 배포)
+- 진단은 프롬프트 자체에 대해서만. 개선 반영은 설계자 본인이 한다.</pre>
+      </div>
+
+      <div class="pbox">
+        <div class="pbox-top"><span class="lbl"><span class="dot"></span>D-3 매체별 앵글 변환 (같은 소식, 네 갈래)</span><span class="tag">Claude · ChatGPT</span></div>
+        <pre>확정 보도자료다. <span class="cm">[검수 완료 보도자료 붙여넣기]</span>
+<span class="hi">이 내용만으로</span> 매체별 4가지 앵글을 만들어줘 — 각각 제목 + 리드 1문단 + 강조 포인트:
+1) 종합지: 국민·소비자 관점 ("내 권리·내 아이디어")
+2) 경제지: 기업·산업 영향 관점 (숫자 앞세움)
+3) IT·과학지: 기술·AI 쟁점 관점
+4) 법조지: 제도·법리 관점
+- 앵글마다 어느 문단을 근거로 했는지 표시. <span class="hi-y">새 사실 추가 금지.</span>
+매체별 송부 여부는 담당자가 기자단 구성을 보고 결정한다.</pre>
+      </div>
+
+      <!-- 카드 양식 -->
+      <div class="shot">
+        <div class="shot-bar"><span class="d d1"></span><span class="d d2"></span><span class="d d3"></span><span class="url">프롬프트 자산집 — 카드 등록 양식 (노션 DB 연결 예정)</span></div>
+        <div class="shot-body">
+          <div class="shot-main">
+            <table class="notion-tb">
+              <thead><tr><th>카드명</th><th>목적 유형</th><th>대상 매체/채널</th><th>설계자</th><th>검증 블록</th></tr></thead>
+              <tbody>
+                <tr><td>인증사업 성과 보도자료 v1</td><td><span class="ntag" style="background:#e6f2f4;color:#155f6e;">성과 홍보</span></td><td>경제지·전문지</td><td>감정·평가 담당</td><td><span class="ntag" style="background:#e8f4ec;color:#1f8452;">포함 ✓</span></td></tr>
+                <tr><td>세미나 안내 3종 변환 v2</td><td><span class="ntag" style="background:#e9f0f7;color:#143a66;">행사 안내</span></td><td>기자단·홈페이지·회원</td><td>언론 대응 담당</td><td><span class="ntag" style="background:#e8f4ec;color:#1f8452;">포함 ✓</span></td></tr>
+                <tr><td>개정 의견 기고문 v1</td><td><span class="ntag" style="background:#f7e9f1;color:#7c3060;">정책 제안</span></td><td>기고 요청 매체</td><td>법제도 담당</td><td><span class="ntag" style="background:#faf4e4;color:#8a6f2e;">보강 중</span></td></tr>
+              </tbody>
+            </table>
+            <div class="shot-cap">이 카드 DB가 프롬프트 자산집의 핵심 챕터 — 심화 회차(노션 DB)에서 그대로 구조화됩니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="checkpt"><span class="ci">✅</span><span><strong>체크포인트</strong> — 1인 1카드: 5블록이 모두 있고 ③자료 고정·⑤검증이 포함된 마스터 프롬프트 1개가 카드 양식으로 등록되면 통과.</span></div>
+      <div class="tip tip-a">🔗 <strong>파이프라인 연결</strong> — 모듈 D의 카드 세트는 4회차 브리핑 프롬프트, 5회차 입법 브리핑 프롬프트와 합쳐져 부서 프롬프트 자산집이 되고, 심화 회차에서 노션 DB로 구조화됩니다.</div>
+    </div>
+
+    <div class="pagenav">
+      <button class="pnbtn" data-goto="mod-mc"><span class="pnl">← 이전</span><div class="pnt">모듈 C · 이슈 레이더</div></button>
+      <button class="pnbtn next" data-goto="mod-home"><span class="pnl">처음으로</span><div class="pnt">모듈 안내</div></button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  대한변리사회 정책홍보실 AI 업무혁신 교육 · 통합 교안 · 에듀N퓨처
+  <span class="src">Ⅰ 커리큘럼(v2 · 부서 확정 수강목표 반영) — Ⅱ 2회차 실습교안(매직 레이어 · @Adobe) — Ⅲ 보도자료 마스터 모듈 A–D · AI 결과물은 초안이며 게시·발송·배포는 담당자 검수 후 진행합니다 · 화면 구성은 2026년 8월 기준 예시입니다</span>
+</footer>
+
+<script>
+(function(){
+  var pages = {};
+  document.querySelectorAll('section.page').forEach(function(p){
+    pages[p.id.replace('page-','')] = p;
+  });
+  var tabs = document.querySelectorAll('.tab');
+  var secbtns = document.querySelectorAll('.secbtn');
+  var groups = document.querySelectorAll('.subwrap .tabs');
+  var firstPage = {cur:'cur-home', prac:'prac-home', mod:'mod-home'};
+
+  function setSec(sec){
+    secbtns.forEach(function(b){ b.classList.toggle('on', b.dataset.sec === sec); });
+    groups.forEach(function(g){ g.classList.toggle('on', g.dataset.group === sec); });
+  }
+  function go(key){
+    if(!pages[key]) return;
+    Object.keys(pages).forEach(function(k){ pages[k].classList.toggle('show', k === key); });
+    tabs.forEach(function(t){ t.classList.toggle('on', t.dataset.page === key); });
+    setSec(key.split('-')[0]);
+    window.scrollTo({top:0, behavior:'smooth'});
+    try { if(history.replaceState){ history.replaceState(null,'','#'+key); } } catch(e){}
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ go(t.dataset.page); }); });
+  secbtns.forEach(function(b){ b.addEventListener('click', function(){ go(firstPage[b.dataset.sec]); }); });
+  document.querySelectorAll('[data-goto]').forEach(function(el){
+    el.addEventListener('click', function(){ go(el.dataset.goto); });
+  });
+
+  document.querySelectorAll('.pbox').forEach(function(box){
+    var top = box.querySelector('.pbox-top');
+    var pre = box.querySelector('pre');
+    if(!top || !pre) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.innerHTML = '\ud83d\udccb \ubcf5\uc0ac';
+    btn.addEventListener('click', function(){
+      var text = pre.innerText.replace(/\u00a0/g,' ');
+      var done = function(){
+        btn.classList.add('done');
+        btn.innerHTML = '\u2705 \ubcf5\uc0ac\ub428!';
+        setTimeout(function(){ btn.classList.remove('done'); btn.innerHTML = '\ud83d\udccb \ubcf5\uc0ac'; }, 1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+      } else { fallbackCopy(text, done); }
+    });
+    top.appendChild(btn);
+  });
+  function fallbackCopy(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly','');
+    ta.style.position='fixed'; ta.style.top='0'; ta.style.left='0'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { ta.setSelectionRange(0, text.length); } catch(e){}
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+    if(done) done();
+  }
+  var initial = (location.hash || '').replace('#','');
+  if(pages[initial]){ go(initial); }
+})();
+</script>
+</body>
+</html>
