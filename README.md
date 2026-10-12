@@ -2,6 +2,11 @@
 
 대한변리사회 정책홍보실 **AI 업무혁신(AX) 교육** 통합 교안과 부속 자료를 배포하는 저장소입니다.
 
+## 윤리·징계·광고 업무지원 시스템
+
+회원서비스실 윤리·징계·광고 업무용 웹 시스템은 [`ethics-system/`](ethics-system/README.md)에 있습니다.
+사내 서버에 설치해 사용하며(GitHub Pages로는 동작하지 않음), 설치 방법은 [`ethics-system/docs/DEPLOY.md`](ethics-system/docs/DEPLOY.md)를 참고하세요.
+
 ## 배포 주소
 
 GitHub Pages로 배포하면 아래 주소에서 열립니다.
@@ -17,6 +22,7 @@ GitHub Pages로 배포하면 아래 주소에서 열립니다.
 |---|---|
 | `index.html` | 통합 교안 (커리큘럼 5회차 + 심화 · 실습 2종 · 모듈 A~D). 단일 파일, 외부 의존성 없음 |
 | `assets/patent-3person-review.svg` | 특허 3인 협의심사 제도 안내 인포그래픽 (벡터 원본) |
+| `ethics-system/` | 윤리·징계·광고 업무지원 시스템 (FastAPI + SQLite + 웹 화면) |
 | `assets/patent-3person-review.pdf` | 같은 인포그래픽의 벡터 PDF — 캔바 등 편집 도구 가져오기용 |
 
 ## GitHub Pages 켜기
