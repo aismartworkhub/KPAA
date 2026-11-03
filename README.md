@@ -2,6 +2,11 @@
 
 대한변리사회 정책홍보실 **AI 업무혁신(AX) 교육** 통합 교안과 부속 자료를 배포하는 저장소입니다.
 
+## 회원서비스실 Apps Script 실습 교안
+
+구글 시트로 회원 추천(중복 확인·선정 메일)과 연수·공익·회비 통합 현황을 만드는 실습 교안입니다 → [`appscript/`](appscript/README.md)
+(Pages 배포 시 https://aismartworkhub.github.io/KPAA/appscript/)
+
 ## 윤리·징계·광고 업무지원 시스템
 
 회원서비스실 윤리·징계·광고 업무용 웹 시스템은 [`ethics-system/`](ethics-system/README.md)에 있습니다.
@@ -22,6 +27,7 @@ GitHub Pages로 배포하면 아래 주소에서 열립니다.
 |---|---|
 | `index.html` | 통합 교안 (커리큘럼 5회차 + 심화 · 실습 2종 · 모듈 A~D). 단일 파일, 외부 의존성 없음 |
 | `assets/patent-3person-review.svg` | 특허 3인 협의심사 제도 안내 인포그래픽 (벡터 원본) |
+| `appscript/` | 회원서비스실 구글 시트 Apps Script 실습 교안 (1차 11/4, 2차 11/13) + 실습 코드·가상 데이터 |
 | `ethics-system/` | 윤리·징계·광고 업무지원 시스템 (FastAPI + SQLite + 웹 화면) |
 | `assets/patent-3person-review.pdf` | 같은 인포그래픽의 벡터 PDF — 캔바 등 편집 도구 가져오기용 |
 
