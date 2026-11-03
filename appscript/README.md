@@ -19,6 +19,7 @@
 | `code/회원업무_전체코드.gs` | 2~4단계 전체 코드 (중복 확인, 시험/실제 메일, 미선정자, 통합 현황·보드, 패널 열기) |
 | `code/Panel.html` | 오른쪽 작업 패널 화면 |
 | `practice/회원업무_실습데이터.xlsx` | 실습용 **가상** 데이터 (추천신청·메일양식·연수·공익·회비) |
+| `og_image.jpg` | 카카오톡·SNS 링크 미리보기 이미지(1200×630) — `src/og.html` 수정 후 `node src/make_og.mjs` |
 | `shots/` | 실제 화면 캡처를 넣는 곳 (넣으면 교안의 모형 화면이 자동 교체) |
 | `src/build.py`, `src/style.css` | 교안 생성기 — 코드 파일 내용을 그대로 교안에 넣음 |
 | `tests/gas_mock_test.mjs` | Apps Script 코드를 모의 시트에서 실행해 검증 (16개 항목) |

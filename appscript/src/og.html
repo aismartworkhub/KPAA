@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Malgun Gothic',sans-serif;
+  background:linear-gradient(135deg,#081536 0%,#0b1f4b 55%,#1d3a7a 115%);color:#fff;position:relative;overflow:hidden}
+body::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(201,162,75,.25),transparent 45%)}
+.l{position:absolute;left:70px;top:70px;width:690px}
+.eb{display:inline-block;padding:8px 20px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);border-radius:999px;font-size:22px;font-weight:700;letter-spacing:.02em}
+h1{font-size:54px;font-weight:900;line-height:1.18;letter-spacing:-.03em;margin:30px 0 22px}
+h1 em{font-style:normal;color:#e8cd8a}
+p{font-size:26px;color:rgba(255,255,255,.88);line-height:1.5}
+.tags{position:absolute;left:70px;bottom:62px;display:flex;gap:12px}
+.tags span{font-size:21px;font-weight:700;padding:8px 16px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+.card{position:absolute;right:60px;top:110px;width:390px;background:#fff;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.35);overflow:hidden;color:#202124;font-family:Arial,'Noto Sans CJK KR',sans-serif}
+.bar{display:flex;align-items:center;gap:10px;padding:14px 16px 8px}
+.logo{width:22px;height:28px;background:#0f9d58;border-radius:3px}
+.title{font-size:18px}
+.menu{display:flex;gap:10px;padding:0 16px 10px 48px;font-size:14px;color:#444}
+.menu b{color:#0b1f4b;outline:3px solid #e5322d;border-radius:4px;padding:0 4px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+td{border:1px solid #e2e3e3;padding:7px 8px;height:34px}
+tr.h td{background:#eef2f8;font-weight:700}
+.y td{background:#fff2cc}.r td{background:#f4cccc}
+.cb{display:inline-block;width:16px;height:16px;border-radius:3px;background:#1a73e8;color:#fff;font-size:12px;text-align:center;line-height:16px}
+.pin{position:absolute;right:34px;top:84px;width:44px;height:44px;border-radius:50%;background:#e5322d;color:#fff;font:900 24px/44px Arial;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.3)}
+.mail{position:absolute;right:90px;bottom:60px;background:#fff;color:#202124;border-radius:14px;padding:14px 18px;font-size:17px;box-shadow:0 14px 30px rgba(0,0,0,.35);display:flex;align-items:center;gap:12px}
+.mail .ic{font-size:28px}
+.mail small{display:block;color:#5f6368;font-size:14px}
+</style></head>
+<body>
+<div class="l">
+  <div class="eb">대한변리사회 회원서비스실 · 실습 교안</div>
+  <h1>구글 시트 + Apps Script로<br><em>회원 업무 자동화</em></h1>
+  <p>화면 순서대로 따라 하면 중복 신청 확인,<br>선정 메일 발송, 연수·공익·회비 현황까지</p>
+</div>
+<div class="tags"><span>🔁 중복 확인</span><span>✉️ 선정 메일</span><span>📊 통합 현황</span></div>
+<div class="card">
+  <div class="bar"><div class="logo"></div><div class="title">회원업무_실습</div></div>
+  <div class="menu"><span>파일</span><span>수정</span><span>보기</span><span>확장 프로그램</span><b>🗂 회원업무</b></div>
+  <table>
+    <tr class="h"><td>추천기관</td><td>성명</td><td>선정</td><td>비고</td></tr>
+    <tr class="y"><td>국가철도공단</td><td>김*수</td><td><span class="cb">✓</span></td><td>중복 2건</td></tr>
+    <tr><td>지식재산위원회</td><td>이*연</td><td><span class="cb">✓</span></td><td></td></tr>
+    <tr class="r"><td>국가철도공단</td><td>박*호</td><td></td><td>동일 기관 중복</td></tr>
+    <tr><td>특허기술진흥원</td><td>최*민</td><td><span class="cb">✓</span></td><td></td></tr>
+  </table>
+</div>
+<div class="pin">1</div>
+<div class="mail"><span class="ic">✉️</span><span><b>선정 안내 메일 발송 완료</b><small>발송이력 탭에 자동 기록</small></span></div>
+</body></html>

@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SITE = "https://aismartworkhub.github.io/KPAA/appscript/"   # 배포 주소(미리보기 이미지 절대경로용)
 CODE = ROOT / "code"
 FIX = json.loads((ROOT / "tests" / "practice_fixture.json").read_text(encoding="utf-8"))
 E = html.escape
@@ -623,6 +624,19 @@ out = f"""<!DOCTYPE html>
 <meta name="robots" content="noindex, nofollow">
 <title>구글 시트 Apps Script 실습 교안 | 대한변리사회 회원서비스실</title>
 <meta name="description" content="구글 시트와 Apps Script로 회원 추천·중복 확인·선정 메일·연수·공익·회비 통합 현황을 따라 만드는 실습 교안">
+<!-- 카카오톡·SNS 링크 미리보기 (GitHub Pages 배포 주소 기준) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="대한변리사회 회원서비스실 AI 업무 교육">
+<meta property="og:title" content="구글 시트 + Apps Script로 회원 업무 자동화 따라 하기">
+<meta property="og:description" content="중복 신청 확인 · 선정 메일 자동 발송 · 연수·공익·회비 통합 현황 — 화면 순서대로 따라 하는 실습 교안">
+<meta property="og:image" content="{SITE}og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="{SITE}">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="구글 시트 + Apps Script로 회원 업무 자동화 따라 하기">
+<meta name="twitter:image" content="{SITE}og_image.jpg">
 <style>{css}</style>
 </head>
 <body>
