@@ -1,0 +1,11 @@
+# 사내 서버 1대 배포용. HTTPS는 앞단 리버스 프록시(사내 웹서버/Nginx/Caddy)에서 처리하고 KPAA_COOKIE_SECURE=1 로 설정.
+services:
+  app:
+    build: .
+    image: kpaa-ethics:1.0.0
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"     # 외부 노출은 리버스 프록시를 통해서만
+    env_file: .env
+    volumes:
+      - ./data:/data              # DB·첨부·백업 (반드시 별도 백업)

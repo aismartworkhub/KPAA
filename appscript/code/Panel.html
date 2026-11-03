@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base target="_top">
+<style>
+  body { font-family: 'Malgun Gothic', sans-serif; margin: 12px; color: #15181d; }
+  h3 { font-size: 15px; margin: 4px 0 10px; color: #0b1f4b; }
+  .grp { font-size: 12px; color: #5b626c; margin: 14px 0 6px; font-weight: bold; }
+  button { display: block; width: 100%; margin: 6px 0; padding: 10px; font-size: 13px; border: 1px solid #c9d1dd;
+           border-radius: 8px; background: #fff; cursor: pointer; text-align: left; }
+  button:hover { background: #eef2f8; }
+  button.main { background: #0b1f4b; color: #fff; border-color: #0b1f4b; }
+  #msg { margin-top: 14px; padding: 10px; border-radius: 8px; background: #f3f5f7; font-size: 12.5px; white-space: pre-wrap; min-height: 40px; }
+  #msg.err { background: #faeceb; color: #b3372a; }
+</style>
+</head>
+<body>
+  <h3>🗂 회원업무 패널</h3>
+  <div class="grp">회원 추천</div>
+  <button onclick="run('checkDuplicates', this)">① 중복 신청 확인</button>
+  <button onclick="run('sendTestMail', this)">② 선정 메일 시험 발송(나에게)</button>
+  <button class="main" onclick="sendReal(this)">③ 선정 메일 실제 발송</button>
+  <button onclick="run('listUnselected', this)">④ 미선정자 목록 만들기</button>
+  <div class="grp">현황</div>
+  <button onclick="run('buildStatus', this)">⑤ 연수·공익·회비 통합하기</button>
+  <div id="msg">버튼을 누르면 결과가 여기에 표시됩니다.</div>
+<script>
+  function show(text, isErr) {
+    var m = document.getElementById('msg');
+    m.textContent = text; m.className = isErr ? 'err' : '';
+  }
+  function run(fn, btn) {
+    btn.disabled = true; show('처리 중…');
+    google.script.run
+      .withSuccessHandler(function (r) { btn.disabled = false; show(r); })
+      .withFailureHandler(function (e) { btn.disabled = false; show('오류: ' + e.message, true); })[fn]();
+  }
+  function sendReal(btn) {
+    btn.disabled = true; show('대상 확인 중…');
+    google.script.run
+      .withSuccessHandler(function (n) {
+        btn.disabled = false;
+        if (n === 0) { show('보낼 대상이 없습니다. [선정] 칸을 확인하세요.'); return; }
+        if (confirm(n + '명에게 선정 안내 메일을 보냅니다. 진행할까요?')) run('sendSelectedMails', btn);
+        else show('발송을 취소했습니다.');
+      })
+      .withFailureHandler(function (e) { btn.disabled = false; show('오류: ' + e.message, true); })
+      .countMailTargets();
+  }
+</script>
+</body>
+</html>

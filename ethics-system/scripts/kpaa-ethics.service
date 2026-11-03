@@ -1,0 +1,17 @@
+# /etc/systemd/system/kpaa-ethics.service  (Docker 없이 리눅스 서버에 직접 설치하는 경우)
+[Unit]
+Description=KPAA 윤리·징계·광고 업무지원 시스템
+After=network.target
+
+[Service]
+User=kpaa
+WorkingDirectory=/opt/kpaa-ethics/backend
+EnvironmentFile=/opt/kpaa-ethics/.env
+ExecStart=/opt/kpaa-ethics/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --proxy-headers
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
