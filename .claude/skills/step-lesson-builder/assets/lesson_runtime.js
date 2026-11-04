@@ -49,17 +49,13 @@ function fitMocks() {
     let wrap = mock.parentElement.classList.contains('mock-fit') ? mock.parentElement : null;
     if ((wrap || mock).style.display === 'none') return;
     const avail = f.clientWidth;
-    if (avail >= DESIGN_W) {
-      if (wrap) { wrap.replaceWith(mock); mock.style.cssText = ''; }
-      f.classList.remove('zoomable');
-      return;
-    }
+    // 항상 DESIGN_W 폭으로 그리고 칸에 맞게 확대(최대 1.3배)·축소 → PC와 휴대폰에서 팝업·번호 위치가 같다
     if (!wrap) { wrap = document.createElement('div'); wrap.className = 'mock-fit'; mock.replaceWith(wrap); wrap.appendChild(mock); }
     mock.style.width = DESIGN_W + 'px';
-    const scale = avail / DESIGN_W;
+    const scale = Math.min(avail / DESIGN_W, 1.3);
     mock.style.transform = 'scale(' + scale + ')';
     wrap.style.height = Math.ceil(mock.offsetHeight * scale) + 'px';
-    f.classList.add('zoomable');
+    f.classList.toggle('zoomable', scale < 0.98);
   });
 }
 function openLightbox(f) {

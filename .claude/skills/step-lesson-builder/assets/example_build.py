@@ -1,4 +1,4 @@
-"""예시 교안 — 모든 부품 사용법을 보여주는 최소 예제(2개 실습 탭 + 홈 + 부록).
+"""예시 교안 — 부품 사용법을 보여주는 예제(홈 + 실습 2탭 + 부품 모음 + 부록).
 실행: python3 example_build.py <출력폴더>   → <출력폴더>/index.html
 새 교안을 만들 때 이 파일을 복사해 내용만 바꾸는 것이 가장 빠르다.
 """
@@ -6,8 +6,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lessonkit import (Page, box, build, cards, chat_view, code_block, dialog, dropdown, fig, figs, flow, gbtn, google_auth,
-                       hero, kbd, mk, prompt, section, sheets_window, shot_list_section, step, table, ui, wrap)
+from lessonkit import (Page, app_window, box, build, cards, chat_view, code_block, dialog, dropdown, fig, figs, flow, gbtn,
+                       google_auth, grid, hero, kbd, mail_view, mk, prompt, section, sheets_window, shot_list_section, sidebar,
+                       step, table, ui, wrap)
+from mocks_canva import canva_editor, cv_card, cv_stage, cv_text_panel
+from mocks_notion import NT_CSS, make_side, nt_db, nt_window
 
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else "example_out")
 PC = "편집 작업은 휴대폰에서 하기 어렵습니다. 휴대폰에서는 화면 확인·복습용으로 보세요. 그림은 탭하면 크게 볼 수 있습니다."
@@ -45,9 +48,30 @@ p2 = wrap(section("2. 자동화", "약 20분") + step(
          figure=fig("m2-04", "AI에게 요청", chat_view([("user", "완료된 줄을 회색으로 칠하는 코드를 만들어줘"), ("ai", "아래 코드를 붙여넣고 tidy를 실행하세요…")],
                                                   marks={0: 1, "send": 2}))), pc_note=PC)
 
+# ── 부품 모음: 새 도구 교안을 만들 때 조합 예시로 참고 ──
+parts = wrap(
+    section("부품 모음", "app_window · mail_view · sidebar · 캔바 · 노션 조합 예")
+    + step("P-1", "범용 앱 창 + 오른쪽 패널", "전용 부품이 없는 도구는 app_window에 grid·버튼·입력칸을 조립합니다.",
+           [f"{ui('새로 만들기')} 클릭", "오른쪽 패널에서 항목 입력"], ok="패널이 열리면 성공",
+           figure=fig("p-01", "범용 앱 창", app_window(
+               "사내 접수 시스템", mk(gbtn("새로 만들기", True), 1) + '<span class="minput">검색</span>' + grid(rows), icon_color="#0b1f4b",
+               overlay=sidebar("새 접수", mk('<span class="minput">제목</span>', 2, block=True) + '<span class="mbtn p">저장</span>'))))
+    + step("P-2", "메일·캔바·노션", "도구별 전용 부품을 씁니다(노션은 build(extra_css=NT_CSS) 필요).",
+           ["받은 메일 확인", "캔바에서 제목 추가", "노션 표에 행 추가"], ok="세 화면 모두 번호가 글과 맞으면 성공",
+           figure=figs(
+               fig("p-02", "받은 메일", mail_view("[안내] 실습 메일", "안녕하세요.\n실습용 메일입니다.", sender="담당자")),
+               fig("p-03", "캔바 편집 화면", canva_editor(
+                   cv_stage(cv_card(title="연수 안내", date="11. 26.(목)", org="기관 · 안내", footer="문의 000-0000", marks={"title": 2})),
+                   rail_on="텍스트", panel=cv_text_panel(marks={"제목 추가": 1}))),
+               fig("p-04", "노션 데이터베이스", nt_window(
+                   nt_db([("문의 제목", "title"), ("처리 상태", "status")], [["회비 문의", "접수"], ["연수 문의", "처리 중"]], add_row_mark=3),
+                   side_items=make_side("예시 워크스페이스", my_pages=("📄 실습",), db="🗂 데이터베이스"))))))
+
 ap = wrap(section("부록") + "<h3>자주 보는 오류</h3>" + table(["오류", "해결"], [["탭을 찾을 수 없습니다", "탭 이름 확인"]]) + shot_list_section())
 
-build(OUT / "index.html", [Page("home", "", "홈", home), Page("p1", "1", "준비", p1), Page("p2", "2", "자동화", p2), Page("ap", "+", "부록", ap)],
+build(OUT / "index.html", [Page("home", "", "홈", home), Page("p1", "1", "준비", p1), Page("p2", "2", "자동화", p2),
+                           Page("parts", "P", "부품 모음", parts), Page("ap", "+", "부록", ap)],
       title="예시 교안", description="lessonkit 예시", brand=("EX", "예시 교안", "예시 기관"),
-      site_url="https://example.github.io/repo/lesson/", og_image="og_image.jpg")
+      site_url="https://example.github.io/repo/lesson/", og_image="og_image.jpg",
+      extra_css=NT_CSS)   # 노션 부품을 쓰는 교안만 필요
 print("wrote", OUT / "index.html")

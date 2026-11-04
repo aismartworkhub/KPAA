@@ -21,6 +21,8 @@ class P(HTMLParser):
         self.depth_step = None
         self.in_do = 0
         self.shotlist = False
+        self.wrap_depth = []      # 열린 .wrap 의 깊이들
+        self.outside = []         # wrap 밖 단계
         self.cur_fig = None       # 현재 그림의 번호 목록
         self.depth_fig = None
 
@@ -48,6 +50,10 @@ class P(HTMLParser):
             self.meta[a.get("property") or a.get("name")] = a.get("content", "")
         if a.get("id") == "shotlist":
             self.shotlist = True
+        if tag == "div" and "wrap" in cls:
+            self.wrap_depth.append(len(self.stack))
+        if tag == "section" and "step" in cls and not self.wrap_depth:
+            self.outside.append((a.get("id") or "")[1:])
         if tag == "section" and "step" in cls:
             self.cur_step = {"no": (a.get("id") or "")[1:], "goal": False, "todo": 0, "ok": False, "marks": []}
             self.steps.append(self.cur_step)
@@ -70,6 +76,8 @@ class P(HTMLParser):
         if self.stack:
             if self.in_do and len(self.stack) == self.in_do and tag == "ol":
                 self.in_do = 0
+            if self.wrap_depth and len(self.stack) == self.wrap_depth[-1] and tag == "div":
+                self.wrap_depth.pop()
             if self.depth_fig and len(self.stack) == self.depth_fig and tag == "figure":
                 self.cur_fig = None
                 self.depth_fig = None
@@ -88,6 +96,8 @@ def main(arg):
     parser.feed(src)
     errors, warns = [], []
 
+    if parser.outside:
+        errors.append(f"단계 카드가 본문 상자(wrap) 밖에 있음: STEP {parser.outside} — wrap(...) 괄호 위치 확인")
     if set(parser.tabs) != set(parser.pages):
         errors.append(f"탭과 페이지 id가 맞지 않음: 탭 {parser.tabs} / 페이지 {parser.pages}")
     dups = sorted({x for x in parser.figs if parser.figs.count(x) > 1})

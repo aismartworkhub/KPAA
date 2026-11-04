@@ -7,7 +7,8 @@ description: 화면을 보며 단계별로 따라 하는 실습 교안(웹 페�
 
 화면을 보며 그대로 따라 하면 누구나 끝까지 갈 수 있는 **웹 교안 1개 + 공유 링크**를 만든다.
 완성 기준 예시: https://aismartworkhub.github.io/KPAA/appscript/ (사용자가 "이 스타일로 앞으로도"라고 요청해 만든 스킬 —
-구성·말투·화면 표현을 이 교안과 같게 맞춘다). 이 스킬은 Claude Code(웹 대화창·터미널)에서 쓰는 것을 기준으로 한다.
+구성·말투·화면 표현을 이 교안과 같게 맞춘다. 이 주소를 열 수 없는 환경이면 `assets/example_build.py` 결과물을 기준으로 삼는다).
+이 스킬은 Claude Code(웹 대화창·터미널)에서 쓰는 것을 기준으로 한다.
 
 ## 왜 이 형식인가
 수강생은 대개 비개발자이고, 강의 중에는 강사 화면과 자기 화면을 번갈아 본다. 그래서
@@ -17,8 +18,8 @@ description: 화면을 보며 단계별로 따라 하는 실습 교안(웹 페�
 
 ## 0. 환경 확인 (처음 한 번, 1분)
 ```bash
-S=<이 스킬 폴더>   # 예: .claude/skills/step-lesson-builder 또는 ~/.claude/skills/.../step-lesson-builder
-python3 -c "import PIL" && node -e "1" && fc-list :lang=ko family | head -1
+S=<이 스킬 폴더>   # 스킬을 불러올 때 안내되는 "Base directory" (예: .claude/skills/step-lesson-builder)
+python3 -c "import PIL" && node -e "1" && fc-list :lang=ko family | grep -iv unifont | head -1   # 마지막 줄에 한글 글꼴 이름이 나오면 OK
 ```
 - 점검 스크립트는 전역 Playwright(`npm root -g`)를 스스로 찾는다. 못 찾으면 `python3 $S/scripts/check_lesson.py`(브라우저 없는 점검)로 대신하고 그 사실을 보고한다.
 - 한글 글꼴이 없으면 스크린샷·미리보기 이미지가 □로 나온다 → 가능하면 `apt-get install -y fonts-noto-cjk`, 안 되면 보고서에 적는다.
@@ -32,23 +33,30 @@ python3 -c "import PIL" && node -e "1" && fc-list :lang=ko family | head -1
 - **실습 데이터는 가상으로.** 실제 파일의 특징(열 이름, 제목행, 공백, 이상값)만 살린다. 실제 자료의 수치를 인용할 때는 집계값만.
 
 ## 2. 실습 자산 만들기와 검증
-교안 폴더(예: `<저장소>/<교안이름>/`)에 `code/`, `practice/`, `shots/`(빈 폴더 + README), `src/`를 둔다.
+교안 폴더(예: `<저장소>/<교안이름>/`)에 `practice/`(실습 파일), `shots/`(빈 폴더 + README), `src/`(빌드·점검 스크립트)를 두고,
+붙여넣을 코드가 있는 교안만 `code/`를 둔다.
 - **코드가 있는 교안**(Apps Script, 함수, 자동화): 실제로 실행해 본다. 외부 서비스에 접속할 수 없으면 모의 환경을 만들어 핵심 로직을 시험한다
   (예: Apps Script → Node `vm` + SpreadsheetApp 흉내 객체). 교안의 코드 상자는 `code_block(path=...)`로 **실제 파일을 그대로** 넣는다.
-- **코드가 없는 교안**(캔바·노션·채팅 AI 등): 실습 문구·예시 파일을 만들고 작은 스크립트로 점검한다 — 글자 수 제한, 날짜·요일 일치(달력 계산),
-  예시 답이 원문 사실(날짜·숫자·이름)을 바꾸지 않았는지, 개인정보가 없는지.
+- **반쯤 코드**(노션·엑셀 수식, 자동화 규칙): 가능하면 Python으로 옮겨 실습 데이터에 모의 계산해 결과 개수를 확인하고, 교안의 "성공하면"에 그 개수를 적는다.
+  옮기기 어려우면 "실제 화면에서 확인 필요"로 보고한다.
+- **코드가 없는 교안**(캔바·노션·채팅 AI 등): 실습 문구·예시 파일을 만들고 점검한다 —
+  `python3 $S/scripts/check_practice_text.py --year <연도> practice/*` (요일·개인정보 의심),
+  `--facts 원문 예시답` (예시 답이 원문의 날짜·시각·숫자를 바꾸지 않았는지), `--maxlen N --lines N` (카드 문구 길이).
+  교안 전용 규칙이 더 있으면 `src/check_practice.py`로 추가한다.
 - **화면 이름을 실제로 확인할 수 없을 때**: 아는 범위의 정확한 한국어 이름을 쓰고, 바뀌기 쉬운 것은 대안을 함께 적는다
   ("＋ 만들기(또는 디자인 만들기)"). 확인 못 한 기능·요금제 차이는 단정하지 말고, 보고서에 "강의 전 실제 계정으로 1회 리허설 + 캡처 교체"를 권한다.
 
 ## 3. 교안 작성
 ```bash
 mkdir -p <교안>/src && cp $S/assets/{lessonkit.py,lesson.css,lesson_runtime.js} <교안>/src/
-cp $S/assets/mocks_canva.py <교안>/src/   # 캔바 교안일 때
+cp $S/assets/mocks_canva.py <교안>/src/    # 캔바 교안일 때
+cp $S/assets/mocks_notion.py <교안>/src/   # 노션 교안일 때 — build(..., extra_css=NT_CSS)
 cp $S/assets/example_build.py <교안>/src/build.py && python3 <교안>/src/build.py <교안>   # → <교안>/index.html
 ```
 **예시를 복사해 내용만 바꾸는 것이 가장 빠르다.** 쓰기 전에 다음을 읽는다:
 - `references/style-guide.md` — 탭 구성, 단계 카드 쓰는 법, 말투, 그림 그리는 법, 품질 체크리스트
-- `references/components.md` — 부품 목록(구글 시트·코드 편집기·구글 권한 화면·메일·AI 대화·캔바·범용 앱 창·메뉴/드롭다운/확인창/패널)
+- `references/components.md` — 부품 목록(구글 시트·코드 편집기·구글 권한 화면·메일·AI 대화·캔바·노션·범용 앱 창·메뉴/드롭다운/확인창/패널).
+  예시의 "부품 모음" 탭에 조합 예가 있다.
 - 새 도구 화면이 필요하면 `app_window`로 조립하고, 이 교안에만 필요한 스타일은 `build(..., extra_css=...)`로 넘긴다(lesson.css 수정 금지).
   두 번 이상 쓸 부품이면 `mocks_<도구>.py`로 묶어 두고 끝에 사용자에게 스킬에 추가할지 묻는다.
 - 편집 실습이 있는 탭은 `wrap(..., pc_note=...)`(휴대폰에서만 "실습은 PC에서" 안내). 부록에는 `shot_list_section()`.
@@ -58,7 +66,8 @@ cp $S/assets/example_build.py <교안>/src/build.py && python3 <교안>/src/buil
 node $S/scripts/check_lesson.mjs <교안> <스크린샷폴더>   # PC 1280 + 휴대폰 390·360, 모든 탭
 python3 $S/scripts/check_lesson.py <교안>                # 구조 점검(단계 구성·번호 대응·링크·미리보기 태그)
 ```
-두 점검이 잡는 것: 가로 넘침·잘린 글자·스크립트 오류·복사 버튼·탭 확대·촬영 목록·그림 ID 중복, 그림 안 번호 중복(경고), 따라 하기 수보다 큰 번호(경고).
+두 점검이 잡는 것: 가로 넘침·잘린 글자·스크립트 오류·복사 버튼·탭 확대·촬영 목록·그림 ID 중복·단계 카드가 본문 상자 밖(괄호 실수)·PC 탭 두 줄,
+그림 안에서 번호 대상이 팝업에 가려짐·팝업이 그림 밖으로 넘침, 그림 안 번호 중복·배지 겹침·따라 하기 수보다 큰 번호(경고).
 "문제 없음"이어도 **스크린샷을 직접 열어** 확인한다: PC 각 실습 탭, 휴대폰 첫 실습 탭, 확대 화면 —
 글 번호와 그림 번호가 맞는지, 같은 번호가 실수로 두 번 찍히지 않았는지, 드롭다운·팝업이 잘리거나 글자가 어색하게 줄바꿈되지 않는지.
 고친 뒤에는 점검을 다시 돌린다.

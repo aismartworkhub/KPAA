@@ -8,7 +8,7 @@
 
 설계 원칙 (references/style-guide.md 참고)
 - 모든 화면 텍스트는 E()로 이스케이프. 의도한 HTML 조각만 문자열로 이어 붙인다.
-- 그림(모형 화면)은 폭 DESIGN_W(560px) 기준으로 그린다. 휴대폰에서는 자동 축소 + 탭하면 확대.
+- 그림(모형 화면)은 항상 폭 DESIGN_W(560px)로 그린 뒤 칸 폭에 맞게 확대·축소한다 → PC·휴대폰에서 팝업 위치가 같다. 휴대폰에서는 탭하면 확대.
 - 모형 화면의 빨간 번호(mk)는 바로 옆 '따라 하기' 번호와 같은 숫자를 쓴다.
 - shots/<그림ID>.png 가 있으면 실제 캡처가 자동으로 모형을 대신한다.
 """
@@ -162,8 +162,8 @@ def menubar(menus, marks: dict | None = None, dd_for: tuple | None = None) -> st
 
 
 def dialog(title: str, body_html: str, buttons_html: str) -> str:
-    """화면 위에 뜨는 확인 창(반투명 배경 포함) — overlay 인자로 넘긴다."""
-    return (f'<div class="dlg-back"><div class="dlg"><h4>{title}</h4><div>{body_html}</div>'
+    """화면 위에 뜨는 확인 창(반투명 배경 포함) — overlay 인자로 넘긴다. title은 글자(자동 이스케이프), body·buttons는 HTML."""
+    return (f'<div class="dlg-back"><div class="dlg"><h4>{E(title)}</h4><div>{body_html}</div>'
             f'<div class="btns">{buttons_html}</div></div></div>')
 
 

@@ -49,6 +49,17 @@
 | `cv_text_panel(marks={'제목 추가':1})`, `cv_text_tool(font_mark=, lock_mark=)` | 텍스트 패널, 글자 도구줄 |
 | `cv_share_pop(download_mark=)`, `cv_download_pop(pages, fmt_mark=, button_mark=)`, `cv_pop(inner, right=, width=)` | 공유·다운로드 팝업 |
 
+## 노션 (`mocks_notion.py`, 교안 src/에 복사 + `build(..., extra_css=NT_CSS)`)
+| 함수 | 그리는 것 |
+|---|---|
+| `nt_window(body, crumbs, side_items=make_side(워크스페이스, team_pages, my_pages, db), side_on, side_marks, top_marks={'공유':1}, overlay=)` | 노션 화면(왼쪽 사이드바 + 위쪽 경로) |
+| `nt_page(title, inner, icon, title_mark)` | 일반 페이지 |
+| `nt_db(cols=[(이름, 유형)], rows, views, view_on, view_marks, tool_marks={'필터':1,'정렬':2}, col_marks, cell_marks, add_row_mark)` | 데이터베이스 표. 유형: title/text/select/status/person/date/formula/id/created |
+| `nt_board(groups, views, view_on, …)` | 보드 보기(상태별 칸) |
+| `nt_pop(items, top, left/right, width, search, title)` / `nt_modal(title, inner)` / `nt_peek(title, props, body_html)` / `nt_panel(title, inner)` | 메뉴 팝업, 가운데 창, 사이드 보기(페이지 열기), 오른쪽 설정 패널 |
+| `nt_calendar(year, month, sel, mark, remind, …)` | 날짜 선택·알림 |
+| `pill(text, color)`, `status_pill`, `person(name)` | 선택 꼬리표, 상태 꼬리표, 사람 |
+
 ## 새 도구 조립 예
 예: 범용 창에 "디자인 만들기" 버튼
 ```python

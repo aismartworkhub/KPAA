@@ -2,6 +2,7 @@
 // - PC(1280) + 휴대폰(390·360)에서 모든 탭: 가로 넘침, 잘린 요소, 콘솔 오류
 // - 복사 버튼 동작, 휴대폰 그림 탭 확대(라이트박스), 촬영 목록 생성
 // - 번호 대응(경고): 그림 한 장 안의 같은 번호 중복, 그림 번호가 따라 하기 항목 수보다 큼
+// - 그림 안: 번호 대상이 팝업에 가려짐·팝업이 그림 밖으로 넘침(오류), 번호 배지 겹침(경고) / PC 상단 탭 두 줄
 // - 한글 글꼴 설치 여부(없으면 스크린샷·육안 점검이 □로 보임)
 // Playwright 필요. 전역 설치(npm root -g)도 자동으로 찾는다. 다른 위치면 PLAYWRIGHT_REQUIRE_FROM 지정.
 import { createRequire } from 'module';
@@ -45,6 +46,7 @@ for (const [label, opt] of configs) {
   const ids = await p.evaluate(() => [...document.querySelectorAll('.tab')].map(t => t.dataset.p));
   const navH = await p.evaluate(() => Math.round(document.querySelector('.nav').getBoundingClientRect().height));
   if (label !== 'desktop' && navH > 80) problems.push(`[${label}] 상단 탭 높이 ${navH}px — 휴대폰에서 너무 큼`);
+  if (label === 'desktop' && navH > 70) problems.push(`[desktop] 상단 탭이 두 줄(${navH}px) — 탭 이름·브랜드 글자를 줄이기`);
   for (const id of ids) {
     await p.evaluate(i => document.querySelector(`.tab[data-p="${i}"]`).click(), id);
     await p.waitForTimeout(250);
@@ -73,6 +75,8 @@ for (const [label, opt] of configs) {
     const shots = await p.locator('#shotlist tr').count();
     const figsTotal = await p.locator('figure.shot').count();
     if (figsTotal && shots !== figsTotal + 1) problems.push(`[desktop] 촬영 목록 ${shots - 1}행 ≠ 그림 ${figsTotal}개 (부록에 shot_list_section() 필요)`);
+    const outside = await p.evaluate(() => [...document.querySelectorAll('main.page section.step')].filter(s => !s.closest('.wrap')).map(s => s.id.slice(1)));
+    if (outside.length) problems.push(`단계 카드가 본문 상자(wrap) 밖에 있음: STEP ${outside.join(', ')} — wrap(...) 괄호 위치 확인`);
     const dup = await p.evaluate(() => { const s = [...document.querySelectorAll('figure.shot')].map(f => f.dataset.shot); return s.filter((x, i) => s.indexOf(x) !== i); });
     if (dup.length) problems.push(`[desktop] 그림 ID 중복: ${[...new Set(dup)].join(', ')}`);
     // 글 번호 ↔ 그림 번호 대응
@@ -86,6 +90,40 @@ for (const [label, opt] of configs) {
       if (d.length) notes.push(`STEP ${st.no} 그림 ${f.id}: 같은 번호 ${[...new Set(d)].join(',')}가 두 곳 — '누를 곳 + 결과'처럼 의도한 게 아니면 하나 지우기`);
       const mx = Math.max(0, ...f.ns);
       if (mx > st.todo) notes.push(`STEP ${st.no} 그림 ${f.id}: 번호 ${mx} > 따라 하기 ${st.todo}개 — 글 번호와 대응 확인`);
+    }
+    // 그림 안 겹침·잘림: 번호 대상이 팝업에 가려짐, 팝업이 그림 밖으로 넘침, 번호 배지끼리 겹침
+    for (const id of ids) {
+      await p.evaluate(i => document.querySelector(`.tab[data-p="${i}"]`).click(), id);
+      await p.waitForTimeout(150);
+      const figsOnPage = await p.locator('.page.show figure.shot').all();
+      for (const fg of figsOnPage) {
+        await fg.scrollIntoViewIfNeeded();
+        const r = await fg.evaluate(f => {
+          const out = { covered: [], spill: [], overlap: [] };
+          const mock = f.querySelector('.mock'); if (!mock || mock.offsetParent === null) return out;
+          const box = mock.getBoundingClientRect();
+          const mks = [...f.querySelectorAll('.mk')];
+          for (const m of mks) {
+            const rc = m.getBoundingClientRect();
+            const x = Math.min(rc.left + Math.min(rc.width, 30) / 2, box.right - 2), y = rc.top + rc.height / 2;
+            if (rc.width < 1 || y < 0 || y > innerHeight) continue;
+            const hit = document.elementFromPoint(x, y);
+            if (hit && !m.contains(hit) && !hit.contains(m)) out.covered.push(m.dataset.n);
+          }
+          mock.querySelectorAll('.dd,.dlg,.sidebar,.cv-pop,[class*="pop"],[class*="peek"],[class*="modal"]').forEach(el => {
+            const rc = el.getBoundingClientRect();
+            if (rc.width && (rc.bottom > box.bottom + 2 || rc.right > box.right + 2 || rc.left < box.left - 2)) out.spill.push(String(el.className).split(' ')[0]);
+          });
+          const badges = mks.map(m => { const rc = m.getBoundingClientRect(); return { n: m.dataset.n, x: rc.right, y: rc.top }; });
+          for (let i = 0; i < badges.length; i++) for (let j = i + 1; j < badges.length; j++)
+            if (Math.abs(badges[i].x - badges[j].x) < 16 && Math.abs(badges[i].y - badges[j].y) < 16) out.overlap.push(badges[i].n + '·' + badges[j].n);
+          return out;
+        });
+        const sid = await fg.getAttribute('data-shot');
+        if (r.covered.length) problems.push(`그림 ${sid}: 번호 ${[...new Set(r.covered)].join(',')}의 대상이 다른 요소(팝업 등)에 가려짐`);
+        if (r.spill.length) problems.push(`그림 ${sid}: 팝업·메뉴가 그림 밖으로 넘쳐 잘림(${[...new Set(r.spill)].join(',')}) — 위치(top/left/right)나 그림 높이 조정`);
+        if (r.overlap.length) notes.push(`그림 ${sid}: 번호 배지가 겹침(${r.overlap.join(', ')})`);
+      }
     }
     if (notes.length) console.log('⚠ ' + notes.join('\n⚠ '));
     console.log(`그림 ${figsTotal}개, 탭 ${ids.length}개`);
