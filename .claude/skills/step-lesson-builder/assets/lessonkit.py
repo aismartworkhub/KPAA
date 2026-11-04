@@ -24,9 +24,11 @@ DESIGN_W = 560
 
 # ───────────────────────────── 기본 조각 ─────────────────────────────
 
-def mk(text: str, n) -> str:
-    """빨간 테두리 + 번호 배지. text는 이미 HTML이어도 됨(이스케이프는 호출자가)."""
-    return f'<span class="mk" data-n="{n}">{text}</span>'
+def mk(text: str, n, block: bool = False) -> str:
+    """빨간 테두리 + 번호 배지. text는 이미 HTML이어도 됨(이스케이프는 호출자가).
+    목록(ul)·상자처럼 블록 요소에 번호를 달 때는 block=True."""
+    tag = "div" if block else "span"
+    return f'<{tag} class="mk" data-n="{n}">{text}</{tag}>'
 
 
 def ui(label: str) -> str:
@@ -114,11 +116,13 @@ def fig(sid: str, cap: str, inner: str) -> str:
 
 
 def code_block(title: str, path: str | Path | None = None, text: str | None = None, cid: str = "code",
-               download_href: str | None = None, tall: bool = False) -> str:
-    """코드 상자 + 전체 복사(+내려받기). path를 주면 실제 파일 내용을 그대로 넣는다(교안·코드 불일치 방지)."""
+               download_href: str | None = None, tall: bool = False, wrap: bool = False) -> str:
+    """코드 상자 + 전체 복사(+내려받기). path를 주면 실제 파일 내용을 그대로 넣는다(교안·코드 불일치 방지).
+    wrap=True: 긴 안내문·실습 문구처럼 코드가 아닌 글은 줄바꿈해서 보여준다(복사 내용은 그대로)."""
     src = Path(path).read_text(encoding="utf-8") if path else (text or "")
     dl = f'<a class="copy-btn" style="text-decoration:none" href="{E(download_href)}" download>내려받기</a> ' if download_href else ""
-    return (f'<div class="code{" tall" if tall else ""}"><div class="code-top"><span>📄 {E(title)} · {len(src.splitlines())}줄</span>'
+    cls = "code" + (" tall" if tall else "") + (" wraptext" if wrap else "")
+    return (f'<div class="{cls}"><div class="code-top"><span>📄 {E(title)} · {len(src.splitlines())}줄</span>'
             f'<span>{dl}<button class="copy-btn" data-copy="{E(cid)}">전체 복사</button></span></div>'
             f'<pre id="{E(cid)}">{E(src)}</pre></div>')
 
@@ -268,10 +272,12 @@ def mail_view(subject: str, body: str, sender="보낸 사람", to="나", marks=(
             f'<div class="body">{mk(E(body), marks[1])}</div></div>')
 
 
-def chat_view(messages, input_text="메시지를 입력하세요", app="Claude", marks: dict | None = None) -> str:
-    """AI 대화 화면. messages=[('user'|'ai', 텍스트), ...], marks={메시지순번: 번호, 'input': 번호, 'send': 번호}"""
+def chat_view(messages, input_text="메시지를 입력하세요", app="Claude", marks: dict | None = None,
+              hello: str = "무엇을 도와드릴까요?") -> str:
+    """AI 대화 화면. messages=[('user'|'ai', 텍스트), ...], marks={메시지순번: 번호, 'input': 번호, 'send': 번호}
+    messages가 비어 있으면 '새 채팅' 첫 화면(인사말 + 입력창)으로 그린다."""
     marks = marks or {}
-    out = []
+    out = [] if messages else [f'<div class="hello"><b>{E(app)}</b>{E(hello)}</div>']
     for i, (who, text) in enumerate(messages):
         m = f'<div class="msg {who}">{E(text)}</div>'
         out.append(mk(m, marks[i]) if i in marks else m)
@@ -306,9 +312,10 @@ class Page:
 
 def build(out_path, pages: list[Page], *, title: str, description: str, brand=("AS", "교안", "부제"),
           site_url: str | None = None, og_image: str | None = None, og_title: str | None = None,
-          site_name: str | None = None) -> Path:
-    """index.html 생성. site_url(배포 주소, '/'로 끝)과 og_image(파일명)를 주면 카카오톡·SNS 미리보기 태그를 넣는다."""
-    css = (HERE / "lesson.css").read_text(encoding="utf-8")
+          site_name: str | None = None, extra_css: str = "") -> Path:
+    """index.html 생성. site_url(배포 주소, '/'로 끝)과 og_image(파일명)를 주면 카카오톡·SNS 미리보기 태그를 넣는다.
+    extra_css: 이 교안에만 필요한 스타일(새 도구 모형 등) — lesson.css를 고치지 말고 여기로 넘긴다."""
+    css = (HERE / "lesson.css").read_text(encoding="utf-8") + ("\n/* 교안 전용 */\n" + extra_css if extra_css else "")
     js = (HERE / "lesson_runtime.js").read_text(encoding="utf-8")
     ids = [p.pid for p in pages]
     js = js.replace("__PAGE_IDS__", ",".join(f'"{i}"' for i in ids))

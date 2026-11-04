@@ -1,13 +1,26 @@
 // 교안 점검: node check_lesson.mjs <교안 폴더(index.html 있는 곳)> <스크린샷 저장 폴더>
 // - PC(1280) + 휴대폰(390·360)에서 모든 탭: 가로 넘침, 잘린 요소, 콘솔 오류
 // - 복사 버튼 동작, 휴대폰 그림 탭 확대(라이트박스), 촬영 목록 생성
-// Playwright 필요. 설치 위치가 다르면 PLAYWRIGHT_REQUIRE_FROM 환경변수로 지정.
+// - 번호 대응(경고): 그림 한 장 안의 같은 번호 중복, 그림 번호가 따라 하기 항목 수보다 큼
+// - 한글 글꼴 설치 여부(없으면 스크린샷·육안 점검이 □로 보임)
+// Playwright 필요. 전역 설치(npm root -g)도 자동으로 찾는다. 다른 위치면 PLAYWRIGHT_REQUIRE_FROM 지정.
 import { createRequire } from 'module';
+import { execSync } from 'node:child_process';
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-const require = createRequire(process.env.PLAYWRIGHT_REQUIRE_FROM || import.meta.url);
-const { chromium, devices } = require('playwright');
+function loadPlaywright() {
+  const tries = [process.env.PLAYWRIGHT_REQUIRE_FROM, import.meta.url];
+  try { tries.push(execSync('npm root -g', { encoding: 'utf8' }).trim() + '/'); } catch {}
+  for (const t of tries.filter(Boolean)) { try { return createRequire(t)('playwright'); } catch {} }
+  console.error('Playwright를 찾지 못했습니다. npm i -g playwright 후 다시 실행하거나, 브라우저 없이 python3 check_lesson.py 로 점검하세요.');
+  process.exit(2);
+}
+const { chromium, devices } = loadPlaywright();
+try {
+  const ko = execSync('fc-list :lang=ko family', { encoding: 'utf8' }).trim();
+  if (!ko) console.log('⚠ 한글 글꼴이 없습니다 — 스크린샷의 한글이 □로 보일 수 있습니다(예: apt-get install -y fonts-noto-cjk).');
+} catch {}
 
 const dir = path.resolve(process.argv[2] || '.');
 const out = path.resolve(process.argv[3] || './lesson-check');
@@ -62,6 +75,19 @@ for (const [label, opt] of configs) {
     if (figsTotal && shots !== figsTotal + 1) problems.push(`[desktop] 촬영 목록 ${shots - 1}행 ≠ 그림 ${figsTotal}개 (부록에 shot_list_section() 필요)`);
     const dup = await p.evaluate(() => { const s = [...document.querySelectorAll('figure.shot')].map(f => f.dataset.shot); return s.filter((x, i) => s.indexOf(x) !== i); });
     if (dup.length) problems.push(`[desktop] 그림 ID 중복: ${[...new Set(dup)].join(', ')}`);
+    // 글 번호 ↔ 그림 번호 대응
+    const marks = await p.evaluate(() => [...document.querySelectorAll('section.step')].map(st => {
+      const todo = st.querySelectorAll('ol.do > li').length;
+      return { no: st.id.slice(1), todo, figs: [...st.querySelectorAll('figure.shot')].map(f => ({ id: f.dataset.shot, ns: [...f.querySelectorAll('.mk')].map(m => +m.dataset.n).filter(Boolean) })) };
+    }));
+    const notes = [];
+    for (const st of marks) for (const f of st.figs) {
+      const d = f.ns.filter((n, i) => f.ns.indexOf(n) !== i);
+      if (d.length) notes.push(`STEP ${st.no} 그림 ${f.id}: 같은 번호 ${[...new Set(d)].join(',')}가 두 곳 — '누를 곳 + 결과'처럼 의도한 게 아니면 하나 지우기`);
+      const mx = Math.max(0, ...f.ns);
+      if (mx > st.todo) notes.push(`STEP ${st.no} 그림 ${f.id}: 번호 ${mx} > 따라 하기 ${st.todo}개 — 글 번호와 대응 확인`);
+    }
+    if (notes.length) console.log('⚠ ' + notes.join('\n⚠ '));
     console.log(`그림 ${figsTotal}개, 탭 ${ids.length}개`);
   } else {
     const f = p.locator('.page.show figure.shot').first();

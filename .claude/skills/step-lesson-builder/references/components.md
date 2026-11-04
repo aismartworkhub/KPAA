@@ -14,16 +14,16 @@
 | `table(headers, rows, raw=False)` | 일반 표 (raw=True면 셀에 HTML 허용) |
 | `box(kind, title, body_html)` | ok / warn / no / info 안내 상자 |
 | `downloads([(href, 라벨, 'g'|'')])` | 내려받기 버튼 |
-| `Page(pid, num, label, html)` + `build(out, pages, title=, description=, brand=(로고글자, 제목, 부제), site_url=, og_image=)` | 최종 HTML 생성 |
+| `Page(pid, num, label, html)` + `build(out, pages, title=, description=, brand=(로고글자, 제목, 부제), site_url=, og_image=, extra_css=)` | 최종 HTML 생성. extra_css = 이 교안 전용 스타일 |
 
 ## 단계·코드
 | 함수 | 용도 |
 |---|---|
 | `step(no, title, goal, todo, ok=, stuck=, figure=, extra=, one=)` | 단계 카드 (one=True: 그림 없이 1열) |
 | `fig(sid, cap, inner)` / `figs(*fig)` | 그림 1장 / 여러 장 세로 배치 |
-| `code_block(title, path= or text=, cid=, download_href=, tall=)` | 코드 상자 + 전체 복사(+내려받기). cid는 페이지에서 고유 |
+| `code_block(title, path= or text=, cid=, download_href=, tall=, wrap=)` | 코드 상자 + 전체 복사(+내려받기). cid는 페이지에서 고유. 코드가 아닌 긴 글(실습 문구·안내문)은 `wrap=True` |
 | `prompt(text)` | AI 프롬프트 카드(복사) |
-| `ui(label)`, `kbd(*keys)`, `mk(html, n)` | 화면 이름 표기, 키보드, 빨간 번호 |
+| `ui(label)`, `kbd(*keys)`, `mk(html, n, block=False)` | 화면 이름 표기, 키보드, 빨간 번호(목록·상자 같은 블록 요소는 `block=True`) |
 
 ## 모형 화면
 | 함수 | 그리는 것 | 번호 다는 법 |
@@ -35,11 +35,22 @@
 | `dialog(title, body_html, buttons_html)` + `gbtn(label, primary, n)` | 확인창(overlay로) | gbtn의 n |
 | `sidebar(title, inner_html)` | 오른쪽 작업 패널(overlay로) | inner에서 mk |
 | `mail_view(subject, body, sender, to)` | 받은 메일 | 제목 1, 본문 2 |
-| `chat_view([('user'|'ai', 텍스트)], input_text, app, marks={0:1,'input':2,'send':3})` | AI 대화(Claude·GPT 등) | 메시지 순번 / input / send |
+| `chat_view([('user'|'ai', 텍스트)], input_text, app, marks={0:1,'input':2,'send':3}, hello=)` | AI 대화(Claude·GPT 등). 메시지가 없으면 '새 채팅' 첫 화면 | 메시지 순번 / input / send |
 | `app_window(title, body_html, icon_color, menus=[...], marks, dd_for, overlay)` | 범용 웹·앱(캔바·노션·사내 시스템) | menus marks + body에서 mk |
 | `dropdown(items, align='left'|'right', width)` | 펼친 메뉴. items에 `('항목', 번호)`, `'-'` 구분선 | 튜플 |
 
-예: 캔바 "디자인 만들기" 버튼
+## 캔바 (`mocks_canva.py`, 교안 src/에 함께 복사)
+| 함수 | 그리는 것 |
+|---|---|
+| `canva_home(marks={'만들기':1,'search':2})` | 캔바 홈(왼쪽 ＋만들기, 검색창, 최근 디자인) |
+| `canva_editor(stage, rail_on='텍스트', rail_marks={'텍스트':1}, panel=, tool=, top_marks={'파일':1,'title':2,'share':3}, dd_for=('파일', dropdown(...)), popup=, row=)` | 편집 화면(보라색 상단 바·왼쪽 메뉴·패널·작업 영역) |
+| `cv_stage(cv_card(...), page='1페이지', dup_mark=)` / `cv_pages_row(card1, card2)`+`row=True` | 페이지 1장 / 여러 장 나란히 |
+| `cv_card(kind='cover'|'detail', title, date, lines, org, footer, marks={'title':2,'lines':3}, sel=('title',), lock=('org',), bg=)` | 카드뉴스 한 장(선택 테두리·🔒 잠금 표시) |
+| `cv_text_panel(marks={'제목 추가':1})`, `cv_text_tool(font_mark=, lock_mark=)` | 텍스트 패널, 글자 도구줄 |
+| `cv_share_pop(download_mark=)`, `cv_download_pop(pages, fmt_mark=, button_mark=)`, `cv_pop(inner, right=, width=)` | 공유·다운로드 팝업 |
+
+## 새 도구 조립 예
+예: 범용 창에 "디자인 만들기" 버튼
 ```python
 app_window("Canva", f'{mk(gbtn("디자인 만들기", True), 1)} <span class="minput">검색</span>' + grid([["템플릿","크기"],["카드뉴스","1080x1080"]]), icon_color="#7d2ae8")
 ```

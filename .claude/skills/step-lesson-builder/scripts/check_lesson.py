@@ -1,6 +1,6 @@
 """교안 정적 점검 — 브라우저 없이(Python만) 실행. Claude 대화창(코드 실행 환경)에서도 동작.
 사용: python3 check_lesson.py <교안폴더 또는 index.html>
-점검: 탭·페이지 짝, 단계 구성(목표·번호 순서·성공하면), 그림 번호 ≤ 따라 하기 수, 그림 ID 중복, 촬영 목록 자리,
+점검: 탭·페이지 짝, 단계 구성(목표·번호 순서·성공하면), 그림 한 장 안 번호 중복·번호 > 따라 하기 수, 그림 ID 중복, 촬영 목록 자리,
       복사 버튼 대상, 로컬 링크 파일 존재, 미리보기(og) 태그, 휴대폰 대응 코드 포함.
 브라우저 점검(scripts/check_lesson.mjs)이 가능한 환경이면 그것도 함께 실행할 것 — 실제 화면 잘림은 그쪽에서만 보인다.
 """
@@ -21,6 +21,8 @@ class P(HTMLParser):
         self.depth_step = None
         self.in_do = 0
         self.shotlist = False
+        self.cur_fig = None       # 현재 그림의 번호 목록
+        self.depth_fig = None
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -34,6 +36,10 @@ class P(HTMLParser):
             self.pages.append(a.get("id"))
         if tag == "figure" and "shot" in cls:
             self.figs.append(a.get("data-shot"))
+            self.cur_fig = {"id": a.get("data-shot"), "ns": []}
+            if self.cur_step is not None:
+                self.cur_step.setdefault("figs", []).append(self.cur_fig)
+            self.depth_fig = len(self.stack)
         if a.get("data-copy"):
             self.copy_targets.append(a["data-copy"])
         if tag == "a" and a.get("href"):
@@ -57,11 +63,16 @@ class P(HTMLParser):
                 self.cur_step["todo"] += 1
             if "mk" in cls and a.get("data-n", "").isdigit():
                 self.cur_step["marks"].append(int(a["data-n"]))
+                if self.cur_fig is not None:
+                    self.cur_fig["ns"].append(int(a["data-n"]))
 
     def handle_endtag(self, tag):
         if self.stack:
             if self.in_do and len(self.stack) == self.in_do and tag == "ol":
                 self.in_do = 0
+            if self.depth_fig and len(self.stack) == self.depth_fig and tag == "figure":
+                self.cur_fig = None
+                self.depth_fig = None
             if self.depth_step and len(self.stack) == self.depth_step and tag == "section":
                 self.cur_step = None
                 self.depth_step = None
@@ -95,8 +106,12 @@ def main(arg):
             errors.append(f"{tag}: 따라 하기 번호 목록 없음")
         if not s["ok"]:
             warns.append(f"{tag}: '성공하면' 없음")
-        if s["marks"] and max(s["marks"]) > s["todo"]:
-            warns.append(f"{tag}: 그림 번호 {max(s['marks'])}가 따라 하기 {s['todo']}개보다 큼 — 번호 대응 확인")
+        for fg in s.get("figs", []):
+            d = sorted({n for n in fg["ns"] if fg["ns"].count(n) > 1})
+            if d:
+                warns.append(f"{tag} 그림 {fg['id']}: 같은 번호 {d}가 두 곳 — '누를 곳 + 결과'처럼 의도한 게 아니면 하나 지우기")
+            if fg["ns"] and max(fg["ns"]) > s["todo"]:
+                warns.append(f"{tag} 그림 {fg['id']}: 번호 {max(fg['ns'])} > 따라 하기 {s['todo']}개 — 글 번호와 대응 확인")
     for href in parser.links:
         if href.startswith(("http", "#", "mailto:")) or not href:
             continue

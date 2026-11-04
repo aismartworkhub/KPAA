@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8">
-<!-- 미리보기 이미지 틀(1200x630). {{…}} 부분과 오른쪽 '대표 화면' 카드를 교안 주제에 맞게 바꾼 뒤 scripts/make_og.mjs로 렌더링 -->
+<!-- 미리보기 이미지 틀(1200x630). 이중 중괄호 자리표시와 오른쪽 카드를 교안 주제에 맞게 바꾼 뒤 scripts/make_og.mjs로 렌더링.
+     렌더링 후 반드시 눈으로 확인: 제목·설명이 단어 중간에서 끊기면 원하는 자리에 <br>을 넣거나 글자 크기를 줄인다. -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1200px;height:630px;font-family:'Pretendard','Noto Sans KR','Noto Sans CJK KR','Malgun Gothic',sans-serif;
@@ -8,9 +9,10 @@ body{width:1200px;height:630px;font-family:'Pretendard','Noto Sans KR','Noto San
 body::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 18%,rgba(201,162,75,.26),transparent 44%)}
 .l{position:absolute;left:70px;top:68px;width:660px}
 .eb{display:inline-block;padding:8px 20px;border:1.5px solid rgba(255,255,255,.4);background:rgba(255,255,255,.12);border-radius:999px;font-size:21px;font-weight:700}
-h1{font-size:56px;font-weight:900;line-height:1.18;letter-spacing:-.03em;margin:28px 0 22px}  /* 제목이 어색하게 끊기면 크기를 줄일 것 */
+h1{font-size:56px;font-weight:900;line-height:1.18;letter-spacing:-.03em;margin:28px 0 22px}
 h1 em{font-style:normal;color:#e8cd8a}
-p{font-size:26px;color:rgba(255,255,255,.9);line-height:1.5}
+p{font-size:26px;color:rgba(255,255,255,.9);line-height:1.5;word-break:keep-all}
+h1{word-break:keep-all}
 .tags{position:absolute;left:70px;bottom:60px;display:flex;gap:12px}
 .tags span{font-size:21px;font-weight:700;padding:8px 16px;border-radius:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
 .card{position:absolute;right:60px;top:110px;width:390px;background:#fff;color:#202124;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.35);overflow:hidden;padding:18px}
