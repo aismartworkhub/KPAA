@@ -26,6 +26,7 @@ GitHub Pages로 배포하면 아래 주소에서 열립니다.
 | 경로 | 내용 |
 |---|---|
 | `index.html` | 통합 교안 (커리큘럼 5회차 + 심화 · 실습 2종 · 모듈 A~D). 단일 파일, 외부 의존성 없음 |
+| `.claude/skills/step-lesson-builder/` | 교안 제작 스킬 — 이 교안들과 같은 형식(단계 카드·번호 모형 화면·모바일·미리보기·배포)으로 새 교안을 만든다. 이 저장소로 시작한 Claude Code 세션에서 자동으로 쓸 수 있음 |
 | `og_thumbnail.png` | 통합 교안 카카오톡·SNS 링크 미리보기 이미지(1200×630) — 원본 `assets/og/og_thumbnail.html`, 생성 `node assets/og/make_og.mjs` |
 | `assets/patent-3person-review.svg` | 특허 3인 협의심사 제도 안내 인포그래픽 (벡터 원본) |
 | `appscript/` | 회원서비스실 구글 시트 Apps Script 실습 교안 (1차 11/4, 2차 11/13) + 실습 코드·가상 데이터 |
