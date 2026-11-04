@@ -167,7 +167,43 @@ figure.shot .tog{font-size:11.5px;border:1px solid var(--bd);background:#fff;bor
 .dl{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;text-decoration:none;margin:4px 6px 4px 0}
 .dl.g{background:var(--gold2)}
 .foot-note{color:var(--tx2);font-size:13px;margin-top:40px;border-top:1px solid var(--bd);padding-top:14px}
-@media(max-width:860px){.step-b{grid-template-columns:1fr}.g2,.g3,.g4{grid-template-columns:1fr}.as{grid-template-columns:36px 1fr}.as-files{display:none}}
+/* 모형 화면 맞춤 축소 + 크게 보기 */
+.mock-fit{position:relative;overflow:hidden}
+.mock-fit>.mock{transform-origin:0 0;position:absolute;left:0;top:0}
+figure.shot.zoomable{cursor:zoom-in}
+.zoom-hint{display:none}
+figure.shot.zoomable .zoom-hint{display:inline}
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(10,15,30,.86);display:flex;flex-direction:column}
+.lightbox .lb-top{display:flex;justify-content:space-between;align-items:center;color:#fff;padding:10px 14px;font-size:14px;gap:10px}
+.lightbox .lb-top button{font:inherit;font-weight:800;background:#fff;color:#0b1f4b;border:none;border-radius:8px;padding:8px 16px;min-height:40px}
+.lightbox .lb-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 10px 20px}
+.lightbox .lb-body .mock,.lightbox .lb-body img{background:#fff;border-radius:10px;margin:0 auto}
+.lightbox .lb-body img{max-width:none;width:900px}
+.pc-note{display:none}
+@media(max-width:860px){
+  .step-b{grid-template-columns:minmax(0,1fr)!important}
+  .step-b>div,.grid>*{min-width:0}
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+  .nav .brand{display:none}
+  .nav-inner{padding:0 6px;flex-wrap:nowrap}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:12px 9px;font-size:14px}
+  .wrap{padding:18px 14px 60px}
+  h2.sec{font-size:21px}
+  .step-h{padding:12px 14px}.step-h h3{font-size:17px}
+  .step-b{padding:14px;gap:14px}
+  ol.do>li{font-size:15.5px;overflow-wrap:anywhere}
+  .ui,kbd,.kbd{white-space:normal}
+  table.t{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:14px}
+  .copy-btn{padding:9px 14px;font-size:13px;min-height:38px}
+  .code-top{flex-wrap:wrap;gap:6px}
+  .code pre{font-size:12px;max-height:260px}
+  .flow .fs{min-width:calc(50% - 20px)}
+  .flow .ar{display:none}
+  .pc-note{display:block}
+  .hero{padding:34px 16px 30px}
+}
 @media print{
   .nav,.copy-btn,.tog{display:none!important}
   .page{display:block!important}

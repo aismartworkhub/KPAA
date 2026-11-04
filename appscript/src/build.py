@@ -20,7 +20,7 @@ def mk(text, n):
 def fig(sid, cap, inner, h=None):
     style = f' style="min-height:{h}px"' if h else ""
     return (f'<figure class="shot" data-shot="{sid}" data-cap="{E(cap)}"><div class="mock"{style}>{inner}</div>'
-            f'<figcaption><span>{E(cap)}</span><span class="sid">{sid}</span></figcaption></figure>')
+            f'<figcaption><span>{E(cap)}<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">{sid}</span></figcaption></figure>')
 
 
 # ── 구글 시트 모형 ───────────────────────────────────────────
@@ -185,6 +185,8 @@ def apply_rows(n=7, selected=(), notes=None, status=None, short=True):
 first_code = (CODE / "01_첫자동화.gs").read_text(encoding="utf-8").splitlines()
 full_code = (CODE / "회원업무_전체코드.gs").read_text(encoding="utf-8").splitlines()
 pages = {}
+PC_NOTE = ('<div class="box warn pc-note"><b>💻 실습은 PC(크롬)에서</b> Apps Script 편집은 휴대폰에서 하기 어렵습니다. '
+           '휴대폰에서는 화면 확인·복습용으로 보세요. 그림은 탭하면 크게 볼 수 있습니다.</div>')
 
 # ── 홈 ──
 pages["home"] = f"""
@@ -239,6 +241,7 @@ replace_dialog = dialog("파일 가져오기",
                         f'<span class="gbtn">취소</span>{mk("<span class=gbtn p>데이터 가져오기</span>", 6)}')
 ext_dd = dropdown(["부가기능", "매크로", ("Apps Script", 2), "AppSheet"], align="right")
 pages["p0"] = f"""<div class="wrap">
+{PC_NOTE}
 <h2 class="sec">0. 준비 — 실습 시트 만들기<small>약 10분 · 엑셀 실습 파일을 구글 시트로 가져옵니다</small></h2>
 {step("0-1", "새 구글 시트 열기", "빈 구글 시트를 하나 만듭니다.", [
     "크롬 주소창에 <kbd>sheets.new</kbd> 입력 후 <kbd>Enter</kbd>",
@@ -276,6 +279,7 @@ pages["p0"] = f"""<div class="wrap">
 auth_needed = dialog("승인 필요", "이 프로젝트에서 내 데이터에 액세스하려면 승인이 필요합니다.",
                      f'<span class="gbtn">취소</span>{mk("<span class=gbtn p>권한 검토</span>", 1)}')
 pages["p1"] = f"""<div class="wrap">
+{PC_NOTE}
 <h2 class="sec">1. 첫 자동화 — 나만의 메뉴 만들기<small>약 20분 · 코드 붙여넣기 → 저장 → 실행 → 권한 승인, 이 네 동작만 익히면 됩니다</small></h2>
 {step("1-1", "코드 붙여넣기", "편집기에 있던 내용을 지우고 1단계 코드를 넣습니다.", [
     "아래 코드 상자의 <span class='ui'>전체 복사</span> 클릭",
@@ -346,6 +350,7 @@ log_rows = [["발송일시", "성명", "등록번호", "이메일", "추천기�
 tpl = FIX["메일양식"]
 mail_body = tpl[1][1].replace("{성명}", APPLY[1][2]).replace("{추천기관}", APPLY[1][1]).replace("{등록번호}", str(APPLY[1][3]))
 pages["p2"] = f"""<div class="wrap">
+{PC_NOTE}
 <h2 class="sec">2. 회원 추천 자동화<small>약 50분 · 중복 확인 → 선정 체크 → 시험 발송 → 실제 발송 → 미선정자 정리</small></h2>
 <div class="flow"><div class="fs"><b>구글폼 응답</b>추천신청 탭</div><div class="ar">→</div><div class="fs"><b>① 중복 확인</b>색·비고 표시</div><div class="ar">→</div>
 <div class="fs"><b>선정 체크</b>☑ 클릭</div><div class="ar">→</div><div class="fs"><b>② 시험 발송</b>나에게</div><div class="ar">→</div><div class="fs"><b>③ 실제 발송</b>+ 발송이력</div><div class="ar">→</div><div class="fs"><b>④ 미선정자</b>목록 탭</div></div>
@@ -421,6 +426,7 @@ chart = ('<div style="position:absolute;right:10px;top:118px;width:33%;backgroun
                    f'<span style="height:12px;background:#4285f4;width:{v * 3}px;border-radius:2px"></span>{v}</div>' for n, v in (("연수", 21), ("공익", 26), ("회비", 12)))
          + "</div>")
 pages["p3"] = f"""<div class="wrap">
+{PC_NOTE}
 <h2 class="sec">3. 연수·공익·회비 통합 현황 보드<small>2차 교육 · 약 40분 · 2주마다 받던 파일 대조를 버튼 하나로</small></h2>
 <div class="box info"><b>받은 실제 자료를 분석해 보니</b> 공익 ‘미이수자’ 파일 4,543명 중 의무시간보다 수행시간이 적은 사람은 2,448명이었습니다.
 나머지는 이미 채웠거나(1,902명) 의무가 없는(193명) 사람입니다. 그래서 이 보드는 <b>부족 시간이 있는 사람만</b> 미이수로 셉니다. 기준은 담당 부서와 확인 후 확정하세요.</div>
@@ -457,6 +463,7 @@ sidebar = ('<div class="sidebar"><div class="sb-t"><span>회원업무 패널</sp
            "<button>④ 미선정자 목록 만들기</button><div style='font-size:10.5px;color:#5b626c;margin-top:4px'>현황</div><button>⑤ 연수·공익·회비 통합하기</button>"
            + mk("<div class='msg'>중복 신청자 4명을 찾았습니다.\n· 노란색: 여러 기관에 신청</div>", 2) + "</div>")
 pages["p4"] = f"""<div class="wrap">
+{PC_NOTE}
 <h2 class="sec">4. 버튼 패널 만들기<small>2차 교육 · 약 20분 · 메뉴 대신 오른쪽 작업창에서 버튼으로 실행</small></h2>
 {step("4-1", "HTML 파일 추가", "패널 화면을 담을 파일을 하나 더 만듭니다.", [
     "Apps Script 편집기 왼쪽 <span class='ui'>파일</span> 옆 <span class='ui'>＋</span>",
@@ -569,13 +576,15 @@ TABS = [("home", "", "홈"), ("p0", "0", "준비"), ("p1", "1", "첫 자동화")
 
 SCRIPT = r"""
 const tabs = document.querySelectorAll('.tab');
-function go(id, push){
+var go = function (id, push){
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('show', p.id === id));
   tabs.forEach(t => t.classList.toggle('on', t.dataset.p === id));
   if (push !== false) history.replaceState(null, '', '#' + id);
   window.scrollTo(0, 0);
-}
+};
 tabs.forEach(t => t.addEventListener('click', () => go(t.dataset.p)));
+const _go = go;
+go = function (id, push) { _go(id, push); const t = document.querySelector('.tab.on'); if (t) t.scrollIntoView({ inline: 'center', block: 'nearest' }); requestAnimationFrame(fitMocks); };
 document.querySelectorAll('[data-go]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); go(a.dataset.go); }));
 go((location.hash || '#home').slice(1) in {home:1,p0:1,p1:1,p2:1,p3:1,p4:1,p5:1,ap:1} ? location.hash.slice(1) || 'home' : 'home', false);
 
@@ -597,14 +606,59 @@ document.querySelectorAll('figure.shot').forEach(f => {
   const id = f.dataset.shot; rows.push([id, f.dataset.cap]);
   const img = new Image();
   img.onload = () => {
-    const mock = f.querySelector('.mock'); mock.style.display = 'none';
-    img.alt = f.dataset.cap; f.insertBefore(img, mock);
+    const box = () => { const m = f.querySelector('.mock'); return m.parentElement.classList.contains('mock-fit') ? m.parentElement : m; };
+    img.alt = f.dataset.cap; f.insertBefore(img, box()); box().style.display = 'none';
     const t = document.createElement('button'); t.className = 'tog'; t.textContent = '모형 보기';
-    t.onclick = () => { const showMock = mock.style.display === 'none'; mock.style.display = showMock ? '' : 'none'; img.style.display = showMock ? 'none' : ''; t.textContent = showMock ? '실제 화면 보기' : '모형 보기'; };
+    t.onclick = (e) => { e.stopPropagation(); const b = box(); const showMock = b.style.display === 'none'; b.style.display = showMock ? '' : 'none'; img.style.display = showMock ? 'none' : ''; t.textContent = showMock ? '실제 화면 보기' : '모형 보기'; fitMocks(); };
     f.querySelector('figcaption').appendChild(t);
   };
   img.src = 'shots/' + id + '.png';
 });
+
+// ── 휴대폰: 모형 화면을 화면 폭에 맞게 축소, 탭하면 원래 크기로 크게 보기 ──
+const DESIGN_W = 560;
+function fitMocks() {
+  document.querySelectorAll('.page.show figure.shot').forEach(f => {
+    const mock = f.querySelector('.mock');
+    if (!mock) return;
+    let wrap = mock.parentElement.classList.contains('mock-fit') ? mock.parentElement : null;
+    if ((wrap || mock).style.display === 'none') return;
+    const avail = f.clientWidth;
+    if (avail >= DESIGN_W) {
+      if (wrap) { wrap.replaceWith(mock); mock.style.cssText = ''; }
+      f.classList.remove('zoomable');
+      return;
+    }
+    if (!wrap) { wrap = document.createElement('div'); wrap.className = 'mock-fit'; mock.replaceWith(wrap); wrap.appendChild(mock); }
+    mock.style.width = DESIGN_W + 'px';
+    const scale = avail / DESIGN_W;
+    mock.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = Math.ceil(mock.offsetHeight * scale) + 'px';
+    f.classList.add('zoomable');
+  });
+}
+function openLightbox(f) {
+  const lb = document.createElement('div'); lb.className = 'lightbox';
+  const top = document.createElement('div'); top.className = 'lb-top';
+  const cap = document.createElement('span'); cap.textContent = f.dataset.cap + ' (좌우로 밀어 보기)';
+  const close = document.createElement('button'); close.textContent = '닫기 ✕';
+  top.append(cap, close);
+  const body = document.createElement('div'); body.className = 'lb-body';
+  const img = f.querySelector(':scope > img');
+  if (img && img.style.display !== 'none') { const c = img.cloneNode(); c.style.display = ''; body.appendChild(c); }
+  else { const m = f.querySelector('.mock').cloneNode(true); m.style.transform = ''; m.style.position = 'relative'; m.style.width = DESIGN_W + 'px'; body.appendChild(m); }
+  lb.append(top, body); document.body.appendChild(lb); document.body.style.overflow = 'hidden';
+  const shut = () => { lb.remove(); document.body.style.overflow = ''; };
+  close.onclick = shut; lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+}
+document.querySelectorAll('figure.shot').forEach(f => f.addEventListener('click', e => {
+  if (e.target.closest('.tog')) return;
+  if (f.classList.contains('zoomable') || window.innerWidth <= 860) openLightbox(f);
+}));
+window.addEventListener('resize', fitMocks);
+window.addEventListener('load', fitMocks);
+fitMocks();
+
 if (list) {
   const t = document.createElement('table'); t.className = 't';
   t.innerHTML = '<tr><th>화면 ID(파일 이름)</th><th>찍을 화면</th></tr>';
