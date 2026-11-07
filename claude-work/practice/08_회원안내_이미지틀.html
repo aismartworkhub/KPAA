@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회원 안내 이미지 틀</title>
+<!-- 회원 안내 이미지 고정 틀: 디자인은 그대로, 글자만 바꿔 PNG로 저장합니다. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{--navy:#0b1f4b;--navy2:#1d3a7a;--gold:#c9a24b;--goldl:#faf4e4;--tx:#15181d;--tx2:#5b626c;--bd:#e4e7eb;--bg:#f3f5f7}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;background:var(--bg);color:var(--tx);word-break:keep-all}
+  header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  header b{font-size:17px} header span{font-size:13px;opacity:.8}
+  .app{display:grid;grid-template-columns:380px 1fr;gap:20px;padding:20px;max-width:1300px;margin:0 auto}
+  .panel{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:16px;align-self:start}
+  .panel h2{font-size:15px;color:var(--navy);margin:14px 0 6px} .panel h2:first-child{margin-top:0}
+  label{display:block;font-size:12.5px;font-weight:700;color:var(--tx2);margin:8px 0 3px}
+  input,textarea{width:100%;font:inherit;font-size:14px;border:1px solid #c9d1dd;border-radius:8px;padding:7px 9px}
+  textarea{min-height:120px;resize:vertical}
+  .row2{display:grid;grid-template-columns:96px 1fr;gap:6px}
+  .btn{display:inline-block;border:0;border-radius:8px;padding:9px 14px;font:inherit;font-weight:800;cursor:pointer;margin:6px 6px 0 0}
+  .btn.p{background:var(--navy);color:#fff} .btn.g{background:var(--goldl);color:#8a6f2e}
+  .msg{font-size:12.5px;color:#1f8452;margin-top:6px;min-height:18px}
+  .stage{overflow:auto;background:#dfe3e8;border-radius:14px;padding:16px;display:flex;justify-content:center}
+  .fit{overflow:hidden;flex:none}
+  .fit #card{transform-origin:top left}
+  /* ── 이미지(1080×1350) ── 여기부터가 고정 디자인입니다 ── */
+  #card{width:1080px;height:1350px;background:#fff;position:relative;overflow:hidden;font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif}
+  #card .band{min-height:330px;background:linear-gradient(135deg,#081536 0%,var(--navy) 55%,var(--navy2) 115%);padding:70px 80px 56px;color:#fff}
+  #card .tag{display:inline-block;border:2px solid rgba(255,255,255,.5);border-radius:999px;padding:8px 26px;font-size:30px;font-weight:700;letter-spacing:.04em}
+  #card .org{position:absolute;top:76px;right:80px;color:var(--gold);font-size:28px;font-weight:800}
+  #card h1{font-size:76px;line-height:1.18;font-weight:900;letter-spacing:-.03em;margin-top:38px;color:#fff}
+  #card .sub{margin:0 80px;padding:44px 0 30px;font-size:36px;color:var(--tx2);border-bottom:3px solid var(--gold);font-weight:600}
+  #card .items{margin:24px 80px 0}
+  #card .it{display:grid;grid-template-columns:230px 1fr;gap:20px;padding:26px 0;border-bottom:2px solid #eceef1;align-items:start}
+  #card .it b{display:inline-block;background:var(--goldl);color:#8a6f2e;border-radius:12px;padding:6px 18px;font-size:30px;text-align:center}
+  #card .it span{font-size:38px;font-weight:700;line-height:1.4;color:var(--tx)}
+  #card .foot{position:absolute;left:0;right:0;bottom:0;height:150px;background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+  #card .foot .q{font-size:30px;color:var(--tx2);font-weight:600}
+  #card .foot .logo{font-size:34px;font-weight:900;color:var(--navy)}
+  @media (max-width:900px){.app{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><b>회원 안내 이미지 틀</b><span>디자인은 고정 · 글자만 바꿔서 PNG로 저장 (가로 1080 × 세로 1350)</span></header>
+<div class="app">
+  <div class="panel">
+    <h2>① 한 번에 채우기 (Claude 답 붙여넣기)</h2>
+    <textarea id="bulk" placeholder="꼬리표: 회원 추천 안내&#10;제목: …&#10;부제: …&#10;항목1: 라벨 | 내용&#10;문의: …"></textarea>
+    <button class="btn g" id="fillBtn">채우기</button>
+    <div class="msg" id="fillMsg"></div>
+    <h2>② 칸별로 고치기</h2>
+    <label for="f_tag">꼬리표</label><input id="f_tag">
+    <label for="f_title">제목 (줄바꿈은 Enter)</label><textarea id="f_title" style="min-height:64px"></textarea>
+    <label for="f_sub">부제</label><input id="f_sub">
+    <div id="itemsBox"></div>
+    <label for="f_q">문의</label><input id="f_q">
+    <h2>③ 저장</h2>
+    <button class="btn p" id="saveBtn">PNG로 저장</button>
+    <button class="btn g" id="resetBtn">예시로 되돌리기</button>
+    <div class="msg" id="saveMsg"></div>
+  </div>
+  <div class="stage" id="stage"><div class="fit" id="fit">
+    <div id="card">
+      <div class="band"><span class="tag" id="c_tag"></span><span class="org">대한변리사회</span><h1 id="c_title"></h1></div>
+      <div class="sub" id="c_sub"></div>
+      <div class="items" id="c_items"></div>
+      <div class="foot"><span class="q" id="c_q"></span><span class="logo">KPAA</span></div>
+    </div>
+  </div></div>
+</div>
+<script>
+const SAMPLE = {
+  tag: "회원 추천 안내",
+  title: "○○공단 지식재산\n자문위원 후보 추천",
+  sub: "(가상 예시) 공단의 요청에 따라 자문위원 후보를 추천받습니다",
+  items: [["모집 분야", "특허·상표 분쟁 자문"], ["추천 인원", "2명 이내"], ["신청 기한", "2026. 11. 20.(금)까지"], ["신청 방법", "회원 인재풀 구글 폼"]],
+  q: "문의 회원서비스실 02-000-0000"
+};
+const N = 4;
+const $ = id => document.getElementById(id);
+const itemsBox = $("itemsBox");
+for (let i = 0; i < N; i++) {
+  itemsBox.insertAdjacentHTML("beforeend",
+    `<label>항목${i + 1} (라벨 | 내용)</label><div class="row2"><input id="f_l${i}"><input id="f_v${i}"></div>`);
+}
+function setForm(d) {
+  $("f_tag").value = d.tag || ""; $("f_title").value = d.title || ""; $("f_sub").value = d.sub || ""; $("f_q").value = d.q || "";
+  for (let i = 0; i < N; i++) { const it = (d.items || [])[i] || ["", ""]; $("f_l" + i).value = it[0]; $("f_v" + i).value = it[1]; }
+  render();
+}
+function esc(s) { return s.replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c])); }
+function render() {
+  $("c_tag").textContent = $("f_tag").value;
+  $("c_title").innerHTML = esc($("f_title").value).replace(/\n/g, "<br>");
+  $("c_sub").textContent = $("f_sub").value;
+  let h = "";
+  for (let i = 0; i < N; i++) {
+    const l = $("f_l" + i).value.trim(), v = $("f_v" + i).value.trim();
+    if (l || v) h += `<div class="it"><div><b>${esc(l)}</b></div><span>${esc(v)}</span></div>`;
+  }
+  $("c_items").innerHTML = h;
+  $("c_q").textContent = $("f_q").value;
+  try { localStorage.setItem("kpaa_card", JSON.stringify(read())); } catch (e) {}
+}
+function read() {
+  const items = [];
+  for (let i = 0; i < N; i++) items.push([$("f_l" + i).value, $("f_v" + i).value]);
+  return {tag: $("f_tag").value, title: $("f_title").value, sub: $("f_sub").value, items, q: $("f_q").value};
+}
+function parseBulk(text) {
+  const d = {items: []}; let found = 0;
+  text.split(/\r?\n/).forEach(line => {
+    const m = line.match(/^\s*(꼬리표|제목|부제|문의|항목\s*\d)\s*[:：]\s*(.*)$/);
+    if (!m) return;
+    found++;
+    const k = m[1].replace(/\s/g, ""), v = m[2].trim();
+    if (k === "꼬리표") d.tag = v; else if (k === "제목") d.title = v.replace(/\s*\/\s*/g, "\n");
+    else if (k === "부제") d.sub = v; else if (k === "문의") d.q = v;
+    else { const p = v.split(/\s*\|\s*/); d.items.push([p[0] || "", p.slice(1).join(" | ")]); }
+  });
+  return found ? d : null;
+}
+$("fillBtn").onclick = () => {
+  const d = parseBulk($("bulk").value);
+  if (!d) { $("fillMsg").style.color = "#b3372a"; $("fillMsg").textContent = "형식을 찾지 못했어요. '제목: …'처럼 이름과 쌍점(:)이 있는지 확인하세요."; return; }
+  const cur = read();
+  setForm({tag: d.tag ?? cur.tag, title: d.title ?? cur.title, sub: d.sub ?? cur.sub, q: d.q ?? cur.q, items: d.items.length ? d.items : cur.items});
+  $("fillMsg").style.color = "#1f8452"; $("fillMsg").textContent = "채웠습니다. 오른쪽 미리보기를 확인하세요.";
+};
+document.querySelectorAll("input,textarea").forEach(el => { if (el.id !== "bulk") el.addEventListener("input", render); });
+$("resetBtn").onclick = () => setForm(SAMPLE);
+$("saveBtn").onclick = async () => {
+  const msg = $("saveMsg");
+  if (!window.html2canvas) { msg.style.color = "#b3372a"; msg.textContent = "인터넷 연결이 없어 저장 도구를 못 불러왔어요. 화면 캡처(Windows: Win+Shift+S)로 저장하세요."; return; }
+  msg.style.color = "#5b626c"; msg.textContent = "저장 중…";
+  const card = $("card"), old = card.style.transform; card.style.transform = "none";
+  $("fit").style.width = "1080px"; $("fit").style.height = "1350px";  // 저장할 때는 원래 크기로
+  try {
+    const canvas = await html2canvas($("card"), {scale: 1, backgroundColor: "#ffffff"});
+    const a = document.createElement("a");
+    const name = ($("f_title").value.split("\n")[0] || "회원안내").replace(/[\\/:*?"<>|]/g, "").slice(0, 30);
+    a.download = name + ".png"; a.href = canvas.toDataURL("image/png"); a.click();
+    msg.style.color = "#1f8452"; msg.textContent = "저장했습니다(내려받기 폴더 확인).";
+  } catch (e) { msg.style.color = "#b3372a"; msg.textContent = "저장 실패: " + e.message; }
+  card.style.transform = old; fitCard();
+};
+function fitCard() {
+  const w = $("stage").clientWidth - 32, s = Math.min(1, w / 1080);
+  $("card").style.transform = `scale(${s})`;
+  $("fit").style.width = (1080 * s) + "px"; $("fit").style.height = (1350 * s) + "px";
+}
+window.addEventListener("resize", fitCard);
+let saved = null; try { saved = JSON.parse(localStorage.getItem("kpaa_card") || "null"); } catch (e) {}
+setForm(saved || SAMPLE); fitCard();
+</script>
+</body>
+</html>

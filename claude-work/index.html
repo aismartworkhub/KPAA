@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>회원서비스실 Claude 업무 실습 교안</title>
+<meta name="description" content="변리사법 위반 신고 처리를 Claude 프로젝트로 — 근거 인용 지침, 보고·공문·비교표 초안, 사례 DB, 회원 안내 이미지 틀까지 단계별 실습">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="회원서비스실">
+<meta property="og:title" content="회원서비스실 Claude 업무 실습 교안">
+<meta property="og:description" content="변리사법 위반 신고 처리를 Claude 프로젝트로 — 근거 인용 지침, 보고·공문·비교표 초안, 사례 DB, 회원 안내 이미지 틀까지 단계별 실습">
+<meta property="og:image" content="https://aismartworkhub.github.io/KPAA/claude-work/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://aismartworkhub.github.io/KPAA/claude-work/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="회원서비스실 Claude 업무 실습 교안">
+<meta name="twitter:image" content="https://aismartworkhub.github.io/KPAA/claude-work/og_image.jpg">
+<style>:root{
+  --navy:#0b1f4b;--navy2:#132c66;--gold:#c9a24b;--gold2:#8a6f2e;--goldl:#faf4e4;
+  --tx:#15181d;--tx2:#5b626c;--bd:#e4e7eb;--bg:#f3f5f7;--code:#1e1e2e;
+  --ok:#1f8452;--okl:#e8f4ec;--no:#b3372a;--nol:#faeceb;--warn:#8a5a00;--warnl:#fff6dc;
+  --mk:#e5322d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard','Noto Sans KR','Malgun Gothic',sans-serif;color:var(--tx);background:#fff;line-height:1.75;font-size:16px;word-break:keep-all;overflow-wrap:break-word;}
+a{color:#1f5793}
+/* 상단 탭 */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--bd);box-shadow:0 1px 8px rgba(0,0,0,.05);}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:0 16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 0;}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#0b1f4b,#2b4a8f);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:900;}
+.brand .bt{font-size:15px;font-weight:900;line-height:1.1}
+.brand .bs{font-size:11px;color:var(--tx2);font-weight:600}
+.tabs{display:flex;gap:2px;flex-wrap:wrap}
+.tab{appearance:none;border:none;background:none;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;color:var(--tx2);padding:13px 10px;border-bottom:3px solid transparent;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.tab .tnum{font-size:11px;font-weight:800;background:var(--bg);border-radius:6px;padding:1px 7px}
+.tab:hover{color:var(--tx)}
+.tab.on{color:var(--navy);border-bottom-color:var(--gold)}
+.tab.on .tnum{background:var(--goldl);color:var(--gold2)}
+.page{display:none;animation:fade .3s ease}
+.page.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* 히어로 */
+.hero{padding:44px 20px 38px;text-align:center;color:#fff;background:linear-gradient(135deg,#081536 0%,#0b1f4b 55%,#1d3a7a 115%)}
+.hero .eb{display:inline-block;padding:4px 14px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.05em;margin-bottom:14px}
+.hero h1{font-size:clamp(26px,4.4vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:10px}
+.hero h1 em{font-style:normal;color:#e8cd8a}
+.hero p{max-width:720px;margin:0 auto;color:rgba(255,255,255,.9)}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 18px 70px}
+h2.sec{font-size:24px;font-weight:900;letter-spacing:-.02em;margin:34px 0 6px;color:var(--navy)}
+h2.sec small{display:block;font-size:14px;color:var(--tx2);font-weight:600;letter-spacing:0}
+p.lead{color:var(--tx2);margin-bottom:16px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{border:1px solid var(--bd);border-radius:14px;padding:16px 18px;background:#fff}
+.card h3{font-size:16px;margin-bottom:6px;color:var(--navy)}
+.card .ic{font-size:26px}
+.pill{display:inline-block;font-size:12px;font-weight:800;padding:2px 10px;border-radius:999px;background:var(--goldl);color:var(--gold2)}
+.pill.b{background:#e8ecf5;color:var(--navy)}
+table.t{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0 14px}
+table.t th,table.t td{border-bottom:1px solid var(--bd);padding:9px 10px;text-align:left;vertical-align:top}
+table.t th{background:var(--bg);font-size:13.5px;color:var(--tx2)}
+.box{border-radius:12px;padding:12px 16px;margin:12px 0;font-size:15px}
+.box.ok{background:var(--okl);border:1px solid #bfe0cb}
+.box.warn{background:var(--warnl);border:1px solid #f0dca6}
+.box.no{background:var(--nol);border:1px solid #f0c7c2}
+.box.info{background:#e9f0f7;border:1px solid #c7d8ec}
+.box b:first-child{margin-right:4px}
+kbd,.kbd{display:inline-block;font-family:inherit;font-size:.86em;font-weight:700;padding:0 7px;border:1px solid #c9ced6;border-bottom-width:2px;border-radius:6px;background:#fff;white-space:nowrap}
+.ui{font-weight:800;color:var(--navy);background:#eef2f8;border-radius:5px;padding:0 5px;white-space:nowrap}
+/* 단계 카드 */
+.step{border:1px solid var(--bd);border-radius:16px;margin:22px 0;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(11,31,75,.04)}
+.step-h{display:flex;align-items:center;gap:12px;padding:14px 18px;background:linear-gradient(90deg,#0b1f4b,#1d3a7a);color:#fff}
+.step-h .no{font-size:13px;font-weight:900;background:var(--gold);color:#1a1300;border-radius:8px;padding:3px 10px;white-space:nowrap}
+.step-h h3{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.step-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;padding:18px}
+.step-b.one{grid-template-columns:minmax(0,1fr)}
+.goal{font-size:14px;color:var(--tx2);margin-bottom:8px}
+ol.do{counter-reset:d;list-style:none;margin:4px 0 8px}
+ol.do>li{counter-increment:d;position:relative;padding:6px 0 6px 40px;font-size:16px}
+ol.do>li::before{content:counter(d);position:absolute;left:0;top:6px;width:28px;height:28px;border-radius:50%;background:var(--mk);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+.okline{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--okl);font-size:15px}
+.okline::before{content:"✅ 성공하면 ";font-weight:800;color:var(--ok)}
+.stuck{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--warnl);font-size:14.5px}
+.stuck::before{content:"⚠ 막히면 ";font-weight:800;color:var(--warn)}
+/* 코드 */
+.code{position:relative;margin:10px 0;border-radius:12px;overflow:hidden;background:var(--code)}
+.code-top{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#181825;color:#bac2de;font-size:12.5px;font-weight:700}
+.code pre{margin:0;padding:14px 16px;color:#cdd6f4;font-family:'D2Coding','Consolas',monospace;font-size:13px;line-height:1.6;max-height:320px;overflow:auto;white-space:pre}
+.code.tall pre{max-height:520px}
+.copy-btn{font-family:inherit;font-size:12px;font-weight:800;color:#cdd6f4;background:#45475a;border:1px solid #585b70;border-radius:7px;padding:5px 12px;cursor:pointer}
+.copy-btn:hover{background:#585b70}
+.copy-btn.done{background:#2d6a4f;border-color:#40916c;color:#d8f3dc}
+.prompt{border:1.5px dashed #c9a24b;background:#fffbf0;border-radius:12px;padding:12px 14px;margin:10px 0;white-space:pre-wrap;font-size:14.5px;position:relative}
+.prompt .copy-btn{position:absolute;right:10px;top:10px;background:var(--gold2);border-color:var(--gold2);color:#fff}
+/* 화면 캡처 영역 */
+figure.shot{margin:0;border:1px solid #cfd5de;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+figure.shot figcaption{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--tx2);padding:6px 10px;background:var(--bg);border-top:1px solid var(--bd)}
+figure.shot figcaption .sid{font-family:Consolas,monospace;color:#98a2b3}
+figure.shot img{display:block;width:100%}
+figure.shot .tog{font-size:11.5px;border:1px solid var(--bd);background:#fff;border-radius:6px;cursor:pointer;padding:0 6px}
+.mock{font-family:'Malgun Gothic',Arial,sans-serif;font-size:12.5px;color:#202124;background:#fff;position:relative;line-height:1.4;min-height:240px}
+.mk{outline:2.5px solid var(--mk);outline-offset:1px;border-radius:3px;position:relative}
+.mk::after{content:attr(data-n);position:absolute;top:-11px;right:-11px;width:20px;height:20px;border-radius:50%;background:var(--mk);color:#fff;font:900 12px/20px Arial,sans-serif;text-align:center;z-index:3;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+/* 모형: 구글 시트 */
+.gs-top{display:flex;align-items:center;gap:8px;padding:6px 10px 2px}
+.gs-logo{width:18px;height:22px;background:#0f9d58;border-radius:2px;position:relative}
+.gs-logo::after{content:"";position:absolute;left:4px;right:4px;top:8px;height:9px;border:1.5px solid #fff;border-radius:1px}
+.gs-title{font-size:15px}
+.gs-menu{display:flex;gap:0;padding:0 6px 4px 30px;flex-wrap:nowrap;white-space:nowrap;font-size:11.5px}
+.gs-menu span{padding:2px 4px;border-radius:4px}
+.gs-menu span.on{background:#e8eaed}
+.gs-bar{height:30px;background:#f1f3f4;border-radius:15px;margin:2px 10px 4px}
+.gs-fx{display:flex;gap:6px;align-items:center;border-top:1px solid #e0e0e0;padding:3px 10px;color:#5f6368;font-size:11.5px}
+.gs-grid{border-collapse:collapse;width:100%;table-layout:fixed}
+.gs-grid th{background:#f8f9fa;color:#5f6368;font-weight:400;font-size:11px;border:1px solid #e2e3e3;height:20px}
+.gs-grid th.rn{width:30px}
+.gs-grid td{border:1px solid #e2e3e3;height:22px;padding:0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11.5px}
+.gs-grid tr.h td{font-weight:700;background:#eef2f8}
+.gs-tabs{display:flex;gap:2px;padding:4px 10px;background:#f8f9fa;border-top:1px solid #e0e0e0;font-size:11.5px}
+.gs-tabs span{padding:3px 10px;border-radius:4px 4px 0 0;color:#444}
+.gs-tabs span.on{background:#fff;color:#188038;font-weight:700;box-shadow:inset 0 -2px #188038}
+.dd{position:absolute;background:#fff;border-radius:6px;box-shadow:0 2px 6px rgba(60,64,67,.3),0 6px 20px rgba(60,64,67,.15);padding:6px 0;z-index:4;min-width:170px}
+.dd div{padding:5px 14px;white-space:nowrap}
+.dd div.on{background:#e8f0fe}
+.dd hr{border:none;border-top:1px solid #e0e0e0;margin:4px 0}
+.cb{display:inline-block;width:12px;height:12px;border:1.5px solid #5f6368;border-radius:2px;vertical-align:middle}
+.cb.on{background:#1a73e8;border-color:#1a73e8;position:relative}
+.cb.on::after{content:"✓";color:#fff;font-size:10px;position:absolute;left:1px;top:-3px}
+.dlg-back{position:absolute;inset:0;background:rgba(32,33,36,.45);display:flex;align-items:center;justify-content:center;z-index:5}
+.dlg{background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.3);padding:18px 20px;width:76%;max-width:420px}
+.dlg h4{font-size:15px;font-weight:500;margin-bottom:8px}
+.dlg .btns{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.gbtn{display:inline-block;padding:6px 14px;border-radius:4px;font-weight:600;color:#1a73e8}
+.gbtn.p{background:#1a73e8;color:#fff}
+.sidebar{position:absolute;top:0;right:0;bottom:0;width:36%;background:#fff;border-left:1px solid #dadce0;box-shadow:-2px 0 6px rgba(0,0,0,.08);padding:10px;z-index:4}
+.sidebar .sb-t{display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px}
+.sidebar button{all:unset;display:block;border:1px solid #c9d1dd;border-radius:6px;padding:5px 8px;margin:4px 0;font-size:11.5px}
+.sidebar button.main{background:#0b1f4b;color:#fff}
+.sidebar .msg{background:#f3f5f7;border-radius:6px;padding:6px;font-size:11px;margin-top:8px;white-space:pre-wrap}
+/* 모형: Apps Script 편집기 */
+.as{display:grid;grid-template-columns:44px 150px 1fr;min-height:250px;background:#fff}
+.as-rail{background:#f8f9fa;border-right:1px solid #e0e0e0;display:flex;flex-direction:column;align-items:center;gap:12px;padding-top:12px;font-size:15px;color:#5f6368}
+.as-files{border-right:1px solid #e0e0e0;padding:8px}
+.as-files .h{display:flex;justify-content:space-between;color:#5f6368;font-size:11.5px;margin-bottom:6px}
+.as-files .f{padding:4px 6px;border-radius:4px;font-size:12px}
+.as-files .f.on{background:#e8f0fe;color:#1967d2}
+.as-main{display:flex;flex-direction:column;min-width:0}
+.as-tool{display:flex;align-items:center;gap:16px;padding:6px 10px;border-bottom:1px solid #e0e0e0;color:#5f6368;flex-wrap:wrap}
+.as-tool .run{color:#1a73e8;font-weight:600}
+.as-tool .sel{border:1px solid #dadce0;border-radius:4px;padding:1px 8px;color:#202124;min-width:110px}
+.as-code{font-family:Consolas,monospace;font-size:11.5px;padding:8px 10px;white-space:pre;overflow:hidden;color:#202124;flex:1;line-height:1.55}
+.as-code .ln{color:#9aa0a6;display:inline-block;width:20px}
+.as-code .k{color:#a142f4}.as-code .s{color:#188038}.as-code .c{color:#80868b}
+.as-log{border-top:1px solid #e0e0e0;font-size:11.5px;padding:6px 10px;background:#fff}
+.as-log .lh{font-weight:700;margin-bottom:2px}
+.as-log .row{display:flex;gap:14px;color:#3c4043}
+.as-head{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid #e0e0e0}
+.as-head .logo{width:20px;height:20px;border-radius:4px;background:conic-gradient(#4285f4 0 25%,#34a853 0 50%,#fbbc04 0 75%,#ea4335 0)}
+.as-head .pn{font-size:15px}
+/* 모형: 구글 로그인 창 */
+.gw{max-width:480px;margin:0 auto;padding:22px 26px;font-size:13px}
+.gw .glogo{font:600 20px Arial;letter-spacing:-1px;margin-bottom:8px}
+.gw .glogo b:nth-child(1){color:#4285f4}.gw .glogo b:nth-child(2){color:#ea4335}.gw .glogo b:nth-child(3){color:#fbbc04}.gw .glogo b:nth-child(4){color:#4285f4}.gw .glogo b:nth-child(5){color:#34a853}.gw .glogo b:nth-child(6){color:#ea4335}
+.gw h4{font-size:19px;font-weight:400;margin:6px 0 10px}
+.gw .acct{display:flex;gap:10px;align-items:center;border-bottom:1px solid #e0e0e0;padding:10px 4px}
+.gw .av{width:28px;height:28px;border-radius:50%;background:#7e57c2;color:#fff;display:flex;align-items:center;justify-content:center}
+.gw .warnicon{font-size:30px;color:#d93025}
+.gw .lnk{color:#1a73e8;font-weight:600}
+.gw .perm{display:flex;gap:8px;align-items:flex-start;border-bottom:1px solid #eee;padding:7px 0}
+.gw .foot{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
+/* 모형: Gmail */
+.gm{padding:12px 16px}
+.gm .subj{font-size:17px;margin-bottom:8px}
+.gm .from{display:flex;gap:8px;align-items:center;margin-bottom:10px;color:#5f6368}
+.gm .body{white-space:pre-wrap;font-size:13px;border-top:1px solid #eee;padding-top:10px}
+/* 흐름도 */
+.flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin:10px 0}
+.flow .fs{flex:1;min-width:130px;border:1px solid var(--bd);border-radius:12px;padding:10px 12px;background:#fff;text-align:center}
+.flow .fs b{display:block;color:var(--navy)}
+.flow .ar{align-self:center;color:var(--gold2);font-weight:900}
+.toc a{display:block;padding:4px 0}
+.dl{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;background:var(--navy);color:#fff;font-weight:800;text-decoration:none;margin:4px 6px 4px 0}
+.dl.g{background:var(--gold2)}
+.foot-note{color:var(--tx2);font-size:13px;margin-top:40px;border-top:1px solid var(--bd);padding-top:14px}
+/* 모형 화면 맞춤 축소 + 크게 보기 */
+.mock-fit{position:relative;overflow:hidden}
+.mock-fit>.mock{transform-origin:0 0;position:absolute;left:0;top:0}
+figure.shot.zoomable{cursor:zoom-in}
+.zoom-hint{display:none}
+figure.shot.zoomable .zoom-hint{display:inline}
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(10,15,30,.86);display:flex;flex-direction:column}
+.lightbox .lb-top{display:flex;justify-content:space-between;align-items:center;color:#fff;padding:10px 14px;font-size:14px;gap:10px}
+.lightbox .lb-top button{font:inherit;font-weight:800;background:#fff;color:#0b1f4b;border:none;border-radius:8px;padding:8px 16px;min-height:40px}
+.lightbox .lb-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:0 10px 20px}
+.lightbox .lb-body .mock,.lightbox .lb-body img{background:#fff;border-radius:10px;margin:0 auto}
+.lightbox .lb-body img{max-width:none;width:900px}
+.pc-note{display:none}
+@media(max-width:860px){
+  .step-b{grid-template-columns:minmax(0,1fr)!important}
+  .step-b>div,.grid>*{min-width:0}
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+  .nav .brand{display:none}
+  .nav-inner{padding:0 6px;flex-wrap:nowrap}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:12px 9px;font-size:14px}
+  .wrap{padding:18px 14px 60px}
+  h2.sec{font-size:21px}
+  .step-h{padding:12px 14px}.step-h h3{font-size:17px}
+  .step-b{padding:14px;gap:14px}
+  ol.do>li{font-size:15.5px;overflow-wrap:anywhere}
+  .ui,kbd,.kbd{white-space:normal}
+  table.t{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:14px}
+  .copy-btn{padding:9px 14px;font-size:13px;min-height:38px}
+  .code-top{flex-wrap:wrap;gap:6px}
+  .code pre{font-size:12px;max-height:260px}
+  .flow .fs{min-width:calc(50% - 20px)}
+  .flow .ar{display:none}
+  .pc-note{display:block}
+  .hero{padding:34px 16px 30px}
+}
+@media print{
+  .nav,.copy-btn,.tog{display:none!important}
+  .page{display:block!important}
+  .step{break-inside:avoid;box-shadow:none}
+  .hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .code pre{max-height:none;white-space:pre-wrap}
+  .page+.page{break-before:page}
+}
+.sidebar .mk::after{right:-3px;top:-8px}
+/* ── 범용 모형: 앱 창 / AI 대화 / 버튼 ── */
+.win-top{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid #e0e0e0}
+.win-icon{width:18px;height:18px;border-radius:4px}
+.win-title{font-size:14px}
+.win-body{padding:10px}
+.chat{display:flex;flex-direction:column;gap:8px;padding:12px;background:#faf9f7}
+.chat .msg{max-width:84%;padding:8px 12px;border-radius:12px;font-size:12.5px;white-space:pre-wrap;line-height:1.5}
+.chat .msg.user{align-self:flex-end;background:#e8eef8;color:#15181d}
+.chat .msg.ai{align-self:flex-start;background:#fff;border:1px solid #e4e7eb}
+.chat .inbox{display:flex;gap:6px;align-items:center;border:1px solid #d6d9de;border-radius:12px;padding:8px 10px;background:#fff;margin-top:4px;color:#5f6368}
+.chat .inbox .send{margin-left:auto;background:#c96442;color:#fff;border-radius:8px;padding:2px 10px}
+.mbtn{display:inline-block;padding:4px 12px;border-radius:6px;border:1px solid #c9d1dd;background:#fff;font-size:12px}
+.mbtn.p{background:#1a73e8;border-color:#1a73e8;color:#fff}
+.minput{display:block;border:1px solid #c9d1dd;border-radius:6px;padding:5px 8px;color:#5f6368;margin:4px 0}
+
+/* ── 캔바 모형 (mocks_canva.py) ── */
+.cv-top{display:flex;align-items:center;gap:6px;padding:7px 10px;background:linear-gradient(90deg,#00c4cc,#5b3fe0 55%,#7d2ae8);color:#fff;font-size:12px;position:relative;z-index:4}
+.cv-top .m{padding:2px 6px;border-radius:4px;position:relative;white-space:nowrap}
+.cv-top .m.on{background:rgba(255,255,255,.25)}
+.cv-top .dd{color:#202124}
+.cv-top .ttl{margin-left:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;opacity:.95}
+.cv-top .share{background:#fff;color:#4b2bb3;font-weight:700;border-radius:6px;padding:3px 10px;white-space:nowrap}
+.cv-body{display:flex;min-height:286px;position:relative;background:#ebecf0}
+.cv-rail{width:56px;flex-shrink:0;background:#fff;border-right:1px solid #e3e3e8;display:flex;flex-direction:column;gap:3px;padding:6px 0;align-items:center;font-size:9.5px;color:#4a4f5a}
+.cv-rail>span{display:flex;flex-direction:column;align-items:center;padding:3px 1px;border-radius:6px;width:50px;text-align:center;line-height:1.15}
+.cv-rail i{font-style:normal;font-size:13px}
+.cv-rail .on{background:#f0ebff;color:#5a32d6}
+.cv-rail .create{background:#7d2ae8;color:#fff;border-radius:10px;font-weight:700;padding:4px 1px;margin-bottom:4px}
+.cv-panel{width:150px;flex-shrink:0;border-right:1px solid #e3e3e8;padding:10px;background:#fff;font-size:11.5px}
+.cv-panel .ph{font-weight:700;margin-bottom:6px}
+.cv-panel .pbtn{display:block;border-radius:6px;padding:6px 8px;margin:5px 0;background:#f2f3f5}
+.cv-panel .pbtn.big{font-size:15px;font-weight:900}
+.cv-panel .pbtn.mid{font-size:13px;font-weight:700}
+.cv-panel .sw{display:inline-block;width:24px;height:24px;border-radius:6px;margin:3px;vertical-align:middle;border:1px solid #d5d7dd}
+.cv-panel .sw.add{background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);position:relative}
+.cv-stage{flex:1;display:flex;flex-direction:column;align-items:center;padding:8px 10px;gap:6px;min-width:0}
+.cv-stage.row{flex-direction:row;justify-content:center;align-items:flex-start;gap:12px;padding-top:16px}
+.cv-tool{align-self:stretch;background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.12);padding:4px 8px;display:flex;gap:7px;align-items:center;font-size:11px;white-space:nowrap;flex-wrap:wrap}
+.cv-tool .f{border:1px solid #d5d7dd;border-radius:4px;padding:1px 6px}
+.cv-tool .swc{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;border:1px solid #c9ccd3}
+.cv-pbar{align-self:stretch;display:flex;justify-content:space-between;color:#5f6368;font-size:10.5px}
+.cv-add{align-self:stretch;text-align:center;background:#fff;border-radius:6px;padding:4px;font-size:11px;color:#3c4043}
+.cv-pg{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;color:#5f6368}
+.cv-card{width:190px;height:190px;background:#0b1f4b;color:#fff;position:relative;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.18);font-family:'Noto Sans KR','Malgun Gothic',sans-serif;flex-shrink:0;text-align:left}
+.cv-card.sm{width:160px;height:160px;padding:12px}
+.cv-card.blank{background:#fff}
+.cv-card .org{font-size:8.5px;color:#e8cd8a;font-weight:700}
+.cv-card .tt{font-size:17px;font-weight:900;line-height:1.25;margin-top:30px}
+.cv-card.sm .tt{font-size:15px;margin-top:24px}
+.cv-card .dt{display:inline-block;margin-top:10px;background:#c9a24b;color:#0b1f4b;font-weight:800;font-size:9.5px;border-radius:999px;padding:2px 9px}
+.cv-card .lab{display:inline-block;font-size:10px;color:#e8cd8a;font-weight:800;margin-top:16px}
+.cv-card ul{list-style:none;margin-top:8px;font-size:10.5px;line-height:1.7}
+.cv-card.sm ul{font-size:9.5px}
+.cv-card ul li::before{content:"• ";color:#e8cd8a}
+.cv-card .ft{position:absolute;left:14px;right:14px;bottom:10px;font-size:7.5px;color:rgba(255,255,255,.8);border-top:1px solid rgba(255,255,255,.3);padding-top:5px}
+.cv-card .logo{position:absolute;right:12px;top:10px;width:24px;height:24px;border:1px dashed rgba(255,255,255,.6);border-radius:50%;font-size:6.5px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8)}
+.cv-card .sel{outline:1.5px solid #8b3dff;outline-offset:2px}
+.cv-card .lock::after{content:" 🔒";font-size:8px}
+.cv-pop{position:absolute;background:#fff;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,.22);padding:12px;z-index:5;font-size:11.5px;color:#202124}
+.cv-pop .ph{font-weight:700;font-size:13px;margin-bottom:8px}
+.cv-pop .it{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:6px}
+.cv-pop .it.on{background:#f0ebff}
+.cv-pop .row{display:flex;gap:8px;align-items:center;margin:6px 0}
+.cv-pop .inp{border:1px solid #c9ccd3;border-radius:6px;padding:4px 8px;min-width:60px;display:inline-block}
+.cv-pop .pbtn{display:block;text-align:center;background:#7d2ae8;color:#fff;font-weight:700;border-radius:6px;padding:6px;margin-top:8px}
+.cv-pop .ic{display:inline-flex;flex-direction:column;align-items:center;gap:2px;width:56px;font-size:10px;text-align:center}
+.cv-pop .ic i{font-style:normal;width:34px;height:34px;border-radius:50%;background:#f2f3f5;display:flex;align-items:center;justify-content:center;font-size:15px}
+.cvh-main{flex:1;padding:16px;background:linear-gradient(135deg,#e6f8fa,#efe9ff);min-width:0}
+.cvh-main h4{text-align:center;font-size:17px;font-weight:800;margin:6px 0 10px}
+.cvh-search{background:#fff;border-radius:999px;padding:7px 14px;color:#6b7280;border:1px solid #d9d4f5;margin:0 20px}
+.cvh-chips{display:flex;gap:10px;justify-content:center;margin:14px 0;font-size:10.5px;color:#3c4043;flex-wrap:wrap}
+.cvh-chips span{display:flex;flex-direction:column;align-items:center;gap:2px}
+.cvh-chips i{font-style:normal;width:30px;height:30px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.cvh-recent{font-weight:700;font-size:12px;margin-top:6px}
+.cvh-thumbs{display:flex;gap:10px;margin-top:6px;font-size:10px;color:#3c4043}
+.cvh-thumbs div{display:flex;flex-direction:column;gap:3px}
+.cvh-thumbs b{display:block;width:84px;height:84px;border-radius:6px;background:#0b1f4b}
+/* 코드 상자 줄바꿈(긴 안내문·프롬프트용) */
+.code.wraptext pre{white-space:pre-wrap;overflow-wrap:anywhere}
+/* 블록 요소용 빨간 번호 */
+div.mk{display:block}
+/* AI 대화: 새 채팅(빈 화면) */
+.chat .hello{text-align:center;color:#3c4043;font-size:15px;padding:26px 0 14px}
+.chat .hello b{display:block;font-size:20px;color:#15181d;margin-bottom:4px}
+
+/* 교안 전용 */
+
+.nav-inner{max-width:1260px}
+@media (min-width:900px){.tab{padding:13px 8px}}
+.cl{display:grid;grid-template-columns:118px 1fr 176px;min-height:270px;font-size:12px;background:#fff}
+.cl.two{grid-template-columns:118px 1fr}
+.cl-side{background:#f5f4ef;padding:8px 6px;border-right:1px solid #e5e2da;display:flex;flex-direction:column;gap:2px}
+.cl-side>div,.cl-side>.mk{padding:4px 7px;border-radius:6px}
+.cl-side .on{background:#e9e6dc;font-weight:700}
+.cl-side .new{color:#c96442;font-weight:800}
+.cl-main{padding:12px 14px}
+.cl-main h5{font-size:16px;margin-bottom:2px}
+.cl-main .desc{color:#6b6b6b;margin-bottom:10px}
+.cl-in{border:1px solid #d6d3cc;border-radius:12px;padding:10px 12px;color:#777;background:#fff;display:flex;justify-content:space-between;gap:8px}
+.cl-in .send{background:#c96442;color:#fff;border-radius:8px;padding:0 9px}
+.cl-hist{margin-top:12px;color:#555}.cl-hist div{border-bottom:1px solid #eee;padding:5px 0}
+.cl-right{border-left:1px solid #e5e2da;padding:10px 8px;background:#fbfaf7}
+.cl-box{border:1px solid #e5e2da;border-radius:8px;padding:7px 8px;margin-bottom:8px;background:#fff}
+.cl-box .h{display:flex;justify-content:space-between;font-weight:700;margin-bottom:3px}
+.cl-box .t{color:#777;font-size:11px;white-space:pre-wrap;line-height:1.45}
+.cl-file{display:block;font-size:10.5px;border:1px solid #e5e2da;border-radius:6px;padding:3px 6px;margin-top:4px;background:#fff;word-break:break-all}
+.cl-btn{display:inline-block;border:1px solid #d6d3cc;border-radius:8px;padding:4px 10px;background:#fff;font-weight:700}
+.cl-btn.p{background:#c96442;border-color:#c96442;color:#fff}
+.cl-ta{border:1px solid #d6d3cc;border-radius:8px;padding:8px;min-height:96px;color:#444;font-size:11.5px;white-space:pre-wrap;line-height:1.45;background:#fff;text-align:left}
+.cl-set{display:grid;grid-template-columns:130px 1fr;min-height:250px;font-size:12px}
+.cl-set .nav2{background:#f5f4ef;padding:10px 6px;border-right:1px solid #e5e2da}
+.cl-set .nav2 div{padding:4px 8px;border-radius:6px}.cl-set .nav2 .on{background:#e9e6dc;font-weight:700}
+.cl-set .body{padding:14px}
+.cl-set .row{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #eee;padding:10px 0}
+.cl-set .row small{display:block;color:#777;font-size:11px}
+.tg{display:inline-block;width:36px;height:20px;border-radius:10px;background:#c96442;position:relative;flex:none}
+.tg::after{content:"";position:absolute;top:2px;left:18px;width:16px;height:16px;border-radius:50%;background:#fff}
+.tg.off{background:#c4c4c4}.tg.off::after{left:2px}
+.att{display:inline-block;border:1px solid #d6d3cc;background:#fff;border-radius:8px;padding:2px 8px;font-size:11px;margin-bottom:4px}
+.mtbl{border-collapse:collapse;font-size:10.5px;margin-top:6px;width:100%}
+.mtbl td,.mtbl th{border:1px solid #ddd;padding:3px 5px;vertical-align:top;text-align:left}
+.mtbl th{background:#f3f1ec}
+.drv{font-size:12px}.drv .r{display:grid;grid-template-columns:24px 1fr 90px;border-bottom:1px solid #eee;padding:6px 4px}
+.drv .r.h{color:#777;font-weight:700}
+.np{font-family:Consolas,monospace;font-size:11.5px;white-space:pre-wrap;line-height:1.5;padding:10px;min-height:220px}
+.np .hl{background:#fff2a8}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-inner"><div class="brand"><div class="logo">AI</div><div><div class="bt">Claude 업무 실습</div><div class="bs">회원서비스실</div></div></div><div class="tabs"><button class="tab" data-p="home">홈</button><button class="tab" data-p="p0"><span class=tnum>0</span>준비</button><button class="tab" data-p="p1"><span class=tnum>1</span>프로젝트</button><button class="tab" data-p="p2"><span class=tnum>2</span>신고 검토</button><button class="tab" data-p="p3"><span class=tnum>3</span>보고·공문</button><button class="tab" data-p="p5"><span class=tnum>4</span>사례 DB</button><button class="tab" data-p="p4"><span class=tnum>5</span>비교·사례</button><button class="tab" data-p="p6"><span class=tnum>6</span>진행경과</button><button class="tab" data-p="p7"><span class=tnum>7</span>이미지 틀</button><button class="tab" data-p="p8"><span class=tnum>8</span>AI 활용</button><button class="tab" data-p="ap"><span class=tnum>+</span>부록</button></div></div></nav>
+<main class="page" id="home"><div class="hero"><div class="eb">대한변리사회 회원서비스실 · AI 업무 실습 교안</div><h1>신고 한 건, 보고·공문·비교표까지<br><em>Claude 프로젝트로 정리하기</em></h1><p>변리사법 위반 신고 처리 흐름 그대로, 화면 순서대로 따라 하면 누구나 끝까지 갈 수 있게 만들었습니다. 모든 실습 자료는 가상입니다.</p></div><div class="wrap"><h2 class="sec">오늘 만드는 것<small>회의에서 나온 요청을 그대로 실습으로 옮겼습니다</small></h2><div class="grid g4"><div class="card"><div class="ic">📁</div><h3>신고 검토 전용 Claude 프로젝트</h3>법령·규정·사례를 넣어 두고 <b>근거만 인용</b>하고 <b>없으면 없다</b>고 답하게 지침을 고정합니다.</div><div class="card"><div class="ic">📝</div><h3>보고 메일·공문·비교표 초안</h3>신고 요약 → 임원 보고 메일 → 소명 요청 공문 → 쟁점 비교표 → 위원회 안건까지 복사해 쓰는 프롬프트 세트.</div><div class="card"><div class="ic">🗂</div><h3>징계 사례 DB(구글 시트)</h3>PDF 사례집을 한 줄 한 사례 표로 옮겨 <b>검색되는 자료</b>로 만들고, 프로젝트에 연결합니다.</div><div class="card"><div class="ic">🖼</div><h3>회원 안내 이미지 고정 틀</h3>매번 다른 그림이 나오던 문제 해결 — 디자인은 고정, <b>제목·내용만</b> 바꿔 PNG로 저장합니다.</div></div><h2 class="sec">진행 순서<small>한 번에 다 하지 않습니다. 회차마다 배운 것을 업무에 써 보고 다음으로 갑니다</small></h2><div class="flow"><div class="fs"><b>0 준비</b>계정·설정·폴더</div><div class="ar">→</div><div class="fs"><b>1 프로젝트</b>지침·법령 넣고 첫 질문</div><div class="ar">→</div><div class="fs"><b>2~3 신고 처리</b>검토→보고·공문</div><div class="ar">→</div><div class="fs"><b>4~6 자료·비교</b>사례 DB→비교표→진행경과</div><div class="ar">→</div><div class="fs"><b>7~8 넓혀 쓰기</b>안내 이미지 틀·내 업무 자산화</div></div><table class="t"><tr><th>회차</th><th>일시(예정)</th><th>다루는 탭</th><th>준비물</th></tr><tr><td>1차</td><td>11. 13.(금) 15:00~17:00</td><td>0 준비 · 1 프로젝트 · 2 신고 검토 · 3 보고·공문</td><td>노트북, 업무용 구글 계정, Claude 로그인</td></tr><tr><td>2차</td><td>11. 27.(금) 15:00~17:00</td><td>4 사례 DB · 5 비교·사례 · 6 진행경과</td><td>가명 처리한 과거 사례 2~3건, 사례집 PDF 1개</td></tr><tr><td>3차</td><td>12월 중(일정 협의)</td><td>7 이미지 틀 · 8 AI 활용 · 복습</td><td>결재 완료 공문 1건(공개 가능한 것), 내 업무 메모</td></tr></table><h2 class="sec">꼭 지킬 원칙 3가지</h2><div class="grid g3"><div class="box no"><b>① 실제 개인정보·미공개 특허는 넣지 않습니다</b> 이름·연락처·주소·등록번호는 <b>가명으로 바꾼 뒤</b> 넣고, 아직 공개되지 않은 출원 내용(청구항·기술 내용)은 <b>지우고</b> 넣습니다.</div><div class="box warn"><b>② AI 답은 &#x27;초안&#x27;입니다</b> 조문 인용이 원문과 같은지, 날짜·숫자가 맞는지 <b>사람이 대조</b>한 뒤 씁니다. 근거 없는 답은 [추정]으로 표시하게 했습니다.</div><div class="box ok"><b>③ 판단과 결정은 사람이 합니다</b> AI는 요약·정리·초안까지. 위반 여부 판단, 상정·징계 결정, 발송은 담당자와 위원회가 합니다.</div></div><h2 class="sec">실습 파일<small>모두 가상 자료입니다. 내려받아 바탕화면 폴더 하나에 모아 두세요</small></h2><a class="dl g" href="practice/01_법령규정_발췌_실습용.txt" download>01 법령·규정 발췌</a><a class="dl " href="practice/02_가상신고서_원본(가명처리_연습용).txt" download>02 가상 신고서(원본)</a><a class="dl g" href="practice/03_가상신고서_가명처리본.txt" download>03 가상 신고서(가명 처리본)</a><a class="dl " href="practice/04_가상소명서_가명처리본.txt" download>04 가상 소명서</a><a class="dl g" href="practice/05_사례DB_실습.xlsx" download>05 사례 DB 시트</a><a class="dl " href="practice/06_사건관리_실습.xlsx" download>06 사건관리 시트</a><a class="dl g" href="practice/07_가상메일_진행경과연습.txt" download>07 가상 메일·통화</a><a class="dl " href="practice/08_회원안내_이미지틀.html" download>08 안내 이미지 틀</a><a class="dl g" href="practice/09_가상사례집_발췌.pdf" download>09 가상 사례집 PDF</a><a class="dl " href="code/프로젝트_지침_신고검토.txt" download>프로젝트 지침</a><a class="dl g" href="code/프롬프트_모음.txt" download>프롬프트 모음</a><h2 class="sec">함께 보는 교안</h2><div class="box info"><b>회원 추천·연수·공익·회비 현황은</b> 구글 시트 Apps Script 실습 교안(<a href="../appscript/">appscript</a>)에서 다룹니다 — 중복 신청 확인, 선정 메일 발송, 통합 현황 보드. 이 교안은 <b>신고 처리 업무와 안내 이미지</b>를 다룹니다.</div><div class="box info"><b>그림 안내</b> 교안의 화면은 실제 화면을 단순화한 <b>모형</b>입니다. 빨간 번호는 왼쪽 '따라 하기' 번호와 같습니다. 메뉴 문구는 계정 언어·업데이트에 따라 조금 다를 수 있습니다.</div></div></main><main class="page" id="p0"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">0. 준비 — 계정·설정·폴더<small>1차 교육 · 약 15분</small></h2><section class="step" id="s0-1"><div class="step-h"><span class="no">STEP 0-1</span><h3>업무용 계정 정하기</h3></div><div class="step-b one"><div><div class="goal">🎯 업무 자료가 개인 계정과 섞이지 않게, 이 업무 전용 계정을 하나 정합니다.</div><ol class="do"><li>회의에서 정한 대로 <b>업무 전용 구글 계정</b>(예: 회원서비스실 공용 계정)을 준비합니다.</li><li><a href='https://claude.ai'>claude.ai</a>에서 <span class='ui'>Google로 계속하기</span>를 눌러 그 계정으로 로그인합니다.</li><li>개인 계정과 같이 쓰려면 크롬 오른쪽 위 프로필에서 <span class='ui'>추가</span>로 <b>업무용 크롬 프로필</b>을 따로 만듭니다(창 2개를 나란히 띄워 씁니다).</li></ol><div class="box info"><b>왜 따로 만드나요?</b> 담당자가 바뀌어도 프로젝트·자료가 <b>회사 계정에 남도록</b> 하기 위해서입니다. 지금처럼 개인 PC에만 자료가 있으면 업무가 바뀔 때 근거가 사라집니다.</div><div class=okline>업무용 프로필 창에서 Claude 첫 화면(‘무엇을 도와드릴까요?’)이 보이면 성공입니다.</div><div class=stuck>회사 결제·팀 요금제 여부는 실장님과 정합니다. 무료 계정도 프로젝트 기능은 쓸 수 있습니다(무료는 프로젝트 5개까지).</div></div></div></section><section class="step" id="s0-2"><div class="step-h"><span class="no">STEP 0-2</span><h3>학습 사용 설정 끄기</h3></div><div class="step-b"><div><div class="goal">🎯 내 채팅이 AI 학습에 쓰이지 않도록 설정을 끕니다(개인 요금제 기준).</div><ol class="do"><li>왼쪽 아래 내 이름 → <span class='ui'>설정</span></li><li><span class='ui'>개인정보 보호</span> 클릭</li><li><span class='ui'>Claude(AI 모델) 개선에 도움</span> 스위치를 <b>끔</b>(회색)으로</li></ol><div class="box warn"><b>끄더라도</b> 학습에만 안 쓰일 뿐, 대화는 계정에 저장됩니다. 그래서 <b>원칙 ①(가명·미공개 삭제)</b>은 설정과 상관없이 늘 지킵니다.</div><div class=okline>스위치가 회색이 되면 끝입니다. 이후 새 채팅은 모델 학습에 쓰이지 않습니다.</div><div class=stuck>Team(팀) 요금제는 기본적으로 학습에 쓰지 않아 이 스위치가 없을 수 있습니다. 문구가 다르면 '개선', 'Improve'가 들어간 항목을 찾으세요.</div></div><div><figure class="shot" data-shot="m0-01" data-cap="설정 → 개인정보 보호 → 개선에 도움 끄기"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 설정</span></div><div class="win-body"><div class="cl-set"><div class="nav2"><div class="">일반</div><div class="">계정</div><div class="on"><span class="mk" data-n="2">개인정보 보호</span></div><div class="">결제</div><div class="">기능</div></div><div class="body"><b style="font-size:14px">개인정보 보호</b><div class="row"><span>Claude(AI 모델) 개선에 도움<small>켜 두면 내 채팅이 앞으로의 모델 학습에 쓰일 수 있습니다</small></span><span class="mk" data-n="3"><span class="tg off"></span></span></div><div class="row"><span>위치 메타데이터<small>답변에 대략적인 위치 정보 활용</small></span><span class="tg off"></span></div><div class="row"><span>데이터 내보내기</span><span class="cl-btn">내보내기</span></div></div></div></div></div><figcaption><span>설정 → 개인정보 보호 → 개선에 도움 끄기<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m0-01</span></figcaption></figure></div></div></section><section class="step" id="s0-3"><div class="step-h"><span class="no">STEP 0-3</span><h3>실습 폴더 만들기</h3></div><div class="step-b"><div><div class="goal">🎯 자료를 한곳에 모아 두면 나중에 프로젝트에 올리기 쉽습니다.</div><ol class="do"><li>홈 탭의 실습 파일 11개를 모두 내려받습니다.</li><li>업무용 구글 드라이브에서 <span class='ui'>＋ 새로 만들기</span> → <span class='ui'>새 폴더</span> → 이름 <b>신고처리_AI</b></li><li>그 안에 하위 폴더 4개를 만듭니다: 01_법령규정 · 02_사례 · 03_신고건(가명) · 04_양식</li></ol><div class=okline>드라이브에 폴더 4개가 보이면 성공입니다. 오늘 실습 파일은 PC 바탕화면 폴더에 두고 써도 됩니다.</div><div class=stuck>xlsx 파일은 드라이브에 올린 뒤 더블클릭 → 위쪽 <span class='ui'>Google Sheets에서 열기</span>에서 열면 구글 시트로 볼 수 있습니다.</div></div><div><figure class="shot" data-shot="m0-02" data-cap="업무 폴더 구조"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#1fa463"></span><span class="win-title">Google Drive · 신고처리_AI</span></div><div class="gs-menu"><span class="on" style="position:relative"><span class="mk" data-n="2">＋ 새로 만들기</span></span><span class="" style="position:relative">내 드라이브 › 신고처리_AI</span></div><div class="win-body"><div class="drv"><div class="r h"><span></span><span>이름</span><span>수정</span></div><div class="r"><span>📁</span><span>01_법령규정</span><span>오늘</span></div><div class="r"><span>📁</span><span>02_사례</span><span>오늘</span></div><div class="r"><span>📁</span><span>03_신고건(가명)</span><span>오늘</span></div><div class="r"><span>📁</span><span>04_양식</span><span>오늘</span></div></div></div></div><figcaption><span>업무 폴더 구조<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m0-02</span></figcaption></figure></div></div></section></div></main><main class="page" id="p1"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">1. 첫 프로젝트 — 지침과 법령을 넣고 첫 질문<small>1차 교육 · 약 25분</small></h2><div class="box info"><b>프로젝트가 뭔가요?</b> 업무 하나를 위한 <b>전용 방</b>입니다. 지침(이렇게 답해라)과 파일(이 자료를 보라)을 한 번만 넣어 두면, 그 방에서 여는 모든 채팅이 같은 규칙과 자료로 답합니다. 매번 법령을 다시 붙여넣을 필요가 없습니다.</div><section class="step" id="s1-1"><div class="step-h"><span class="no">STEP 1-1</span><h3>새 프로젝트 만들기</h3></div><div class="step-b"><div><div class="goal">🎯 신고 검토만을 위한 프로젝트를 만듭니다.</div><ol class="do"><li>왼쪽 메뉴 <span class='ui'>프로젝트</span> 클릭</li><li>오른쪽 위 <span class='ui'>＋ 새 프로젝트</span> 클릭</li><li>이름 칸에 <b>변리사법 위반 신고 검토</b> 입력</li><li><span class='ui'>프로젝트 만들기</span> 클릭</li></ol><div class=okline>가운데에 '📁 변리사법 위반 신고 검토', 오른쪽에 '지침'·'파일' 상자가 있는 화면이 보이면 성공입니다.</div><div class=stuck>왼쪽 메뉴가 안 보이면 왼쪽 위 ☰(메뉴) 아이콘을 눌러 펼칩니다.</div></div><div><figure class="shot" data-shot="m1-01" data-cap="프로젝트 → ＋ 새 프로젝트"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude</span></div><div class="win-body"><div class="cl two"><div class="cl-side"><div class="new">＋ 새 채팅</div><div class="">채팅</div><div class="mk" data-n="1"><div class="on">프로젝트</div></div><div class="">아티팩트</div><div style="margin-top:auto;color:#999">최근</div></div><div class="cl-main"><div style="display:flex;justify-content:space-between;align-items:center"><h5>프로젝트</h5><span class="mk" data-n="2"><span class="cl-btn p">＋ 새 프로젝트</span></span></div><div class="desc">주제별로 채팅과 자료를 한곳에 모아 둡니다</div><div class="cl-hist"><div>📁 예시 프로젝트 · 1주 전</div></div></div></div></div></div><figcaption><span>프로젝트 → ＋ 새 프로젝트<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-01</span></figcaption></figure><div style='height:10px'></div><figure class="shot" data-shot="m1-02" data-cap="이름 입력 → 프로젝트 만들기"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude</span></div><div class="win-body"><div class="cl two"><div class="cl-side"><div class="new">＋ 새 채팅</div><div class="">채팅</div><div class="on">프로젝트</div><div class="">아티팩트</div><div style="margin-top:auto;color:#999">최근</div></div><div class="cl-main"><div style="display:flex;justify-content:space-between;align-items:center"><h5>프로젝트</h5><span class="cl-btn p">＋ 새 프로젝트</span></div><div class="desc">주제별로 채팅과 자료를 한곳에 모아 둡니다</div><div class="cl-hist"><div>📁 예시 프로젝트 · 1주 전</div></div></div></div></div><div class="dlg-back"><div class="dlg"><h4>새 프로젝트 만들기</h4><div><div class="mk" data-n="3"><span class="minput" style="color:#15181d">변리사법 위반 신고 검토</span></div><span class="minput">무엇을 하는 프로젝트인가요? (선택)</span></div><div class="btns"><span class="gbtn">취소</span><span class="mk" data-n="4"><span class="cl-btn p">프로젝트 만들기</span></span></div></div></div></div><figcaption><span>이름 입력 → 프로젝트 만들기<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-02</span></figcaption></figure></div></div></section><section class="step" id="s1-2"><div class="step-h"><span class="no">STEP 1-2</span><h3>지침 넣기</h3></div><div class="step-b"><div><div class="goal">🎯 ‘근거만 인용, 없으면 없다, 추정은 [추정]’ 규칙을 프로젝트에 고정합니다.</div><ol class="do"><li>아래 <span class='ui'>전체 복사</span> 클릭</li><li>오른쪽 <span class='ui'>지침</span> 상자의 ✎(또는 <span class='ui'>지침 설정</span>) 클릭</li><li>빈칸에 <kbd>Ctrl</kbd>+<kbd>V</kbd>로 붙여넣기</li><li><span class='ui'>저장</span> 클릭</li></ol><div class="code wraptext"><div class="code-top"><span>📄 프로젝트 지침 · 21줄</span><span><a class="copy-btn" style="text-decoration:none" href="code/프로젝트_지침_신고검토.txt" download>내려받기</a> <button class="copy-btn" data-copy="code-instr">전체 복사</button></span></div><pre id="code-instr"># 역할
+너는 대한변리사회 회원서비스실에서 변리사법·윤리규정·광고규정 위반 신고를 처리하는 담당자를 돕는 보조자다.
+판단과 결정은 담당자와 위원회가 한다. 너는 요약·정리·초안만 만든다.
+
+# 근거 원칙 (가장 중요)
+1. 판단 근거는 이 프로젝트에 올린 파일(법령·규정·사례 DB)과 대화에 붙여넣은 자료 안에서만 찾는다. 기억이나 일반 지식으로 조문 번호나 내용을 만들지 않는다.
+2. 근거를 쓸 때는 [파일 이름 · 조항 번호]와 원문 문장을 그대로 따옴표로 인용한다.
+3. 근거를 찾지 못하면 &quot;제공된 자료에서 근거를 찾지 못했습니다&quot;라고 쓴다. 비슷한 조항을 지어내지 않는다.
+4. 자료에 없는 내용을 짐작해야 할 때는 문장 앞에 [추정]을 붙이고 이유를 한 줄로 쓴다.
+5. 신고서·소명서 내용을 옮길 때는 원문 표현을 바꾸지 않고 따옴표로 인용한다. 과장·축소·감정 표현을 넣지 않는다.
+6. 위반 여부는 &quot;위반 소지 있음 / 위반 소지 낮음 / 판단 보류(추가 확인 필요)&quot; 셋 중 하나로만 쓴다. &quot;명백한 위반&quot;, &quot;확실히&quot; 같은 단정은 쓰지 않는다.
+7. 날짜·숫자·이름·문서번호는 자료에 있는 그대로만 쓴다. 없으면 {{확인 필요: 항목}}으로 남긴다.
+
+# 보안 원칙
+- 이름·연락처·주소·등록번호가 보이면 답변에서는 [신고인] [피신고인] [연락처 삭제]처럼 바꿔 쓴다.
+- 미공개 출원 내용(청구항, 기술 내용)은 요약·분석하지 않고 &quot;미공개 기술 내용 — 담당자 확인 필요&quot;로만 표시한다.
+
+# 출력 형식
+- 비교·정리할 수 있는 것은 표로 만든다.
+- 답변 끝에 항상 &quot;확인이 필요한 사항&quot; 목록을 붙인다(근거를 못 찾은 것, [추정], 자료가 부족한 것).
+- 공문체(~함, ~임)는 공문·보고서를 요청받았을 때만 쓴다.
+</pre></div><div class="box info"><b>이 지침이 하는 일</b> 회의에서 나온 요청 — <b>법 근거 안에서만</b> 답할 것, <b>근거 없으면 없다</b>고 할 것, <b>원문 워딩 그대로</b> 옮길 것, 과장하지 말 것 — 을 그대로 문장으로 옮긴 것입니다. 지침은 언제든 고칠 수 있습니다.</div><div class=okline>‘지침’ 상자에 ‘# 역할 너는 대한변리사회…’ 첫 줄이 보이면 성공입니다.</div></div><div><figure class="shot" data-shot="m1-03" data-cap="오른쪽 ‘지침’ 상자 클릭"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude</span></div><div class="win-body"><div class="cl"><div class="cl-side"><div class="new">＋ 새 채팅</div><div class="">채팅</div><div class="on">프로젝트</div><div class="">아티팩트</div><div style="margin-top:auto;color:#999">최근</div></div><div class="cl-main"><h5>📁 변리사법 위반 신고 검토</h5><div class="desc">비공개 · 나만 볼 수 있음</div><div class="cl-in"><span>이 프로젝트에서 새 채팅 시작…</span><span class="send">↑</span></div><div class="cl-hist"></div></div><div class="cl-right"><div class="mk" data-n="2"><div class="cl-box"><div class="h"><span>지침</span><span>✎</span></div><div class="t">Claude가 이 프로젝트에서 어떻게 답할지 정합니다</div></div></div><div class="cl-box"><div class="h"><span>파일</span><span>＋</span></div><div class="t">문서·PDF·표를 올려 두면 모든 채팅에서 참고합니다</div></div></div></div></div></div><figcaption><span>오른쪽 ‘지침’ 상자 클릭<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-03</span></figcaption></figure><div style='height:10px'></div><figure class="shot" data-shot="m1-04" data-cap="붙여넣기 → 저장"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude</span></div><div class="win-body"><div class="cl"><div class="cl-side"><div class="new">＋ 새 채팅</div><div class="">채팅</div><div class="on">프로젝트</div><div class="">아티팩트</div><div style="margin-top:auto;color:#999">최근</div></div><div class="cl-main"><h5>📁 변리사법 위반 신고 검토</h5><div class="desc">비공개 · 나만 볼 수 있음</div><div class="cl-in"><span>이 프로젝트에서 새 채팅 시작…</span><span class="send">↑</span></div><div class="cl-hist"></div></div><div class="cl-right"><div class="cl-box"><div class="h"><span>지침</span><span>✎</span></div><div class="t">Claude가 이 프로젝트에서 어떻게 답할지 정합니다</div></div><div class="cl-box"><div class="h"><span>파일</span><span>＋</span></div><div class="t">문서·PDF·표를 올려 두면 모든 채팅에서 참고합니다</div></div></div></div></div><div class="dlg-back"><div class="dlg"><h4>프로젝트 지침 설정</h4><div><div class="mk" data-n="3"><div class="cl-ta"># 역할
+너는 대한변리사회 회원서비스실에서…
+
+# 근거 원칙 (가장 중요)
+1. 판단 근거는 이 프로젝트에 올린 파일…</div></div></div><div class="btns"><span class="gbtn">취소</span><span class="mk" data-n="4"><span class="cl-btn p">저장</span></span></div></div></div></div><figcaption><span>붙여넣기 → 저장<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-04</span></figcaption></figure></div></div></section><section class="step" id="s1-3"><div class="step-h"><span class="no">STEP 1-3</span><h3>법령·규정 파일 올리기</h3></div><div class="step-b"><div><div class="goal">🎯 답의 근거가 될 자료를 프로젝트에 넣습니다.</div><ol class="do"><li>오른쪽 <span class='ui'>파일</span> 상자의 <span class='ui'>＋</span> 클릭 → <span class='ui'>기기에서 업로드</span></li><li>실습 파일 <b>01_법령규정_발췌_실습용.txt</b> 선택 → <span class='ui'>열기</span></li></ol><div class="box warn"><b>법이 바뀌면</b> 개정된 파일을 새로 올리고 <b>예전 파일은 삭제</b>합니다. 두 판이 같이 있으면 AI가 옛 조문을 인용할 수 있습니다.</div><div class=okline>‘파일’ 상자에 📄 01_법령규정_발췌_실습용.txt가 보이면 성공입니다.</div><div class=stuck>실제 업무에서는 국가법령정보센터(law.go.kr)의 변리사법 최신본(PDF·한글)과 회 규정집 원본을 올립니다. HWP가 안 올라가면 한글에서 PDF로 저장해 올리세요.</div></div><div><figure class="shot" data-shot="m1-05" data-cap="파일 ＋ → 업로드"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude</span></div><div class="win-body"><div class="cl"><div class="cl-side"><div class="new">＋ 새 채팅</div><div class="">채팅</div><div class="on">프로젝트</div><div class="">아티팩트</div><div style="margin-top:auto;color:#999">최근</div></div><div class="cl-main"><h5>📁 변리사법 위반 신고 검토</h5><div class="desc">비공개 · 나만 볼 수 있음</div><div class="cl-in"><span>이 프로젝트에서 새 채팅 시작…</span><span class="send">↑</span></div><div class="cl-hist"></div></div><div class="cl-right"><div class="cl-box"><div class="h"><span>지침</span><span>✎</span></div><div class="t">너는 회원서비스실 신고 처리 담당자를 돕는 보조자다…
+# 근거 원칙
+1. 올린 파일 안에서만…</div></div><div class="mk" data-n="1"><div class="cl-box"><div class="h"><span>파일</span><span>＋</span></div><span class="cl-file">📄 01_법령규정_발췌_실습용.txt</span></div></div></div></div></div></div><figcaption><span>파일 ＋ → 업로드<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-05</span></figcaption></figure></div></div></section><section class="step" id="s1-4"><div class="step-h"><span class="no">STEP 1-4</span><h3>첫 질문 — 근거 인용 확인</h3></div><div class="step-b"><div><div class="goal">🎯 가장 작은 신고 한 줄로 프로젝트가 규칙대로 답하는지 확인합니다.</div><ol class="do"><li>가운데 입력창 클릭</li><li>아래 프롬프트를 복사해 붙여넣기</li><li><span class='ui'>↑</span>(보내기) 클릭</li><li>답에 <b>[파일 이름 · 조항]</b>과 <b>따옴표 원문</b>이 있는지 확인</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>아래 신고 내용이 변리사법이나 회 규정 위반에 해당할 수 있는지 검토해 줘.
+근거는 이 프로젝트에 올린 파일 안에서만 찾고, 조항 번호와 원문 문장을 그대로 인용해 줘.
+
+[신고 내용]
+&quot;상표 등록률 100% 보장! 거절되면 전액 환불해 드립니다.&quot;라는 블로그 광고를 봤습니다.</div><div class=okline>‘위반 소지 있음’과 함께 광고규정 제4조 제6호 원문이 따옴표로 나오고, ‘전액 환불’ 부분은 ‘근거를 찾지 못했습니다’처럼 따로 표시되면 성공입니다.</div><div class=stuck>조항 번호만 있고 원문 인용이 없으면, 이어서 ‘근거 조항 원문을 따옴표로 그대로 인용해 줘’라고 한 번 더 보냅니다.</div></div><div><figure class="shot" data-shot="m1-06" data-cap="첫 질문과 답"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="2"><div class="msg user">[신고 내용]
+&quot;상표 등록률 100% 보장! 거절되면 전액 환불해 드립니다.&quot;라는 블로그 광고를 봤습니다.</div></div><div class="mk" data-n="4"><div class="msg ai"><b>검토 의견: 위반 소지 있음</b><br>근거: [01_법령규정_발췌 · 광고규정 제4조 제6호] "등록율, 심판 및 소송의 승소율 등 기타 고객으로 하여금 업무수행 결과에 대하여 부당한 기대를 가지도록 표시하는 내용의 광고"<br>[변리사법 제8조의5 제2항 제4호] "소비자에게 업무수행 결과에 대하여 부당한 기대를 가지도록 하는 내용의 광고"<br>"거절되면 전액 환불" 부분: 제공된 자료에서 직접 근거를 찾지 못했습니다.<br><b>확인이 필요한 사항</b> · 광고 게시 주체·기간</div></div><div class="inbox"><span>답장…</span><span class="mk" data-n="3"><span class=send>↑</span></span></div></div></div><figcaption><span>첫 질문과 답<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-06</span></figcaption></figure></div></div></section><section class="step" id="s1-5"><div class="step-h"><span class="no">STEP 1-5</span><h3>일부러 없는 것 물어보기</h3></div><div class="step-b"><div><div class="goal">🎯 AI가 지어내지 않고 ‘없다’고 말하는지 시험합니다(환각 점검).</div><ol class="do"><li>새 채팅에서 아래 질문을 보냅니다(변리사법에 제99조는 없습니다).</li><li>답에서 ‘찾지 못했습니다’라는 말이 나오는지 확인합니다.</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>변리사법 제99조의 내용을 알려 줘.</div><div class=okline>‘제공된 자료에서 근거를 찾지 못했습니다’처럼 없다고 답하면, 지침이 잘 작동하는 것입니다.</div><div class=stuck>그럴듯한 조문을 지어내면 지침이 저장되지 않은 것입니다. 1-2로 돌아가 ‘지침’ 상자 내용을 확인하세요.</div></div><div><figure class="shot" data-shot="m1-07" data-cap="없는 조문 → 없다고 답함"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="msg user">변리사법 제99조의 내용을 알려 줘.</div><div class="mk" data-n="2"><div class="msg ai">제공된 자료(01_법령규정_발췌)에서 변리사법 제99조를 찾지 못했습니다. 발췌본에는 제2조~제22조 중 일부만 있습니다.<br><b>확인이 필요한 사항</b> · 조문 번호를 다시 확인해 주세요.</div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>없는 조문 → 없다고 답함<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m1-07</span></figcaption></figure></div></div></section><div class="box ok"><b>여기까지 배운 것</b> 프로젝트 1개 = 지침 + 파일. 이제 이 방에서 여는 채팅은 모두 <b>근거 인용 · 없으면 없다 · 추정 표시</b> 규칙을 따릅니다.</div></div></main><main class="page" id="p2"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">2. 신고 접수 → 요약·위반 검토<small>1차 교육 · 약 35분</small></h2><div class="flow"><div class="fs"><b>가명 처리</b>올리기 전 사람이</div><div class="ar">→</div><div class="fs"><b>요약·검토표</b>Claude</div><div class="ar">→</div><div class="fs"><b>원문 대조</b>사람이 확인</div><div class="ar">→</div><div class="fs"><b>시트에 기록</b>6탭에서 자동화</div></div><section class="step" id="s2-1"><div class="step-h"><span class="no">STEP 2-1</span><h3>올리기 전에 가명 처리하기</h3></div><div class="step-b"><div><div class="goal">🎯 신고서를 AI에 넣기 전에 개인정보와 미공개 기술 내용을 지웁니다.</div><ol class="do"><li><b>02_가상신고서_원본</b>을 메모장(또는 한글)으로 엽니다.</li><li><kbd>Ctrl</kbd>+<kbd>H</kbd> → <span class='ui'>찾을 내용</span>에 신고인 이름 <b>한가람</b></li><li><span class='ui'>바꿀 내용</span>에 <b>[신고인]</b> 입력</li><li><span class='ui'>모두 바꾸기</span> 클릭</li><li>같은 방법으로 피신고인 이름·사무소명·전화·이메일·주소·등록번호를 바꾸고, 출원 예정 기술 설명은 통째로 지웁니다.</li><li>다 하면 <b>03_가상신고서_가명처리본</b>과 비교해 빠진 곳이 없는지 확인합니다.</li></ol><div class="box no"><b>실제 신고서로는 하지 마세요</b> 실제 문서의 개인정보를 찾으라고 AI에 붙여넣는 순간 이미 AI에 들어간 것입니다. <b>가명 처리는 사람이 먼저</b> 합니다.</div><details><summary>💡 실습 파일로 ‘개인정보 찾기’ 연습하기</summary><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>아래 글에서 개인정보만 찾아서 표로 알려 줘. 글을 고치지는 마.
+찾을 것: 사람 이름, 전화번호, 이메일, 주소, 등록번호·출원번호, 미공개 기술 내용
+표 열: 순번 | 원문에 나온 그대로 | 종류 | 바꿀 말(예: [신고인], [연락처 삭제])
+
+[글]
+(가명 처리 전 신고서를 여기에 붙여넣기 — 단, 이 단계는 실습 파일로만 합니다)</div></details><div class=okline>파일 안에 실명·전화번호·이메일·주소·등록번호·기술 내용이 하나도 남지 않으면 성공입니다.</div><div class=stuck>한글(HWP)은 메뉴 편집 → 찾아 바꾸기(Ctrl+H)입니다. 바꿀 게 많으면 아래 💡처럼 ‘찾기만’ AI에게 시킬 수 있습니다 — 단, 이것은 가상 실습 파일로만 연습합니다.</div></div><div><figure class="shot" data-shot="m2-01" data-cap="메모장 찾기·바꾸기(Ctrl+H)"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#5b8def"></span><span class="win-title">02_가상신고서_원본.txt - 메모장</span></div><div class="gs-menu"><span class="" style="position:relative">파일</span><span class="" style="position:relative">편집</span><span class="" style="position:relative">서식</span><span class="" style="position:relative">보기</span></div><div class="win-body"><div class="np">신고인: <span class="hl">한가람</span> (연락처 010-0000-4821, …)
+피신고인: 변리사 도윤서 (등록번호 99999)
+…</div></div><div class="dlg-back"><div class="dlg"><h4>바꾸기</h4><div><div class="mk" data-n="2"><span class="minput" style="color:#15181d">찾을 내용: 한가람</span></div><div class="mk" data-n="3"><span class="minput" style="color:#15181d">바꿀 내용: [신고인]</span></div></div><div class="btns"><span class="gbtn">바꾸기</span><span class="mk" data-n="4"><span class="gbtn p">모두 바꾸기</span></span></div></div></div></div><figcaption><span>메모장 찾기·바꾸기(Ctrl+H)<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m2-01</span></figcaption></figure></div></div></section><section class="step" id="s2-2"><div class="step-h"><span class="no">STEP 2-2</span><h3>신고 요약과 위반 검토표 받기</h3></div><div class="step-b"><div><div class="goal">🎯 가명 처리본 한 개로 요지·행위 목록·검토표·확인 질문을 한 번에 받습니다.</div><ol class="do"><li>프로젝트에서 <span class='ui'>＋ 새 채팅</span></li><li>입력창 왼쪽 📎(또는 ＋) → <b>03_가상신고서_가명처리본.txt</b> 첨부</li><li>아래 프롬프트를 붙여넣고 보내기</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>첨부한 신고서(가명 처리본)를 아래 순서로 정리해 줘.
+
+1. 신고 요지 — 3줄 이내. 신고인이 쓴 표현은 따옴표로 그대로.
+2. 신고된 행위 목록 — 표: 번호 | 행위(원문 인용) | 날짜·장소(자료에 있는 것만)
+3. 위반 검토표 — 표: 행위 번호 | 관련 조항(파일 이름·조항) | 조항 원문 인용 | 검토 의견(위반 소지 있음 / 위반 소지 낮음 / 판단 보류 중 하나) | 이유 한 줄
+4. 피신고인에게 확인해야 할 질문 3~5개
+5. 확인이 필요한 사항</div><div class="box info"><b>왜 ‘파일’ 상자가 아니라 채팅에 첨부하나요?</b> 법령·사례처럼 <b>늘 쓰는 자료</b>는 프로젝트 파일에, 사건마다 다른 <b>신고서·소명서</b>는 그 채팅에만 첨부합니다. 사건끼리 섞이지 않습니다.</div><div class=okline>표 3번에 행위 ①~④가 있고, ‘광고 문자’처럼 근거가 약한 것은 ‘판단 보류’로 나오면 성공입니다.</div><div class=stuck>표가 깨지면 ‘표 3만 다시 보여 줘’라고 이어서 요청합니다.</div></div><div><figure class="shot" data-shot="m2-02" data-cap="첨부 + 검토 요청"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="2"><div class="msg user"><span class="att">📎 03_가상신고서_가명처리본.txt</span><br>첨부한 신고서(가명 처리본)를 아래 순서로 정리해 줘. …</div></div><div class="mk" data-n="3"><div class="msg ai"><b>1. 신고 요지</b> [신고인]은 [피신고인]의 블로그 광고 문구 3개("상표 등록률 100% 보장! …" 등)가 부당하다고 신고함.<br><b>3. 위반 검토표</b><table class="mtbl"><tr><th>행위</th><th>관련 조항</th><th>검토 의견</th></tr><tr><td>① 등록률 100% 보장</td><td>광고규정 제4조 제6호</td><td>위반 소지 있음</td></tr><tr><td>② 심사관과 직접 소통</td><td>광고규정 제4조 제5호</td><td>위반 소지 있음</td></tr><tr><td>③ 거절 폭탄(비교)</td><td>광고규정 제4조 제3호</td><td>위반 소지 있음</td></tr><tr><td>④ 광고 문자</td><td>근거 확인 필요</td><td>판단 보류</td></tr></table></div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>첨부 + 검토 요청<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m2-02</span></figcaption></figure></div></div></section><section class="step" id="s2-3"><div class="step-h"><span class="no">STEP 2-3</span><h3>원문과 대조하기 (3분 점검)</h3></div><div class="step-b one"><div><div class="goal">🎯 AI 답을 쓰기 전에 꼭 확인할 세 가지를 습관으로 만듭니다.</div><ol class="do"><li>따옴표 인용이 신고서·법령 원문과 <b>글자 그대로</b> 같은지 — 의심되면 원문 파일에서 <kbd>Ctrl</kbd>+<kbd>F</kbd>로 찾아봅니다.</li><li>조항 번호가 맞는지 — 01 법령 파일에서 그 조항을 직접 엽니다.</li><li><b>[추정]</b>, ‘판단 보류’, ‘확인이 필요한 사항’을 모아 내 메모에 옮깁니다.</li></ol><table class="t"><tr><th>보이면</th><th>뜻</th><th>할 일</th></tr><tr><td>“…” 따옴표</td><td>원문 인용</td><td>원문과 글자 대조</td></tr><tr><td>[추정]</td><td>자료에 없어 짐작함</td><td>믿지 말고 확인</td></tr><tr><td>판단 보류</td><td>근거 부족</td><td>피신고인 소명으로 확인</td></tr><tr><td>근거를 찾지 못했습니다</td><td>자료에 없음</td><td>자료 추가 또는 사람이 판단</td></tr></table><div class=okline>세 가지를 확인한 답만 보고서·공문에 씁니다. 틀린 곳은 ‘○번 인용이 원문과 다르다. 원문은 “…”이다’라고 알려 주면 고쳐 줍니다.</div></div></div></section></div></main><main class="page" id="p3"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">3. 임원 보고 메일 · 소명 요청 공문 초안<small>1차 교육 · 약 35분</small></h2><div class="box info"><b>같은 채팅에서 이어서</b> 2탭에서 검토표를 만든 <b>그 채팅</b>에서 이어서 요청하면, 앞의 요약을 다시 넣지 않아도 됩니다.</div><section class="step" id="s3-1"><div class="step-h"><span class="no">STEP 3-1</span><h3>임원 보고 메일 초안</h3></div><div class="step-b"><div><div class="goal">🎯 요약·검토 의견·처리 계획이 한 화면에 들어오는 보고 메일을 만듭니다.</div><ol class="do"><li>2-2 채팅의 입력창에 아래 프롬프트 붙여넣기</li><li>[대괄호] 부분(이름·날짜)을 내 상황으로 바꾸기</li><li>보내기 → 답의 제목·본문 확인</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>위에서 정리한 검토 결과로 임원 보고 메일 초안을 써 줘.
+
+[받는 사람] 상임이사님들
+[보내는 사람] 회원서비스실 [담당자 이름]
+[형식]
+- 제목: [변리사법 위반 신고 보고] 사건번호 [가상-2026-07] — 한 줄 요지
+- 본문 순서: ① 접수 경위(일자·경로) ② 신고 내용 요지 ③ 사무국 검토 의견(표) ④ 향후 처리 계획(피신고인 소명 요청, 회신 기한 [2026. 11. 27.(금)]) ⑤ 의견 요청 문장
+- 신고 내용은 원문 인용, 사무국 의견은 &quot;~로 판단됨&quot; 수준까지만. 결론을 단정하지 말 것.
+- 메일 본문은 한 화면(20줄 안팎)에 들어오게.</div><div class=okline>제목이 ‘[변리사법 위반 신고 보고] 가상-2026-07 — …’ 형식이고, 본문이 ①~⑤ 순서로 20줄 안팎이면 성공입니다.</div><div class=stuck>너무 길면 ‘15줄 이내로 줄여 줘. 표는 유지’라고 이어서 요청합니다.</div></div><div><figure class="shot" data-shot="m3-01" data-cap="보고 메일 초안"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="1"><div class="msg user">위에서 정리한 검토 결과로 임원 보고 메일 초안을 써 줘. …</div></div><div class="mk" data-n="3"><div class="msg ai"><b>제목: [변리사법 위반 신고 보고] 가상-2026-07 — 블로그 광고 문구 관련</b><br>상임이사님들께,<br>1. 접수 경위: 2026. 11. 2.(월) 홈페이지 신고센터로 접수<br>2. 신고 내용: [피신고인]의 블로그 광고 "상표 등록률 100% 보장! …" 등 3개 문구<br>3. 사무국 검토 의견: (표)<br>4. 향후 계획: 소명 요청, 회신 기한 2026. 11. 27.(금)<br>…의견 주시면 반영하겠습니다.</div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>보고 메일 초안<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m3-01</span></figcaption></figure></div></div></section><section class="step" id="s3-2"><div class="step-h"><span class="no">STEP 3-2</span><h3>소명 요청 공문 초안</h3></div><div class="step-b"><div><div class="goal">🎯 회 시행문 양식(수신·참조·제목 → 1. 가. → 붙임 → 끝.)대로 공문 초안을 받습니다.</div><ol class="do"><li>같은 채팅에 아래 프롬프트 붙여넣기</li><li>보내기</li><li><b>{{확인 필요}}</b> 표시된 칸을 직접 채우기</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>피신고인에게 보낼 &quot;소명 요청&quot; 공문 초안을 대한변리사회 시행문 양식으로 써 줘.
+
+[수신] [피신고인] 변리사님
+[제목] 변리사 광고 관련 소명 요청
+[내용] 아래 신고 행위 각각에 대해 사실관계와 의견을 서면으로 제출해 달라는 요청
+[회신 기한] [2026. 11. 27.(금)]까지
+[회신 방법] 이메일([담당자 메일]) 또는 우편
+[붙임] 신고 내용 요지 1부
+
+[양식 규칙]
+- 맨 위 3줄: 수 신 / 참 조 / 제 목
+- 본문 번호: 1. → 가. → (1) 순서, 번호 뒤 한 칸 띄우기
+- 날짜는 2026. 11. 27.(금) 처럼
+- 붙임 뒤에 &quot;끝.&quot;
+- 발신 명의: 대한변리사회장
+- 신고인 이름·연락처는 넣지 말 것
+- 모르는 값(시행번호, 담당자 전화)은 {{확인 필요: 항목}}으로 남길 것</div><div class=okline>맨 위 ‘수 신 / 참 조 / 제 목’, 본문 1. 2. 가. 체계, 붙임 뒤 ‘끝.’, 신고인 이름 없음 — 네 가지가 맞으면 성공입니다.</div><div class=stuck>날짜·시행번호를 AI가 지어내면 안 됩니다. 지어낸 값이 보이면 ‘모르는 값은 {{확인 필요}}로 남겨’라고 다시 요청하세요.</div></div><div><figure class="shot" data-shot="m3-02" data-cap="소명 요청 공문 초안"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="msg user">피신고인에게 보낼 "소명 요청" 공문 초안을 … 시행문 양식으로 써 줘.</div><div class="mk" data-n="2"><div class="msg ai">수 신  [피신고인] 변리사님<br>참 조<br>제 목  변리사 광고 관련 소명 요청<br><br>1. 귀하의 무궁한 발전을 기원합니다.<br>2. 본회에 접수된 신고(붙임)와 관련하여, 아래 사항에 대한 소명을 서면으로 제출하여 주시기 바랍니다.<br>  가. 제출 기한: 2026. 11. 27.(금)까지<br>  나. 제출 방법: 이메일({{확인 필요: 담당자 메일}})<br><br>붙임 신고 내용 요지 1부. 끝.<br><br>대한변리사회장</div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>소명 요청 공문 초안<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m3-02</span></figcaption></figure></div></div></section><section class="step" id="s3-3"><div class="step-h"><span class="no">STEP 3-3</span><h3>우리 양식을 학습시키기(한 번만)</h3></div><div class="step-b one"><div><div class="goal">🎯 실제 발송했던 공문·보고 메일을 예시로 넣어, 다음부터 우리 양식 그대로 나오게 합니다.</div><ol class="do"><li>예전에 보낸 소명 요청 공문 1~2건을 <b>가명 처리</b>해 PDF 또는 txt로 저장</li><li>프로젝트 <span class='ui'>파일</span> 상자 <span class='ui'>＋</span> → 업로드 (파일 이름 예: 양식_소명요청공문_예시.pdf)</li><li>다음부터는 프롬프트 끝에 ‘<b>양식_소명요청공문_예시 파일과 같은 형식으로</b>’ 한 줄만 붙입니다.</li></ol><div class="box info"><b>보고서·회의자료도 같은 방법</b> 임원 보고 메일, 상임이사회·윤리위원회·징계위원회 회의자료도 예시 1건씩을 ‘양식_…’ 이름으로 올려 두면 됩니다. <b>예시는 기관마다 다르기 때문에</b> 우리 것을 보여 주는 게 가장 정확합니다.</div><div class=okline>새로 만든 공문의 인사말·번호·문장 끝맺음이 예시 파일과 같아지면 성공입니다.</div></div></div></section><div class="box ok"><b>1차 숙제 (2차 전까지)</b> ① 내 업무 순서를 <b>초등학생에게 알려 주듯</b> 단계별로 적기(8탭 8-2 프롬프트로 다듬기) ② 가명 처리한 과거 사례 2~3건, 사례집 PDF 1개 준비 ③ 오늘 만든 프로젝트로 실제 신고 1건(가명 처리본)의 검토표 만들어 보기</div></div></main><main class="page" id="p5"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">4. 징계 사례 DB 만들기 — PDF를 검색되는 표로<small>2차 교육 · 약 45분</small></h2><div class="box info"><b>왜 DB부터인가요?</b> 회의에서 ‘DB화가 급선무’라고 한 이유: PDF를 매번 열어 뒤지는 대신, <b>한 줄 = 한 사례</b> 표로 만들어 두면 시트에서 바로 검색되고, 프로젝트에 올리면 AI가 유사 사례를 찾을 수 있습니다. 처음부터 다 하지 않고 <b>귀찮지 않을 만큼만</b> 넣고 차곡차곡 쌓습니다.</div><section class="step" id="s4-1"><div class="step-h"><span class="no">STEP 4-1</span><h3>사례 DB 시트 열기</h3></div><div class="step-b"><div><div class="goal">🎯 열(칸) 이름이 정해진 빈 DB를 준비합니다.</div><ol class="do"><li><b>05_사례DB_실습.xlsx</b>를 구글 드라이브 02_사례 폴더에 올리기</li><li>더블클릭 → <span class='ui'>Google Sheets에서 열기</span></li><li>아래쪽 <span class='ui'>열 설명</span> 탭에서 칸마다 무엇을 적는지 읽어 보기</li></ol><div class=okline>‘사례DB’ 탭에 가상 사례 8줄(2~9행)이 보이면 성공입니다.</div><div class=stuck>열 이름은 바꾸지 마세요. 프롬프트(4-2)가 이 열 이름 순서대로 표를 만듭니다.</div></div><div><figure class="shot" data-shot="m4-01" data-cap="사례DB 시트와 열 설명 탭"><div class="mock"><div class="gs-top"><div class="gs-logo"></div><div class="gs-title">05_사례DB_실습 ☆</div></div><div class="gs-menu"><span class="" style="position:relative">파일</span><span class="" style="position:relative">수정</span><span class="" style="position:relative">보기</span><span class="" style="position:relative">삽입</span><span class="" style="position:relative">서식</span><span class="" style="position:relative">데이터</span><span class="" style="position:relative">도구</span><span class="" style="position:relative">확장 프로그램</span><span class="" style="position:relative">도움말</span></div><div class="gs-bar"></div><div class="gs-fx"><b>fx</b></div><table class="gs-grid"><tr><th class="rn"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr><tr class="h"><th class="rn">1</th><td style="">사례번호</td><td style="">출처(사례집·쪽)</td><td style="">결정연도</td><td style="">위반 유형</td><td style="">적용 조항</td><td style="">처분 결과</td></tr><tr class=""><th class="rn">2</th><td style="">가상-1-01</td><td style="">가상 사례집 1집 p.12</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제6호</td><td style="">견책</td></tr><tr class=""><th class="rn">3</th><td style="">가상-1-02</td><td style="">가상 사례집 1집 p.15</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제5호</td><td style="">과태료 100만원</td></tr><tr class=""><th class="rn">4</th><td style="">가상-1-03</td><td style="">가상 사례집 1집 p.19</td><td style="">2022</td><td style="">광고</td><td style="">광고규정 제4조 제3호</td><td style="">견책</td></tr><tr class=""><th class="rn">5</th><td style="">가상-2-04</td><td style="">가상 사례집 2집 p.27</td><td style="">2024</td><td style="">광고</td><td style="">광고규정 제3조 제2항</td><td style="">주의</td></tr></table><div class="gs-tabs">＋ ≡ <span class="on">사례DB</span><span class=""><span class="mk" data-n="3">열 설명</span></span></div></div><figcaption><span>사례DB 시트와 열 설명 탭<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m4-01</span></figcaption></figure></div></div></section><section class="step" id="s4-2"><div class="step-h"><span class="no">STEP 4-2</span><h3>사례집 PDF → 표로 옮기기</h3></div><div class="step-b"><div><div class="goal">🎯 PDF 사례를 DB 열 순서 그대로 표로 받습니다.</div><ol class="do"><li>프로젝트에서 <span class='ui'>＋ 새 채팅</span> → 📎로 <b>09_가상사례집_발췌.pdf</b> 첨부</li><li>아래 프롬프트 붙여넣고 보내기 — 실제 사례집은 [쪽 범위]를 10쪽 안팎씩 나눠서</li><li>‘확인 필요 목록’이 있으면 PDF에서 직접 확인</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>첨부한 사례집 PDF의 [45~46쪽]에 있는 징계 사례를 표로 옮겨 줘.
+
+표 열(이 순서 그대로):
+사례번호 | 출처(사례집·쪽) | 결정연도 | 위반 유형 | 적용 조항 | 사실관계 요지 | 혐의자 주장 요지 | 판단 요지 | 처분 결과 | 키워드
+
+규칙
+- 사례 하나 = 한 줄.
+- 적용 조항·처분 결과는 원문 표기 그대로 옮길 것.
+- 요지 칸은 각 2문장 이내, 원문에 없는 해석을 덧붙이지 말 것.
+- 이름·사무소명은 [혐의자]로 바꿀 것.
+- 읽을 수 없거나 없는 칸은 비워 두고, 표 아래에 &quot;확인 필요 목록&quot;으로 따로 알려 줄 것.
+- 표의 열 이름은 위 순서·이름 그대로 쓸 것(시트 열과 맞추기 위해).</div><div class="box warn"><b>한 번에 많이 넣지 않기</b> 사례집 한 권을 통째로 넣으면 빠뜨리거나 섞일 수 있습니다. <b>10쪽 안팎씩</b> 나눠 옮기고, 옮길 때마다 사례 수를 PDF와 맞춰 봅니다.</div><div class=okline>사례 3-07, 3-08, 3-09 세 줄이 표로 나오고, 적용 조항·처분 결과가 PDF와 글자 그대로 같으면 성공입니다.</div></div><div><figure class="shot" data-shot="m4-02" data-cap="PDF 첨부 → 표"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="1"><div class="msg user"><span class="att">📎 09_가상사례집_발췌.pdf</span><br>첨부한 사례집 PDF의 [45~46쪽]에 있는 징계 사례를 표로 옮겨 줘. …</div></div><div class="mk" data-n="3"><div class="msg ai"><table class="mtbl"><tr><th>사례번호</th><th>출처</th><th>적용 조항</th><th>처분 결과</th></tr><tr><td>3-07</td><td>가상 징계사례집 제3집 p.45</td><td>광고규정 제4조 제6호</td><td>견책</td></tr><tr><td>3-08</td><td>가상 징계사례집 제3집 p.46</td><td>광고규정 제4조 제5호, 윤리규정 제24조</td><td>과태료 200만원</td></tr><tr><td>3-09</td><td>가상 징계사례집 제3집 p.46</td><td>광고규정 제4조 제3호</td><td>견책</td></tr></table></div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>PDF 첨부 → 표<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m4-02</span></figcaption></figure></div></div></section><section class="step" id="s4-3"><div class="step-h"><span class="no">STEP 4-3</span><h3>표를 시트에 붙여넣기</h3></div><div class="step-b"><div><div class="goal">🎯 AI가 만든 표를 DB 시트 맨 아래에 이어 붙입니다.</div><ol class="do"><li>Claude 답의 표를 열 이름 줄부터 마지막 줄까지 드래그해 선택 → <kbd>Ctrl</kbd>+<kbd>C</kbd></li><li>사례DB 탭에서 첫 빈 행(10행)의 A칸 클릭 → <kbd>Ctrl</kbd>+<kbd>V</kbd></li><li>함께 붙은 열 이름 줄(10행)은 행 번호 우클릭 → <span class='ui'>행 삭제</span></li></ol><div class=okline>10~12행에 3-07, 3-08, 3-09가 들어가 사례가 모두 11건이 되면 성공입니다.</div><div class=stuck>한 칸에 다 들어가 버리면: 그 열 선택 → 메뉴 <span class='ui'>데이터</span> → <span class='ui'>텍스트를 열로 분할</span>. 또는 Claude에게 ‘표를 탭으로 구분한 글로 다시 줘’라고 해서 붙여넣습니다.</div></div><div><figure class="shot" data-shot="m4-03" data-cap="붙여넣은 새 사례(노란 줄)"><div class="mock"><div class="gs-top"><div class="gs-logo"></div><div class="gs-title">05_사례DB_실습 ☆</div></div><div class="gs-menu"><span class="" style="position:relative">파일</span><span class="" style="position:relative">수정</span><span class="" style="position:relative">보기</span><span class="" style="position:relative">삽입</span><span class="" style="position:relative">서식</span><span class="" style="position:relative">데이터</span><span class="" style="position:relative">도구</span><span class="" style="position:relative">확장 프로그램</span><span class="" style="position:relative">도움말</span></div><div class="gs-bar"></div><div class="gs-fx"><b>fx</b></div><table class="gs-grid"><tr><th class="rn"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr><tr class="h"><th class="rn">1</th><td style="">사례번호</td><td style="">출처(사례집·쪽)</td><td style="">결정연도</td><td style="">위반 유형</td><td style="">적용 조항</td><td style="">처분 결과</td></tr><tr class=""><th class="rn">2</th><td style="">가상-1-01</td><td style="">가상 사례집 1집 p.12</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제6호</td><td style="">견책</td></tr><tr class=""><th class="rn">3</th><td style="">가상-1-02</td><td style="">가상 사례집 1집 p.15</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제5호</td><td style="">과태료 100만원</td></tr><tr class=""><th class="rn">4</th><td style="">가상-1-03</td><td style="">가상 사례집 1집 p.19</td><td style="">2022</td><td style="">광고</td><td style="">광고규정 제4조 제3호</td><td style="">견책</td></tr><tr class=""><th class="rn">5</th><td style="">가상-2-04</td><td style="">가상 사례집 2집 p.27</td><td style="">2024</td><td style="">광고</td><td style="">광고규정 제3조 제2항</td><td style="">주의</td></tr><tr class=""><th class="rn">6</th><td style="">가상-2-01</td><td style="">가상 사례집 2집 p.8</td><td style="">2023</td><td style="">명의대여</td><td style="">변리사법 제8조의3 제1항</td><td style="">업무정지 6개월</td></tr><tr class=""><th class="rn">7</th><td style="background:#fff6dc">3-07</td><td style="background:#fff6dc">가상 징계사례집 제3집 p.45</td><td style="background:#fff6dc">2024</td><td style="background:#fff6dc">광고</td><td style="background:#fff6dc">광고규정 제4조 제6호</td><td style="background:#fff6dc">견책</td></tr><tr class=""><th class="rn">8</th><td style="background:#fff6dc">3-08</td><td style="background:#fff6dc">가상 징계사례집 제3집 p.46</td><td style="background:#fff6dc">2025</td><td style="background:#fff6dc">광고</td><td style="background:#fff6dc">광고규정 제4조 제5호, 윤리규정 제24조</td><td style="background:#fff6dc">과태료 200만원</td></tr></table><div class="gs-tabs">＋ ≡ <span class="on">사례DB</span><span class="">열 설명</span></div></div><figcaption><span>붙여넣은 새 사례(노란 줄)<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m4-03</span></figcaption></figure></div></div></section><section class="step" id="s4-4"><div class="step-h"><span class="no">STEP 4-4</span><h3>필터로 검색하기</h3></div><div class="step-b"><div><div class="goal">🎯 원하는 유형·조항·키워드의 사례만 골라 봅니다.</div><ol class="do"><li>메뉴 <span class='ui'>데이터</span> 클릭</li><li><span class='ui'>필터 만들기</span> 클릭</li><li>‘위반 유형’ 열 머리의 ≡ 아이콘 → ‘광고’만 체크 → 확인</li><li>단어로 찾을 때는 <kbd>Ctrl</kbd>+<kbd>F</kbd> → 예: <b>심사관</b></li></ol><div class=okline>‘광고’로 거르면 광고 사례만 남고, 다시 ≡ → 모두 선택으로 되돌릴 수 있으면 성공입니다.</div></div><div><figure class="shot" data-shot="m4-04" data-cap="데이터 → 필터 만들기"><div class="mock"><div class="gs-top"><div class="gs-logo"></div><div class="gs-title">05_사례DB_실습 ☆</div></div><div class="gs-menu"><span class="" style="position:relative">파일</span><span class="" style="position:relative">수정</span><span class="" style="position:relative">보기</span><span class="" style="position:relative">삽입</span><span class="" style="position:relative">서식</span><span class="on" style="position:relative"><span class="mk" data-n="1">데이터</span><div class="dd" style="left:0;top:100%;"><div class="">범위 정렬</div><div class="on"><span class="mk" data-n="2">필터 만들기</span></div><div class="">필터 보기 만들기</div><hr><div class="">데이터 정리</div><div class="">텍스트를 열로 분할</div></div></span><span class="" style="position:relative">도구</span><span class="" style="position:relative">확장 프로그램</span><span class="" style="position:relative">도움말</span></div><div class="gs-bar"></div><div class="gs-fx"><b>fx</b></div><table class="gs-grid"><tr><th class="rn"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr><tr class="h"><th class="rn">1</th><td style="">사례번호</td><td style="">출처(사례집·쪽)</td><td style="">결정연도</td><td style="">위반 유형</td><td style="">적용 조항</td><td style="">처분 결과</td></tr><tr class=""><th class="rn">2</th><td style="">가상-1-01</td><td style="">가상 사례집 1집 p.12</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제6호</td><td style="">견책</td></tr><tr class=""><th class="rn">3</th><td style="">가상-1-02</td><td style="">가상 사례집 1집 p.15</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제5호</td><td style="">과태료 100만원</td></tr><tr class=""><th class="rn">4</th><td style="">가상-1-03</td><td style="">가상 사례집 1집 p.19</td><td style="">2022</td><td style="">광고</td><td style="">광고규정 제4조 제3호</td><td style="">견책</td></tr><tr class=""><th class="rn">5</th><td style="">가상-2-04</td><td style="">가상 사례집 2집 p.27</td><td style="">2024</td><td style="">광고</td><td style="">광고규정 제3조 제2항</td><td style="">주의</td></tr></table><div class="gs-tabs">＋ ≡ <span class="on">사례DB</span><span class="">열 설명</span></div></div><figcaption><span>데이터 → 필터 만들기<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m4-04</span></figcaption></figure></div></div></section><section class="step" id="s4-5"><div class="step-h"><span class="no">STEP 4-5</span><h3>DB를 프로젝트에 연결하기</h3></div><div class="step-b"><div><div class="goal">🎯 시트를 CSV 파일로 내려받아 프로젝트 ‘파일’에 올립니다.</div><ol class="do"><li>사례DB 탭을 연 채로 메뉴 <span class='ui'>파일</span> 클릭</li><li><span class='ui'>다운로드</span> → <span class='ui'>쉼표로 구분된 값(.csv)</span></li><li>내려받은 파일 이름을 <b>사례DB.csv</b>로 바꾸기</li><li>Claude 프로젝트 <span class='ui'>파일</span> ＋ → 업로드 (예전 사례DB.csv가 있으면 먼저 삭제)</li></ol><div class=okline>프로젝트 ‘파일’ 상자에 📄 사례DB.csv가 보이고, 5-2 유사 사례 프롬프트가 3-08 같은 새 사례도 찾아 주면 성공입니다.</div><div class=stuck>사례를 추가할 때마다 4-5를 다시 해야 최신 DB가 반영됩니다(월 1회 등 날짜를 정해 두면 편합니다).</div></div><div><figure class="shot" data-shot="m4-05" data-cap="파일 → 다운로드 → CSV"><div class="mock"><div class="gs-top"><div class="gs-logo"></div><div class="gs-title">05_사례DB_실습 ☆</div></div><div class="gs-menu"><span class="on" style="position:relative"><span class="mk" data-n="1">파일</span><div class="dd" style="left:0;top:100%;min-width:270px;"><div class="">새로 만들기</div><div class="">열기</div><div class="">가져오기</div><div class="">사본 만들기</div><hr><div class="on"><span class="mk" data-n="2">다운로드  ▸  쉼표로 구분된 값(.csv)</span></div><div class="">이메일로 보내기</div></div></span><span class="" style="position:relative">수정</span><span class="" style="position:relative">보기</span><span class="" style="position:relative">삽입</span><span class="" style="position:relative">서식</span><span class="" style="position:relative">데이터</span><span class="" style="position:relative">도구</span><span class="" style="position:relative">확장 프로그램</span><span class="" style="position:relative">도움말</span></div><div class="gs-bar"></div><div class="gs-fx"><b>fx</b></div><table class="gs-grid"><tr><th class="rn"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr><tr class="h"><th class="rn">1</th><td style="">사례번호</td><td style="">출처(사례집·쪽)</td><td style="">결정연도</td><td style="">위반 유형</td><td style="">적용 조항</td><td style="">처분 결과</td></tr><tr class=""><th class="rn">2</th><td style="">가상-1-01</td><td style="">가상 사례집 1집 p.12</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제6호</td><td style="">견책</td></tr><tr class=""><th class="rn">3</th><td style="">가상-1-02</td><td style="">가상 사례집 1집 p.15</td><td style="">2021</td><td style="">광고</td><td style="">광고규정 제4조 제5호</td><td style="">과태료 100만원</td></tr><tr class=""><th class="rn">4</th><td style="">가상-1-03</td><td style="">가상 사례집 1집 p.19</td><td style="">2022</td><td style="">광고</td><td style="">광고규정 제4조 제3호</td><td style="">견책</td></tr><tr class=""><th class="rn">5</th><td style="">가상-2-04</td><td style="">가상 사례집 2집 p.27</td><td style="">2024</td><td style="">광고</td><td style="">광고규정 제3조 제2항</td><td style="">주의</td></tr></table><div class="gs-tabs">＋ ≡ <span class="on">사례DB</span><span class="">열 설명</span></div></div><figcaption><span>파일 → 다운로드 → CSV<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m4-05</span></figcaption></figure></div></div></section></div></main><main class="page" id="p4"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">5. 소명서 접수 → 쟁점 비교표 · 유사 사례 · 회의자료<small>2차 교육 · 약 35분</small></h2><div class="flow"><div class="fs"><b>소명서 첨부</b>같은 채팅</div><div class="ar">→</div><div class="fs"><b>쟁점 비교표</b>원문 인용</div><div class="ar">→</div><div class="fs"><b>유사 사례</b>사례 DB에서</div><div class="ar">→</div><div class="fs"><b>안건 자료</b>선택지만 나열</div></div><section class="step" id="s5-1"><div class="step-h"><span class="no">STEP 5-1</span><h3>쟁점별 비교표</h3></div><div class="step-b"><div><div class="goal">🎯 신고인과 피신고인의 주장을 쟁점별로 나란히 놓습니다(판단은 하지 않음).</div><ol class="do"><li>신고 검토 채팅에 📎로 <b>04_가상소명서_가명처리본.txt</b> 첨부</li><li>아래 프롬프트 붙여넣고 보내기</li><li>‘언급 없음’ 칸과 ‘추가 확인’ 칸을 메모</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>첨부한 신고서와 소명서를 비교해서 쟁점별 비교표를 만들어 줘.
+
+표 열: 쟁점 | 신고인 주장(원문 인용) | 피신고인 주장(원문 인용) | 관련 조항(파일·조항, 원문 인용) | 다툼이 없는 사실 | 추가 확인 필요
+
+규칙
+- 양쪽 주장은 원문 표현 그대로. 요약이 필요하면 인용 뒤에 (요약: …)을 따로 붙이기.
+- 어느 쪽이 맞는지 판단하지 말 것. 판단은 담당자가 함.
+- 한쪽만 언급한 쟁점은 다른 쪽 칸에 &quot;언급 없음&quot;.</div><div class=okline>쟁점 4개(등록률·심사관·비교 문구·광고 문자)가 나오고, 양쪽 주장이 따옴표 원문으로 들어 있으면 성공입니다.</div><div class=stuck>AI가 ‘피신고인 주장이 타당하다’처럼 판단을 섞으면 ‘판단은 빼고 주장만’이라고 다시 요청합니다.</div></div><div><figure class="shot" data-shot="m5-01" data-cap="쟁점별 비교표"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="1"><div class="msg user"><span class="att">📎 04_가상소명서_가명처리본.txt</span><br>첨부한 신고서와 소명서를 비교해서 쟁점별 비교표를 만들어 줘. …</div></div><div class="mk" data-n="3"><div class="msg ai"><table class="mtbl"><tr><th>쟁점</th><th>신고인 주장</th><th>피신고인 주장</th><th>추가 확인</th></tr><tr><td>등록률 100% 보장</td><td>&quot;상표 등록률 100% 보장! …&quot;</td><td>&quot;2025년 … 12건이 모두 등록된 실제 결과&quot;</td><td>산출 기준 표시 여부</td></tr><tr><td>심사관과 직접 소통</td><td>&quot;…담당 심사관과 직접 소통해…&quot;</td><td>&quot;…면담 제도를 활용한다는 뜻&quot;</td><td>—</td></tr><tr><td>광고 문자</td><td>&quot;…비슷한 광고 문자를 받았습니다&quot;</td><td>&quot;…보낸 사실이 없습니다&quot;</td><td>발송 기록</td></tr></table></div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>쟁점별 비교표<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m5-01</span></figcaption></figure></div></div></section><section class="step" id="s5-2"><div class="step-h"><span class="no">STEP 5-2</span><h3>유사 사례 찾기</h3></div><div class="step-b"><div><div class="goal">🎯 사례 DB에서 비슷한 사례와 그때의 처분을 찾아 같은 점·다른 점을 비교합니다.</div><ol class="do"><li>프로젝트 <span class='ui'>파일</span>에 사례 DB(<b>사례DB.csv</b>)가 올라가 있는지 확인 — 없으면 4탭 4-5를 먼저 합니다.</li><li>아래 프롬프트 붙여넣고 보내기</li><li>처분 결과를 사례 DB 시트에서 직접 찾아 한 번 대조</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>첨부한 사례 DB에서 이번 사건과 비슷한 사례를 최대 3건 찾아 줘.
+
+[이번 사건 요지]
+블로그 광고에 &quot;등록률 100% 보장&quot;, &quot;심사관 출신 변리사가 담당 심사관과 직접 소통&quot; 표현을 사용함.
+
+표 열: 사례번호 | 출처(사례집·쪽) | 위반 유형 | 같은 점 | 다른 점 | 당시 처분 결과
+- 사례 DB에 있는 내용만 쓰고, 없으면 &quot;유사 사례 없음&quot;이라고 쓸 것.
+- 처분 결과는 DB의 [처분 결과] 칸을 그대로 옮길 것.</div><div class=okline>사례번호·출처(사례집·쪽)·처분 결과가 DB 내용 그대로 나오면 성공입니다. 쪽 번호로 원문을 바로 찾아갈 수 있습니다.</div><div class=stuck>‘유사 사례 없음’이 나오면 사례 DB에 해당 유형이 아직 없는 것입니다. 사례를 더 쌓을수록 좋아집니다.</div></div><div><figure class="shot" data-shot="m5-02" data-cap="유사 사례 비교"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="2"><div class="msg user">첨부한 사례 DB에서 이번 사건과 비슷한 사례를 최대 3건 찾아 줘. …</div></div><div class="mk" data-n="3"><div class="msg ai"><table class="mtbl"><tr><th>사례번호</th><th>같은 점</th><th>다른 점</th><th>처분</th></tr><tr><td>가상-1-01</td><td>결과 수치 광고</td><td>승소율(심판)</td><td>견책</td></tr><tr><td>가상-2-02</td><td>‘보장’+환불</td><td>자진 삭제 없음</td><td>주의 및 시정 권고</td></tr><tr><td>가상-1-02</td><td>심사관 관계 암시</td><td>명함 포함</td><td>과태료 100만원</td></tr></table></div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>유사 사례 비교<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m5-02</span></figcaption></figure></div></div></section><section class="step" id="s5-3"><div class="step-h"><span class="no">STEP 5-3</span><h3>위원회 안건 자료 초안</h3></div><div class="step-b one"><div><div class="goal">🎯 앞의 결과를 모아 상임이사회·윤리위원회·징계위원회 안건 자료 뼈대를 만듭니다.</div><ol class="do"><li>같은 채팅에 아래 프롬프트 붙여넣기 — [윤리위원회]를 해당 회의로 바꾸기</li><li>보내기 → 7번 ‘처리 방안(안)’이 <b>선택지 나열</b>인지 확인</li><li>3-3에서 올린 회의자료 예시가 있으면 ‘양식_… 형식으로’를 덧붙이기</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>지금까지 정리한 자료(신고 요지, 위반 검토표, 쟁점 비교표, 유사 사례)로 [윤리위원회] 회의 안건 자료 초안을 만들어 줘.
+
+[목차]
+1. 안건명
+2. 사건 개요 (접수일, 접수 경로, 피신고인 — 가명 그대로)
+3. 신고 내용 요지
+4. 피신고인 소명 요지
+5. 쟁점별 검토 (표)
+6. 참고 사례 (표)
+7. 사무국 검토 의견 및 처리 방안(안) — 선택지 2~3개를 나열만 하고 결정하지 말 것
+8. 확인이 필요한 사항
+
+공문체(~함, ~임)로. 각 항목 5줄 이내.</div><div class=okline>목차 1~8이 공문체로 나오고, 처리 방안이 ‘(1) … (2) …’처럼 결정 없이 나열되면 성공입니다.</div></div></div></section></div></main><main class="page" id="p6"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">6. 진행경과 시트 — 한 줄 한 사건 기록으로 바꾸기<small>2차 교육 · 약 30분</small></h2><div class="box info"><b>지금 방식의 문제</b> 지금은 한 사건의 경과를 날짜별 칸에 이어서 적어, 기분이 좋을 때는 길게, 바쁠 때는 짧게 적히고 나중에 찾기 어렵습니다. <b>사건목록(1건 = 1줄)</b>과 <b>진행경과(1일 1일 = 1줄)</b> 두 탭으로 나누면 AI가 메일·녹취를 바로 이 형식으로 바꿔 줄 수 있습니다.</div><section class="step" id="s6-1"><div class="step-h"><span class="no">STEP 6-1</span><h3>사건관리 시트 열기</h3></div><div class="step-b"><div><div class="goal">🎯 두 탭(사건목록·진행경과)으로 나뉜 기록 틀을 준비합니다.</div><ol class="do"><li><b>06_사건관리_실습.xlsx</b>를 드라이브 03_신고건(가명) 폴더에 올리고 <span class='ui'>Google Sheets에서 열기</span></li><li>아래쪽 <span class='ui'>진행경과</span> 탭 클릭</li><li>C열 ‘구분’ 칸을 눌러 ▼ 목록(접수·검토·보고…)에서 고르는 방식인지 확인</li></ol><div class=okline>진행경과 탭에 6줄(사건 3개)이 있고, 구분 칸에 ▼ 목록이 나오면 성공입니다.</div></div><div><figure class="shot" data-shot="m6-01" data-cap="진행경과 탭"><div class="mock"><div class="gs-top"><div class="gs-logo"></div><div class="gs-title">06_사건관리_실습 ☆</div></div><div class="gs-menu"><span class="" style="position:relative">파일</span><span class="" style="position:relative">수정</span><span class="" style="position:relative">보기</span><span class="" style="position:relative">삽입</span><span class="" style="position:relative">서식</span><span class="" style="position:relative">데이터</span><span class="" style="position:relative">도구</span><span class="" style="position:relative">확장 프로그램</span><span class="" style="position:relative">도움말</span></div><div class="gs-bar"></div><div class="gs-fx"><b>fx</b></div><table class="gs-grid"><tr><th class="rn"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr><tr class="h"><th class="rn">1</th><td style="">사건번호</td><td style="">일자</td><td style="">구분</td><td style="">내용 요약</td><td style="">근거 자료</td></tr><tr class=""><th class="rn">2</th><td style="">가상-2026-06</td><td style="">2026-10-19</td><td style="">공문발송</td><td style="">피신고인에게 소명 요청 공문 발송.</td><td style="">공문 제2026-000호</td></tr><tr class=""><th class="rn">3</th><td style="">가상-2026-07</td><td style="">2026-11-02</td><td style="">접수</td><td style="">홈페이지 신고센터로 광고 위반 신고 접수.</td><td style="">신고센터 게시글</td></tr></table><div class="gs-tabs">＋ ≡ <span class="">사건목록</span><span class="on"><span class="mk" data-n="2">진행경과</span></span></div></div><figcaption><span>진행경과 탭<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m6-01</span></figcaption></figure></div></div></section><section class="step" id="s6-2"><div class="step-h"><span class="no">STEP 6-2</span><h3>메일·통화 메모 → 진행경과 줄 만들기</h3></div><div class="step-b"><div><div class="goal">🎯 받은 메일이나 통화 녹취를 붙여넣으면 표 형식 그대로 줄을 받습니다.</div><ol class="do"><li><b>07_가상메일_진행경과연습.txt</b>를 열어 전체 복사</li><li>프로젝트 새 채팅에 아래 프롬프트를 붙여넣고, 맨 아래 (여기에 붙여넣기) 자리에 메일·메모를 붙여넣어 보내기</li><li>답의 표에서 내용 줄만 드래그 → <kbd>Ctrl</kbd>+<kbd>C</kbd> → 진행경과 탭 첫 빈 행 A칸에 <kbd>Ctrl</kbd>+<kbd>V</kbd></li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>아래 [메일/통화 녹취]를 읽고 사건 진행경과 표에 넣을 줄을 만들어 줘.
+
+표 열(이 순서 그대로): 사건번호 | 일자 | 구분 | 내용 요약 | 근거 자료 | 기록자
+- 사건번호: [가상-2026-07]
+- 구분은 다음 중 하나: 접수 / 검토 / 보고 / 공문발송 / 소명접수 / 통화 / 회의 / 결정 / 종결
+- 내용 요약은 1~2문장, 원문에 없는 내용은 쓰지 말 것
+- 근거 자료에는 메일 제목이나 녹음 파일 이름을 그대로
+- 기록자: [내 이름]
+- 표만 출력하고 다른 말은 하지 마.
+
+[메일/통화 녹취]
+(여기에 붙여넣기)</div><div class="box info"><b>통화 녹음은?</b> 녹음 파일을 클로바노트 등으로 글로 바꾼 뒤 같은 프롬프트에 붙여넣습니다. 녹음 글에도 이름·연락처가 있으면 먼저 가명 처리합니다.</div><div class=okline>2026-11-03 ‘통화’ 1줄과 ‘접수’(소명 의사 회신) 1줄, 모두 2줄이 진행경과 탭 맨 아래에 붙으면 성공입니다.</div><div class=stuck>구분 값이 목록에 없는 말(예: ‘회신’)이면 시트가 빨간 표시를 합니다. 목록 중 가장 가까운 말로 고칩니다.</div></div><div><figure class="shot" data-shot="m6-02" data-cap="메일 → 진행경과 표"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#c96442"></span><span class="win-title">Claude · 📁 변리사법 위반 신고 검토</span></div><div class="chat"><div class="mk" data-n="2"><div class="msg user">아래 [메일/통화 녹취]를 읽고 사건 진행경과 표에 넣을 줄을 만들어 줘. …</div></div><div class="mk" data-n="3"><div class="msg ai"><table class="mtbl"><tr><th>사건번호</th><th>일자</th><th>구분</th><th>내용 요약</th><th>근거 자료</th></tr><tr><td>가상-2026-07</td><td>2026-11-03</td><td>통화</td><td>담당자가 피신고인에게 접수 사실 안내.</td><td>통화_20261103_1030.m4a</td></tr><tr><td>가상-2026-07</td><td>2026-11-03</td><td>접수</td><td>피신고인이 서면 소명 의사를 메일로 회신.</td><td>메일: RE: 광고 관련 문의 건</td></tr></table></div></div><div class="inbox"><span>답장…</span><span class=send>↑</span></div></div></div><figcaption><span>메일 → 진행경과 표<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m6-02</span></figcaption></figure></div></div></section><section class="step" id="s6-3"><div class="step-h"><span class="no">STEP 6-3</span><h3>사건목록에 ‘최근 진행’ 자동 표시</h3></div><div class="step-b"><div><div class="goal">🎯 진행경과에 줄을 추가하면 사건목록에 건수와 마지막 내용이 저절로 바뀌게 합니다.</div><ol class="do"><li><span class='ui'>사건목록</span> 탭 I2칸(진행 건수)에 아래 1번 수식 붙여넣기</li><li>J2칸(최근 진행)에 아래 2번 수식 붙여넣기</li><li>I2:J2를 함께 선택 → 오른쪽 아래 작은 네모를 4행까지 끌어내리기</li></ol><div class="code"><div class="code-top"><span>📄 1번 · 진행 건수 (I2) · 1줄</span><span><button class="copy-btn" data-copy="f-cnt">전체 복사</button></span></div><pre id="f-cnt">=COUNTIF(&#x27;진행경과&#x27;!A:A, A2)</pre></div><div class="code"><div class="code-top"><span>📄 2번 · 최근 진행 (J2) · 1줄</span><span><button class="copy-btn" data-copy="f-last">전체 복사</button></span></div><pre id="f-last">=IFERROR(INDEX(FILTER(&#x27;진행경과&#x27;!D:D, &#x27;진행경과&#x27;!A:A=A2), COUNTIF(&#x27;진행경과&#x27;!A:A, A2)), &quot;&quot;)</pre></div><div class="box info"><b>수식이 하는 일</b> 1번은 진행경과 탭에서 같은 사건번호가 몇 줄인지 셉니다. 2번은 그 사건의 줄들 중 <b>맨 아래 줄</b>의 ‘내용 요약’을 가져옵니다. 그래서 진행경과는 <b>위에서 아래로 날짜 순서대로</b> 붙여야 합니다.</div><div class=okline>가상-2026-05는 3건 ‘상임이사회 보고 후 주의 촉구로 종결.’, 가상-2026-07은 6-2를 마친 뒤 3건으로 늘고, ‘최근 진행’에 6-2에서 마지막으로 붙인 줄의 내용이 보이면 성공입니다.</div><div class=stuck>#NAME? 이 뜨면 탭 이름이 ‘진행경과’와 글자 그대로 같은지(띄어쓰기 포함) 확인합니다.</div></div><div><figure class="shot" data-shot="m6-03" data-cap="사건목록 — 진행 건수·최근 진행"><div class="mock"><div class="gs-top"><div class="gs-logo"></div><div class="gs-title">06_사건관리_실습 ☆</div></div><div class="gs-menu"><span class="" style="position:relative">파일</span><span class="" style="position:relative">수정</span><span class="" style="position:relative">보기</span><span class="" style="position:relative">삽입</span><span class="" style="position:relative">서식</span><span class="" style="position:relative">데이터</span><span class="" style="position:relative">도구</span><span class="" style="position:relative">확장 프로그램</span><span class="" style="position:relative">도움말</span></div><div class="gs-bar"></div><div class="gs-fx"><b>fx</b></div><table class="gs-grid"><tr><th class="rn"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr><tr class="h"><th class="rn">1</th><td style="">사건번호</td><td style="">접수일</td><td style="">접수 경로</td><td style="">현재 단계</td><td style="">진행 건수</td><td style="">최근 진행</td></tr><tr class=""><th class="rn">2</th><td style="">가상-2026-05</td><td style="">2026-10-06</td><td style="">이메일</td><td style="">종결</td><td style="background:#e8f4ec">3</td><td style="background:#e8f4ec">상임이사회 보고 후 주의 촉구로 종결.</td></tr><tr class=""><th class="rn">3</th><td style="">가상-2026-06</td><td style="">2026-10-15</td><td style="">전화</td><td style="">소명 검토</td><td style="">2</td><td style="">피신고인에게 소명 요청 공문 발송.</td></tr><tr class=""><th class="rn">4</th><td style="">가상-2026-07</td><td style="">2026-11-02</td><td style="">홈페이지</td><td style="">검토</td><td style="">1</td><td style="">홈페이지 신고센터로 광고 위반 신고 접수.</td></tr></table><div class="gs-tabs">＋ ≡ <span class="on"><span class="mk" data-n="1">사건목록</span></span><span class="">진행경과</span></div></div><figcaption><span>사건목록 — 진행 건수·최근 진행<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m6-03</span></figcaption></figure></div></div></section></div></main><main class="page" id="p7"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">7. 회원 안내 이미지 — 디자인은 고정, 글자만 바꾸기<small>3차 교육 · 약 30분 · 회원 추천 담당 중심</small></h2><div class="box info"><b>왜 틀을 따로 만드나요?</b> 그림 AI에 공문을 주고 ‘이대로 만들어 줘’ 하면 매번 다른 디자인이 나오고 글자가 틀리기도 합니다. 미리캔버스·망고보드처럼 <b>틀은 고정하고 글자만 바꾸는</b> 작은 도구(HTML 파일 1개)를 쓰면 매번 같은 모양, 오탈자 없는 이미지가 나옵니다.</div><section class="step" id="s7-1"><div class="step-h"><span class="no">STEP 7-1</span><h3>이미지 틀 파일 열기</h3></div><div class="step-b one"><div><div class="goal">🎯 내 PC에서 바로 열리는 이미지 틀을 엽니다(설치 없음).</div><ol class="do"><li>실습 파일 <b>08_회원안내_이미지틀.html</b>을 바탕화면 폴더에 저장</li><li>파일을 더블클릭 → 크롬(또는 엣지)으로 열림</li><li>오른쪽에 예시 이미지가 보이는지 확인</li></ol><div class=okline>왼쪽에 입력칸, 오른쪽에 남색 띠 + 제목 + 항목 4개의 예시 이미지가 보이면 성공입니다.</div><div class=stuck>메모장으로 열리면 파일 우클릭 → 연결 프로그램 → Chrome.</div></div></div></section><section class="step" id="s7-2"><div class="step-h"><span class="no">STEP 7-2</span><h3>공문에서 들어갈 말만 뽑기</h3></div><div class="step-b one"><div><div class="goal">🎯 결재 끝난 공문을 붙여넣으면 이미지 칸에 맞는 짧은 문장만 받습니다.</div><ol class="do"><li>Claude 새 채팅(프로젝트 밖 일반 채팅도 됨)에 아래 프롬프트 붙여넣기</li><li>맨 아래 (여기에 붙여넣기)에 공문 본문 붙여넣고 보내기</li><li>답에서 ‘꼬리표:’부터 ‘문의:’까지 드래그 → <kbd>Ctrl</kbd>+<kbd>C</kbd></li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>아래 공문(결재 완료본)에서 회원 안내 이미지에 넣을 내용만 뽑아 줘.
+아래 형식 그대로, 다른 말 없이 출력해. 각 줄 25자 이내로 줄이되 날짜·숫자는 바꾸지 마.
+
+꼬리표:
+제목:
+부제:
+항목1: 라벨 | 내용
+항목2: 라벨 | 내용
+항목3: 라벨 | 내용
+항목4: 라벨 | 내용
+문의:
+
+[공문]
+(여기에 붙여넣기)</div><div class=okline>‘꼬리표: … / 제목: … / 항목1: 라벨 | 내용 …’ 형식으로만 답이 나오면 성공입니다. 날짜·숫자가 공문과 같은지 한 번 대조합니다.</div><div class=stuck>설명 문장이 섞여 나오면 ‘형식 줄만 다시’라고 보냅니다.</div></div></div></section><section class="step" id="s7-3"><div class="step-h"><span class="no">STEP 7-3</span><h3>붙여넣고 PNG로 저장</h3></div><div class="step-b"><div><div class="goal">🎯 틀에 붙여넣어 이미지를 완성하고 파일로 저장합니다.</div><ol class="do"><li>이미지 틀 왼쪽 ① 칸에 붙여넣기</li><li><span class='ui'>채우기</span> 클릭 → 오른쪽 미리보기 확인(고칠 글자는 ② 칸에서 바로 수정)</li><li><span class='ui'>PNG로 저장</span> 클릭 → 내려받기 폴더에서 확인</li></ol><div class=okline>가로 1080 × 세로 1350 크기의 PNG가 내려받기 폴더에 생기면 성공입니다. 이 파일을 메일 본문·카톡 발송용으로 씁니다.</div><div class=stuck>저장 버튼이 안 되면(인터넷 차단 등) Windows <kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>로 오른쪽 이미지를 캡처합니다. 제목이 길면 ‘제목’ 칸에서 Enter로 줄을 나눕니다.</div></div><div><figure class="shot" data-shot="m7-01" data-cap="붙여넣기 → 채우기 → PNG 저장"><div class="mock"><div class="win-top"><span class="win-icon" style="background:#0b1f4b"></span><span class="win-title">회원 안내 이미지 틀</span></div><div class="win-body"><div style="display:grid;grid-template-columns:150px 1fr;gap:10px;font-size:11.5px"><div><b>① 한 번에 채우기</b><div class="mk" data-n="1"><span class="minput" style="height:54px">꼬리표: 회원 추천 안내<br>제목: …</span></div><span class="mk" data-n="2"><span class="mbtn">채우기</span></span><br><b>② 칸별로 고치기</b><span class="minput">제목</span><span class="minput">부제</span><b>③ 저장</b><br><span class="mk" data-n="3"><span class="mbtn p" style="background:#0b1f4b;border-color:#0b1f4b">PNG로 저장</span></span></div><div style="border:1px solid #ddd;border-radius:6px;overflow:hidden"><div style="background:#0b1f4b;color:#fff;padding:12px"><span style="border:1px solid #fff8;border-radius:9px;padding:1px 8px;font-size:10px">회원 추천 안내</span><div style="font-size:17px;font-weight:900;margin-top:6px;line-height:1.25">○○공단 지식재산<br>자문위원 후보 추천</div></div><div style="padding:8px 12px;color:#555;border-bottom:2px solid #c9a24b">(가상 예시) 공단의 요청에 따라…</div><div style="padding:4px 12px"><div style="display:flex;gap:10px;padding:4px 0;border-bottom:1px solid #eee"><span style="background:#faf4e4;color:#8a6f2e;border-radius:4px;padding:0 6px">모집 분야</span><b>특허·상표 분쟁 자문</b></div><div style="display:flex;gap:10px;padding:4px 0;border-bottom:1px solid #eee"><span style="background:#faf4e4;color:#8a6f2e;border-radius:4px;padding:0 6px">추천 인원</span><b>2명 이내</b></div><div style="display:flex;gap:10px;padding:4px 0;border-bottom:1px solid #eee"><span style="background:#faf4e4;color:#8a6f2e;border-radius:4px;padding:0 6px">신청 기한</span><b>2026. 11. 20.(금)까지</b></div></div></div></div></div></div><figcaption><span>붙여넣기 → 채우기 → PNG 저장<span class="zoom-hint"> · 탭하면 크게 보기 🔍</span></span><span class="sid">m7-01</span></figcaption></figure></div></div></section><section class="step" id="s7-4"><div class="step-h"><span class="no">STEP 7-4</span><h3>디자인을 바꾸고 싶을 때</h3></div><div class="step-b one"><div><div class="goal">🎯 틀 자체(색·크기)를 바꿀 때만 AI에게 HTML 파일을 고쳐 달라고 합니다.</div><ol class="do"><li>Claude 채팅에 📎로 <b>08_회원안내_이미지틀.html</b> 첨부</li><li>아래 프롬프트의 [바꿀 것]을 원하는 대로 고쳐 보내기</li><li>받은 HTML 전체를 복사 → 메모장에 붙여넣기 → <b>새 이름.html</b>로 저장(인코딩 UTF-8) → 더블클릭해 확인</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>첨부한 HTML 파일은 회원 안내 이미지를 만드는 틀이야.
+입력칸과 저장 기능은 그대로 두고, 디자인만 아래처럼 바꿔 줘.
+
+[바꿀 것]
+- 위쪽 색 띠 색을 [진한 초록]으로
+- 제목 글자를 조금 더 크게
+
+[지킬 것]
+- 입력칸 이름(꼬리표·제목·부제·항목·문의)은 바꾸지 말 것
+- 파일 하나로 동작하게(외부 파일 추가 금지)
+- 바뀐 부분만 설명하고 전체 HTML을 다시 줘</div><div class="box ok"><b>한 번 정한 틀은 그대로</b> 디자인 수정은 분기마다 한 번 정도만. 평소에는 7-2 → 7-3만 반복하면 됩니다. 연수 안내·세미나 안내 등 다른 종류는 같은 방법으로 틀을 하나씩 늘립니다.</div><div class=okline>새 파일을 열었을 때 바뀐 색·글자 크기가 보이고, ① 채우기와 PNG 저장이 그대로 되면 성공입니다.</div><div class=stuck>열었더니 글자가 깨지면 메모장 저장 시 인코딩을 UTF-8로 고릅니다.</div></div></div></section></div></main><main class="page" id="p8"><div class="wrap"><div class="box warn pc-note"><b>💻 실습은 PC에서</b> 편집 실습은 PC에서 하세요. 휴대폰에서는 복습용으로 보시고, 그림은 탭하면 크게 볼 수 있습니다.</div><h2 class="sec">8. AI에게 요청하고 고치는 법 · 내 업무를 자산으로<small>3차 교육 · 약 40분</small></h2><div class="grid g3"><div class="box ok"><b>✅ 줘도 되는 것</b> 가명 처리한 신고서·소명서, 공개된 법령·규정, 사례집(이름 가린 것), 우리 공문 양식 예시, 열 이름만 있는 빈 표</div><div class="box no"><b>⛔ 주면 안 되는 것</b> 실명·연락처·주소·등록번호가 그대로 있는 문서, 미공개 출원 명세서·청구항, 회원 개인정보 엑셀 원본, 계정 비밀번호</div><div class="box info"><b>💡 요령</b> ① 한 번에 한 가지만 ② 결과 모양(표·열 이름·길이)을 먼저 말하기 ③ 마음에 안 들면 처음부터 다시가 아니라 <b>‘○○만 고쳐 줘’</b></div></div><h2 class="sec">명령이 자꾸 다르게 나올 때 — 5칸 요청서<small>회의에서 ‘입력한 명령과 다른 결과가 나온다’는 고민에 대한 답</small></h2><table class="t"><tr><th>칸</th><th>적는 것</th><th>예</th></tr><tr><td>① 역할</td><td>AI가 누구인지</td><td>회원서비스실 신고 처리 담당자를 돕는 보조자</td></tr><tr><td>② 자료</td><td>무엇을 보고 하는지</td><td>첨부한 신고서(가명 처리본), 프로젝트의 법령 파일</td></tr><tr><td>③ 할 일</td><td>딱 한 가지 동사</td><td>쟁점별 비교표를 만든다</td></tr><tr><td>④ 모양</td><td>표·열 이름·길이·말투</td><td>표 열: 쟁점 | 신고인 주장 | … / 20줄 이내</td></tr><tr><td>⑤ 금지</td><td>하지 말 것</td><td>판단하지 말 것, 원문 바꾸지 말 것, 모르는 값 지어내지 말 것</td></tr></table><section class="step" id="s8-1"><div class="step-h"><span class="no">STEP 8-1</span><h3>답이 틀렸을 때 고치는 법</h3></div><div class="step-b one"><div><div class="goal">🎯 새로 시작하지 않고, 틀린 곳만 짚어서 고치게 합니다.</div><ol class="do"><li>틀린 곳을 <b>번호·칸 이름</b>으로 짚기: ‘표 3의 행위 ②, 조항 번호가 틀림’</li><li>맞는 근거를 함께 주기: ‘원문은 “…”이다’</li><li>고칠 범위 정하기: ‘그 줄만 고치고 나머지는 그대로’</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>표 3의 행위 ② 줄만 다시 써 줘.
+[틀린 점] 관련 조항을 광고규정 제4조 제3호로 썼는데, 원문을 보면 제5호(공무원과의 연고 암시)가 맞아.
+[지킬 것] 나머지 줄은 그대로 두고, 고친 줄만 다시 보여 줘.</div><div class=okline>고친 줄만 다시 나오고, 다른 줄은 바뀌지 않으면 성공입니다.</div></div></div></section><section class="step" id="s8-2"><div class="step-h"><span class="no">STEP 8-2</span><h3>내 업무 매뉴얼 → 지침으로</h3></div><div class="step-b one"><div><div class="goal">🎯 머릿속 노하우(암묵지)를 글로 꺼내 프로젝트 지침과 다음 담당자용 매뉴얼로 남깁니다.</div><ol class="do"><li>내 업무 순서를 <b>초등학생에게 알려 주듯</b> 단계를 건너뛰지 말고 메모(번호 목록)</li><li>아래 프롬프트의 [내 업무 메모]에 붙여넣고 보내기</li><li>나온 ‘지침에 추가할 문장’ 중 맞는 것만 골라 프로젝트 지침 맨 아래에 추가</li><li>매뉴얼 표는 드라이브 04_양식 폴더에 문서로 저장</li></ol><div class="prompt"><button class="copy-btn" data-copy-text>복사</button>나는 [변리사법 위반 신고 처리] 업무를 맡고 있어.
+아래는 내가 실제로 일하는 순서를 적은 메모야. 이걸 보고
+
+1. 단계별 업무 매뉴얼(표: 단계 | 입력 자료 | 하는 일 | 결과물 | 걸리는 시간)
+2. 이 중 AI에게 맡길 수 있는 단계와 사람이 꼭 해야 하는 단계 구분
+3. Claude 프로젝트 지침에 추가하면 좋을 문장 3~5개
+
+를 만들어 줘. 메모에 없는 단계는 지어내지 말고 &quot;확인 필요&quot;로 표시해.
+
+[내 업무 메모]
+1) 아침에 홈페이지 신고센터와 대표 메일함 확인
+2)
+3) </div><div class=okline>단계별 표에 ‘AI에게 맡김 / 사람이 함’ 구분이 있고, 메모에 없던 단계는 ‘확인 필요’로 표시되면 성공입니다.</div><div class=stuck>표가 너무 크면 ‘접수~보고 단계만 먼저’처럼 범위를 나눕니다.</div></div></div></section><section class="step" id="s8-3"><div class="step-h"><span class="no">STEP 8-3</span><h3>반복 업무는 프로젝트를 나눠서</h3></div><div class="step-b one"><div><div class="goal">🎯 업무마다 프로젝트를 하나씩 만들어 지침과 자료가 섞이지 않게 합니다.</div><ol class="do"><li>지금 프로젝트: <b>변리사법 위반 신고 검토</b>(법령·사례 DB·공문 양식)</li><li>추가 예: <b>광고 모니터링</b>(광고규정·위반 표현 목록), <b>회원 추천 안내</b>(공문 예시·이미지 틀 프롬프트)</li><li>새 프로젝트는 1탭 순서(만들기 → 지침 → 파일 → 첫 질문 → 없는 것 묻기)를 그대로 반복</li></ol><div class=okline>프로젝트 목록에서 업무 이름만 보고 바로 들어가 쓸 수 있으면 성공입니다.</div></div></div></section></div></main><main class="page" id="ap"><div class="wrap"><h2 class="sec">부록<small>막힐 때 · 되돌리기 · 보안 · 다음 단계</small></h2><h3>자주 겪는 문제</h3><table class="t"><tr><th>이럴 때</th><th>왜 그런가</th><th>이렇게</th></tr><tr><td>조문을 지어내거나 번호가 틀림</td><td>지침이 없거나, 법령 파일이 없음</td><td>1-2 지침·1-3 파일 확인 → 1-5 ‘없는 것 묻기’로 점검</td></tr><tr><td>옛 조문을 인용함</td><td>개정 전·후 파일이 같이 있음</td><td>프로젝트 파일에서 옛 파일 삭제</td></tr><tr><td>답이 너무 길고 과장됨</td><td>모양·금지를 안 정함</td><td>8탭 5칸 요청서의 ④ 모양 ⑤ 금지 추가</td></tr><tr><td>파일이 안 올라감(HWP)</td><td>형식 미지원 또는 용량</td><td>한글에서 PDF로 저장 후 올리기, 큰 PDF는 쪽 단위로 나누기</td></tr><tr><td>유사 사례를 못 찾음</td><td>DB에 해당 유형이 없거나 CSV가 옛날 것</td><td>사례 추가 후 4-5로 CSV 다시 올리기</td></tr><tr><td>시트에 붙였더니 한 칸에 다 들어감</td><td>표가 아닌 글로 복사됨</td><td>데이터 → 텍스트를 열로 분할</td></tr><tr><td>사용량 한도 메시지</td><td>요금제별 사용량 제한</td><td>잠시 후 다시, 긴 파일은 나눠서 / 요금제는 실장님과 협의</td></tr></table><h3>되돌리기</h3><table class="t"><tr><th>무엇을</th><th>어떻게</th></tr><tr><td>지침을 잘못 고침</td><td>code/프로젝트_지침_신고검토.txt를 다시 복사해 붙여넣기</td></tr><tr><td>시트에 잘못 붙여넣음</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> 또는 파일 → 버전 기록 → 버전 기록 보기</td></tr><tr><td>프로젝트 파일을 잘못 지움</td><td>드라이브 폴더의 원본을 다시 업로드(그래서 원본은 드라이브에 둡니다)</td></tr></table><h3>개인정보·보안 체크리스트 (올리기 전 매번)</h3><ul class='do' style='list-style:none;padding-left:0'><li>☐ 이름 → [신고인]·[피신고인], 사무소명 → [A사무소]로 바꿨다</li><li>☐ 전화·이메일·주소·등록번호·출원번호를 지웠다</li><li>☐ 미공개 출원 내용(기술 설명·청구항)을 지웠다</li><li>☐ 회원 개인정보 엑셀 원본은 올리지 않는다(필요하면 열 이름만)</li><li>☐ 업무용 계정·업무용 크롬 프로필로 로그인했다</li><li>☐ 개인 요금제라면 ‘개선에 도움’ 스위치가 꺼져 있다</li></ul><h3>요금제와 데이터 — 알아 둘 것 (2026. 11. 기준, 바뀔 수 있음)</h3><table class="t"><tr><th>구분</th><th>내용</th></tr><tr><td>프로젝트 기능</td><td>무료 계정도 사용 가능(무료는 프로젝트 5개까지). 자료가 많을 때 확장 검색은 유료 요금제</td></tr><tr><td>개인 요금제(무료·Pro 등)</td><td>설정 → 개인정보 보호에서 ‘모델 개선에 도움’을 끄면 새 채팅은 학습에 쓰이지 않음</td></tr><tr><td>팀 요금제(Team)</td><td>기본적으로 고객 데이터를 학습에 쓰지 않음. 표준 좌석 월 $25(연간 결제 시 $20), 프리미엄 좌석 월 $125(연간 $100)</td></tr><tr><td>공통</td><td>설정과 상관없이 대화는 계정에 저장되므로 ‘가명 처리 먼저’ 원칙은 그대로</td></tr></table><h3>다음 단계</h3><div class="box info"><b>업무지원 시스템(시범)</b> 사건 접수부터 공문·위원회까지 한 화면에서 관리하는 사내 시스템 시범본이 준비되어 있습니다(같은 저장소 <code>ethics-system</code>). 이 교안의 방식 — <b>DB를 먼저 쌓고, 근거 인용 규칙을 고정</b> — 이 익숙해진 뒤, 내년 예산과 함께 도입 범위를 협의합니다.</div><div class="box info"><b>홈페이지 신고센터 연결</b> 신고센터 접수 내용이 시트로 바로 들어오게 하는 기능은 홈페이지 관리 업체·정책홍보실과 협의가 필요합니다. 그 전까지는 6탭 방식(복사 → AI → 시트)으로 손 입력을 줄입니다.</div><h3>담당자가 교육 전에 보내 줄 것</h3><table class="t"><tr><th>무엇</th><th>어떻게</th><th>언제</th></tr><tr><td>업무 단계별 매뉴얼</td><td>‘이 자료를 보고 → 이것을 하고 → 이게 나온다’ 순서로, 번호를 매겨</td><td>2차 전</td></tr><tr><td>작성 문서 예시</td><td>보고 메일·소명 공문·회의자료 각 1건, 가명 처리</td><td>2차 전</td></tr><tr><td>사례집 PDF</td><td>자주 찾는 것 1권</td><td>2차 전</td></tr><tr><td>업무용 구글 계정</td><td>가상 직원 계정 생성, 드라이브·시트 공유 권한</td><td>1차 전</td></tr></table><h3>화면 캡처 목록(실제 화면 교체용)</h3><p>아래 화면 ID 이름으로 실제 캡처를 <code>shots/</code> 폴더에 PNG로 저장하면, 교안을 열 때 모형 화면 대신 실제 캡처가 자동으로 보입니다. 실제 개인정보가 보이는 화면은 찍지 마세요.</p><div id="shotlist"></div></div></main>
+<script>// lessonkit 런타임: 탭 전환 · 복사 버튼 · 실제 캡처 자동 교체 · 촬영 목록 · 휴대폰 맞춤 축소/탭 확대
+const tabs = document.querySelectorAll('.tab');
+var go = function (id, push){
+  document.querySelectorAll('.page').forEach(p => p.classList.toggle('show', p.id === id));
+  tabs.forEach(t => t.classList.toggle('on', t.dataset.p === id));
+  if (push !== false) history.replaceState(null, '', '#' + id);
+  window.scrollTo(0, 0);
+};
+tabs.forEach(t => t.addEventListener('click', () => go(t.dataset.p)));
+const _go = go;
+go = function (id, push) { _go(id, push); const t = document.querySelector('.tab.on'); if (t) t.scrollIntoView({ inline: 'center', block: 'nearest' }); requestAnimationFrame(fitMocks); };
+document.querySelectorAll('[data-go]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); go(a.dataset.go); }));
+const PAGE_IDS = ["home","p0","p1","p2","p3","p5","p4","p6","p7","p8","ap"];
+{ const h = (location.hash || '').slice(1); go(PAGE_IDS.includes(h) ? h : PAGE_IDS[0], false); }
+
+async function copyText(text, btn){
+  try { await navigator.clipboard.writeText(text); }
+  catch (e) { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  const old = btn.textContent; btn.textContent = '복사됨 ✓'; btn.classList.add('done');
+  setTimeout(() => { btn.textContent = old; btn.classList.remove('done'); }, 1600);
+}
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => copyText(document.getElementById(b.dataset.copy).textContent, b)));
+document.querySelectorAll('[data-copy-text]').forEach(b => b.addEventListener('click', () => {
+  const box = b.parentElement.cloneNode(true); box.querySelector('button').remove(); copyText(box.textContent.trim(), b);
+}));
+
+// 실제 캡처(shots/<ID>.png)가 있으면 모형 대신 표시
+const list = document.getElementById('shotlist');
+const rows = [];
+document.querySelectorAll('figure.shot').forEach(f => {
+  const id = f.dataset.shot; rows.push([id, f.dataset.cap]);
+  const img = new Image();
+  img.onload = () => {
+    const box = () => { const m = f.querySelector('.mock'); return m.parentElement.classList.contains('mock-fit') ? m.parentElement : m; };
+    img.alt = f.dataset.cap; f.insertBefore(img, box()); box().style.display = 'none';
+    const t = document.createElement('button'); t.className = 'tog'; t.textContent = '모형 보기';
+    t.onclick = (e) => { e.stopPropagation(); const b = box(); const showMock = b.style.display === 'none'; b.style.display = showMock ? '' : 'none'; img.style.display = showMock ? 'none' : ''; t.textContent = showMock ? '실제 화면 보기' : '모형 보기'; fitMocks(); };
+    f.querySelector('figcaption').appendChild(t);
+  };
+  img.src = 'shots/' + id + '.png';
+});
+
+// ── 휴대폰: 모형 화면을 화면 폭에 맞게 축소, 탭하면 원래 크기로 크게 보기 ──
+const DESIGN_W = 560;
+function fitMocks() {
+  document.querySelectorAll('.page.show figure.shot').forEach(f => {
+    const mock = f.querySelector('.mock');
+    if (!mock) return;
+    let wrap = mock.parentElement.classList.contains('mock-fit') ? mock.parentElement : null;
+    if ((wrap || mock).style.display === 'none') return;
+    const avail = f.clientWidth;
+    // 항상 DESIGN_W 폭으로 그리고 칸에 맞게 확대(최대 1.3배)·축소 → PC와 휴대폰에서 팝업·번호 위치가 같다
+    if (!wrap) { wrap = document.createElement('div'); wrap.className = 'mock-fit'; mock.replaceWith(wrap); wrap.appendChild(mock); }
+    mock.style.width = DESIGN_W + 'px';
+    const scale = Math.min(avail / DESIGN_W, 1.3);
+    mock.style.transform = 'scale(' + scale + ')';
+    wrap.style.height = Math.ceil(mock.offsetHeight * scale) + 'px';
+    f.classList.toggle('zoomable', scale < 0.98);
+  });
+}
+function openLightbox(f) {
+  const lb = document.createElement('div'); lb.className = 'lightbox';
+  const top = document.createElement('div'); top.className = 'lb-top';
+  const cap = document.createElement('span'); cap.textContent = f.dataset.cap + ' (좌우로 밀어 보기)';
+  const close = document.createElement('button'); close.textContent = '닫기 ✕';
+  top.append(cap, close);
+  const body = document.createElement('div'); body.className = 'lb-body';
+  const img = f.querySelector(':scope > img');
+  if (img && img.style.display !== 'none') { const c = img.cloneNode(); c.style.display = ''; body.appendChild(c); }
+  else { const m = f.querySelector('.mock').cloneNode(true); m.style.transform = ''; m.style.position = 'relative'; m.style.width = DESIGN_W + 'px'; body.appendChild(m); }
+  lb.append(top, body); document.body.appendChild(lb); document.body.style.overflow = 'hidden';
+  const shut = () => { lb.remove(); document.body.style.overflow = ''; };
+  close.onclick = shut; lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+}
+document.querySelectorAll('figure.shot').forEach(f => f.addEventListener('click', e => {
+  if (e.target.closest('.tog')) return;
+  if (f.classList.contains('zoomable') || window.innerWidth <= 860) openLightbox(f);
+}));
+window.addEventListener('resize', fitMocks);
+window.addEventListener('load', fitMocks);
+fitMocks();
+
+if (list) {
+  const t = document.createElement('table'); t.className = 't';
+  t.innerHTML = '<tr><th>화면 ID(파일 이름)</th><th>찍을 화면</th></tr>';
+  rows.forEach(([id, cap]) => { const tr = t.insertRow(); tr.insertCell().textContent = id + '.png'; tr.insertCell().textContent = cap; });
+  list.appendChild(t);
+}
+</script>
+</body>
+</html>
