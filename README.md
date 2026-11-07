@@ -7,6 +7,11 @@
 구글 시트로 회원 추천(중복 확인·선정 메일)과 연수·공익·회비 통합 현황을 만드는 실습 교안입니다 → [`appscript/`](appscript/README.md)
 (Pages 배포 시 https://aismartworkhub.github.io/KPAA/appscript/)
 
+## 회원서비스실 Claude 업무 실습 교안
+
+변리사법 위반 신고 처리(근거 인용 프로젝트 지침, 보고 메일·소명 공문·쟁점 비교표, 징계 사례 DB, 진행경과 시트)와 회원 안내 이미지 고정 틀을 따라 만드는 교안입니다 → [`claude-work/`](claude-work/README.md)
+(Pages 배포 시 https://aismartworkhub.github.io/KPAA/claude-work/)
+
 ## 윤리·징계·광고 업무지원 시스템
 
 회원서비스실 윤리·징계·광고 업무용 웹 시스템은 [`ethics-system/`](ethics-system/README.md)에 있습니다.
@@ -30,6 +35,7 @@ GitHub Pages로 배포하면 아래 주소에서 열립니다.
 | `og_thumbnail.png` | 통합 교안 카카오톡·SNS 링크 미리보기 이미지(1200×630) — 원본 `assets/og/og_thumbnail.html`, 생성 `node assets/og/make_og.mjs` |
 | `assets/patent-3person-review.svg` | 특허 3인 협의심사 제도 안내 인포그래픽 (벡터 원본) |
 | `appscript/` | 회원서비스실 구글 시트 Apps Script 실습 교안 (1차 11/4, 2차 11/13) + 실습 코드·가상 데이터 |
+| `claude-work/` | 회원서비스실 Claude 업무 실습 교안 (신고 처리·사례 DB·안내 이미지 틀) + 프로젝트 지침·프롬프트·가상 실습 자료 |
 | `ethics-system/` | 윤리·징계·광고 업무지원 시스템 (FastAPI + SQLite + 웹 화면) |
 | `assets/patent-3person-review.pdf` | 같은 인포그래픽의 벡터 PDF — 캔바 등 편집 도구 가져오기용 |
 
