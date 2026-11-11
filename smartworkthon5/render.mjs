@@ -13,6 +13,8 @@ const files = process.argv.slice(2).length ? process.argv.slice(2)
   : readdirSync(dir).filter(f => /^\d\d_.*\.html$/.test(f)).sort();
 
 const browser = await chromium.launch();
+import { readFileSync } from 'fs';
+const qrPlaceholder = readFileSync(path.join(dir, 'assets', 'review_qr.svg'), 'utf8').includes('QR 자리');
 for (const f of files) {
   const name = f.replace(/\.html$/, '');
   const url = 'file://' + path.join(dir, f);
@@ -46,5 +48,7 @@ for (const f of files) {
   await p.pdf({ path: path.join(dir, 'output', `${name}.pdf`), width: `${w}mm`, height: `${h}mm`, printBackground: true, pageRanges: '1' });
   await p.close();
   console.log(`${name}: ${w}×${h}mm 완료`);
+  if (qrPlaceholder && readFileSync(path.join(dir, f), 'utf8').includes('review_qr.svg'))
+    console.log('  ⚠ QR이 아직 빈 자리입니다 — 인쇄 전에 python3 review-form/make_qr.py <구글폼 주소> 실행');
 }
 await browser.close();

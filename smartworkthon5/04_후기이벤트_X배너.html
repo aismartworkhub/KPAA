@@ -3,32 +3,47 @@
 <title>04 워크톤 후기 이벤트 X배너 600×1800mm</title>
 <link rel="stylesheet" href="banner.css">
 <style>
-.canvas{background:var(--yellow);color:var(--navy)}
-.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(10,20,51,.10) 2.2px,transparent 2.6px);background-size:30px 30px}
-.tag{position:absolute;left:50px;top:180px;display:inline-block;background:var(--navy);color:var(--yellow);font-weight:900;
-  font-size:26px;letter-spacing:5px;padding:8px 22px 10px;border-radius:30px}
-.kick{position:absolute;left:52px;top:262px;font-size:34px;font-weight:900}
-.title{position:absolute;left:46px;top:310px;font-size:146px;line-height:1.04}
+/* 경품·조건·마감일을 바꾸면 review-form/createReviewForm.gs 의 CONFIG 도 같이 고칠 것 */
+.canvas{background:linear-gradient(180deg,var(--yellow) 0 640px,#FFF7DC 640px);color:var(--navy)}
+.dots{position:absolute;left:0;right:0;top:0;height:640px;background-image:radial-gradient(rgba(10,20,51,.10) 2.2px,transparent 2.6px);background-size:30px 30px}
+
+.hl{position:absolute;left:50px;top:166px;background:var(--navy);color:var(--yellow);font-weight:900;font-size:36px;padding:6px 24px 10px;border-radius:34px}
+.kick{position:absolute;left:52px;top:238px;font-size:32px;font-weight:900}
+.title{position:absolute;left:46px;top:294px;font-size:104px;line-height:1;white-space:nowrap}
 .title .b{color:var(--blue)}
-.lead{position:absolute;left:50px;top:640px;font-size:40px;font-weight:900;line-height:1.35}
-.lead em{font-style:normal;background:linear-gradient(transparent 58%,#fff 58%)}
+.lead{position:absolute;left:50px;top:410px;font-size:30px;font-weight:700;line-height:1.45}
+.lead em{font-style:normal;font-weight:900;background:linear-gradient(transparent 55%,#fff 55%)}
 
-.gift{position:absolute;right:34px;top:600px;transform:rotate(8deg)}
+.events{position:absolute;left:50px;right:50px;top:520px;display:flex;gap:14px}
+.ev{flex:1;background:#fff;border:4px solid var(--navy);border-radius:24px;box-shadow:7px 7px 0 var(--navy);padding:20px 14px 18px;text-align:center}
+.ev .pill{display:inline-block;background:var(--blue);color:#fff;font-weight:800;font-size:17px;letter-spacing:2px;padding:4px 16px 6px;border-radius:20px}
+.ev .cond{font-size:19px;font-weight:700;color:#3A4466;margin-top:12px;line-height:1.35}
+.ev .gift{font-size:29px;font-weight:900;line-height:1.2;margin-top:6px;min-height:68px;display:flex;align-items:center;justify-content:center}
+.ev .rule{font-size:18px;font-weight:900;border-top:2px solid var(--navy);border-bottom:2px solid var(--navy);padding:7px 0 9px;margin-top:10px}
+.ev svg{display:block;margin:12px auto 0}
 
-.steps{position:absolute;left:50px;right:50px;top:800px;display:flex;flex-direction:column;gap:18px}
-.s{display:flex;gap:20px;align-items:center;background:#fff;border-radius:26px;padding:22px 24px;border:4px solid var(--navy);box-shadow:8px 8px 0 var(--navy)}
-.s .ic{flex:0 0 96px;height:96px;border-radius:22px;background:var(--navy);display:grid;place-items:center}
-.s .n{font-family:'Montserrat','Noto Sans KR';font-weight:900;font-size:20px;letter-spacing:2px;color:var(--blue)}
-.s h3{font-size:40px;font-weight:900;line-height:1.15}
-.s p{font-size:21px;color:#3A4466;margin-top:4px;line-height:1.4}
+.how{position:absolute;left:50px;right:50px;top:918px;background:#fff;border-radius:26px;padding:48px 18px 24px;border:3px solid #EADFB8}
+.how .h{position:absolute;left:50%;top:-24px;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:26px;font-weight:900;padding:6px 30px 9px;border-radius:26px;white-space:nowrap}
+.how .row{display:flex;align-items:flex-start;justify-content:space-between}
+.how .st{width:140px;text-align:center}
+.how .c{position:relative;width:112px;height:112px;margin:0 auto;border-radius:50%;border:3px solid var(--navy);display:grid;place-items:center;background:#FFF7DC}
+.how .c b{position:absolute;left:-6px;top:-6px;width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-family:'Montserrat','Noto Sans KR';font-weight:900;font-size:20px;display:grid;place-items:center}
+.how .t{font-size:20px;font-weight:900;line-height:1.3;margin-top:12px}
+.how .ar{font-size:34px;font-weight:900;color:var(--blue);margin-top:36px}
 
-.hash{position:absolute;left:50px;right:50px;top:1390px;background:var(--navy);color:#fff;border-radius:26px;padding:26px 28px}
-.hash .k{font-size:22px;font-weight:700;color:var(--mute)}
-.hash .v{font-size:33px;font-weight:900;color:var(--cyan);line-height:1.45;margin-top:6px}
+.qrbox{position:absolute;left:50px;right:50px;top:1200px;background:var(--navy);color:#fff;border-radius:26px;padding:22px;display:flex;gap:22px;align-items:center}
+.qrbox img{flex:0 0 210px;width:210px;height:210px;border-radius:14px;background:#fff;display:block}
+.qrbox .k{font-family:'Montserrat','Noto Sans KR';font-weight:800;font-size:17px;letter-spacing:3px;color:var(--cyan)}
+.qrbox h3{font-size:26px;font-weight:900;line-height:1.3;margin-top:4px}
+.qrbox h3 em{font-style:normal;color:var(--yellow)}
+.qrbox p{font-size:17px;color:var(--mute);line-height:1.45;margin-top:8px}
+.qrbox .dl{display:inline-block;margin-top:10px;background:var(--yellow);color:var(--navy);font-size:18px;font-weight:900;padding:4px 14px 6px;border-radius:16px}
 
-.where{position:absolute;left:50px;right:50px;bottom:118px;height:74px;border-radius:37px;border:4px solid var(--navy);
-  display:grid;place-items:center;font-size:28px;font-weight:900}
-.foot{color:var(--navy)}
+.hash{position:absolute;left:50px;right:50px;top:1530px;text-align:center;font-size:25px;font-weight:900;color:var(--blue)}
+.notes{position:absolute;left:50px;right:50px;top:1584px;font-size:16px;line-height:1.6;color:#3A4466}
+.notes li{list-style:none;padding-left:22px;position:relative}
+.notes li::before{content:"※";position:absolute;left:0;top:0;font-size:14px}
+.notes b{color:var(--navy)}
 </style></head>
 <body>
 <div class="canvas">
@@ -39,40 +54,70 @@
     <div class="yr">2026</div>
   </div>
 
-  <div class="tag en">REVIEW EVENT</div>
+  <div class="hl">참여자 전원 증정</div>
   <div class="kick">제5회 스마트워크톤</div>
-  <div class="title display">후기<br><span class="b">이벤트</span></div>
-  <div class="lead">후기 남기고<br><em>선물 받아 가세요!</em></div>
+  <div class="title display">후기 <span class="b">이벤트</span></div>
+  <div class="lead">오늘의 워크톤을 공유하고<br><em>맛있는 선물</em> 받아 가세요!</div>
 
-  <svg class="gift" width="165" height="165" viewBox="0 0 100 100">
-    <rect x="12" y="40" width="76" height="52" rx="6" fill="#2F5BFF" stroke="#0A1433" stroke-width="4"/>
-    <rect x="6" y="28" width="88" height="18" rx="5" fill="#2F5BFF" stroke="#0A1433" stroke-width="4"/>
-    <rect x="43" y="28" width="14" height="64" fill="#FF6B5B" stroke="#0A1433" stroke-width="4"/>
-    <path d="M50 28 C38 10 22 14 28 24 C32 30 44 29 50 28 C56 29 68 30 72 24 C78 14 62 10 50 28Z" fill="#FF6B5B" stroke="#0A1433" stroke-width="4" stroke-linejoin="round"/>
-    <circle cx="86" cy="12" r="4" fill="#fff"/><circle cx="10" cy="16" r="3" fill="#fff"/>
-  </svg>
-
-  <div class="steps">
-    <div class="s">
-      <div class="ic"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#FFD84D" stroke-width="2" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg></div>
-      <div><div class="n en">STEP 01</div><h3>찍고</h3><p>오늘 워크톤 현장을 사진으로 남겨요</p></div>
+  <div class="events">
+    <div class="ev">
+      <span class="pill en">EVENT 01</span>
+      <div class="cond">SNS 후기 작성 시<br><small>인스타그램·페이스북 등</small></div>
+      <div class="gift">스타벅스<br>아메리카노</div>
+      <div class="rule">사진 3장 + 100자 이상</div>
+      <svg width="82" height="82" viewBox="0 0 64 64" fill="none" stroke="#0A1433" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M14 22h36l-4 34a4 4 0 0 1-4 3.5H22A4 4 0 0 1 18 56z" fill="#7A4A2A"/>
+        <path d="M11 15h42v7H11z" fill="#fff"/><path d="M17 8h30l2 7H15z" fill="#fff"/>
+        <circle cx="32" cy="38" r="8" fill="#FFD84D"/><path d="M28.5 38h7M32 34.5v7" stroke-width="2.4"/>
+      </svg>
     </div>
-    <div class="s">
-      <div class="ic"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#FFD84D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v4h16v-4"/></svg></div>
-      <div><div class="n en">STEP 02</div><h3>올리고</h3><p>SNS·블로그에 후기를 올려요</p></div>
-    </div>
-    <div class="s">
-      <div class="ic"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#FFD84D" stroke-width="2" stroke-linejoin="round"><rect x="3" y="10" width="18" height="11" rx="1.5"/><path d="M2 7h20v3H2zM12 7v14"/><path d="M12 7C10 3 6 3 7 5.5 8 7 12 7 12 7s4 0 5-1.5C18 3 14 3 12 7z"/></svg></div>
-      <div><div class="n en">STEP 03</div><h3>받고</h3><p>운영 데스크에서 인증하면 선물 증정!</p></div>
+    <div class="ev">
+      <span class="pill en">EVENT 02</span>
+      <div class="cond">블로그 또는 카페<br>후기 작성 시</div>
+      <div class="gift">치킨 +<br>콜라 1.25L</div>
+      <div class="rule">사진 5장 + 1,000자 이상</div>
+      <svg width="82" height="82" viewBox="0 0 64 64" fill="none" stroke="#0A1433" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M6 44h44a22 9 0 0 1-44 0z" fill="#fff"/>
+        <path d="M14 42c-4-7 0-17 9-18 7-1 12 4 11 10l-6 7z" fill="#E08A2E"/>
+        <path d="M30 40l6-6 4 2-5 6" fill="#fff"/><circle cx="41" cy="34" r="2.4" fill="#fff"/><circle cx="39" cy="31" r="2.4" fill="#fff"/>
+        <path d="M50 18h7v4l1 4v22h-9V26l1-4z" fill="#C8102E"/><path d="M50 30h8v8h-8" fill="#fff" stroke-width="2"/>
+      </svg>
     </div>
   </div>
 
-  <div class="hash">
-    <div class="k">이 해시태그를 꼭 달아 주세요</div>
-    <div class="v">#제5회스마트워크톤<br>#스마트워크톤 #AISH</div>
+  <div class="how">
+    <div class="h">참여 방법</div>
+    <div class="row">
+      <div class="st"><div class="c"><b>1</b>
+        <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#0A1433" stroke-width="1.8" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.6"/></svg></div>
+        <div class="t">워크톤 현장<br>사진 찍기</div></div>
+      <div class="ar">›</div>
+      <div class="st"><div class="c"><b>2</b>
+        <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#0A1433" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><rect x="8.5" y="6" width="7" height="6" rx="1"/><path d="M8.5 15h7M8.5 18h4.5"/></svg></div>
+        <div class="t">SNS·블로그에<br>후기 올리기</div></div>
+      <div class="ar">›</div>
+      <div class="st"><div class="c"><b>3</b>
+        <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#0A1433" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 20h2M20 14v2"/></svg></div>
+        <div class="t">QR 찍고<br>구글폼 신청</div></div>
+    </div>
   </div>
 
-  <div class="where">인증은 운영 데스크에서</div>
-  <div class="foot">주최 <strong>에이아이스마트워크허브(AISH)</strong></div>
+  <div class="qrbox">
+    <img src="assets/review_qr.svg" alt="후기 이벤트 신청 구글폼 QR">
+    <div>
+      <div class="k">SCAN ME</div>
+      <h3>QR 찍고 구글폼<br>작성하면<br><em>신청 완료!</em></h3>
+      <p>선물은 행사 후 적어 주신<br>휴대폰 번호로 모바일<br>쿠폰을 보내 드려요</p>
+      <span class="dl">신청 마감 11. 27(금)</span>
+    </div>
+  </div>
+
+  <div class="hash">#제5회스마트워크톤 #스마트워크톤 #AISH</div>
+  <ul class="notes">
+    <li>후기는 <b>전체 공개</b>로 올려 주세요. 비공개·삭제된 후기는 제외됩니다.</li>
+    <li><b>커피와 치킨은 중복 지급되지 않습니다.</b> (1인 1개)</li>
+    <li>행사와 무관하거나 조건에 맞지 않는 후기는 지급 대상에서 제외될 수 있습니다.</li>
+    <li>경품은 사정에 따라 동급의 다른 상품으로 바뀔 수 있습니다.</li>
+  </ul>
 </div>
 </body></html>
