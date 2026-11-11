@@ -1,0 +1,35 @@
+/* 제5회 스마트워크톤 배너 공통 스타일
+   단위 규칙: 1px = 실제 1mm  (X배너 600×1800mm → 600×1800px 캔버스) */
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Montserrat:wght@600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block');
+
+:root{
+  --navy:#0A1433; --navy2:#13245E; --blue:#2F5BFF;
+  --cyan:#2DE2E6; --yellow:#FFD84D; --coral:#FF6B5B;
+  --white:#FFFFFF; --mute:#B9C6EA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#555}
+body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
+.canvas{position:relative;overflow:hidden;width:600px;height:1800px;color:var(--white);
+  background:linear-gradient(172deg,var(--navy) 0%,var(--navy2) 52%,var(--navy) 100%)}
+.display{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:-1px}
+.en{font-family:'Montserrat','Noto Sans KR',sans-serif}
+
+/* 배경 장식 */
+.grid{position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:40px 40px}
+.orb{position:absolute;border-radius:50%;pointer-events:none}
+
+/* 상단 머리 (주최 로고 자리) */
+.head{position:absolute;left:50px;right:50px;top:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo b{font-family:'Montserrat','Noto Sans KR';font-weight:900;font-size:26px;letter-spacing:1px;
+  border:3px solid currentColor;border-radius:10px;padding:2px 10px 3px}
+.logo span{font-family:'Montserrat','Noto Sans KR';font-weight:700;font-size:13px;letter-spacing:2.4px;line-height:1.25;opacity:.85}
+.head .yr{font-family:'Montserrat','Noto Sans KR';font-weight:800;font-size:22px;letter-spacing:3px;opacity:.85}
+
+/* 하단 주최 표기 */
+.foot{position:absolute;left:50px;right:50px;bottom:60px;text-align:center;font-size:20px;font-weight:500;opacity:.9}
+.foot strong{font-weight:900}

@@ -31,6 +31,7 @@ GitHub Pages로 배포하면 아래 주소에서 열립니다.
 | `assets/patent-3person-review.svg` | 특허 3인 협의심사 제도 안내 인포그래픽 (벡터 원본) |
 | `appscript/` | 회원서비스실 구글 시트 Apps Script 실습 교안 (1차 11/4, 2차 11/13) + 실습 코드·가상 데이터 |
 | `ethics-system/` | 윤리·징계·광고 업무지원 시스템 (FastAPI + SQLite + 웹 화면) |
+| `smartworkthon5/` | 제5회 스마트워크톤 배너 5종 (X배너 4종 600×1800mm + 플리마켓 1006×576) — 인쇄용 PDF·JPG |
 | `assets/patent-3person-review.pdf` | 같은 인포그래픽의 벡터 PDF — 캔바 등 편집 도구 가져오기용 |
 
 ## GitHub Pages 켜기
