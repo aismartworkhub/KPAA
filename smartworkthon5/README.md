@@ -15,6 +15,13 @@
 - `*_미리보기.png` — 화면 확인용
 - `05_…_화면용_1006x576px.png` — 플리마켓 배너를 모니터·TV로 띄울 때 쓰는 원본 크기
 
+## 로고 (assets/)
+
+- `aish_logo_원본.png` — 받은 로고 원본 (534×307px)
+- `aish_logo.svg` — 원본을 벡터로 바꾼 것 (원래 색, 밝은 배경용 · 04번에 사용)
+- `aish_logo_white.svg` — 흰색 반전본 (어두운 배경용 · 01·02·03·05번에 사용)
+- 다시 만들기: `python3 assets/trace_logo.py` (`pip install potracer` 필요)
+
 ## 문구 고치기
 
 1. 해당 `.html` 파일을 열어 글자를 고칩니다 (색·글꼴은 `banner.css`)

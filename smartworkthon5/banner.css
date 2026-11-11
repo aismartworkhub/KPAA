@@ -23,7 +23,8 @@ body{font-family:'Noto Sans KR',sans-serif;-webkit-font-smoothing:antialiased;wo
 .orb{position:absolute;border-radius:50%;pointer-events:none}
 
 /* 상단 머리 (주최 로고 자리) */
-.head{position:absolute;left:50px;right:50px;top:70px;display:flex;align-items:center;justify-content:space-between}
+.head{position:absolute;left:50px;right:50px;top:50px;display:flex;align-items:center;justify-content:space-between}
+.logo-img{display:block;height:80px}  /* AISH 로고 (가로:세로 = 2.14:1) */
 .logo{display:flex;align-items:center;gap:12px}
 .logo b{font-family:'Montserrat','Noto Sans KR';font-weight:900;font-size:26px;letter-spacing:1px;
   border:3px solid currentColor;border-radius:10px;padding:2px 10px 3px}
