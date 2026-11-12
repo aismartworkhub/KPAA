@@ -27,7 +27,7 @@ function createReviewForm() {
   const c = CONFIG;
   const form = FormApp.create(c.title);
   form.setDescription(
-    '제5회 스마트워크톤(2026. 11. 20, 서울시청 시민청)에 함께해 주셔서 감사합니다!\n' +
+    '제5회 스마트워크톤(2026. 11. 20, G밸리 기업시민청)에 함께해 주셔서 감사합니다!\n' +
     '후기를 올리신 뒤 이 신청서를 작성하시면, 선물을 행사 후 모바일 쿠폰으로 보내 드립니다.\n\n' +
     '■ ' + c.event1.name + ' — ' + c.event1.rule + ' → ' + c.event1.gift + '\n' +
     '■ ' + c.event2.name + ' — ' + c.event2.rule + ' → ' + c.event2.gift + '\n\n' +
